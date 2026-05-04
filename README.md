@@ -17,5 +17,5 @@
 
 
 <div align="center"> 
-<sub>Built with ☕ and 🌙 by LukzST</sub>
+<sub>Built with ☕ and 🌙 by LuxJson</sub>
 </div>
