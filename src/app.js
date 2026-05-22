@@ -13,7 +13,7 @@ app.set('view engine', 'ejs');
 // 2. Arquivos Estáticos
 app.use(favicon(path.join(__dirname, 'Public', 'favicon.ico')));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-app.use(express.static(path.join(__dirname, 'src', 'Public')));
+app.use(express.static(path.join(__dirname, 'Public')));
 
 // 3. Middlewares Base
 app.use(express.urlencoded({ extended: true }));
