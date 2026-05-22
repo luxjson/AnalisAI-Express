@@ -4,11 +4,8 @@ const fs = require('fs');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        // Como o arquivo está em src/Config, precisamos subir dois níveis para achar a pasta uploads na raiz
-        const uploadDir = path.join(__dirname, '../../uploads');
-        if (!fs.existsSync(uploadDir)) {
-            fs.mkdirSync(uploadDir, { recursive: true });
-        }
+        const uploadDir = path.join(__dirname, '../uploads');
+        if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
         cb(null, uploadDir);
     },
     filename: function (req, file, cb) {
@@ -20,15 +17,12 @@ const storage = multer.diskStorage({
 
 const upload = multer({ 
     storage: storage,
-    limits: { fileSize: 10 * 1024 * 1024 }, 
+    limits: { fileSize: 10 * 1024 * 1024 },
     fileFilter: function (req, file, cb) {
         const allowedTypes = ['.pdf', '.doc', '.docx', '.jpg', '.jpeg', '.png'];
         const ext = path.extname(file.originalname).toLowerCase();
-        if (allowedTypes.includes(ext)) {
-            cb(null, true);
-        } else {
-            cb(new Error('Tipo de arquivo não permitido'));
-        }
+        if (allowedTypes.includes(ext)) cb(null, true);
+        else cb(new Error('Tipo de arquivo não permitido'));
     }
 });
 

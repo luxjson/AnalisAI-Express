@@ -1,4 +1,4 @@
-const db = require('../Config/db');
+const db = require('../db');
 
 async function criarNotificacao(tipo, usuarioId, alunoId, titulo, mensagem, link, icone = 'fas fa-bell', cor = '#ff0101') {
     try {
