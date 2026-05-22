@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="/CSS/sidebar.css">
     <link rel="stylesheet" href="/CSS/dashboard.css">
-    <link rel="stylesheet" href="/CSS/aluno.css">
     <style>
         .pdf-container {
             width: 100%;
@@ -34,7 +33,7 @@
         
         .pdf-title {
             font-size: 1.2rem;
-            color: #217346;
+            color: var(--primary-red);
             letter-spacing: 2px;
             text-transform: uppercase;
         }
@@ -42,39 +41,39 @@
         .btn-download {
             padding: 10px 20px;
             background: transparent;
-            border: 2px solid #217346;
-            color: #217346;
+            border: 2px solid var(--primary-red);
+            color: var(--primary-red);
             border-radius: 8px;
             text-decoration: none;
             transition: 0.3s;
         }
         
         .btn-download:hover {
-            background: #217346;
+            background: var(--primary-red);
             color: white;
         }
     </style>
 </head>
 <body class="dash-body">
-    <%- include('partials/sidebar-aluno') %>
+    <%- include('partials/barProfessor) %>
     
     <div class="main-layout">
         <header class="dash-header">
             <div class="logo">
-                <img src="/IMG/logo3-green.png" alt="AnalisAI">
+                <img src="/IMG/logo3-white.png" alt="AnalisAI">
             </div>
             <h2 class="page-title">MANUAL DO USUÁRIO</h2>
         </header>
         
         <div class="pdf-header">
             <span class="pdf-title">DOCUMENTO ORIENTADOR</span>
-            <a href="/PDF/manual-do-aluno.pdf" download class="b">
+            <a href="/PDF/manualDoProfessor.pdf" download class="btn-secondary-dash">
                 <i class="fas fa-download"></i> BAIXAR PDF
             </a>
         </div>
         
         <div class="pdf-container">
-            <iframe src="/PDF/manual-do-aluno.pdf"></iframe>
+            <iframe src="/PDF/manualDoProfessor.pdf"></iframe>
         </div>
     </div>
 </body>

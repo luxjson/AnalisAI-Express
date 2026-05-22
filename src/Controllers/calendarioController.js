@@ -43,7 +43,7 @@ exports.listar = async (req, res) => {
             ORDER BY total DESC
         `);
         
-        res.render('dashboard/calendario', {
+        res.render('dashboard/dashboardCalendario', {
             user: req.session.user,
             userCargo: req.session.userCargo,
             eventos: eventosResult.rows,

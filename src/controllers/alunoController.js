@@ -59,7 +59,7 @@ exports.dashboard = async (req, res) => {
             "UPDATE alunos_login SET ultimo_acesso = CURRENT_TIMESTAMP AT TIME ZONE 'America/Sao_Paulo' WHERE aluno_id = $1",
             [alunoId]
         );
-        res.render('aluno/main', {
+        res.render('aluno/alunoDashboard', {
             aluno,
             competencias,
             mediaGeral,
@@ -105,7 +105,7 @@ exports.competencias = async (req, res) => {
             FROM aluno_competencias
             WHERE aluno_id = $1
         `, [alunoId]);
-        res.render('aluno/competencias', {
+        res.render('aluno/alunoCompetencias', {
             aluno,
             competencias: competenciasResult.rows,
             stats: stats.rows[0],
@@ -167,7 +167,7 @@ exports.evolucao = async (req, res) => {
             cat.media = (cat.soma / cat.count) * 10;
         });
         const categorias = Array.from(categoriasMap.values());
-        res.render('aluno/evolucao', {
+        res.render('aluno/alunoEvolucao', {
             aluno,
             competencias,
             historico,
@@ -218,7 +218,7 @@ exports.config = async (req, res) => {
         const competencias = {
             length: parseInt(competenciasResult.rows[0].total) || 0
         };
-        res.render('aluno/perfil', {
+        res.render('aluno/alunoPerfil', {
             aluno,
             competencias,
             success_msg: req.flash('success_msg'),
@@ -268,7 +268,7 @@ exports.alterarSenha = async (req, res) => {
                 }) : '---';
             aluno.ultimo_acesso_formatado = ultimoAcesso;
             const competencias = { length: 0 };
-            return res.render('aluno/perfil', {
+            return res.render('aluno/alunoPerfil', {
                 aluno,
                 competencias,
                 error_msg: req.flash('error_msg')[0],
@@ -304,7 +304,7 @@ exports.alterarSenha = async (req, res) => {
                 }) : '---';
             aluno.ultimo_acesso_formatado = ultimoAcesso;
             const competencias = { length: 0 };
-            return res.render('aluno/perfil', {
+            return res.render('aluno/alunoPerfil', {
                 aluno: aluno,
                 competencias,
                 error_msg: req.flash('error_msg')[0],
@@ -339,7 +339,7 @@ exports.alterarSenha = async (req, res) => {
                 }) : '---';
             aluno.ultimo_acesso_formatado = ultimoAcesso;
             const competencias = { length: 0 };
-            return res.render('aluno/perfil', {
+            return res.render('aluno/alunoPerfil', {
                 aluno: aluno,
                 competencias,
                 error_msg: req.flash('error_msg')[0],
@@ -355,7 +355,7 @@ exports.alterarSenha = async (req, res) => {
             );
             const alunoInfo = alunoData.rows[0];
             const competencias = { length: 0 };
-            return res.render('aluno/perfil', {
+            return res.render('aluno/alunoPerfil', {
                 aluno: aluno,
                 competencias,
                 error_msg: req.flash('error_msg')[0],
@@ -374,7 +374,7 @@ exports.alterarSenha = async (req, res) => {
         );
         const alunoInfo = alunoData.rows[0];
         const competencias = { length: 0 };
-        res.render('aluno/perfil', {
+        res.render('aluno/alunoPerfil', {
             aluno: alunoInfo,
             competencias,
             error_msg: null,
@@ -390,7 +390,7 @@ exports.alterarSenha = async (req, res) => {
         );
         const alunoInfo = alunoData.rows[0];
         const competencias = { length: 0 };
-        res.render('aluno/perfil', {
+        res.render('aluno/alunoPerfil', {
             aluno: alunoInfo,
             competencias,
             error_msg: req.flash('error_msg')[0],
@@ -465,7 +465,7 @@ exports.tarefas = async (req, res) => {
             FROM tarefas_alunos
             WHERE aluno_id = $1
         `, [alunoId]);
-        res.render('aluno/tarefas', {
+        res.render('aluno/alunoTarefas', {
             aluno: req.session.aluno,
             tarefas: tarefasResult.rows,
             stats: statsResult.rows[0] || {
@@ -541,7 +541,7 @@ exports.enviarTarefa = async (req, res) => {
 };
 
 exports.equipe = (req, res) => {
-    res.render('dashboard/equipe');
+    res.render('dashboard/dashboardEquipe');
 };
 
 exports.apiDadosGrafico = async (req, res) => {

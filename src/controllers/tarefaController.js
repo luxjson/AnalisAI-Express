@@ -56,7 +56,7 @@ exports.listar = async (req, res) => {
         const competenciasResult = await db.query(
             'SELECT id, nome FROM competencias ORDER BY nome ASC'
         );
-        res.render('dashboard/tarefas', {
+        res.render('dashboard/dashboardTarefas', {
             tarefas: tarefasResult.rows,
             alunos: alunosResult.rows,
             stats: statsResult.rows[0],

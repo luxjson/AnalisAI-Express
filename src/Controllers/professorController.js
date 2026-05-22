@@ -94,7 +94,7 @@ exports.dashboard = async (req, res) => {
       ...item,
       media: parseFloat(item.media) || 0,
     }));
-    res.render("dashboard/main", {
+    res.render("dashboard/dashboardMain", {
       user: req.session.user,
       alunos: alunosComNivel,
       rankingGeral: rankingGeral,
@@ -106,7 +106,7 @@ exports.dashboard = async (req, res) => {
   } catch (err) {
     console.error(err);
     req.flash("error_msg", "Erro ao carregar dados do dashboard");
-    res.render("dashboard/main", {
+    res.render("dashboard/dashboardMain", {
       user: req.session.user,
       alunos: [],
       rankingGeral: [],
@@ -165,7 +165,7 @@ exports.editAlunos = async (req, res) => {
             FROM competencias 
             ORDER BY id ASC
         `);
-    res.render("dashboard/edit", {
+    res.render("dashboard/dashboardEdit", {
       alunos: result.rows,
       listaCompetencias: competenciasList.rows,
       user: req.session.user,
@@ -239,7 +239,7 @@ exports.graficos = async (req, res) => {
           ? (somaFundamental / countFundamental).toFixed(1)
           : 0,
     };
-    res.render("dashboard/graficos", {
+    res.render("dashboard/dashboardGraficos", {
       stats,
       userCargo: req.session.userCargo,
       isAdmin: req.session.userCargo === "Admin",
@@ -247,7 +247,7 @@ exports.graficos = async (req, res) => {
   } catch (err) {
     console.error(err);
     req.flash("error_msg", "Erro ao carregar gráficos");
-    res.render("dashboard/graficos", {
+    res.render("dashboard/dashboardGraficos", {
       stats: {
         total: 0,
         apto: 0,
@@ -260,7 +260,7 @@ exports.graficos = async (req, res) => {
 };
 
 exports.equipe = (req, res) => {
-  res.render("dashboard/equipe");
+  res.render("dashboard/dashboardEquipe");
 };
 
 exports.config = async (req, res) => {
@@ -289,7 +289,7 @@ exports.config = async (req, res) => {
         `,
       [req.session.userId],
     );
-    res.render("dashboard/config", {
+    res.render("dashboard/dashboardConfig", {
       config,
       nome: userResult.rows[0].nome,
       email: userResult.rows[0].email,

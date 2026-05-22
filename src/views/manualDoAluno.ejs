@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="/CSS/sidebar.css">
     <link rel="stylesheet" href="/CSS/dashboard.css">
+    <link rel="stylesheet" href="/CSS/aluno.css">
     <style>
         .pdf-container {
             width: 100%;
@@ -33,7 +34,7 @@
         
         .pdf-title {
             font-size: 1.2rem;
-            color: var(--primary-red);
+            color: #217346;
             letter-spacing: 2px;
             text-transform: uppercase;
         }
@@ -41,39 +42,39 @@
         .btn-download {
             padding: 10px 20px;
             background: transparent;
-            border: 2px solid var(--primary-red);
-            color: var(--primary-red);
+            border: 2px solid #217346;
+            color: #217346;
             border-radius: 8px;
             text-decoration: none;
             transition: 0.3s;
         }
         
         .btn-download:hover {
-            background: var(--primary-red);
+            background: #217346;
             color: white;
         }
     </style>
 </head>
 <body class="dash-body">
-    <%- include('partials/sidebar') %>
+    <%- include('partials/barAluno) %>
     
     <div class="main-layout">
         <header class="dash-header">
             <div class="logo">
-                <img src="/IMG/logo3-white.png" alt="AnalisAI">
+                <img src="/IMG/logo3-green.png" alt="AnalisAI">
             </div>
             <h2 class="page-title">MANUAL DO USUÁRIO</h2>
         </header>
         
         <div class="pdf-header">
             <span class="pdf-title">DOCUMENTO ORIENTADOR</span>
-            <a href="/PDF/manual-de-uso.pdf" download class="btn-secondary-dash">
+            <a href="/PDF/manualDoAluno.pdf" download class="b">
                 <i class="fas fa-download"></i> BAIXAR PDF
             </a>
         </div>
         
         <div class="pdf-container">
-            <iframe src="/PDF/manual-de-uso.pdf"></iframe>
+            <iframe src="/PDF/manualDoAluno.pdf"></iframe>
         </div>
     </div>
 </body>

@@ -18,14 +18,14 @@ exports.showManuais = (req, res) => {
 };
 
 exports.showManualDeUso = (req, res) => {
-    res.render('manual-de-uso', {
+    res.render('manualDoProfessor', {
         userCargo: req.session.userCargo,
         isAdmin: req.session.userCargo === 'Admin'
     });
 };
 
 exports.showManualDoAluno = (req, res) => {
-    res.render('manual-do-aluno', {
+    res.render('manualDoAluno', {
         userCargo: req.session.userCargo,
         isAdmin: req.session.userCargo === 'Admin'
     });
@@ -187,7 +187,7 @@ exports.cadastro = async (req, res) => {
 };
 
 exports.showEsqueciSenha = (req, res) => {
-    res.render('esqueci-senha', {
+    res.render('esqueciSenha', {
         error_msg: req.flash('error_msg')[0],
         success_msg: req.flash('success_msg')[0]
     });
@@ -197,7 +197,7 @@ exports.solicitarRedefinicaoSenha = async (req, res) => {
     const { email } = req.body;
     if (!email) {
         req.flash('error_msg', 'E-mail é obrigatório');
-        return res.render('esqueci-senha', {
+        return res.render('esqueciSenha', {
             error_msg: req.flash('error_msg')[0],
             success_msg: null
         });
@@ -206,7 +206,7 @@ exports.solicitarRedefinicaoSenha = async (req, res) => {
         const result = await db.query('SELECT id, nome FROM usuarios WHERE email = $1', [email]);
         if (result.rows.length === 0) {
             req.flash('error_msg', 'E-mail não encontrado');
-            return res.render('esqueci-senha', {
+            return res.render('esqueciSenha', {
                 error_msg: req.flash('error_msg')[0],
                 success_msg: null
             });
@@ -231,14 +231,14 @@ exports.solicitarRedefinicaoSenha = async (req, res) => {
             );
         }
         req.flash('success_msg', 'Solicitação enviada! Um administrador irá analisar.');
-        res.render('esqueci-senha', {
+        res.render('esqueciSenha', {
             error_msg: null,
             success_msg: req.flash('success_msg')[0]
         });
     } catch (err) {
         console.error('Erro ao solicitar recuperação:', err);
         req.flash('error_msg', 'Erro ao processar solicitação');
-        return res.render('esqueci-senha', {
+        return res.render('esqueciSenha', {
             error_msg: req.flash('error_msg')[0],
             success_msg: null
         });

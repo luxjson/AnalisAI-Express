@@ -8,7 +8,7 @@ exports.listarUsuarios = async (req, res) => {
         const userCargo = req.session.userCargo;
         const userId = req.session.userId;
         const user = req.session.user;
-        res.render('dashboard/usuarios', { 
+        res.render('dashboard/dashboardUsuarios', { 
             usuarios: result.rows,
             isAdmin: isAdmin,
             userCargo: userCargo,
@@ -76,7 +76,7 @@ exports.listarSolicitacoesSenha = async (req, res) => {
             WHERE s.status = 'PENDENTE'
             ORDER BY s.data_solicitacao DESC
         `);
-        res.render('dashboard/solicitacoes', {
+        res.render('dashboard/dashboardSolicitacoes', {
             solicitacoes: result.rows,
             user: req.session.user,
             userCargo: req.session.userCargo,
