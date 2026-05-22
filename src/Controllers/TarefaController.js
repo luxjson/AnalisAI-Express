@@ -1,6 +1,6 @@
 const db = require('../Config/db');
 const Tarefa = require('../Models/TarefaModel');
-const { criarNotificacao } = require('../services/notificationService');
+const { criarNotificacao } = require('../Services/notificationService');
 
 const TarefaController = {
     

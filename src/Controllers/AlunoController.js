@@ -1,5 +1,5 @@
 const db = require('../Config/db');
-const { criarNotificacao } = require('../services/notificationService');
+const { criarNotificacao } = require('../Services/notificationService');
 
 const AlunoController = {
     

@@ -4,7 +4,7 @@ const db = require('../Config/db');
 const ExcelJS = require('exceljs');
 const path = require('path');
 const fs = require('fs');
-const { criarNotificacao } = require('../services/notificationService');
+const { criarNotificacao } = require('../Services/notificationService');
 
 const DashboardController = {
     
