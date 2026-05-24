@@ -61,6 +61,12 @@ exports.loginProfessor = async (req, res) => {
         req.session.userStatus = user.status;
         req.session.userId = user.id;
         req.session.userCargo = user.cargo;
+
+        await db.query(
+        "UPDATE usuarios SET ultimo_acesso = CURRENT_TIMESTAMP AT TIME ZONE 'America/Sao_Paulo' WHERE id = $1",
+        [user.id]
+        );
+
         req.flash('success_msg', `Bem-vindo, ${user.nome}!`);
         return res.redirect('/dashboard');
     } catch (err) {

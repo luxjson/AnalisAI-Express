@@ -287,7 +287,29 @@
         const abaAtual = urlParams.get('aba') || 'dados';
         
         function mudarAba(aba) {
-            window.location.href = `/aluno/config?aba=${aba}`;
+            // Esconde todos os conteúdos de aba
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            // Remove classe active de todos os botões
+            document.querySelectorAll('.perfil-tabs .b').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            // Ativa o conteúdo e o botão correspondente
+            if (aba === 'dados') {
+                document.getElementById('abaDados').classList.add('active');
+                document.querySelectorAll('.perfil-tabs .b')[0].classList.add('active');
+            } else if (aba === 'config') {
+                document.getElementById('abaConfig').classList.add('active');
+                document.querySelectorAll('.perfil-tabs .b')[1].classList.add('active');
+            } else if (aba === 'senha') {
+                document.getElementById('abaSenha').classList.add('active');
+                document.querySelectorAll('.perfil-tabs .b')[2].classList.add('active');
+            }
+            // Atualiza a URL sem recarregar a página (opcional, mantém o estado)
+            const url = new URL(window.location);
+            url.searchParams.set('aba', aba);
+            window.history.pushState({}, '', url);
         }
         
         document.querySelectorAll('.toggle-switch').forEach(toggle => {

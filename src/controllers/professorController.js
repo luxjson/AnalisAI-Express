@@ -277,10 +277,26 @@ exports.config = async (req, res) => {
       notificacoes_avaliacoes: true,
       notificacoes_competencias: true,
     };
+    
     const userResult = await db.query(
-      "SELECT nome, email, cargo, data_criacao FROM usuarios WHERE id = $1",
+      "SELECT nome, email, cargo, data_criacao, ultimo_acesso FROM usuarios WHERE id = $1",
       [req.session.userId],
     );
+
+    const user = userResult.rows[0];
+    let ultimoAcessoFormatado = '---';
+    if (user.ultimo_acesso) {
+      ultimoAcessoFormatado = new Date(user.ultimo_acesso).toLocaleString('pt-BR', {
+        timeZone: 'America/Sao_Paulo',
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+      });
+    }
+
     const statsResult = await db.query(
       `
             SELECT 
@@ -297,7 +313,7 @@ exports.config = async (req, res) => {
       dataCadastro: new Date(
         userResult.rows[0].data_criacao,
       ).toLocaleDateString("pt-BR"),
-      ultimoAcesso: req.session.ultimoAcesso || "---",
+      ultimoAcesso: ultimoAcessoFormatado,
       stats: statsResult.rows[0],
       abaAtiva: aba,
       userCargo: req.session.userCargo,
