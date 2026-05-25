@@ -115,7 +115,7 @@ exports.competencias = async (req, res) => {
     } catch (err) {
         console.error('Erro ao carregar competências do aluno:', err);
         req.flash('error_msg', 'Erro ao carregar competências');
-        res.redirect('/aluno/dashboard');
+        res.redirect('/aluno');
     }
 };
 
@@ -178,7 +178,7 @@ exports.evolucao = async (req, res) => {
     } catch (err) {
         console.error('Erro ao carregar evolução:', err);
         req.flash('error_msg', 'Erro ao carregar evolução');
-        res.redirect('/aluno/dashboard');
+        res.redirect('/aluno');
     }
 };
 
@@ -228,7 +228,7 @@ exports.config = async (req, res) => {
     } catch (err) {
         console.error('Erro ao carregar perfil:', err);
         req.flash('error_msg', 'Erro ao carregar perfil');
-        res.redirect('/aluno/dashboard');
+        res.redirect('/aluno');
     }
 };
 
@@ -482,7 +482,7 @@ exports.tarefas = async (req, res) => {
     } catch (err) {
         console.error('Erro ao carregar tarefas do aluno:', err);
         req.flash('error_msg', 'Erro ao carregar tarefas');
-        res.redirect('/aluno/dashboard');
+        res.redirect('/aluno');
     }
 };
 

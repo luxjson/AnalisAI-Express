@@ -4,7 +4,7 @@ const { checkAlunoAuth } = require('../middlewares/auth');
 const upload = require('../middlewares/upload');
 const alunoController = require('../controllers/alunoController');
 
-router.get('/aluno/dashboard', checkAlunoAuth, alunoController.dashboard);
+router.get('/aluno', checkAlunoAuth, alunoController.dashboard);
 router.get('/aluno/competencias', checkAlunoAuth, alunoController.competencias);
 router.get('/aluno/evolucao', checkAlunoAuth, alunoController.evolucao);
 router.get('/aluno/config', checkAlunoAuth, alunoController.config);

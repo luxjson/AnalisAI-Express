@@ -144,7 +144,7 @@ exports.loginAluno = async (req, res) => {
             login_id: aluno.id
         };
         req.flash('success_msg', `Bem-vindo, ${aluno.nome}!`);
-        return res.redirect('/aluno/dashboard');
+        return res.redirect('/aluno');
     } catch (err) {
         console.error('ERRO NO LOGIN DO ALUNO:', err);
         req.flash('error_msg', 'Erro ao conectar ao banco de dados.');
