@@ -715,7 +715,7 @@ exports.baixarModeloImportacao = async (req, res) => {
     try {
       const logoPath = path.join(
         process.cwd(),
-        "Public",
+        "public",
         "IMG",
         "xls-logo.png",
       );
