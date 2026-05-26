@@ -1,8 +1,8 @@
 :root {
-    --bg-dark: #080808;
+    --bg-dark: #030303;
     --primary-red: #ff0101;
     --text-white: #ffffff;
-    --card-bg: #080808;
+    --card-bg: #030303;
     --font-family: 'Inter-Medium', sans-serif;
     --border-color: #1a1a1a;
     --text-muted: #444;
@@ -135,7 +135,7 @@ body.dash-body {
 .sidebar {
     width: 85px;
     height: 100vh;
-    background-color: #080808;
+    background-color: #030303;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -207,7 +207,7 @@ body.dash-body {
 }
 
 .stats-card {
-    background: #080808;
+    background: #030303;
     padding: 30px;
     border-radius: 20px;
     border: 2px solid var(--border-color);
@@ -809,7 +809,7 @@ body.dash-body {
         .stat-falta.nao-justificadas .numero { color: #ff0101; }
         
         .falta-card {
-            background: #080808;
+            background: #030303;
             border: 2px solid #1a1a1a;
             border-radius: 15px;
             padding: 20px;
@@ -882,7 +882,7 @@ body.dash-body {
         }
         
         .modal-content {
-            background: #080808;
+            background: #030303;
             border: 2px solid #217346;
             border-radius: 20px;
             padding: 30px;
@@ -923,7 +923,7 @@ body.dash-body {
         }
         
         .tarefa-card {
-            background: #080808;
+            background: #030303;
             border: 2px solid #1a1a1a;
             border-radius: 15px;
             padding: 20px;

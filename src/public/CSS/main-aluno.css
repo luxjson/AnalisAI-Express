@@ -1,6 +1,6 @@
 
         .aluno-header {
-            background: #080808;
+            background: #030303;
             padding: 40px;
             border-radius: 30px;
             border: 2px solid #1a1a1a;
@@ -71,7 +71,7 @@
         }
         
         .competencia-card {
-            background: #080808;
+            background: #030303;
             border: 2px solid #1a1a1a;
             border-radius: 20px;
             padding: 25px;
@@ -125,7 +125,7 @@
         }
         
         .progresso-container {
-            background: #080808;
+            background: #030303;
             border: 2px solid #1a1a1a;
             border-radius: 20px;
             padding: 30px;
@@ -166,7 +166,7 @@
         }
         
         .grafico-container {
-            background: #080808;
+            background: #030303;
             border: 2px solid #1a1a1a;
             border-radius: 20px;
             padding: 25px;
@@ -183,7 +183,7 @@
         }
         
         .stat-card {
-            background: #080808;
+            background: #030303;
             border: 2px solid #1a1a1a;
             border-radius: 20px;
             padding: 25px;

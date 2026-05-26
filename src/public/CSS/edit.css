@@ -1,8 +1,8 @@
 :root {
-    --bg-dark: #080808;
+    --bg-dark: #030303;
     --primary-red: #ff0101;
     --text-white: #ffffff;
-    --card-bg: #080808;
+    --card-bg: #030303;
     --font-family: 'Inter-Medium', sans-serif;
     --border-color: #1a1a1a;
     --text-muted: #444;
@@ -215,7 +215,7 @@ body.dash-body {
 .search-container input {
     width: 100%;
     height: 55px;
-    background: #080808;
+    background: var(--bg-dark);
     border: 2px solid #222;
     border-radius: 12px;
     padding: 0 20px 0 55px;
@@ -245,7 +245,7 @@ body.dash-body {
 .table-container {
     border: 2px solid #1a1a1a;
     border-radius: 25px;
-    background-color: #080808;
+    background-color: var(--bg-dark);
     padding: 40px;
     overflow-x: auto;
     margin-bottom: 40px;

@@ -19,7 +19,7 @@
         }
         
         .stat-box {
-            background: #080808;
+            background: #030303;
             border: 2px solid #1a1a1a;
             border-radius: 20px;
             padding: 25px;
@@ -52,7 +52,7 @@
         }
         
         .filtros-container {
-            background: #080808;
+            background: #030303;
             border: 2px solid #1a1a1a;
             border-radius: 20px;
             padding: 25px;
@@ -66,7 +66,7 @@
             flex: 1;
             min-width: 200px;
             padding: 12px 15px;
-            background: #111;
+            background: #030303;
             border: 2px solid #222;
             border-radius: 10px;
             color: #fff;
@@ -81,7 +81,7 @@
         .filtro-select {
             min-width: 150px;
             padding: 12px 15px;
-            background: #111;
+            background: #030303;
             border: 2px solid #222;
             border-radius: 10px;
             color: #fff;
@@ -89,7 +89,7 @@
         }
         
         .filtro-select option {
-            background: #111;
+            background: #030303;
             color: #fff;
         }
         
@@ -139,7 +139,7 @@
         
         .ordenar-select {
             padding: 8px 15px;
-            background: #111;
+            background: #030303;
             border: 2px solid #222;
             border-radius: 8px;
             color: #fff;
@@ -147,7 +147,7 @@
         }
         
         .competencia-card {
-            background: #080808;
+            background: #030303;
             border: 2px solid #1a1a1a;
             border-radius: 20px;
             padding: 25px;
@@ -275,7 +275,7 @@
         }
         
         .grafico-container {
-            background: #080808;
+            background: #030303;
             border: 2px solid #1a1a1a;
             border-radius: 20px;
             padding: 25px;
@@ -287,7 +287,7 @@
         .empty-state {
             text-align: center;
             padding: 80px 20px;
-            background: #080808;
+            background: #030303;
             border: 2px solid #1a1a1a;
             border-radius: 20px;
         }

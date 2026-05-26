@@ -1,7 +1,7 @@
 :root {
     --primary-color: #ff0101;
-    --secondary-color: #0e0e0e;
-    --card-bg: #151515;
+    --secondary-color: #030303;
+    --card-bg: #070707;
     --text-color: #ffffff;
     --font-family: 'Inter-Medium';
 }
@@ -76,7 +76,7 @@ body {
     content: "";
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background-image: url('/IMG/back-2.png');
+    background-image: url('/IMG/back1.png');
     background-size: cover;
     background-position: center;
     opacity: 0.4;
@@ -254,7 +254,7 @@ body {
 
 .features-section {
     padding: 80px 20px;
-    background-color: #0a0a0a;
+    background-color: #050505;
 }
 
 .features-grid {
@@ -286,7 +286,7 @@ body {
 }
 
 details {
-    background: #151515;
+    background: #030303;
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 10px;
@@ -310,9 +310,9 @@ details p {
 
 .footer {
     width: 100%;
-    background: rgba(10, 10, 10, 0.8);
+    background: #030303;
     backdrop-filter: blur(10px);
-    border-top: 1px solid rgba(255, 1, 1, 0.2);
+    border-top: 2px solid rgba(255, 1, 1, 0.2);
     padding: 30px 0;
     margin-top: 50px;
     position: relative;

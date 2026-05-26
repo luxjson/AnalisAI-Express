@@ -4,6 +4,38 @@
             align-items: center;
             margin-bottom: 30px;
         }
+
+        .btn-icon-2 {
+    background: transparent;
+    border: 2px solid #222;
+    color: #888;
+    padding: 0 25px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 55px;
+}
+
+.btn-icon-2:hover {
+    border-color: var(--primary-red);
+    color: var(--primary-red);
+    background: rgba(255, 1, 1, 0.05);
+}
+
+.btn-icon-2 i {
+    font-size: 1rem;
+    transition: inherit;
+}
+
+.btn-icon-2:hover i {
+    color: var(--primary-red);
+}
         
         .page-title {
             font-size: 1.5rem;
@@ -19,14 +51,14 @@
         }
         
         .calendario-main {
-            background: #080808;
+            background: #030303;
             border: 2px solid #1a1a1a;
             border-radius: 20px;
             padding: 25px;
         }
         
         .calendario-sidebar {
-            background: #080808;
+            background: #030303;
             border: 2px solid #1a1a1a;
             border-radius: 20px;
             padding: 25px;

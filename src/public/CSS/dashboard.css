@@ -1,8 +1,8 @@
 :root {
-    --bg-dark: #080808;
+    --bg-dark: #030303;
     --primary-red: #ff0101;
     --text-white: #ffffff;
-    --card-bg: #080808;
+    --card-bg: #030303;
     --font-family: 'Inter-Medium', sans-serif;
 }
 
@@ -115,7 +115,7 @@ body.dash-body {
 }
 
 .stats-card {
-    background:#080808;
+    background:#030303;
     padding: 40px;
     border-radius: 25px;
     border: 2px solid #1a1a1a;
@@ -513,7 +513,7 @@ body.dash-body {
         .empty-ranking {
             text-align: center;
             padding: 60px 20px;
-            background: #080808;
+            background: #030303;
             border: 2px solid #1a1a1a;
             border-radius: 25px;
         }

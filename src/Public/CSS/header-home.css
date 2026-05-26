@@ -1,7 +1,7 @@
 :root {
     --primary-color: #ff0101;
-    --secondary-color: #0e0e0e;
-    --footer-color: #0e0e0e;
+    --secondary-color: #030303;
+    --footer-color: #030303;
     --text-color: #ffffff;
     --font-family: 'Inter-Medium';
 }
@@ -22,7 +22,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 25px 25px;
-    background-color: rgba(14, 14, 14, 0.9);
+    background-color: #030303;
     border-bottom: 2px solid var(--primary-color);
     position: sticky;
     top: 0;

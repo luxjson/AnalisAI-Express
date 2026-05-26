@@ -15,7 +15,7 @@
         .periodo-selector {
             display: flex;
             gap: 10px;
-            background: #080808;
+            background: #030303;
             border: 2px solid #1a1a1a;
             border-radius: 50px;
             padding: 5px;
@@ -49,7 +49,7 @@
         }
         
         .stat-card {
-            background: #080808;
+            background: #030303;
             border: 2px solid #1a1a1a;
             border-radius: 20px;
             padding: 25px;
@@ -109,7 +109,7 @@
         }
         
         .grafico-container {
-            background: #080808;
+            background: #030303;
             border: 2px solid #1a1a1a;
             border-radius: 20px;
             padding: 25px;
@@ -158,7 +158,7 @@
         }
         
         .evolucao-card {
-            background: #080808;
+            background: #030303;
             border: 2px solid #1a1a1a;
             border-radius: 20px;
             padding: 25px;
@@ -226,7 +226,7 @@
         .evolucao-barra-fill.inapto { background: #ff0101; }
         
         .timeline-container {
-            background: #080808;
+            background: #030303;
             border: 2px solid #1a1a1a;
             border-radius: 20px;
             padding: 25px;
@@ -312,7 +312,7 @@
         .empty-state {
             text-align: center;
             padding: 80px 20px;
-            background: #080808;
+            background: #030303;
             border: 2px solid #1a1a1a;
             border-radius: 20px;
         }

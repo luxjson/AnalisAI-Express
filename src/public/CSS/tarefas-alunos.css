@@ -19,7 +19,7 @@
         }
         
         .stat-card {
-            background: #080808;
+            background: #030303;
             border: 2px solid #1a1a1a;
             border-radius: 15px;
             padding: 20px;
@@ -51,7 +51,7 @@
         }
         
         .tarefa-card {
-            background: #080808;
+            background: #030303;
             border: 2px solid #1a1a1a;
             border-radius: 15px;
             padding: 20px;
@@ -221,7 +221,7 @@
             color: #888;
             font-size: 0.9rem;
             padding: 10px;
-            background: #080808;
+            background: #030303;
             border-radius: 8px;
             border-left: 3px solid #217346;
             text-align: left;
@@ -280,7 +280,7 @@
         .empty-state {
             text-align: center;
             padding: 60px 20px;
-            background: #080808;
+            background: #030303;
             border: 2px solid #1a1a1a;
             border-radius: 20px;
             grid-column: 1 / -1;

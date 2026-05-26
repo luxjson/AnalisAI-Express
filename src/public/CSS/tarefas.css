@@ -103,7 +103,7 @@
         }
         
         .stat-card {
-            background: #080808;
+            background: #030303;
             border: 2px solid #1a1a1a;
             border-radius: 15px;
             padding: 20px;
@@ -144,7 +144,7 @@
         }
         
         .filtros-tarefas {
-            background: #080808;
+            background: #030303;
             border: 2px solid #1a1a1a;
             border-radius: 15px;
             padding: 25px;
@@ -172,7 +172,7 @@
         .filtro-select {
             width: 100%;
             padding: 12px 15px;
-            background: #111;
+            background: #030303;
             border: 2px solid #222;
             border-radius: 10px;
             color: #fff;
@@ -192,7 +192,7 @@
         }
         
         .tarefa-card {
-            background: #080808;
+            background: #030303;
             border: 2px solid #1a1a1a;
             border-radius: 20px;
             padding: 25px;
@@ -518,7 +518,7 @@
         .nota-input {
             width: 100%;
             padding: 12px;
-            background: #080808;
+            background: #030303;
             border: 2px solid #222;
             border-radius: 8px;
             color: #fff;
@@ -534,7 +534,7 @@
         .observacao-input {
             width: 100%;
             padding: 12px;
-            background: #080808;
+            background: #030303;
             border: 2px solid #222;
             border-radius: 8px;
             color: #fff;
@@ -563,7 +563,7 @@
         .empty-tarefas {
             text-align: center;
             padding: 60px 20px;
-            background: #080808;
+            background: #030303;
             border: 2px solid #1a1a1a;
             border-radius: 20px;
         }

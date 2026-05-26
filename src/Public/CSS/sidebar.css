@@ -9,7 +9,7 @@
 .sidebar {
     width: 85px;
     height: 100vh;
-    background-color: #080808;
+    background-color: #030303;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -72,7 +72,7 @@
 }
 
 .modal-content {
-    background-color: #080808;
+    background-color: #030303;
     border: 2px solid var(--primary-red);
     border-radius: 40px;
     padding: 80px 60px;
