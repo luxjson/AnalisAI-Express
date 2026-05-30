@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="/CSS/sidebar.css">
     <link rel="stylesheet" href="/CSS/dashboard.css">
-    <link rel="stylesheet" href="/CSS/aluno.css">
     <style>
         .pdf-container {
             width: 100%;
@@ -34,7 +33,7 @@
         
         .pdf-title {
             font-size: 1.2rem;
-            color: #217346;
+            color: var(--primary-red);
             letter-spacing: 2px;
             text-transform: uppercase;
         }
@@ -42,15 +41,15 @@
         .btn-download {
             padding: 10px 20px;
             background: transparent;
-            border: 2px solid #217346;
-            color: #217346;
+            border: 2px solid var(--primary-red);
+            color: var(--primary-red);
             border-radius: 8px;
             text-decoration: none;
             transition: 0.3s;
         }
         
         .btn-download:hover {
-            background: #217346;
+            background: var(--primary-red);
             color: white;
         }
     </style>
@@ -80,8 +79,7 @@
         </header>
         
         <div class="pdf-header">
-            <span class="pdf-title">DOCUMENTO ORIENTADOR</span>
-            <a href="/PDF/manualDoAluno.pdf" download class="b">
+            <a href="/PDF/manualDoAluno.pdf" download class="btn-secondary-dash">
                 <i class="fas fa-download"></i> BAIXAR PDF
             </a>
         </div>

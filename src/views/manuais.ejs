@@ -75,7 +75,12 @@
     </style>
 </head>
 <body class="dash-body">
+
+    <% if (userCargo === 'Professor' || userCargo === 'Admin') { %>
     <%- include('partials/barProfessor') %>
+    <% } else { %>
+        <%- include('partials/barAluno') %>
+    <% } %>
     
     <div class="main-layout">
         <header class="dash-header">

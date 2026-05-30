@@ -55,7 +55,11 @@
     </style>
 </head>
 <body class="dash-body">
+    <% if (userCargo === 'Professor' || userCargo === 'Admin') { %>
     <%- include('partials/barProfessor') %>
+    <% } else { %>
+        <%- include('partials/barAluno') %>
+    <% } %>
     
     <div class="main-layout">
         <header class="dash-header">
@@ -79,7 +83,6 @@
         </header>
         
         <div class="pdf-header">
-            <span class="pdf-title">DOCUMENTO ORIENTADOR</span>
             <a href="/PDF/manualDoProfessor.pdf" download class="btn-secondary-dash">
                 <i class="fas fa-download"></i> BAIXAR PDF
             </a>

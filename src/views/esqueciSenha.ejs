@@ -3,214 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AnalisAI - Esqueci Minha Senha</title>
+    <title>AnalisAI - Recuperar Senha</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="/CSS/login.css">
     <link rel="stylesheet" href="/CSS/dashboard.css">
     <style>
-        .page {
+        body.dash-body {
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
             padding: 20px;
         }
-        
-        .logo-analisai {
+
+        .login-wrapper {
+            width: 100%;
+            max-width: 450px;
+            animation: fadeInPage 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .login-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        .login-logo {
+            text-align: center;
             margin-bottom: 30px;
         }
-        
-        .logo-analisai img {
-            width: 200px;
+
+        .login-logo img {
+            height: 50px;
         }
-        
-        .login-container {
-            background: #080808;
-            border: 2px solid #2e3134;
-            border-radius: 20px;
-            padding: 40px;
-            width: 100%;
-            max-width: 400px;
+
+        .page-title {
+            text-align: center;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            color: white;
         }
-        
+
         .input-group {
             margin-bottom: 20px;
         }
-        
+
         .input-group input {
             width: 100%;
+            background: #121212;
+            border: 1px solid var(--border-color);
             padding: 15px;
-            background: #111;
-            border: 2px solid #2e3134;
-            border-radius: 10px;
-            color: #fff;
-            font-size: 0.9rem;
+            border-radius: 12px;
+            color: white;
+            font-family: var(--font-family);
+            transition: var(--transition-smooth);
+        }
+
+        .input-group input:focus {
+            border-color: var(--primary-red);
+            background: #181818;
             outline: none;
         }
-        
-        .input-group input:focus {
-            border-color: #ff0101;
-        }
-        
-        .btn-enviar {
+
+        .btn-login {
             width: 100%;
             padding: 15px;
-            background: #ff0101;
-            color: white;
+            border-radius: 12px;
             border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 0.9rem;
             letter-spacing: 1px;
-            transition: 0.3s;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: var(--transition-smooth);
             margin-top: 10px;
+            background: var(--primary-red);
+            color: white;
         }
-        
-        .btn-enviar:hover {
+
+        .btn-login:hover {
+            background: var(--primary-red-hover);
             transform: translateY(-2px);
         }
-        
-        .btn-voltar {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 20px;
-            color: #666;
-            text-decoration: none;
-            font-size: 0.8rem;
-            transition: 0.3s;
-        }
-        
-        .btn-voltar:hover {
-            color: #fff;
-        }
-        
-        .info-box {
-            background: rgba(255, 1, 1, 0.1);
-            border: 2px solid #ff0101;
-            border-radius: 10px;
-            padding: 12px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #ff0101;
-            font-size: 0.8rem;
-        }
-        
-        .erro-box {
-            background: rgba(255, 1, 1, 0.1);
-            border: 2px solid #ff0101;
-            color: #ff0101;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .success-box {
-            background: rgba(33, 115, 70, 0.1);
-            border: 2px solid #217346;
-            color: #217346;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
 
-        .info-box {
+        .info-box-login {
             background: rgba(136, 136, 136, 0.05);
-            border: 2px solid #444;
-            border-radius: 8px;
-            padding: 10px 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            border: 1px solid #444;
             color: #888;
-            font-size: 0.75rem;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 0.85rem;
             margin-bottom: 20px;
+            text-align: center;
         }
 
-        .info-box i {
-            color: #888;
-            font-size: 0.9rem;
+        .alert-box {
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 0.85rem;
+            text-align: center;
         }
+        .error { background: rgba(255, 1, 1, 0.1); border: 1px solid var(--primary-red); color: var(--primary-red); }
+        .success { background: rgba(33, 115, 70, 0.1); border: 1px solid var(--color-apto); color: var(--color-apto); }
     </style>
 </head>
-<body>
-    <a href="javascript:history.back()" style="text-decoration: none; color: white;">
-        <div class="btn-secondary-dash back-button">
-            <i class="fas fa-undo-alt"></i> VOLTAR
-        </div>
-    </a>
+<body class="dash-body">
 
-    <div class="page">
-        <div class="logo-analisai">
-            <img src="/IMG/logo3-white.png" alt="AnalisAI">
+    <div class="login-wrapper">
+        <div style="margin-bottom: 20px;">
+            <a href="/login" class="btn-secondary-dash" style="text-decoration: none;">
+                <i class="fas fa-undo-alt"></i> VOLTAR
+            </a>
         </div>
 
-        <div class="login-container">
-        
-            
-            <% if (error_msg) { %>
-                <div class="erro-box" id="errorMessage">
-                    <i class="fas fa-exclamation-circle"></i> <%= error_msg %>
-                </div>
-                <script>
-                    setTimeout(() => {
-                        const errorMsg = document.getElementById('errorMessage');
-                        if (errorMsg) {
-                            errorMsg.style.transition = 'opacity 1s';
-                            errorMsg.style.opacity = '0';
-                            setTimeout(() => {
-                                errorMsg.style.display = 'none';
-                            }, 1000);
-                        }
-                    }, 5000);
-                </script>
+        <div class="login-card">
+            <div class="login-logo">
+                <img src="/IMG/logo3-white.png" alt="AnalisAI">
+            </div>
+
+            <h2 class="page-title">Recuperar Senha</h2>
+
+            <% if (error_msg && error_msg.length > 0) { %>
+                <div class="alert-box error"><i class="fas fa-exclamation-circle"></i> <%= error_msg %></div>
+            <% } %>
+            <% if (success_msg && success_msg.length > 0) { %>
+                <div class="alert-box success"><i class="fas fa-check-circle"></i> <%= success_msg %></div>
             <% } %>
 
-            <% if (success_msg) { %>
-                <div class="success-box" id="successMessage">
-                    <i class="fas fa-check-circle"></i> <%= success_msg %>
-                </div>
-                <script>
-                    setTimeout(() => {
-                        const successMsg = document.getElementById('successMessage');
-                        if (successMsg) {
-                            successMsg.style.transition = 'opacity 1s';
-                            successMsg.style.opacity = '0';
-                            setTimeout(() => {
-                                successMsg.style.display = 'none';
-                            }, 1000);
-                        }
-                    }, 5000);
-                </script>
-            <% } %>
-
-            <div class="info-box" style="border-color: #888; color: #888; background: rgba(136, 136, 136, 0.05); margin-bottom: 20px;">
-                <i class="fas fa-info-circle" style="color: #888;"></i>
-                <span style="font-size: 0.75rem;">Um administrador será notificado para aprovar a redefinição</span>
+            <div class="info-box-login">
+                <i class="fas fa-info-circle"></i> Informe seu e-mail para solicitar a redefinição da sua senha.
             </div>
 
             <form action="/esqueci-senha/solicitar" method="POST">
                 <div class="input-group">
-                    <input type="email" name="email" placeholder="E-MAIL" required>
+                    <input type="email" name="email" placeholder="SEU E-MAIL CADASTRADO" required>
                 </div>
-                <button type="submit" class="a">SOLICITAR REDEFINIÇÃO</button>
+                
+                <button type="submit" class="btn-login">
+                    SOLICITAR REDEFINIÇÃO
+                </button>
             </form>
-        </div>
 
-        <footer class="footer-terms">
-            <a href="/termos" class="termos">
-                <span>TERMOS DE SERVIÇO</span>
+            <p style="text-align: center; margin-top: 25px; color: #555; font-size: 0.8rem;">
+                Um administrador será notificado para validar seu pedido.
+            </p>
+        </div>
+        <footer style="margin-top: 30px; text-align: center;">
+            <a href="/termos" class="btn-secondary-dash" style="font-size: 0.7rem; border: none; background: transparent;">
+                TERMOS DE SERVIÇO
             </a>
         </footer>
     </div>
+
 </body>
 </html>
