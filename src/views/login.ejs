@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="/CSS/dashboard.css">
     <style>
-        /* Estilos específicos complementares para alinhar com o dashboard.css */
         body.dash-body {
             display: flex;
             align-items: center;
@@ -38,8 +37,6 @@
             height: 50px;
             transition: var(--transition-smooth);
         }
-
-        /* Reutilizando estilo das abas do Ranking */
         .login-tabs {
             display: flex;
             justify-content: center;
@@ -64,7 +61,6 @@
         .login-tab.active.professor { color: white; border-bottom-color: var(--primary-red); }
         .login-tab.active.aluno { color: white; border-bottom-color: var(--color-apto); }
 
-        /* Estilização dos Inputs seguindo a linha Premium */
         .input-group {
             margin-bottom: 20px;
         }
@@ -89,7 +85,6 @@
             border-color: var(--color-apto);
         }
 
-        /* Botão de Ação Principal */
         .btn-login {
             width: 100%;
             padding: 15px;
@@ -148,7 +143,6 @@
 
     <div class="login-wrapper">
         
-        <!-- Botão Voltar usando estilo Dashboard -->
         <div style="margin-bottom: 20px;">
             <a href="/" class="btn-secondary-dash" style="text-decoration: none;">
                 <i class="fas fa-undo-alt"></i> VOLTAR
@@ -160,7 +154,6 @@
                 <img src="/IMG/logo3-white.png" alt="AnalisAI" id="logoimg">
             </div>
 
-            <!-- Alertas -->
             <% if (error_msg && error_msg.length > 0) { %>
                 <div class="alert-box error"><i class="fas fa-exclamation-circle"></i> <%= error_msg %></div>
             <% } %>
@@ -168,13 +161,11 @@
                 <div class="alert-box success"><i class="fas fa-check-circle"></i> <%= success_msg %></div>
             <% } %>
 
-            <!-- Abas Estilo Ranking -->
             <div class="login-tabs">
                 <button class="login-tab professor <%= tipo === 'professor' ? 'active' : '' %>" onclick="switchTab('professor')">PROFESSOR</button>
                 <button class="login-tab aluno <%= tipo === 'aluno' ? 'active' : '' %>" onclick="switchTab('aluno')">ALUNO</button>
             </div>
 
-            <!-- Formulário Professor -->
             <div class="login-form professor <%= tipo === 'professor' ? 'active' : '' %>" id="professorForm">
                 <form action="/login/professor" method="POST">
                     <div class="input-group">
@@ -188,7 +179,6 @@
                 <a href="/esqueci-senha" class="link-esqueci">Esqueci minha senha</a>
             </div>
 
-            <!-- Formulário Aluno -->
             <div class="login-form aluno <%= tipo === 'aluno' ? 'active' : '' %>" id="alunoForm">
                 <div class="info-box-login">
                     <i class="fas fa-info-circle"></i> Use sua matrícula ou e-mail cadastrado
