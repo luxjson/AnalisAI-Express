@@ -13,7 +13,6 @@
     <%- include('../partials/barAluno') %>
 
     <div class="main-layout">
-        <!-- HEADER PREMIUM -->
         <header class="dash-header">
             <div class="header-left">
                 <div class="logo">
@@ -38,7 +37,6 @@
         </header>
 
         <main class="dash-content">
-            <!-- BANNER DE TÍTULO -->
             <section class="welcome-banner" style="background: linear-gradient(90deg, #1b5e38 0%, #217346 100%); padding: 40px;">
                 <div class="banner-text">
                     <h1><i class="fas fa-medal"></i> Relatório de Competências</h1>
@@ -46,7 +44,6 @@
                 </div>
             </section>
 
-            <!-- STATS CARDS COM ÍCONES FANTASMA -->
             <section class="section-container">
                 <div class="dash-grid">
                     <div class="stats-card">
@@ -75,7 +72,6 @@
                 </div>
             </section>
 
-            <!-- FILTROS (ESTILO PREMIUM) -->
             <section class="section-container">
                 <div class="stats-card" style="padding: 25px;">
                     <div style="display: flex; gap: 15px; flex-wrap: wrap; align-items: center;">
@@ -107,7 +103,6 @@
                 </div>
             </section>
 
-            <!-- GRÁFICO EM CARD -->
             <% if (competencias && competencias.length > 0) { %>
             <section class="section-container">
                 <div class="stats-card">
@@ -118,8 +113,6 @@
                 </div>
             </section>
             <% } %>
-
-            <!-- LISTAGEM DE CARDS (DASH-GRID) -->
             <section class="section-container">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
                     <h2 class="section-title-2" style="margin-bottom: 0;"><i class="fas fa-stream"></i> DETALHAMENTO</h2>
@@ -197,7 +190,6 @@
         </footer>
     </div>
 
-    <!-- SCRIPTS MANTIDOS E ADAPTADOS -->
     <% if (competencias && competencias.length > 0) { %>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
@@ -230,7 +222,6 @@
             });
         });
 
-        // Funções de filtro e ordenação mantidas com seletores atualizados
         function aplicarFiltros() {
             const search = document.getElementById('searchInput').value.toLowerCase();
             const cat = document.getElementById('categoriaFilter').value;

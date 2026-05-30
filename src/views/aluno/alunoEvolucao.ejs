@@ -8,11 +8,10 @@
     <link rel="stylesheet" href="/CSS/sidebar.css">
     <link rel="stylesheet" href="/CSS/dashboard.css">
     <style>
-        /* Estilos específicos para o seletor de período (Segmented Control) */
         .filter-bar {
             display: flex;
             justify-content: center;
-            margin: -25px 0 35px 0; /* Sobrepõe levemente o banner para um ar moderno */
+            margin: -25px 0 35px 0;
             z-index: 10;
             position: relative;
         }
@@ -48,7 +47,6 @@
             box-shadow: 0 4px 15px rgba(33, 115, 70, 0.3);
         }
 
-        /* Grid de estatísticas dentro do banner */
         .banner-stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -81,7 +79,6 @@
             color: white;
         }
 
-        /* Barra de progresso para categorias */
         .progresso-bar-container {
             width: 100%;
             height: 6px;
@@ -101,7 +98,6 @@
     <%- include('../partials/barAluno') %>
 
     <div class="main-layout">
-        <!-- HEADER -->
         <header class="dash-header">
             <div class="header-left">
                 <div class="logo">
@@ -130,7 +126,7 @@
             
             <% if (competencias && competencias.length > 0) { %>
                 
-                <!-- 1. BANNER COM INFOS (KPIs) -->
+
                 <section class="welcome-banner" style="background: linear-gradient(90deg, #1b5e38 0%, #217346 100%); padding-bottom: 60px;">
                     <div class="banner-text">
                         <h1>Sua Jornada Acadêmica</h1>
@@ -164,7 +160,6 @@
                     </div>
                 </section>
 
-                <!-- 2. BOTÕES DE PASSAR O TEMPO (FILTRO) -->
                 <section class="filter-bar">
                     <div class="periodo-selector">
                         <button class="periodo-btn active" onclick="mudarPeriodo('7d', this)">7 Dias</button>
@@ -174,7 +169,6 @@
                     </div>
                 </section>
 
-                <!-- 3. GRÁFICO DE EVOLUÇÃO -->
                 <section class="section-container">
                     <div class="stats-card" style="padding: 40px;">
                         <h2 class="section-title-2" style="margin-bottom: 30px;">Desempenho Temporal</h2>
@@ -183,8 +177,6 @@
                         </div>
                     </div>
                 </section>
-
-                <!-- 4. PERFORMANCE POR ÁREA (CATEGORIAS) -->
                 <% if (categorias && categorias.length > 0) { %>
                 <section class="section-container">
                     <h2 class="section-title-2">Performance por Área de Conhecimento</h2>
@@ -209,8 +201,6 @@
                     </div>
                 </section>
                 <% } %>
-
-                <!-- 5. HISTÓRICO DE AVALIAÇÕES (TIMELINE) -->
                 <section class="section-container">
                     <h2 class="section-title-2">Histórico de Registros</h2>
                     <div class="ranking-list">
@@ -240,7 +230,6 @@
                 </section>
 
             <% } else { %>
-                <!-- ESTADO VAZIO -->
                 <div class="stats-card" style="text-align: center; padding: 100px;">
                     <i class="fas fa-chart-line" style="font-size: 4rem; color: var(--border-color); margin-bottom: 20px;"></i>
                     <h3>Nenhum dado para exibir</h3>
@@ -259,7 +248,6 @@
         </footer>
     </div>
 
-    <!-- SCRIPTS -->
     <% if (historico && historico.length > 0) { %>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
@@ -322,7 +310,6 @@
         });
 
         function mudarPeriodo(periodo, botao) {
-            // UI Update
             document.querySelectorAll('.periodo-btn').forEach(btn => btn.classList.remove('active'));
             botao.classList.add('active');
             

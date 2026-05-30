@@ -37,7 +37,6 @@
         </header>
 
         <main class="dash-content">
-            <!-- BANNER DE BOAS-VINDAS -->
             <section class="welcome-banner" style="background: linear-gradient(90deg, #1b5e38 0%, #217346 100%);">
                 <div class="banner-text">
                     <h1><i class="fas fa-tasks"></i> Minhas Tarefas</h1>
@@ -45,7 +44,6 @@
                 </div>
             </section>
 
-            <!-- ALERTAS -->
             <% if (success_msg && success_msg.length > 0) { %>
                 <div class="alert alert-success" style="margin-bottom: 25px;">
                     <i class="fas fa-check-circle"></i> <%= success_msg %>
@@ -58,7 +56,6 @@
                 </div>
             <% } %>
 
-            <!-- STATS GRID COM ESTILO PREMIUM -->
             <section class="section-container">
                 <div class="dash-grid">
                     <div class="stats-card">
@@ -88,8 +85,6 @@
                     </div>
                 </div>
             </section>
-
-            <!-- GRID DE TAREFAS -->
             <section class="section-container">
                 <h2 class="section-title-2"><i class="fas fa-stream"></i> LISTA DE ATIVIDADES</h2>
                 
@@ -207,7 +202,6 @@
         </footer>
     </div>
 
-    <!-- MODAL DE ENVIO REESTILIZADO -->
     <div id="modalEnvioTarefa" class="modal-overlay">
         <div class="modal-content">
             <button class="close-btn" onclick="fecharModalEnvio()">

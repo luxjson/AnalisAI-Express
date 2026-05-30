@@ -21,7 +21,6 @@
             align-items: start;
         }
 
-        /* --- CARD LATERAL (SIDEBAR DO PERFIL) --- */
         .perfil-sidebar-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -52,7 +51,7 @@
             gap: 15px;
             margin: 30px 0;
             padding: 20px;
-            background: #111; /* Fundo interno do quadradinho */
+            background: #111;
             border-radius: 20px;
             border: 1px solid var(--border-color);
         }
@@ -69,9 +68,8 @@
             color: white; 
         }
 
-        /* --- NAVEGAÇÃO E CONTEÚDO --- */
         .perfil-main {
-            background: var(--card-bg); /* FUNDO DA ABA AGORA É O MESMO DO CARD */
+            background: var(--card-bg); 
             border: 1px solid var(--border-color);
             border-radius: 40px;
             padding: 40px;
@@ -110,7 +108,6 @@
 
         @keyframes slideUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Estilo dos campos de informação */
         .info-display-item {
             background: #111;
             border: 1px solid var(--border-color);
@@ -136,7 +133,6 @@
         }
         .info-display-item i { color: var(--student-green); width: 20px; }
 
-        /* Switches */
         .toggle-item {
             background: #111;
             border: 1px solid var(--border-color);
@@ -200,7 +196,6 @@
             </section>
 
             <div class="perfil-grid">
-                <!-- SIDEBAR -->
                 <aside class="perfil-sidebar-card">
                     <div class="avatar-circle">
                         <%= aluno.nome.charAt(0).toUpperCase() %>
@@ -234,7 +229,6 @@
                     </div>
                 </aside>
 
-                <!-- CONTEÚDO -->
                 <div class="perfil-main">
                     <nav class="tabs-nav">
                         <button class="tab-btn <%= abaAtiva === 'dados' ? 'active' : '' %>" onclick="mudarAba('dados')">Meus Dados</button>
@@ -242,7 +236,6 @@
                         <button class="tab-btn <%= abaAtiva === 'senha' ? 'active' : '' %>" onclick="mudarAba('senha')">Segurança</button>
                     </nav>
 
-                    <!-- DADOS -->
                     <div id="abaDados" class="tab-content <%= abaAtiva === 'dados' ? 'active' : '' %>">
                         <div class="info-grid">
                             <div class="info-display-item"><label>Nome Completo</label><div class="value"><i class="fas fa-user"></i> <%= aluno.nome %></div></div>
@@ -251,7 +244,6 @@
                         </div>
                     </div>
 
-                    <!-- NOTIFICAÇÕES -->
                     <div id="abaConfig" class="tab-content <%= abaAtiva === 'config' ? 'active' : '' %>">
                         <div id="ajaxSucesso" class="alert alert-success" style="display: none; margin-bottom: 20px;"><i class="fas fa-check-circle"></i> Sincronizado!</div>
                         <form id="configForm">
@@ -275,7 +267,6 @@
                         <button class="btn-salvar-green" onclick="salvarConfig()"><i class="fas fa-save"></i> Salvar Preferências</button>
                     </div>
 
-                    <!-- SEGURANÇA -->
                     <div id="abaSenha" class="tab-content <%= abaAtiva === 'senha' ? 'active' : '' %>">
                         <form action="/aluno/alterar-senha?aba=senha" method="POST" style="max-width: 500px;">
                             <label style="color: #666; font-size: 0.7rem; margin-bottom: 8px; display: block;">SENHA ATUAL</label>

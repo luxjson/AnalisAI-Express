@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AnalisAI - Painel do Aluno</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Usando apenas o CSS global do sistema -->
     <link rel="stylesheet" href="/CSS/sidebar.css">
     <link rel="stylesheet" href="/CSS/dashboard.css">
 </head>
@@ -14,7 +13,6 @@
     <%- include('../partials/barAluno') %>
 
     <div class="main-layout">
-        <!-- HEADER PADRONIZADO -->
         <header class="dash-header">
             <div class="header-left">
                 <div class="logo">
@@ -40,15 +38,12 @@
         </header>
 
         <main class="dash-content">
-            <!-- BANNER DE BOAS-VINDAS -->
             <section class="welcome-banner" style="background: linear-gradient(90deg, #1b5e38 0%, #217346 100%);">
                 <div class="banner-text">
                     <h1>Olá, <%= aluno.nome.split(' ')[0] %>!</h1>
                     <p>Confira seu desempenho acadêmico, competências avaliadas e sua evolução no curso.</p>
                 </div>
             </section>
-
-            <!-- CARDS DE ESTATÍSTICAS (DADOS GERAIS) -->
             <section class="section-container">
                 <h2 class="section-title-2">INFORMAÇÕES GERAIS</h2>
                 <div class="dash-grid">
@@ -75,8 +70,6 @@
                     </div>
                 </div>
             </section>
-
-            <!-- RESUMO DE COMPETÊNCIAS -->
             <section class="section-container">
                 <h2 class="section-title-2">RESUMO DE PERFORMANCE</h2>
                 <div class="dash-grid">
@@ -104,7 +97,6 @@
                 </div>
             </section>
 
-            <!-- GRÁFICO (REUTILIZANDO ESTILO DE CARD) -->
             <% if (competencias && competencias.length > 0) { %>
             <section class="section-container">
                 <h2 class="section-title-2">MAPA DE COMPETÊNCIAS</h2>
@@ -116,7 +108,6 @@
             </section>
             <% } %>
 
-            <!-- LISTA DE COMPETÊNCIAS (ESTILO RANKING) -->
             <section class="section-container">
                 <h2 class="section-title-2">MINHAS NOTAS DETALHADAS</h2>
                 
@@ -169,7 +160,6 @@
         </footer>
     </div>
 
-<!-- SCRIPTS DE GRÁFICOS (MANTIDOS) -->
 <% if (competencias && competencias.length > 0) { %>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
@@ -186,12 +176,9 @@ document.addEventListener("DOMContentLoaded", function() {
             datasets: [{
                 label: 'Seu Desempenho',
                 data: valores,
-                // Cor de preenchimento com transparência
                 backgroundColor: 'rgba(33, 115, 70, 0.2)', 
-                // Cor da linha (Verde Aluno)
                 borderColor: '#217346', 
                 borderWidth: 3,
-                // Estilo das "bolinhas" nos pontos
                 pointBackgroundColor: '#fff',
                 pointBorderColor: '#217346',
                 pointRadius: 4,
@@ -202,23 +189,22 @@ document.addEventListener("DOMContentLoaded", function() {
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-                legend: { display: false } // Esconde a legenda lá no topo
+                legend: { display: false }
             },
             scales: {
                 r: {
                     angleLines: {
-                        color: 'rgba(255, 255, 255, 0.1)' // Cor das linhas que saem do centro
+                        color: 'rgba(255, 255, 255, 0.1)'
                     },
                     grid: {
-                        color: 'rgba(255, 255, 255, 0.05)', // Cor das teias circulares
-                        circular: true // Deixa o gráfico redondo em vez de poligonal (mais moderno)
+                        color: 'rgba(255, 255, 255, 0.05)',
+                        circular: true
                     },
                     ticks: {
-                        display: false, // ISSO AQUI: Remove aqueles números cinzas feios do meio do gráfico
+                        display: false,
                         maxTicksLimit: 5
                     },
                     pointLabels: {
-                        // Estilo dos nomes das competências (ex: "Trabalho em Equipe")
                         color: '#aaa', 
                         font: {
                             family: 'helvetica',

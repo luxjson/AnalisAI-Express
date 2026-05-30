@@ -132,7 +132,6 @@
                     }
                 };
 
-                // Gráficos de anel (donut)
                 new Chart(document.getElementById('chartAptos'), {
                     type: 'doughnut',
                     data: {
@@ -175,7 +174,6 @@
                     options: commonOptions
                 });
 
-                // Gráfico de barras - Ensino Médio
                 if (document.getElementById('chartMedio')) {
                     new Chart(document.getElementById('chartMedio'), {
                         type: 'bar',
@@ -195,7 +193,6 @@
                     });
                 }
 
-                // Gráfico de barras - Ensino Fundamental
                 if (document.getElementById('chartFundamental')) {
                     new Chart(document.getElementById('chartFundamental'), {
                         type: 'bar',
