@@ -5,8 +5,191 @@
     --text-white: #ffffff;
     --text-muted: #888;
     --text-description: #aaa;
-    --font-family: 'Inter-Medium', sans-serif;
+    --font-family: 'helvetica', sans-serif;
     --border-color: #1a1a1a;
+}:root {
+    --background: #030303;
+    --primary-red: #ff0101;
+    --card-bg: #0d0d0d;
+    --text-white: #ffffff;
+    --border-color: #2e3134;
+    --text-grey: #888888;
+    --text-description: #aaa;
+    --font-family: 'helvetica', sans-serif;
+}
+
+@keyframes fadeInPage {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-weight: normal;
+}
+
+body.termos-body {
+    background-color: var(--background);
+    background-image: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('/IMG/back1.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--text-white);
+    font-family: var(--font-family);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: fadeInPage 0.5s ease-out;
+}
+
+.termos-wrapper {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-analisai {
+    margin-bottom: 30px;
+}
+
+.logo-analisai img {
+    width: 180px;
+    height: auto;
+}
+
+.termos-container {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 40px;
+    padding: 50px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+}
+
+.termos-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary-red);
+    border-radius: 0 0 10px 10px;
+}
+
+.termos-container h2 {
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    color: #fff;
+    text-align: left;
+}
+
+.termos-content {
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 15px;
+    margin-bottom: 30px;
+}
+
+.termos-content p {
+    line-height: 1.6;
+    font-size: 0.85rem;
+    color: var(--text-description);
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.termos-content strong {
+    color: var(--text-white);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+}
+
+.btn-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 55px;
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    color: white;
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    text-transform: uppercase;
+}
+
+.btn-submit:hover {
+    background-color: white;
+    color: black;
+    transform: scale(1.02);
+}
+
+.termos-content::-webkit-scrollbar {
+    width: 4px;
+}
+
+.btn-secondary-dash {
+    background: transparent;
+    border: 2px solid #2e3134;
+    color: #888;
+    padding: 15px 30px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    transition: 0.4s;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-secondary-dash:hover {
+    border-color: #444;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.termos-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.termos-content::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 10px;
+}
+
+.termos-content::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-red);
+}
+
+@media (max-width: 600px) {
+    .termos-container {
+        padding: 40px 25px;
+        border-radius: 30px;
+    }
+}
+
+@font-face {
+    font-family: 'helvetica';
+    src: url('../FONTs/HelveticaNowDisplay-Bold.ttf') format('truetype');
 }
 
 @font-face {
@@ -109,7 +292,7 @@ body.termos-body {
     gap: 8px;
     text-decoration: none;
     color: var(--text-muted);
-    border: 2px solid #222;
+    border: 2px solid #2e3134;
     border-radius: 10px;
     padding: 10px 35px;
     font-size: 0.75rem;
@@ -135,7 +318,7 @@ body.termos-body {
 }
 
 .termos-content::-webkit-scrollbar-thumb {
-    background: #222;
+    background: #2e3134;
     border-radius: 10px;
 }
 

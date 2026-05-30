@@ -7,8 +7,164 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="/CSS/sidebar.css">
     <link rel="stylesheet" href="/CSS/dashboard.css">
-    <link rel="stylesheet" href="/CSS/aluno.css">
-    <link rel="stylesheet" href="/CSS/perfil.css">
+    <link rel="stylesheet" href="/CSS/edit.css">
+    <style>
+        :root {
+            --student-green: #217346;
+            --student-green-hover: #1b5e38;
+        }
+
+        .perfil-grid {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        /* --- CARD LATERAL (SIDEBAR DO PERFIL) --- */
+        .perfil-sidebar-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 40px;
+            padding: 45px 30px;
+            text-align: center;
+        }
+
+        .avatar-circle {
+            width: 130px; height: 130px;
+            background: var(--student-green);
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.8rem;
+            color: white;
+            box-shadow: 0 10px 30px rgba(33, 115, 70, 0.2);
+        }
+
+        .perfil-info-base h2 { color: white; margin-bottom: 5px; }
+        .perfil-info-base p { color: var(--text-gray); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        .perfil-stats-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 30px 0;
+            padding: 20px;
+            background: #111; /* Fundo interno do quadradinho */
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-item span { 
+            display: block; 
+            color: var(--text-muted); 
+            font-size: 0.65rem; 
+            text-transform: uppercase; 
+            margin-bottom: 5px; 
+        }
+        .stat-item strong { 
+            font-size: 1.6rem; 
+            color: white; 
+        }
+
+        /* --- NAVEGAÇÃO E CONTEÚDO --- */
+        .perfil-main {
+            background: var(--card-bg); /* FUNDO DA ABA AGORA É O MESMO DO CARD */
+            border: 1px solid var(--border-color);
+            border-radius: 40px;
+            padding: 40px;
+        }
+
+        .tabs-nav {
+            display: flex;
+            gap: 10px;
+            background: #000;
+            padding: 8px;
+            border-radius: 20px;
+            margin-bottom: 35px;
+            border: 1px solid var(--border-color);
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px;
+            background: transparent;
+            border: none;
+            color: var(--text-gray);
+            border-radius: 14px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .tab-btn.active {
+            background: var(--student-green);
+            color: white;
+        }
+
+        .tab-content { display: none; animation: slideUp 0.4s ease forwards; }
+        .tab-content.active { display: block; }
+
+        @keyframes slideUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Estilo dos campos de informação */
+        .info-display-item {
+            background: #111;
+            border: 1px solid var(--border-color);
+            padding: 18px 25px;
+            border-radius: 18px;
+            margin-bottom: 15px;
+        }
+
+        .info-display-item label { 
+            color: var(--text-muted); 
+            font-size: 0.7rem; 
+            text-transform: uppercase; 
+            margin-bottom: 5px; 
+            display: block; 
+        }
+        .info-display-item .value { 
+            color: white; 
+            font-size: 1rem; 
+            font-weight: 500; 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+        }
+        .info-display-item i { color: var(--student-green); width: 20px; }
+
+        /* Switches */
+        .toggle-item {
+            background: #111;
+            border: 1px solid var(--border-color);
+            padding: 20px 30px;
+            border-radius: 25px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .toggle-switch {
+            width: 55px; height: 28px; background: #333; border-radius: 30px; position: relative; cursor: pointer; transition: .3s;
+        }
+        .toggle-switch::after {
+            content: ""; position: absolute; height: 20px; width: 20px; left: 4px; bottom: 4px; background: white; border-radius: 50%; transition: .3s;
+        }
+        .toggle-switch.active { background: var(--student-green); }
+        .toggle-switch.active::after { left: 31px; }
+
+        .btn-salvar-green {
+            background: var(--student-green);
+            color: white; border: none; padding: 18px; border-radius: 15px;  text-transform: uppercase; letter-spacing: 1px; cursor: pointer; width: 100%; transition: 0.3s;
+        }
+        .btn-salvar-green:hover { transform: scale(1.01); filter: brightness(1.1); }
+
+        @media (max-width: 1000px) { .perfil-grid { grid-template-columns: 1fr; } }
+    </style>
 </head>
 <body class="dash-body">
 
@@ -16,361 +172,162 @@
 
     <div class="main-layout">
         <header class="dash-header">
-            <div class="logo">
-                <img src="/IMG/logo3-green.png" alt="AnalisAI">
+            <div class="header-left">
+                <div class="logo"><img src="/IMG/logo3-green.png" alt="AnalisAI" style="height: 40px;"></div>
             </div>
             <div class="header-user">
-                <span>Bem-vindo, <strong><%= aluno.nome %></strong></span>
-                <%- include('../partials/notificacoes', { notificacaoClasse: 'logout-icon-1' }) %>
-                <a href="/logout" class="logout-icon-1" title="Sair">
-                    <i class="fas fa-sign-out-alt"></i>
-                </a>
+                <div class="user-profile-group">
+                    <div class="user-details" style="text-align: right; padding-right: 15px;">
+                        <span class="user-name"><strong><%= aluno.nome %></strong></span>
+                        <span class="user-email"><%= aluno.ano_escolar %></span>
+                    </div>
+                    <div class="user-avatar" style="background: var(--student-green); width: 45px; height: 45px; font-size: 1.2rem;">
+                        <%= aluno.nome.charAt(0).toUpperCase() %>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <%- include('../partials/notificacoes', { notificacaoClasse: 'header-icon' }) %>
+                </div>
             </div>
         </header>
 
         <main class="dash-content">
-            <div class="page-header">
-                <h1 class="page-title">
-                    CONFIGURAÇÕES
-                </h1>
-            </div>
+            <section class="welcome-banner" style="background: linear-gradient(90deg, #1b5e38 0%, #217346 100%); margin-bottom: 40px;">
+                <div class="banner-text">
+                    <h1>Configurações do Estudante</h1>
+                    <p>Gerencie seus dados e preferências de alertas do sistema.</p>
+                </div>
+            </section>
 
             <div class="perfil-grid">
-                <div class="perfil-sidebar">
-                    <div class="avatar-container">
-                        <div class="avatar">
-                            <i class="fas fa-user-graduate"></i>
-                        </div>
-                        <div class="avatar-status <%= aluno.status && aluno.status.toLowerCase() === 'ativo' ? '' : 'inativo' %>"></div>
+                <!-- SIDEBAR -->
+                <aside class="perfil-sidebar-card">
+                    <div class="avatar-circle">
+                        <%= aluno.nome.charAt(0).toUpperCase() %>
                     </div>
                     
-                    <h2 class="perfil-nome"><%= aluno.nome %></h2>
-                    <p class="perfil-turma"><%= aluno.ano_escolar %></p>
-                    
-                    <span class="perfil-badge">
-                        <i class="fas fa-id-card"></i> <%= aluno.matricula %>
-                    </span>
-                    
-                    <div class="perfil-stats">
-                        <div class="perfil-stat-item">
-                            <div class="perfil-stat-value"><%= competencias.length %></div>
-                            <div class="perfil-stat-label">COMPETÊNCIAS</div>
-                        </div>
-                        <div class="perfil-stat-item">
-                            <div class="perfil-stat-value"><%= aluno.presenca %>%</div>
-                            <div class="perfil-stat-label">PRESENÇA</div>
-                        </div>
+                    <div class="perfil-info-base">
+                        <h2><%= aluno.nome %></h2>
+                        <p><%= aluno.ano_escolar %></p>
                     </div>
-                    
-                    <div class="info-adicional">
-                        <div class="info-adicional-title">
-                            <i class="fas fa-info-circle"></i> INFORMAÇÕES
-                        </div>
-                        <div class="info-adicional-grid">
-                            <div class="info-adicional-item">
-                                <div class="info-adicional-label">STATUS</div>
-                                <div class="info-adicional-value">
-                                    <span class="badge-status <%= (aluno.status && aluno.status.toLowerCase() === 'ativo') ? 'ativo' : 'inativo' %>">
-                                        <%= aluno.status || 'ATIVO' %>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="info-adicional-item">
-                                <div class="info-adicional-label">CADASTRO</div>
-                                <div class="info-adicional-value"><%= aluno.data_cadastro || '---' %></div>
-                            </div>
-                            <div class="info-adicional-item">
-                                <div class="info-adicional-label">ÚLTIMO ACESSO</div>
-                                <div class="info-adicional-value"><%= aluno.ultimo_acesso_formatado || '---' %></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
+                    <div class="perfil-stats-row">
+                        <div class="stat-item">
+                            <span>Avaliações</span>
+                            <strong><%= competencias.length %></strong>
+                        </div>
+                        <div class="stat-item">
+                            <span>Presença</span>
+                            <strong><%= aluno.presenca %>%</strong>
+                        </div>
+                    </div>
+
+                    <div style="text-align: left; padding: 0 10px;">
+                        <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 10px;">
+                            <span style="color: var(--text-gray);">Matrícula:</span>
+                            <span style="color: white;"><%= aluno.matricula %></span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-gray);">Conta:</span>
+                            <span class="media-nota apto" style="font-size: 0.6rem; padding: 2px 10px;">ATIVO</span>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- CONTEÚDO -->
                 <div class="perfil-main">
-                    <div class="perfil-tabs">
-                        <button class="b <%= abaAtiva === 'dados' ? 'active' : '' %>" onclick="mudarAba('dados')">DADOS PESSOAIS</button>
-                        <button class="b <%= abaAtiva === 'config' ? 'active' : '' %>" onclick="mudarAba('config')">NOTIFICAÇÕES</button>
-                        <button class="b <%= abaAtiva === 'senha' ? 'active' : '' %>" onclick="mudarAba('senha')">ALTERAR SENHA</button>
-                    </div>
+                    <nav class="tabs-nav">
+                        <button class="tab-btn <%= abaAtiva === 'dados' ? 'active' : '' %>" onclick="mudarAba('dados')">Meus Dados</button>
+                        <button class="tab-btn <%= abaAtiva === 'config' ? 'active' : '' %>" onclick="mudarAba('config')">Notificações</button>
+                        <button class="tab-btn <%= abaAtiva === 'senha' ? 'active' : '' %>" onclick="mudarAba('senha')">Segurança</button>
+                    </nav>
 
+                    <!-- DADOS -->
                     <div id="abaDados" class="tab-content <%= abaAtiva === 'dados' ? 'active' : '' %>">
-                        <% if (success_msg && success_msg.length > 0) { %>
-                            <div class="alert alert-success">
-                                <i class="fas fa-check-circle"></i> <%= success_msg %>
-                                <span class="close-alert" onclick="this.parentElement.style.display='none'">&times;</span>
-                            </div>
-                        <% } %>
-                        <% if (error_msg && error_msg.length > 0) { %>
-                            <div class="alert alert-error">
-                                <i class="fas fa-exclamation-circle"></i> <%= error_msg %>
-                                <span class="close-alert" onclick="this.parentElement.style.display='none'">&times;</span>
-                            </div>
-                        <% } %>
                         <div class="info-grid">
-                            <div class="info-group">
-                                <div class="info-label">NOME COMPLETO</div>
-                                <div class="info-value">
-                                    <i class="fas fa-user"></i> <%= aluno.nome %>
-                                </div>
-                            </div>
-                            
-                            <div class="info-group">
-                                <div class="info-label">E-MAIL</div>
-                                <div class="info-value">
-                                    <i class="fas fa-envelope"></i> <%= aluno.email %>
-                                </div>
-                            </div>
-                            
-                            <div class="info-group">
-                                <div class="info-label">MATRÍCULA</div>
-                                <div class="info-value">
-                                    <i class="fas fa-id-card"></i> <%= aluno.matricula %>
-                                </div>
-                            </div>
-                            
-                            <div class="info-group">
-                                <div class="info-label">TURMA</div>
-                                <div class="info-value">
-                                    <i class="fas fa-users"></i> <%= aluno.ano_escolar %>
-                                </div>
-                            </div>
-                            
-                            <div class="info-group">
-                                <div class="info-label">IDADE</div>
-                                <div class="info-value">
-                                    <i class="fas fa-calendar-alt"></i> <%= aluno.idade %> anos
-                                </div>
-                            </div>
-                            
-                            <div class="info-group">
-                                <div class="info-label">PRESENÇA</div>
-                                <div class="info-value">
-                                    <i class="fas fa-check-circle"></i> <%= aluno.presenca %>%
-                                </div>
-                            </div>
+                            <div class="info-display-item"><label>Nome Completo</label><div class="value"><i class="fas fa-user"></i> <%= aluno.nome %></div></div>
+                            <div class="info-display-item"><label>Turma / Ano</label><div class="value"><i class="fas fa-graduation-cap"></i> <%= aluno.ano_escolar %></div></div>
+                            <div class="info-display-item"><label>Idade</label><div class="value"><i class="fas fa-calendar-day"></i> <%= aluno.idade %> anos</div></div>
                         </div>
                     </div>
 
+                    <!-- NOTIFICAÇÕES -->
                     <div id="abaConfig" class="tab-content <%= abaAtiva === 'config' ? 'active' : '' %>">
-                        <% if (abaAtiva === 'config' && success_msg && success_msg.length > 0) { %>
-                            <div class="alert alert-success">
-                                <i class="fas fa-check-circle"></i> <%= success_msg %>
-                                <span class="close-alert" onclick="this.parentElement.style.display='none'">&times;</span>
+                        <div id="ajaxSucesso" class="alert alert-success" style="display: none; margin-bottom: 20px;"><i class="fas fa-check-circle"></i> Sincronizado!</div>
+                        <form id="configForm">
+                            <div class="toggle-item">
+                                <div><h4 style="color: white; ">Notificações Internas</h4><p style="color: #666;">Alertas dentro da plataforma</p></div>
+                                <div class="toggle-switch active" id="sw_ativas" onclick="toggleOpt(this, 'notificacoes_ativas')"></div>
+                                <input type="hidden" name="notificacoes_ativas" id="notificacoes_ativas" value="true">
                             </div>
-                        <% } %>
-                        <% if (abaAtiva === 'config' && error_msg && error_msg.length > 0) { %>
-                            <div class="alert alert-error">
-                                <i class="fas fa-exclamation-circle"></i> <%= error_msg %>
-                                <span class="close-alert" onclick="this.parentElement.style.display='none'">&times;</span>
+                            <div class="toggle-item">
+                                <div><h4 style="color: white; ">Avisos de Notas</h4><p style="color: #666;">Receber alertas de novas avaliações</p></div>
+                                <div class="toggle-switch active" id="sw_avaliacoes" onclick="toggleOpt(this, 'notificacoes_avaliacoes')"></div>
+                                <input type="hidden" name="notificacoes_avaliacoes" id="notificacoes_avaliacoes" value="true">
                             </div>
-                        <% } %>
-                        <div class="config-container">
-                            <div id="mensagemSucessoConfig" class="mensagem-sucesso-config">
-                                <i class="fas fa-check-circle"></i> Configurações salvas com sucesso!
+                            <div class="toggle-item">
+                                <div><h4 style="color: white;">Cópia por E-mail</h4><p style="color: #666;">Enviar notificações importantes para o e-mail</p></div>
+                                <div class="toggle-switch" id="sw_email" onclick="toggleOpt(this, 'notificacoes_email')"></div>
+                                <input type="hidden" name="notificacoes_email" id="notificacoes_email" value="false">
                             </div>
-                            
-                            <form id="configForm">
-                                <div class="config-item">
-                                    <div class="config-item-info">
-                                        <h4>Ativar notificações</h4>
-                                        <p>Receber notificações do sistema</p>
-                                    </div>
-                                    <div class="toggle-switch ativo" data-input="notificacoes_ativas"></div>
-                                    <input type="hidden" name="notificacoes_ativas" id="notificacoes_ativas" value="true">
-                                </div>
-                                
-                                <div class="config-item">
-                                    <div class="config-item-info">
-                                        <h4>Notificações por e-mail</h4>
-                                        <p>Receber notificações também no e-mail</p>
-                                    </div>
-                                    <div class="toggle-switch" data-input="notificacoes_email"></div>
-                                    <input type="hidden" name="notificacoes_email" id="notificacoes_email" value="false">
-                                </div>
-                                
-                                <div class="config-item">
-                                    <div class="config-item-info">
-                                        <h4>Notificações de tarefas</h4>
-                                        <p>Nova tarefa, entrega, correção</p>
-                                    </div>
-                                    <div class="toggle-switch ativo" data-input="notificacoes_tarefas"></div>
-                                    <input type="hidden" name="notificacoes_tarefas" id="notificacoes_tarefas" value="true">
-                                </div>
-                                
-                                <div class="config-item">
-                                    <div class="config-item-info">
-                                        <h4>Notificações de avaliações</h4>
-                                        <p>Nova avaliação, feedback</p>
-                                    </div>
-                                    <div class="toggle-switch ativo" data-input="notificacoes_avaliacoes"></div>
-                                    <input type="hidden" name="notificacoes_avaliacoes" id="notificacoes_avaliacoes" value="true">
-                                </div>
-                                
-                                <div class="config-item">
-                                    <div class="config-item-info">
-                                        <h4>Notificações de competências</h4>
-                                        <p>Nova competência registrada</p>
-                                    </div>
-                                    <div class="toggle-switch ativo" data-input="notificacoes_competencias"></div>
-                                    <input type="hidden" name="notificacoes_competencias" id="notificacoes_competencias" value="true">
-                                </div>
-                            </form>
-                            
-                            <button class="b" onclick="salvarConfiguracoes()">
-                                <i class="fas fa-save"></i> SALVAR CONFIGURAÇÕES
-                            </button>
-                        </div>
+                            <input type="hidden" name="notificacoes_tarefas" id="notificacoes_tarefas" value="true">
+                        </form>
+                        <button class="btn-salvar-green" onclick="salvarConfig()"><i class="fas fa-save"></i> Salvar Preferências</button>
                     </div>
 
+                    <!-- SEGURANÇA -->
                     <div id="abaSenha" class="tab-content <%= abaAtiva === 'senha' ? 'active' : '' %>">
-                        <% if (success_msg && success_msg.length > 0) { %>
-                            <div class="alert alert-success">
-                                <i class="fas fa-check-circle"></i> <%= success_msg %>
-                                <span class="close-alert" onclick="this.parentElement.style.display='none'">&times;</span>
-                            </div>
-                        <% } %>
-                        <% if (error_msg && error_msg.length > 0) { %>
-                            <div class="alert alert-error">
-                                <i class="fas fa-exclamation-circle"></i> <%= error_msg %>
-                                <span class="close-alert" onclick="this.parentElement.style.display='none'">&times;</span>
-                            </div>
-                        <% } %>
-                        <form class="senha-form" action="/aluno/alterar-senha?aba=senha" method="POST">
-                            <div class="form-group">
-                                <label class="form-label">SENHA ATUAL</label>
-                                <input type="password" name="senha_atual" class="form-input" placeholder="Digite sua senha atual" required>
-                            </div>
+                        <form action="/aluno/alterar-senha?aba=senha" method="POST" style="max-width: 500px;">
+                            <label style="color: #666; font-size: 0.7rem; margin-bottom: 8px; display: block;">SENHA ATUAL</label>
+                            <input type="password" name="senha_atual" class="filter-input" required>
                             
-                            <div class="form-group">
-                                <label class="form-label">NOVA SENHA</label>
-                                <input type="password" name="nova_senha" class="form-input" placeholder="Digite a nova senha" required minlength="6">
-                                <small style="color: #666; display: block; margin-top: 5px;">Mínimo de 6 caracteres</small>
-                            </div>
+                            <label style="color: #666; font-size: 0.7rem;  margin-top: 20px; margin-bottom: 8px; display: block;">NOVA SENHA</label>
+                            <input type="password" name="nova_senha" class="filter-input" required minlength="6">
                             
-                            <div class="form-group">
-                                <label class="form-label">CONFIRMAR NOVA SENHA</label>
-                                <input type="password" name="confirmar_senha" class="form-input" placeholder="Confirme a nova senha" required>
-                            </div>
+                            <label style="color: #666; font-size: 0.7rem; margin-top: 20px; margin-bottom: 8px; display: block;">CONFIRMAR NOVA SENHA</label>
+                            <input type="password" name="confirmar_senha" class="filter-input" required>
                             
-                            <button type="submit" class="b">
-                                <i class="fas fa-save"></i> ALTERAR SENHA
-                            </button>
+                            <button type="submit" class="btn-salvar-green" style="margin-top: 30px;"><i class="fas fa-key"></i> Atualizar Senha</button>
                         </form>
-                        
-                        <div style="margin-top: 30px; padding: 20px; background: #1a1a1a; border-radius: 10px;">
-                            <p style="color: #888; font-size: 0.9rem;">
-                                <i class="fas fa-shield-alt" style="color: #217346; margin-right: 10px;"></i>
-                                Sua senha é pessoal e intransferível. Não compartilhe com ninguém.
-                            </p>
-                        </div>
                     </div>
                 </div>
             </div>
         </main>
-
-        <footer class="dash-footer">
-            <div class="footer-actions">
-                <a href="/aluno" class="b">
-                    <i class="fas fa-arrow-left"></i> VOLTAR
-                </a>
-            </div>
-            <div class="footer-credits">
-                <p>© 2026 AnalisAI</p>
-                <a href="/aluno/equipe"><p>Time de desenvolvedores</p></a>
-            </div>
-        </footer>
     </div>
 
     <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const abaAtual = urlParams.get('aba') || 'dados';
-        
-        function mudarAba(aba) {
-            // Esconde todos os conteúdos de aba
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            // Remove classe active de todos os botões
-            document.querySelectorAll('.perfil-tabs .b').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            // Ativa o conteúdo e o botão correspondente
-            if (aba === 'dados') {
-                document.getElementById('abaDados').classList.add('active');
-                document.querySelectorAll('.perfil-tabs .b')[0].classList.add('active');
-            } else if (aba === 'config') {
-                document.getElementById('abaConfig').classList.add('active');
-                document.querySelectorAll('.perfil-tabs .b')[1].classList.add('active');
-            } else if (aba === 'senha') {
-                document.getElementById('abaSenha').classList.add('active');
-                document.querySelectorAll('.perfil-tabs .b')[2].classList.add('active');
-            }
-            // Atualiza a URL sem recarregar a página (opcional, mantém o estado)
+        function mudarAba(abaId) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('aba' + abaId.charAt(0).toUpperCase() + abaId.slice(1)).classList.add('active');
+            const btns = {'dados':0, 'config':1, 'senha':2};
+            document.querySelectorAll('.tab-btn')[btns[abaId]].classList.add('active');
             const url = new URL(window.location);
-            url.searchParams.set('aba', aba);
+            url.searchParams.set('aba', abaId);
             window.history.pushState({}, '', url);
         }
-        
-        document.querySelectorAll('.toggle-switch').forEach(toggle => {
-            toggle.addEventListener('click', function() {
-                this.classList.toggle('ativo');
-                const inputId = this.getAttribute('data-input');
-                const input = document.getElementById(inputId);
-                if (input) {
-                    input.value = this.classList.contains('ativo');
-                }
-            });
-        });
-        
-        function carregarConfiguracoes() {
-            fetch('/api/configuracoes-notificacoes')
-                .then(response => response.json())
-                .then(config => {
-                    document.getElementById('notificacoes_ativas').value = config.notificacoes_ativas;
-                    document.getElementById('notificacoes_email').value = config.notificacoes_email;
-                    document.getElementById('notificacoes_tarefas').value = config.notificacoes_tarefas;
-                    document.getElementById('notificacoes_avaliacoes').value = config.notificacoes_avaliacoes;
-                    document.getElementById('notificacoes_competencias').value = config.notificacoes_competencias;
-                    
-                    document.querySelectorAll('.toggle-switch').forEach(toggle => {
-                        const inputId = toggle.getAttribute('data-input');
-                        const input = document.getElementById(inputId);
-                        if (input && input.value === 'true') {
-                            toggle.classList.add('ativo');
-                        } else {
-                            toggle.classList.remove('ativo');
-                        }
-                    });
-                });
+
+        function toggleOpt(el, inpId) {
+            el.classList.toggle('active');
+            document.getElementById(inpId).value = el.classList.contains('active');
         }
-        
-        function salvarConfiguracoes() {
-            const config = {
+
+        function salvarConfig() {
+            const data = {
                 notificacoes_ativas: document.getElementById('notificacoes_ativas').value === 'true',
                 notificacoes_email: document.getElementById('notificacoes_email').value === 'true',
-                notificacoes_tarefas: document.getElementById('notificacoes_tarefas').value === 'true',
                 notificacoes_avaliacoes: document.getElementById('notificacoes_avaliacoes').value === 'true',
-                notificacoes_competencias: document.getElementById('notificacoes_competencias').value === 'true'
+                notificacoes_tarefas: true
             };
-            
             fetch('/api/configuracoes-notificacoes', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(config)
-            })
-            .then(response => response.json())
-            .then(data => {
-                const msg = document.getElementById('mensagemSucessoConfig');
-                msg.style.display = 'block';
-                setTimeout(() => {
-                    msg.style.display = 'none';
-                }, 3000);
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            }).then(() => {
+                const al = document.getElementById('ajaxSucesso');
+                al.style.display = 'block';
+                setTimeout(() => al.style.display = 'none', 3000);
             });
-        }
-        
-        if (abaAtual === 'config') {
-            carregarConfiguracoes();
         }
     </script>
 </body>

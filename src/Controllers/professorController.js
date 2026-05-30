@@ -243,6 +243,7 @@ exports.graficos = async (req, res) => {
       stats,
       userCargo: req.session.userCargo,
       isAdmin: req.session.userCargo === "Admin",
+      user: req.session.user,
     });
   } catch (err) {
     console.error(err);
@@ -307,6 +308,7 @@ exports.config = async (req, res) => {
     );
     res.render("dashboard/dashboardConfig", {
       config,
+      user: req.session.user,
       nome: userResult.rows[0].nome,
       email: userResult.rows[0].email,
       cargo: userResult.rows[0].cargo,

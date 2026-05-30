@@ -1,179 +1,108 @@
+<!-- Font Awesome e CSS (Certifique-se de que o sidebar.css contenha os estilos que você enviou antes) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<style>
-    .sidebar .side-link i {
-        transition: all 0.3s ease;
-    }
-    
-    .sidebar .side-link:hover i {
-        transform: scale(1.1);
-    }
-    
-    .sidebar .side-link.active {
-        background-color: rgba(33, 115, 70, 0.1);
-        color: #217346;
-        border-color: rgba(33, 115, 70, 0.3);
-    }
-    
-    .sidebar-bottom .side-link:last-child:hover {
-        background-color: #21734627;
-        border-color: #21734650;
-        color: #217346;
-    }
-
-    #infoModal.modal-overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.95);
-        backdrop-filter: blur(10px);
-        z-index: 2000;
-        justify-content: center;
-        align-items: center;
-    }
-
-    #infoModal .modal-content {
-        background-color: #080808;
-        border: 2px solid #217346;
-        border-radius: 30px;
-        padding: 50px 40px;
-        max-width: 450px;
-        width: 90%;
-        position: relative;
-        text-align: center;
-        animation: fadeInModal 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    @keyframes fadeInModal {
-        from { opacity: 0; transform: scale(0.95) translateY(-10px); }
-        to { opacity: 1; transform: scale(1) translateY(0); }
-    }
-
-    #infoModal .close-btn {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        background: none;
-        border: none;
-        color: #444;
-        font-size: 28px;
-        cursor: pointer;
-        transition: transform 0.3s ease, color 0.3s ease;
-    }
-
-    #infoModal .close-btn:hover {
-        color: #217346;
-        transform: rotate(90deg);
-    }
-
-    #infoModal .modal-logo {
-        width: 220px;
-        margin-bottom: 15px;
-    }
-
-    #infoModal .version-text {
-        font-size: 1rem;
-        color: #217346;
-        margin-bottom: 20px;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-    }
-
-    #infoModal .copyright-text {
-        font-size: 0.8rem;
-        color: #666;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        line-height: 1.6;
-        margin: 5px 0;
-    }
-
-    #infoModal .modal-body p:last-child {
-        margin-top: 15px;
-        color: #217346;
-        font-weight: normal;
-    }
-</style>
+<link rel="stylesheet" href="/CSS/sidebar.css">
 
 <aside class="sidebar">
     <div class="sidebar-top">
-        <a href="/aluno" title="Dashboard" class="side-link">
-            <i class="fas fa-home"></i>
+        <div class="logo-container">
+            <img src="/IMG/sideBarLogo.png" alt="S" class="sideBarLogo">
+        </div>
+        
+        <div class="divider"></div>
+
+        <a href="/aluno" class="side-link">
+            <div class="icon-box"><i class="fas fa-home"></i></div>
+            <span class="link-text">Início</span>
+            <div class="active-indicator"></div>
         </a>
-        <a href="/aluno/competencias" title="Minhas Competências" class="side-link">
-            <i class="fa-solid fa-medal"></i>
+
+        <a href="/aluno/competencias" class="side-link">
+            <div class="icon-box"><i class="fa-solid fa-medal"></i></div>
+            <span class="link-text">Competências</span>
+            <div class="active-indicator"></div>
         </a>
-        <a href="/aluno/tarefas" title="Minhas tarefas" class="side-link">
-            <i class="fa-solid fa-tasks"></i>
+
+        <a href="/aluno/tarefas" class="side-link">
+            <div class="icon-box"><i class="fa-solid fa-tasks"></i></div>
+            <span class="link-text">Tarefas</span>
+            <div class="active-indicator"></div>
         </a>
-        <a href="/aluno/evolucao" title="Minha Evolução" class="side-link">
-            <i class="fas fa-chart-line"></i>
+
+        <a href="/aluno/evolucao" class="side-link">
+            <div class="icon-box"><i class="fas fa-chart-line"></i></div>
+            <span class="link-text">Evolução</span>
+            <div class="active-indicator"></div>
         </a>
     </div>
     
     <div class="sidebar-bottom">
-        <a href="/aluno/config" title="Configurações" class="side-link"><i class="fas fa-cog"></i></a>
-        <a href="/aluno/equipe" title="Equipe de desenvolvedores" class="side-link">
-            <i class="fas fa-code"></i>
+        <a href="/aluno/config" class="side-link">
+            <div class="icon-box"><i class="fas fa-cog"></i></div>
+            <span class="link-text">Ajustes</span>
+            <div class="active-indicator"></div>
         </a>
-        <a href="javascript:void(0)" title="Sobre o site" class="side-link" onclick="openModal()">
-            <i class="fas fa-info-circle"></i>
+
+        <a href="javascript:void(0)" class="side-link" onclick="openModal()">
+            <div class="icon-box"><i class="fas fa-info-circle"></i></div>
+            <span class="link-text">Sobre</span>
+            <div class="active-indicator"></div>
+        </a>
+        
+        <a href="/logout" class="side-link exit-link">
+            <div class="icon-box"><i class="fas fa-sign-out-alt"></i></div>
+            <span class="link-text">Sair</span>
         </a>
     </div>
 </aside>
 
-<div id="infoModal" class="modal-overlay">
-    <div class="modal-content">
-        <button class="close-btn" onclick="closeModal()">
-            <i class="fas fa-times-circle"></i>
+<!-- Modal de Informações (Versão Aluno) -->
+<div id="infoModal" class="modal-new-overlay">
+    <div class="modal-new-card">
+        <!-- Botão Fechar Minimalista -->
+        <button class="modal-new-close" onclick="closeModal()">
+            <i class="fas fa-times"></i>
         </button>
-        <div class="modal-body">
-            <img src="/IMG/logo3-green.png" alt="AnalisAI" class="modal-logo">
-            <h3 class="version-text">VERSÃO 1.0</h3>
-            <p class="copyright-text">© SENAI - Serviço Nacional de Aprendizagem Industrial</p>
-            <p class="copyright-text" style="margin-top: 10px; color: #217346;">ÁREA DO ALUNO</p>
+
+        <div class="modal-new-header" style="justify-content: center;align-items: center;display: flex;flex-direction: column;">
+            <img src="/IMG/logo3-green.png" alt="AnalisAI" class="modal-new-logo">
+            <div class="version-badge" style="background: rgba(33, 115, 70, 0.1); color: #217346;">Versão Aluno 1.0.4</div>
+        </div>
+
+        <div class="modal-new-body">
+            <p class="modal-new-text">
+                Área exclusiva para estudantes. Acompanhe seu desempenho, visualize suas competências 
+                e monitore sua evolução acadêmica em tempo real através de dados integrados.
+            </p>
+            
+            <div class="modal-new-divider"></div>
+            
+            <div class="modal-new-info-grid">
+                <div class="info-item">
+                    <span>Portal</span>
+                    <p>Estudante</p>
+                </div>
+                <div class="info-item">
+                    <span>Status</span>
+                    <p>Sincronizado</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-new-footer">
+            <p>© 2026 AnalisAI • Senai CIC</p>
+            <a href="/aluno/equipe" class="modal-link">Time de desenvolvimento</a>
         </div>
     </div>
 </div>
-
-<style>
-    .sidebar .side-link i {
-        transition: all 0.3s ease;
-    }
-    
-    .sidebar .side-link:hover i {
-        transform: scale(1.1);
-    }
-    
-    .sidebar .side-link.active {
-        background-color: rgba(33, 115, 70, 0.1);
-        color: #217346;
-        border-color: rgba(33, 115, 70, 0.3);
-    }
-    
-    
-    .modal-content .version-text {
-        color: #217346;
-    }
-    
-    
-    .sidebar-bottom .side-link:last-child:hover {
-        background-color: #21734627;
-        border-color: #21734650;
-        color: #217346;
-    }
-</style>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const currentPath = window.location.pathname;
         const links = document.querySelectorAll('.side-link');
-        
+
         links.forEach(link => {
             const linkPath = link.getAttribute('href');
-            if (linkPath && !linkPath.includes('logout') && currentPath === linkPath) {
+            if (currentPath === linkPath) {
                 link.classList.add('active');
             } else {
                 link.classList.remove('active');

@@ -3,13 +3,18 @@
     --primary-color: #ff0101;
     --card-bg: #030303;
     --text-white: #ffffff;
-    --font-family: 'Inter-Medium', sans-serif;
+    --font-family: 'helvetica', sans-serif;
     --success-green: #217346;
 }
 
 @font-face {
     font-family: 'Inter-Medium';
     src: url('../FONTs/Inter-Medium.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'helvetica';
+    src: url('../FONTs/HelveticaNowDisplay-Bold.ttf') format('truetype');
 }
 
 @keyframes fadeInPage {
@@ -27,12 +32,18 @@
 
 body {
     background-color: var(--background);
+    background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('/IMG/back1.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     color: var(--text-white);
+    font-family: var(--font-family);
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     animation: fadeInPage 0.5s ease-out;
+    overflow: hidden;
 }
 
 
@@ -60,7 +71,7 @@ body {
 
 .a {
     background: transparent;
-    border: 2px solid #222;
+    border: 2px solid #2e3134;
     color: white;
     padding: 12px 25px;
     cursor: pointer;
@@ -92,7 +103,7 @@ body {
 
 .b {
     background: transparent;
-    border: 2px solid #222;
+    border: 2px solid #2e3134;
     color: white;
     padding: 12px 25px;
     cursor: pointer;
@@ -163,7 +174,7 @@ body {
 
 .login-container {
     background-color: var(--card-bg);
-    border: 2px solid #1a1a1a;
+    border: 2px solid #2e3134;
     border-radius: 20px;
     padding: 40px;
     width: 100%;
@@ -196,7 +207,7 @@ body {
     width: 100%;
     height: 50px;
     background-color: #111;
-    border: 2px solid #222;
+    border: 2px solid #2e3134;
     border-radius: 8px;
     padding: 0 20px;
     color: white;
@@ -223,7 +234,7 @@ body {
     width: 100%;
     height: 50px;
     background-color: #111;
-    border: 2px solid #222;
+    border: 2px solid #2e3134;
     border-radius: 8px;
     padding: 0 20px;
     color: white;
@@ -231,6 +242,27 @@ body {
     outline: none;
     letter-spacing: 1px;
     transition: all 0.3s ease;
+}
+
+.btn-secondary-dash {
+    background: transparent;
+    border: 2px solid #2e3134;
+    color: #888;
+    padding: 15px 30px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    transition: 0.4s;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-secondary-dash:hover {
+    border-color: #444;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .input-group-2 input:focus {
@@ -306,10 +338,10 @@ button:hover {
     display: flex;
     gap: 10px;
     margin-bottom: 30px;
-    background: #111;
+    background: #030303;
     padding: 5px;
     border-radius: 50px;
-    border: 2px solid #222;
+    border: 2px solid #2e3134;
 }
 
 .login-tab {
@@ -345,6 +377,10 @@ button:hover {
 
 .login-tab.aluno.active {
     background: var(--success-green);
+}
+
+.login-tab.professor.active {
+    background: var(--primary-color);
 }
 
 .login-form {

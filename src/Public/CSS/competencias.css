@@ -8,7 +8,6 @@
         .page-title {
             font-size: 1.5rem;
             color: #217346;
-            letter-spacing: 2px;
             text-transform: uppercase;
         }
         
@@ -20,7 +19,7 @@
         
         .stat-box {
             background: #030303;
-            border: 2px solid #1a1a1a;
+            border: 2px solid #2e3134;
             border-radius: 20px;
             padding: 25px;
             text-align: center;
@@ -53,7 +52,7 @@
         
         .filtros-container {
             background: #030303;
-            border: 2px solid #1a1a1a;
+            border: 2px solid #2e3134;
             border-radius: 20px;
             padding: 25px;
             display: flex;
@@ -67,7 +66,7 @@
             min-width: 200px;
             padding: 12px 15px;
             background: #030303;
-            border: 2px solid #222;
+            border: 2px solid #2e3134;
             border-radius: 10px;
             color: #fff;
             font-size: 0.9rem;
@@ -82,7 +81,7 @@
             min-width: 150px;
             padding: 12px 15px;
             background: #030303;
-            border: 2px solid #222;
+            border: 2px solid #2e3134;
             border-radius: 10px;
             color: #fff;
             cursor: pointer;
@@ -140,7 +139,7 @@
         .ordenar-select {
             padding: 8px 15px;
             background: #030303;
-            border: 2px solid #222;
+            border: 2px solid #2e3134;
             border-radius: 8px;
             color: #fff;
             cursor: pointer;
@@ -148,7 +147,7 @@
         
         .competencia-card {
             background: #030303;
-            border: 2px solid #1a1a1a;
+            border: 2px solid #2e3134;
             border-radius: 20px;
             padding: 25px;
             transition: 0.3s;
@@ -259,7 +258,7 @@
             align-items: center;
             margin-top: 20px;
             padding-top: 15px;
-            border-top: 1px solid #1a1a1a;
+            border-top: 1px solid #2e3134;
         }
         
         .competencia-data {
@@ -276,7 +275,7 @@
         
         .grafico-container {
             background: #030303;
-            border: 2px solid #1a1a1a;
+            border: 2px solid #2e3134;
             border-radius: 20px;
             padding: 25px;
             margin-bottom: 40px;
@@ -288,7 +287,7 @@
             text-align: center;
             padding: 80px 20px;
             background: #030303;
-            border: 2px solid #1a1a1a;
+            border: 2px solid #2e3134;
             border-radius: 20px;
         }
         

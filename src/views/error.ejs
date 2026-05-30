@@ -12,14 +12,32 @@
 </head>
 <body class="dash-body">
 
+    <% if (userCargo === 'Professor' || userCargo === 'Admin') { %>
     <%- include('partials/barProfessor') %>
+    <% } else { %>
+        <%- include('partials/barAluno') %>
+    <% } %>
 
     <div class="main-layout">
         <header class="dash-header">
-            <div class="logo">
-                <img src="/IMG/logo3-white.png" alt="AnalisAI">
+            <div class="header-left">
+                <h1>
+                    <%= titulo || 'OPS! ALGO DEU ERRADO' %>
+                </h1>
             </div>
-            <h2 class="page-title">ERRO</h2>
+            
+            <div class="header-user">
+                <div class="user-profile-group">
+                    <div class="user-details">
+                        <span class="user-name"><strong><%= user %></strong></span>
+                        <span class="user-role" style="color: #888888;">Professor</span>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <%- include('./partials/notificacoes', { notificacaoClasse: 'header-icon' }) %>
+                    <a href="/dashboard/config" class="header-icon"><i class="fas fa-cog"></i></a>
+                </div>
+            </div>
         </header>
 
         <main class="dash-content" style="display: flex; align-items: center; justify-content: center; min-height: 60vh;">
@@ -45,12 +63,12 @@
                 <% } %>
                 
                 <div class="modal-actions" style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                    <a href="javascript:history.back()" class="btn-action" style="padding: 12px 25px; text-decoration: none;">
+                    <a href="javascript:history.back()" class="btn-secondary-dash" style="padding: 12px 25px; text-decoration: none;">
                         <i class="fas fa-arrow-left"></i> VOLTAR
                     </a>
                     
                     <% if (isAdmin) { %>
-                        <a href="javascript:void()" onclick="openEraseModal()" class="btn-action" style="padding: 12px 25px; text-decoration: none; border-color: #ff0101; color: #ff0101;">
+                        <a href="javascript:void()" onclick="openEraseModal()" class="btn-secondary-dash" style="padding: 12px 25px; text-decoration: none; border-color: #ff0101; color: #ff0101;">
                             <i class="fas fa-database"></i> LIMPAR BASE DE DADOS (ALUNOS)
                         </a>
                     <% } %>
@@ -81,7 +99,7 @@
             </p>
             <div class="modal-actions">
                 <form action="/dashboard/erase-all" method="POST">
-                    <button type="submit" class="btn-erase-confirm">
+                    <button type="submit" class="btn-danger-action">
                         <i class="fas fa-trash"></i> SIM, APAGAR TUDO
                     </button>
                 </form>

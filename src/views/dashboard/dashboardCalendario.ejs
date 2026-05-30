@@ -15,10 +15,24 @@
     
     <div class="main-layout">
         <header class="dash-header">
-            <div class="logo">
-                <img src="/IMG/logo3-white.png" alt="AnalisAI">
+            <div class="header-left">
+                <h1>
+                    Calendário Escolar
+                </h1>
             </div>
-            <h2 class="page-title">CALENDÁRIO ESCOLAR</h2>
+            
+            <div class="header-user">
+                <div class="user-profile-group">
+                    <div class="user-details">
+                        <span class="user-name"><strong><%= user %></strong></span>
+                        <span class="user-role" style="color: #888888;">Professor</span>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <%- include('../partials/notificacoes', { notificacaoClasse: 'header-icon' }) %>
+                    <a href="/dashboard/config" class="header-icon"><i class="fas fa-cog"></i></a>
+                </div>
+            </div>
         </header>
         
         <% if (success_msg && success_msg.length > 0) { %>

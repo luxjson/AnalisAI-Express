@@ -22,7 +22,7 @@
             min-height: 200px;
             background-color: #ffffff00;
             border-radius: 28px;
-            border: 2px solid #1a1a1a;
+            border: 2px solid #2e3134;
             padding: 20px;
             display: flex;
             flex-direction: column;
@@ -79,10 +79,23 @@
     
     <div class="main-layout">
         <header class="dash-header">
-            <div class="logo">
-                <img src="/IMG/logo3-white.png" alt="AnalisAI">
+            <div class="header-left">
+                <h1>
+                    Manual do Usuário
+                </h1>
             </div>
-            <h2 class="page-title">MANUAL DO USUÁRIO</h2>
+            
+            <div class="header-user">
+                <div class="user-profile-group">
+                    <div class="user-details">
+                        <span class="user-name"><strong><%= user %></strong></span>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <%- include('./partials/notificacoes', { notificacaoClasse: 'header-icon' }) %>
+                    <a href="/dashboard/config" class="header-icon"><i class="fas fa-cog"></i></a>
+                </div>
+            </div>
         </header>
 
         <main class="cards">

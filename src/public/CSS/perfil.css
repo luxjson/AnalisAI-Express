@@ -1,7 +1,6 @@
 .page-title {
     font-size: 1.5rem;
     color: #217346;
-    letter-spacing: 2px;
     text-transform: uppercase;
 }
 
@@ -14,7 +13,7 @@
 
 .perfil-sidebar {
     background: #030303;
-    border: 2px solid #1a1a1a;
+    border: 2px solid #2e3134;
     border-radius: 20px;
     padding: 30px;
     text-align: center;
@@ -85,8 +84,8 @@
     gap: 20px;
     margin: 20px 0;
     padding: 15px 0;
-    border-top: 1px solid #1a1a1a;
-    border-bottom: 1px solid #1a1a1a;
+    border-top: 1px solid #2e3134;
+    border-bottom: 1px solid #2e3134;
 }
 
 .perfil-stat-item {
@@ -106,7 +105,7 @@
 
 .perfil-main {
     background: #030303;
-    border: 2px solid #1a1a1a;
+    border: 2px solid #2e3134;
     border-radius: 20px;
     padding: 30px;
 }
@@ -115,7 +114,7 @@
     display: flex;
     gap: 10px;
     margin-bottom: 30px;
-    border-bottom: 1px solid #1a1a1a;
+    border-bottom: 1px solid #2e3134;
     padding-bottom: 15px;
 }
 
@@ -180,7 +179,7 @@
     background: #030303;
     padding: 12px 15px;
     border-radius: 10px;
-    border: 2px solid #222;
+    border: 2px solid #2e3134;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -212,7 +211,7 @@
     width: 100%;
     padding: 12px 15px;
     background: #030303;
-    border: 2px solid #222;
+    border: 2px solid #2e3134;
     border-radius: 10px;
     color: #fff;
     font-size: 0.95rem;
@@ -273,7 +272,7 @@
     padding: 20px;
     background: #030303;
     border-radius: 15px;
-    border: 2px solid #222;
+    border: 2px solid #2e3134;
 }
 
 .info-adicional-title {
@@ -296,7 +295,7 @@
     padding: 10px;
     background: #030303;
     border-radius: 8px;
-    border: 2px solid #222;
+    border: 2px solid #2e3134;
 }
 
 .info-adicional-label {
@@ -317,7 +316,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 15px 0;
-    border-bottom: 1px solid #1a1a1a;
+    border-bottom: 1px solid #2e3134;
 }
 
 .config-item:last-child {

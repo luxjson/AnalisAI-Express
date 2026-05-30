@@ -4,13 +4,18 @@
     --card-bg: #030303;
     --text-white: #ffffff;
     --text-muted: #888;
-    --font-family: 'Inter-Medium', sans-serif;
+    --font-family: 'helvetica', sans-serif;
     --border-color: #1a1a1a;
 }
 
 @font-face {
     font-family: 'Inter-Medium';
     src: url('../FONTs/Inter-Medium.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'helvetica';
+    src: url('../FONTs/HelveticaNowDisplay-Bold.ttf') format('truetype');
 }
 
 @keyframes fadeInPage {
@@ -27,14 +32,19 @@
 }
 
 body {
-    background-color: var(--bg-dark);
+    background-color: var(--background);
+    background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('/IMG/back1.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     color: var(--text-white);
+    font-family: var(--font-family);
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
-    padding: 20px;
-    animation: fadeInPage 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: fadeInPage 0.5s ease-out;
+    overflow: hidden;
 }
 
 .equipe-page-wrapper {
@@ -51,22 +61,21 @@ body {
 }
 
 .logo-equipe img {
-    width: 220px;
+    width: 300px;
     height: auto;
     margin-bottom: 15px;
 }
 
 .logo-equipe h3 {
-    font-size: 0.75rem;
-    letter-spacing: 5px;
+    font-size: 1rem;
     color: var(--text-muted);
     text-transform: uppercase;
     font-weight: normal;
 }
 
 .equipe-container {
-    background-color: var(--card-bg);
-    border: 2px solid var(--border-color);
+    background: #131314;
+    border: 2px solid var(--text-muted);
     border-radius: 25px;
     padding: 30px;
     width: 100%;
@@ -74,10 +83,6 @@ body {
     flex-direction: column;
     gap: 45px;
     transition: border-color 0.4s ease;
-}
-
-.equipe-container:hover {
-    border-color: rgba(255, 1, 1, 0.2);
 }
 
 .equipe-grid {
@@ -138,7 +143,7 @@ body {
 .btn-voltar {
     text-decoration: none;
     color: var(--text-muted);
-    border: 2px solid #222;
+    border: 2px solid #2e3134;
     border-radius: 12px;
     padding: 14px 45px;
     font-size: 0.8rem;

@@ -16,10 +16,24 @@
 
     <div class="main-layout">
         <header class="dash-header">
-            <div class="logo">
-                <img src="/IMG/logo3-white.png" alt="AnalisAI">
+            <div class="header-left">
+                <h1>
+                    Gerenciar Tarefas
+                </h1>
             </div>
-            <h2 class="page-title">GERENCIAR TAREFAS</h2>
+            
+            <div class="header-user">
+                <div class="user-profile-group">
+                    <div class="user-details">
+                        <span class="user-name"><strong><%= user %></strong></span>
+                        <span class="user-role" style="color: #888888;">Professor</span>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <%- include('../partials/notificacoes', { notificacaoClasse: 'header-icon' }) %>
+                    <a href="/dashboard/config" class="header-icon"><i class="fas fa-cog"></i></a>
+                </div>
+            </div>
         </header>
 
         <% if (success_msg && success_msg.length > 0) { %>
@@ -36,8 +50,7 @@
         <% } %>
 
         <div class="tarefas-header">
-            <h1 class="tarefas-title"><i class="fas fa-tasks"></i> TAREFAS</h1>
-            <button class="btn-primary-dash-2" onclick="abrirModalNovaTarefa()" style="padding: 12px 25px;">
+            <button class="btn-secondary-dash" onclick="abrirModalNovaTarefa()" style="padding: 12px 25px;">
                 <i class="fas fa-plus"></i> NOVA TAREFA
             </button>
         </div>
@@ -216,6 +229,15 @@
                 <p>Clique em "NOVA TAREFA" para começar.</p>
             </div>
         <% } %>
+
+        <footer class="dash-footer">
+            <a href="/dashboard/edit" class="btn-secondary-dash">
+                <i class="fas fa-pencil-alt"></i> EDITOR DE NOTAS
+            </a>
+            <div class="footer-credits">
+                <p>© 2026 AnalisAI
+            </div>
+        </footer>
     </div>
 
     <div id="novaTarefaModal" class="modal-overlay">
@@ -529,7 +551,7 @@
                 }
                 
                 html += `
-                    <div style="background: #080808; border: 2px solid #1a1a1a; border-radius: 12px; padding: 18px; margin-bottom: 20px;">
+                    <div style="background: #080808; border: 2px solid #2e3134; border-radius: 12px; padding: 18px; margin-bottom: 20px;">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
                             <div>
                                 <span style="color: #fff; font-size: 1.1rem;">${aluno.nome}</span>

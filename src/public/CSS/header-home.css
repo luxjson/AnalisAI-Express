@@ -3,7 +3,7 @@
     --secondary-color: #030303;
     --footer-color: #030303;
     --text-color: #ffffff;
-    --font-family: 'Inter-Medium';
+    --font-family: 'helvetica';
 }
 
 * {
@@ -17,6 +17,11 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'helvetica';
+    src: url('../FONTs/HelveticaNowDisplay-Bold.ttf') format('truetype');
+}
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -28,7 +33,7 @@
     top: 0;
     z-index: 1000;
     backdrop-filter: blur(10px);
-    height: 70px;
+    height: 80px;
 }
 
 .logo-section {

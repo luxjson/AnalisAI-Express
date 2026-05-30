@@ -5,343 +5,266 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AnalisAI - Minhas Competências</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="/CSS/aluno.css">
     <link rel="stylesheet" href="/CSS/sidebar.css">
     <link rel="stylesheet" href="/CSS/dashboard.css">
-    <link rel="stylesheet" href="/CSS/competencias.css">
 </head>
 <body class="dash-body">
 
     <%- include('../partials/barAluno') %>
 
     <div class="main-layout">
+        <!-- HEADER PREMIUM -->
         <header class="dash-header">
-            <div class="logo">
-                <img src="/IMG/logo3-green.png" alt="AnalisAI">
+            <div class="header-left">
+                <div class="logo">
+                    <img src="/IMG/logo3-green.png" alt="AnalisAI" style="height: 40px;">
+                </div>
             </div>
+            
             <div class="header-user">
-                <span>Bem-vindo, <strong><%= aluno.nome %></strong></span>
-                <%- include('../partials/notificacoes', { notificacaoClasse: 'logout-icon-1' }) %>
-                <a href="/logout" class="logout-icon-1" title="Sair">
-                    <i class="fas fa-sign-out-alt"></i>
-                </a>
+                <div class="user-profile-group">
+                    <div class="user-avatar" style="background: var(--color-apto);">
+                        <%= aluno.nome.charAt(0).toUpperCase() %>
+                    </div>
+                    <div class="user-details">
+                        <span class="user-name"><strong><%= aluno.nome %></strong></span>
+                        <span class="user-email"><%= aluno.ano_escolar %></span>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <%- include('../partials/notificacoes', { notificacaoClasse: 'header-icon' }) %>
+                </div>
             </div>
         </header>
 
         <main class="dash-content">
-            <div class="page-header">
-                <h1 class="page-title"><i class="fas fa-tasks"></i> MINHAS COMPETÊNCIAS</h1>
-            </div>
+            <!-- BANNER DE TÍTULO -->
+            <section class="welcome-banner" style="background: linear-gradient(90deg, #1b5e38 0%, #217346 100%); padding: 40px;">
+                <div class="banner-text">
+                    <h1><i class="fas fa-medal"></i> Relatório de Competências</h1>
+                    <p>Filtre, analise e acompanhe o detalhamento de cada habilidade avaliada pelos seus professores.</p>
+                </div>
+            </section>
 
-            <div class="stats-grid">
-                <div class="stat-box">
-                    <div class="stat-icon"><i class="fas fa-clipboard-list"></i></div>
-                    <div class="stat-value"><%= stats.total || 0 %></div>
-                    <div class="stat-label">TOTAL AVALIADAS</div>
+            <!-- STATS CARDS COM ÍCONES FANTASMA -->
+            <section class="section-container">
+                <div class="dash-grid">
+                    <div class="stats-card">
+                        <h3>TOTAL AVALIADAS</h3>
+                        <p class="stats-number"><%= stats.total || 0 %></p>
+                        <i class="fas fa-list-ul icon-bg"></i>
+                    </div>
+                    
+                    <div class="stats-card apto">
+                        <h3>APTAS</h3>
+                        <p class="stats-number"><%= stats.aptas || 0 %></p>
+                        <i class="fas fa-check-circle icon-bg"></i>
+                    </div>
+                    
+                    <div class="stats-card desenvolvimento">
+                        <h3>EM DESENVOLVIMENTO</h3>
+                        <p class="stats-number"><%= stats.desenvolvimento || 0 %></p>
+                        <i class="fas fa-sync icon-bg"></i>
+                    </div>
+                    
+                    <div class="stats-card inapto">
+                        <h3>INAPTAS</h3>
+                        <p class="stats-number"><%= stats.inaptas || 0 %></p>
+                        <i class="fas fa-exclamation-triangle icon-bg"></i>
+                    </div>
                 </div>
-                
-                <div class="stat-box">
-                    <div class="stat-icon"><i class="fas fa-star" style="color: #217346;"></i></div>
-                    <div class="stat-value" style="color: #217346;"><%= stats.aptas || 0 %></div>
-                    <div class="stat-label">APTAS</div>
-                </div>
-                
-                <div class="stat-box">
-                    <div class="stat-icon"><i class="fas fa-chart-line" style="color: #d4a017;"></i></div>
-                    <div class="stat-value" style="color: #d4a017;"><%= stats.desenvolvimento || 0 %></div>
-                    <div class="stat-label">EM DESENVOLVIMENTO</div>
-                </div>
-                
-                <div class="stat-box">
-                    <div class="stat-icon"><i class="fas fa-exclamation-triangle" style="color: #ff0101;"></i></div>
-                    <div class="stat-value" style="color: #ff0101;"><%= stats.inaptas || 0 %></div>
-                    <div class="stat-label">INAPTAS</div>
-                </div>
-                
-                <div class="stat-box">
-                    <div class="stat-icon"><i class="fas fa-calculator"></i></div>
-                    <div class="stat-value"><%= parseFloat(stats.media_geral || 0).toFixed(1) %></div>
-                    <div class="stat-label">MÉDIA GERAL</div>
-                </div>
-            </div>
+            </section>
 
-            <div class="filtros-container">
-                <input type="text" id="searchInput" class="filtro-input" placeholder="Pesquisar competência...">
-                
-                <select id="categoriaFilter" class="filtro-select">
-                    <option value="">TODAS CATEGORIAS</option>
-                    <option value="Técnica">TÉCNICA</option>
-                    <option value="Comportamental">COMPORTAMENTAL</option>
-                    <option value="Cognitiva">COGNITIVA</option>
-                    <option value="Socioemocional">SOCIOEMOCIONAL</option>
-                </select>
-                
-                <select id="nivelFilter" class="filtro-select">
-                    <option value="">TODOS OS NÍVEIS</option>
-                    <option value="apto">APTO</option>
-                    <option value="desenvolvimento">EM DESENVOLVIMENTO</option>
-                    <option value="inapto">INAPTO</option>
-                </select>
-                
-                <button class="btn-filtrar" onclick="aplicarFiltros()">
-                    <i class="fas fa-filter"></i> FILTRAR
-                </button>
-                
-                <button class="btn-limpar" onclick="limparFiltros()">
-                    <i class="fas fa-times"></i> LIMPAR
-                </button>
-            </div>
-
-            <% if (competencias && competencias.length > 0) { %>
-            <div class="grafico-container">
-                <canvas id="competenciasChart"></canvas>
-            </div>
-            <% } %>
-
-            <div class="competencias-header">
-                <div class="competencias-count">
-                 <%= competencias.length %> competências encontradas
-                </div>
-                
-                <select id="ordenarSelect" class="ordenar-select" onchange="ordenarCompetencias()">
-                    <option value="data_desc">MAIS RECENTES</option>
-                    <option value="data_asc">MAIS ANTIGAS</option>
-                    <option value="nota_desc">MAIOR NOTA</option>
-                    <option value="nota_asc">MENOR NOTA</option>
-                    <option value="nome_asc">A-Z</option>
-                    <option value="nome_desc">Z-A</option>
-                </select>
-            </div>
-
-            <% if (competencias && competencias.length > 0) { %>
-                <div class="dash-grid" id="competenciasGrid">
-                    <% competencias.forEach(comp => { 
-                        let notaNum = parseFloat(comp.nota) || 0;
-                        let nivelClass = 'desenvolvimento';
-                        let nivelText = 'EM DESENVOLVIMENTO';
+            <!-- FILTROS (ESTILO PREMIUM) -->
+            <section class="section-container">
+                <div class="stats-card" style="padding: 25px;">
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap; align-items: center;">
+                        <input type="text" id="searchInput" 
+                               style="flex: 2; background: #111; border: 1px solid var(--border-color); padding: 12px; border-radius: 10px; color: white;" 
+                               placeholder="Pesquisar competência...">
                         
-                        if (notaNum >= 7) {
-                            nivelClass = 'apto';
-                            nivelText = 'APTO';
-                        } else if (notaNum < 5) {
-                            nivelClass = 'inapto';
-                            nivelText = 'INAPTO';
-                        }
-                    %>
-                        <div class="competencia-card <%= nivelClass %>" 
-                             data-nome="<%= comp.nome.toLowerCase() %>"
-                             data-categoria="<%= comp.categoria || '' %>"
-                             data-nivel="<%= nivelClass %>"
-                             data-nota="<%= notaNum %>"
-                             data-data="<%= comp.data_registro %>">
-                            
-                            <span class="competencia-badge <%= nivelClass %>"><%= nivelText %></span>
-                            
-                            <div class="competencia-header">
-                                <h3 class="competencia-nome"><%= comp.nome %></h3>
-                                <div class="competencia-categoria">
-                                    <i class="fas fa-tag"></i> <%= comp.categoria || 'GERAL' %>
-                                </div>
-                            </div>
-                            
-                            <% if (comp.descricao) { %>
-                                <p class="competencia-desc"><%= comp.descricao %></p>
-                            <% } %>
-                            
-                            <div class="competencia-nota-container">
-                                <span class="competencia-nota <%= nivelClass %>"><%= notaNum.toFixed(1) %></span>
-                                <span class="competencia-nota-max">/10</span>
-                            </div>
-                            
-                            <% if (comp.observacoes) { %>
-                                <div class="competencia-obs">
-                                    <p><i class="fas fa-quote-left" style="margin-right: 5px;"></i> <%= comp.observacoes %></p>
-                                </div>
-                            <% } %>
-                            
-                            <div class="competencia-footer">
-                                <div class="competencia-data">
-                                    <i class="far fa-calendar-alt"></i>
-                                    <%= comp.data_formatada %> às <%= comp.hora_formatada || '00:00' %>
-                                </div>
-                            </div>
-                        </div>
-                    <% }); %>
+                        <select id="categoriaFilter" style="flex: 1; background: #111; border: 1px solid var(--border-color); padding: 12px; border-radius: 10px; color: white;">
+                            <option value="">TODAS CATEGORIAS</option>
+                            <option value="Técnica">TÉCNICA</option>
+                            <option value="Comportamental">COMPORTAMENTAL</option>
+                            <option value="Cognitiva">COGNITIVA</option>
+                        </select>
+
+                        <select id="nivelFilter" style="flex: 1; background: #111; border: 1px solid var(--border-color); padding: 12px; border-radius: 10px; color: white;">
+                            <option value="">TODOS OS NÍVEIS</option>
+                            <option value="apto">APTO</option>
+                            <option value="desenvolvimento">DESENVOLVIMENTO</option>
+                            <option value="inapto">INAPTO</option>
+                        </select>
+
+                        <button onclick="aplicarFiltros()" class="btn-secondary-dash" style="background: var(--color-apto); color: white; border: none;">
+                            <i class="fas fa-filter"></i> FILTRAR
+                        </button>
+                        <button onclick="limparFiltros()" class="btn-secondary-dash">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
                 </div>
-            <% } else { %>
-                <div class="empty-state">
-                    <i class="fas fa-clipboard-list"></i>
-                    <h3>Nenhuma competência avaliada</h3>
-                    <p>Você ainda não possui competências registradas no sistema.</p>
+            </section>
+
+            <!-- GRÁFICO EM CARD -->
+            <% if (competencias && competencias.length > 0) { %>
+            <section class="section-container">
+                <div class="stats-card">
+                    <h2 class="section-title-2" style="margin-bottom: 20px;"><i class="fas fa-chart-bar"></i> DESEMPENHO POR HABILIDADE</h2>
+                    <div style="height: 300px; position: relative;">
+                        <canvas id="competenciasChart"></canvas>
+                    </div>
                 </div>
+            </section>
             <% } %>
+
+            <!-- LISTAGEM DE CARDS (DASH-GRID) -->
+            <section class="section-container">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                    <h2 class="section-title-2" style="margin-bottom: 0;"><i class="fas fa-stream"></i> DETALHAMENTO</h2>
+                    <select id="ordenarSelect" onchange="ordenarCompetencias()" 
+                            style="background: #111; border: 1px solid var(--border-color); padding: 8px 15px; border-radius: 8px; color: #888; font-size: 0.8rem;">
+                        <option value="data_desc">MAIS RECENTES</option>
+                        <option value="nota_desc">MAIOR NOTA</option>
+                        <option value="nome_asc">A-Z</option>
+                    </select>
+                </div>
+
+                <% if (competencias && competencias.length > 0) { %>
+                    <div class="dash-grid" id="competenciasGrid">
+                        <% competencias.forEach(comp => { 
+                            let notaNum = parseFloat(comp.nota) || 0;
+                            let statusClass = notaNum >= 7 ? 'apto' : (notaNum >= 5 ? 'desenvolvimento' : 'inapto');
+                        %>
+                            <div class="stats-card <%= statusClass %>" 
+                                 data-nome="<%= comp.nome.toLowerCase() %>"
+                                 data-categoria="<%= comp.categoria || '' %>"
+                                 data-nivel="<%= statusClass %>"
+                                 data-nota="<%= notaNum %>"
+                                 data-data="<%= comp.data_registro %>"
+                                 style="padding: 25px; border-left: 6px solid var(--color-<%= statusClass %>);">
+                                
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+                                    <div>
+                                        <h3 style="color: white; font-size: 1.1rem; margin-bottom: 5px;"><%= comp.nome %></h3>
+                                        <span style="font-size: 0.7rem; color: var(--text-gray); text-transform: uppercase; letter-spacing: 1px;">
+                                            <i class="fas fa-tag"></i> <%= comp.categoria || 'GERAL' %>
+                                        </span>
+                                    </div>
+                                    <span class="media-nota <%= statusClass %>" style="font-size: 1.2rem; padding: 5px 15px;">
+                                        <%= notaNum.toFixed(1) %>
+                                    </span>
+                                </div>
+
+                                <p style="font-size: 0.85rem; color: var(--text-gray); line-height: 1.5; margin-bottom: 15px;">
+                                    <%= comp.descricao || 'Sem descrição disponível.' %>
+                                </p>
+
+                                <% if (comp.observacoes) { %>
+                                    <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 10px; margin-bottom: 15px;">
+                                        <p style="font-size: 0.8rem; color: #aaa; font-style: italic;">
+                                            <i class="fas fa-quote-left" style="color: var(--color-<%= statusClass %>);"></i> 
+                                            <%= comp.observacoes %>
+                                        </p>
+                                    </div>
+                                <% } %>
+
+                                <div style="border-top: 1px solid var(--border-soft); padding-top: 15px; font-size: 0.75rem; color: var(--text-muted);">
+                                    <i class="far fa-calendar-alt"></i> <%= comp.data_formatada %>
+                                </div>
+                            </div>
+                        <% }); %>
+                    </div>
+                <% } else { %>
+                    <div class="stats-card" style="text-align: center; padding: 80px;">
+                        <i class="fas fa-clipboard-list" style="font-size: 4rem; color: var(--border-color); margin-bottom: 20px;"></i>
+                        <h3>Nenhuma competência avaliada</h3>
+                    </div>
+                <% } %>
+            </section>
         </main>
 
         <footer class="dash-footer">
             <div class="footer-actions">
-                <a href="/aluno" class="b">
-                    <i class="fas fa-arrow-left"></i> VOLTAR
+                <a href="/aluno" class="btn-secondary-dash">
+                    <i class="fas fa-arrow-left"></i> VOLTAR AO PAINEL
                 </a>
             </div>
             <div class="footer-credits">
                 <p>© 2026 AnalisAI</p>
-                <a href="/aluno/equipe"><p>Time de desenvolvedores</p></a>
             </div>
         </footer>
     </div>
 
+    <!-- SCRIPTS MANTIDOS E ADAPTADOS -->
     <% if (competencias && competencias.length > 0) { %>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            setTimeout(function() {
-                try {
-                    var competenciasData = <%- JSON.stringify(competencias) %>;
-                    
-                    var ctx = document.getElementById('competenciasChart');
-                    if (!ctx) {
-                        console.error('Canvas não encontrado');
-                        return;
-                    }
-                    
-                    var labels = competenciasData.map(function(c) { return c.nome; });
-                    var valores = competenciasData.map(function(c) { return parseFloat(c.nota) || 0; });
-                    
-                    new Chart(ctx, {
-                        type: 'bar',
-                        data: {
-                            labels: labels,
-                            datasets: [{
-                                label: 'Nota',
-                                data: valores,
-                                backgroundColor: valores.map(function(v) {
-                                    return v >= 7 ? 'rgba(33, 115, 70, 0.7)' : 
-                                           v >= 5 ? 'rgba(212, 160, 23, 0.7)' : 
-                                           'rgba(255, 1, 1, 0.7)';
-                                }),
-                                borderColor: '#217346',
-                                borderWidth: 1,
-                                borderRadius: 8
-                            }]
-                        },
-                        options: {
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            scales: {
-                                y: {
-                                    beginAtZero: true,
-                                    max: 10,
-                                    grid: { color: 'rgba(255,255,255,0.05)' },
-                                    ticks: { color: '#888' }
-                                },
-                                x: {
-                                    grid: { display: false },
-                                    ticks: { 
-                                        color: '#888',
-                                        maxRotation: 45,
-                                        minRotation: 45
-                                    }
-                                }
-                            },
-                            plugins: {
-                                legend: { display: false }
-                            }
-                        }
-                    });
-                    
-                    console.log('Gráfico criado com sucesso');
-                } catch (error) {
-                    console.error('Erro ao criar gráfico:', error);
+            const ctx = document.getElementById('competenciasChart').getContext('2d');
+            const data = <%- JSON.stringify(competencias) %>;
+            
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: data.map(c => c.nome),
+                    datasets: [{
+                        data: data.map(c => parseFloat(c.nota) || 0),
+                        backgroundColor: data.map(c => {
+                            const v = parseFloat(c.nota);
+                            return v >= 7 ? '#217346' : (v >= 5 ? '#d4a017' : '#ff0101');
+                        }),
+                        borderRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { beginAtZero: true, max: 10, grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#888' } },
+                        x: { grid: { display: false }, ticks: { color: '#888' } }
+                    },
+                    plugins: { legend: { display: false } }
                 }
-            }, 100);
+            });
         });
 
+        // Funções de filtro e ordenação mantidas com seletores atualizados
         function aplicarFiltros() {
-            var searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            var categoria = document.getElementById('categoriaFilter').value;
-            var nivel = document.getElementById('nivelFilter').value;
-            
-            var cards = document.querySelectorAll('.competencia-card');
-            var visiveis = 0;
-            
-            cards.forEach(function(card) {
-                var mostrar = true;
-                
-                if (searchTerm) {
-                    var nome = card.getAttribute('data-nome');
-                    if (!nome.includes(searchTerm)) mostrar = false;
-                }
-                
-                if (categoria && mostrar) {
-                    var cat = card.getAttribute('data-categoria');
-                    if (cat !== categoria) mostrar = false;
-                }
-                
-                if (nivel && mostrar) {
-                    var nivelCard = card.getAttribute('data-nivel');
-                    if (nivelCard !== nivel) mostrar = false;
-                }
-                
-                card.style.display = mostrar ? '' : 'none';
-                if (mostrar) visiveis++;
+            const search = document.getElementById('searchInput').value.toLowerCase();
+            const cat = document.getElementById('categoriaFilter').value;
+            const nivel = document.getElementById('nivelFilter').value;
+            const cards = document.querySelectorAll('.stats-card[data-nome]');
+
+            cards.forEach(card => {
+                const matchSearch = card.dataset.nome.includes(search);
+                const matchCat = !cat || card.dataset.categoria === cat;
+                const matchNivel = !nivel || card.dataset.nivel === nivel;
+                card.style.display = (matchSearch && matchCat && matchNivel) ? '' : 'none';
             });
-            
-            var countEl = document.querySelector('.competencias-count');
-            if (countEl) {
-                countEl.innerHTML = '<i class="fas fa-list"></i> ' + visiveis + ' competências encontradas';
-            }
         }
-        
+
         function limparFiltros() {
             document.getElementById('searchInput').value = '';
             document.getElementById('categoriaFilter').value = '';
             document.getElementById('nivelFilter').value = '';
-            
-            document.querySelectorAll('.competencia-card').forEach(function(card) {
-                card.style.display = '';
-            });
-            
-            var countEl = document.querySelector('.competencias-count');
-            if (countEl) {
-                countEl.innerHTML = '<i class="fas fa-list"></i> <%= competencias.length %> competências encontradas';
-            }
+            document.querySelectorAll('.stats-card[data-nome]').forEach(c => c.style.display = '');
         }
-        
+
         function ordenarCompetencias() {
-            var ordem = document.getElementById('ordenarSelect').value;
-            var grid = document.getElementById('competenciasGrid');
-            var cards = Array.from(document.querySelectorAll('.competencia-card'));
-            
-            cards.sort(function(a, b) {
-                switch(ordem) {
-                    case 'data_desc':
-                        return new Date(b.getAttribute('data-data')) - new Date(a.getAttribute('data-data'));
-                    case 'data_asc':
-                        return new Date(a.getAttribute('data-data')) - new Date(b.getAttribute('data-data'));
-                    case 'nota_desc':
-                        return parseFloat(b.getAttribute('data-nota')) - parseFloat(a.getAttribute('data-nota'));
-                    case 'nota_asc':
-                        return parseFloat(a.getAttribute('data-nota')) - parseFloat(b.getAttribute('data-nota'));
-                    case 'nome_asc':
-                        return a.getAttribute('data-nome').localeCompare(b.getAttribute('data-nome'));
-                    case 'nome_desc':
-                        return b.getAttribute('data-nome').localeCompare(a.getAttribute('data-nome'));
-                    default:
-                        return 0;
-                }
+            const ordem = document.getElementById('ordenarSelect').value;
+            const grid = document.getElementById('competenciasGrid');
+            const cards = Array.from(grid.querySelectorAll('.stats-card[data-nome]'));
+
+            cards.sort((a, b) => {
+                if (ordem === 'nota_desc') return b.dataset.nota - a.dataset.nota;
+                if (ordem === 'nome_asc') return a.dataset.nome.localeCompare(b.dataset.nome);
+                return new Date(b.dataset.data) - new Date(a.dataset.data);
             });
-            
-            grid.innerHTML = '';
-            cards.forEach(function(card) {
-                grid.appendChild(card);
-            });
+
+            cards.forEach(c => grid.appendChild(c));
         }
-        
-        document.getElementById('searchInput').addEventListener('keyup', function(e) {
-            if (e.key === 'Enter') {
-                aplicarFiltros();
-            }
-        });
     </script>
     <% } %>
 </body>

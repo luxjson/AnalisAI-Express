@@ -16,11 +16,23 @@
 
     <div class="main-layout">
         <header class="dash-header">
-            <div class="logo">
-                <img src="/IMG/logo3-white.png" alt="AnalisAI">
+            <div class="header-left">
+                <h1>
+                    Gestão de Usuários
+                </h1>
             </div>
+            
             <div class="header-user">
-                <h2 class="page-title">GESTÃO DE USUÁRIOS</h2>
+                <div class="user-profile-group">
+                    <div class="user-details">
+                        <span class="user-name"><strong><%= user %></strong></span>
+                        <span class="user-role" style="color: #888888;">Professor</span>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <%- include('../partials/notificacoes', { notificacaoClasse: 'header-icon' }) %>
+                    <a href="/dashboard/config" class="header-icon"><i class="fas fa-cog"></i></a>
+                </div>
             </div>
         </header>
 
@@ -39,8 +51,8 @@
 
         <div class="toolbar">
             <div class="action-buttons">
-                <button class="btn-icon" onclick="openAddUserModal()" title="Novo Usuário">
-                    <i class="fas fa-user-plus"></i>
+                <button class="btn-secondary-dash" onclick="openAddUserModal()" title="Novo Usuário">
+                    <i class="fas fa-user-plus"></i> NOVO USUÁRIO
                 </button>
             </div>
 
@@ -95,6 +107,15 @@
                 </table>
             </div>
         </main>
+
+        <footer class="dash-footer">
+            <a href="/dashboard/edit" class="btn-secondary-dash">
+                <i class="fas fa-pencil-alt"></i> EDITOR DE NOTAS
+            </a>
+            <div class="footer-credits">
+                <p>© 2026 AnalisAI
+            </div>
+        </footer>
     </div>
 
     <div id="userModal" class="modal-overlay">

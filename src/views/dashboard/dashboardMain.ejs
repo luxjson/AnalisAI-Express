@@ -14,48 +14,52 @@
 
     <div class="main-layout">
         <header class="dash-header">
-            <div class="logo">
-                <img src="/IMG/logo3-white.png" alt="AnalisAI">
+            <div class="header-left">
+                <button class="header-info-btn" onclick="openModal()" title="Sobre o sistema">
+                    <i class="fas fa-info-circle"></i>
+                </button>
             </div>
+            
             <div class="header-user">
-                <span>Bem-vindo, <strong><%= user %></strong></span>
-                <%- include('../partials/notificacoes', { notificacaoClasse: 'logout-icon' }) %>
-                <a href="/logout" class="logout-icon" title="Sair">
-                    <i class="fas fa-sign-out-alt"></i>
-                </a>
+                <div class="user-profile-group">
+                    <div class="user-details">
+                        <span class="user-name"><strong><%= user %></strong></span>
+                        <span class="user-role" style="color: #888888;">Professor</span>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <%- include('../partials/notificacoes', { notificacaoClasse: 'header-icon' }) %>
+                    <a href="/dashboard/config" class="header-icon"><i class="fas fa-cog"></i></a>
+                </div>
             </div>
         </header>
 
         <main class="dash-content">
+            <section class="welcome-banner">
+                <div class="banner-text">
+                    <h1>Bem-vindo(a) de volta, <%= user.split(' ')[0] %>!</h1>
+                    <p>Acompanhe o desempenho das turmas e gerencie as competências de forma simples.</p>
+                </div>
+            </section>
+
             <section class="section-container">
                 <h2 class="section-title-2"><i class="fas fa-graduation-cap"></i> ENSINO MÉDIO</h2>
                 <div class="dash-grid">
                     <div class="stats-card">
-                        <div class="stats-info">
-                            <h3>TOTAL DE ALUNOS</h3>
-                            <p class="stats-number"><%= alunos.filter(a => a.ano_escolar.includes('MÉDIO')).length %></p>
-                        </div>
+                        <h3>TOTAL DE ALUNOS</h3>
+                        <p class="stats-number"><%= alunos.filter(a => a.ano_escolar.includes('MÉDIO')).length %></p>
                     </div>
-                    
                     <div class="stats-card apto">
-                        <div class="stats-info">
-                            <h3>APTOS</h3>
-                            <p class="stats-number"><%= alunos.filter(a => a.ano_escolar.includes('MÉDIO') && a.nivel === 'APTO').length %></p>
-                        </div>
+                        <h3>APTOS</h3>
+                        <p class="stats-number"><%= alunos.filter(a => a.ano_escolar.includes('MÉDIO') && a.nivel === 'APTO').length %></p>
                     </div>
-
                     <div class="stats-card inapto">
-                        <div class="stats-info">
-                            <h3>INAPTOS</h3>
-                            <p class="stats-number"><%= alunos.filter(a => a.ano_escolar.includes('MÉDIO') && a.nivel === 'INAPTO').length %></p>
-                        </div>
+                        <h3>INAPTOS</h3>
+                        <p class="stats-number"><%= alunos.filter(a => a.ano_escolar.includes('MÉDIO') && a.nivel === 'INAPTO').length %></p>
                     </div>
-
                     <div class="stats-card desenvolvimento">
-                        <div class="stats-info">
-                            <h3>EM DESENVOLVIMENTO</h3>
-                            <p class="stats-number"><%= alunos.filter(a => a.ano_escolar.includes('MÉDIO') && a.nivel === 'EM DESENVOLVIMENTO').length %></p>
-                        </div>
+                        <h3>EM DESENVOLVIMENTO</h3>
+                        <p class="stats-number"><%= alunos.filter(a => a.ano_escolar.includes('MÉDIO') && a.nivel === 'EM DESENVOLVIMENTO').length %></p>
                     </div>
                 </div>
             </section>
@@ -64,31 +68,20 @@
                 <h2 class="section-title-2"><i class="fas fa-book"></i> ENSINO FUNDAMENTAL</h2>
                 <div class="dash-grid">
                     <div class="stats-card">
-                        <div class="stats-info">
-                            <h3>TOTAL DE ALUNOS</h3>
-                            <p class="stats-number"><%= alunos.filter(a => a.ano_escolar.includes('FUNDAMENTAL')).length %></p>
-                        </div>
+                        <h3>TOTAL DE ALUNOS</h3>
+                        <p class="stats-number"><%= alunos.filter(a => a.ano_escolar.includes('FUNDAMENTAL')).length %></p>
                     </div>
-
                     <div class="stats-card apto">
-                        <div class="stats-info">
-                            <h3>APTOS</h3>
-                            <p class="stats-number"><%= alunos.filter(a => a.ano_escolar.includes('FUNDAMENTAL') && a.nivel === 'APTO').length %></p>
-                        </div>
+                        <h3>APTOS</h3>
+                        <p class="stats-number"><%= alunos.filter(a => a.ano_escolar.includes('FUNDAMENTAL') && a.nivel === 'APTO').length %></p>
                     </div>
-
                     <div class="stats-card inapto">
-                        <div class="stats-info">
-                            <h3>INAPTOS</h3>
-                            <p class="stats-number"><%= alunos.filter(a => a.ano_escolar.includes('FUNDAMENTAL') && a.nivel === 'INAPTO').length %></p>
-                        </div>
+                        <h3>INAPTOS</h3>
+                        <p class="stats-number"><%= alunos.filter(a => a.ano_escolar.includes('FUNDAMENTAL') && a.nivel === 'INAPTO').length %></p>
                     </div>
-
                     <div class="stats-card desenvolvimento">
-                        <div class="stats-info">
-                            <h3>EM DESENVOLVIMENTO</h3>
-                            <p class="stats-number"><%= alunos.filter(a => a.ano_escolar.includes('FUNDAMENTAL') && a.nivel === 'EM DESENVOLVIMENTO').length %></p>
-                        </div>
+                        <h3>EM DESENVOLVIMENTO</h3>
+                        <p class="stats-number"><%= alunos.filter(a => a.ano_escolar.includes('FUNDAMENTAL') && a.nivel === 'EM DESENVOLVIMENTO').length %></p>
                     </div>
                 </div>
             </section>
@@ -107,17 +100,13 @@
                         <div class="ranking-list">
                             <% rankingGeral.forEach((comp, index) => { %>
                                 <div class="ranking-item">
-                                    <div class="ranking-position <%= index === 0 ? 'gold' : (index === 1 ? 'silver' : (index === 2 ? 'bronze' : '')) %>">
-                                        <%= index + 1 %>º
-                                    </div>
+                                    <div class="ranking-position <%= index === 0 ? 'gold' : (index === 1 ? 'silver' : (index === 2 ? 'bronze' : '')) %>"><%= index + 1 %>º</div>
                                     <div class="ranking-info">
                                         <h4><%= comp.nome %></h4>
                                         <p><%= comp.total_avaliacoes %> avaliações</p>
                                     </div>
                                     <div class="ranking-media">
-                                        <span class="media-nota <%= comp.media >= 7 ? 'apto' : (comp.media >= 5 ? 'desenvolvimento' : 'inapto') %>">
-                                            <%= comp.media.toFixed(1) %>
-                                        </span>
+                                        <span class="media-nota <%= comp.media >= 7 ? 'apto' : (comp.media >= 5 ? 'desenvolvimento' : 'inapto') %>"><%= comp.media.toFixed(1) %></span>
                                     </div>
                                 </div>
                             <% }); %>
@@ -130,22 +119,20 @@
                     <% } %>
                 </div>
 
+                
+
                 <div id="rankingMedio" class="ranking-content">
                     <% if (rankingMedio && rankingMedio.length > 0) { %>
                         <div class="ranking-list">
                             <% rankingMedio.forEach((comp, index) => { %>
                                 <div class="ranking-item">
-                                    <div class="ranking-position <%= index === 0 ? 'gold' : (index === 1 ? 'silver' : (index === 2 ? 'bronze' : '')) %>">
-                                        <%= index + 1 %>º
-                                    </div>
+                                    <div class="ranking-position <%= index === 0 ? 'gold' : (index === 1 ? 'silver' : (index === 2 ? 'bronze' : '')) %>"><%= index + 1 %>º</div>
                                     <div class="ranking-info">
                                         <h4><%= comp.nome %></h4>
                                         <p><%= comp.total_avaliacoes %> avaliações</p>
                                     </div>
                                     <div class="ranking-media">
-                                        <span class="media-nota <%= comp.media >= 7 ? 'apto' : (comp.media >= 5 ? 'desenvolvimento' : 'inapto') %>">
-                                            <%= comp.media.toFixed(1) %>
-                                        </span>
+                                        <span class="media-nota <%= comp.media >= 7 ? 'apto' : (comp.media >= 5 ? 'desenvolvimento' : 'inapto') %>"><%= comp.media.toFixed(1) %></span>
                                     </div>
                                 </div>
                             <% }); %>
@@ -163,17 +150,13 @@
                         <div class="ranking-list">
                             <% rankingFundamental.forEach((comp, index) => { %>
                                 <div class="ranking-item">
-                                    <div class="ranking-position <%= index === 0 ? 'gold' : (index === 1 ? 'silver' : (index === 2 ? 'bronze' : '')) %>">
-                                        <%= index + 1 %>º
-                                    </div>
+                                    <div class="ranking-position <%= index === 0 ? 'gold' : (index === 1 ? 'silver' : (index === 2 ? 'bronze' : '')) %>"><%= index + 1 %>º</div>
                                     <div class="ranking-info">
                                         <h4><%= comp.nome %></h4>
                                         <p><%= comp.total_avaliacoes %> avaliações</p>
                                     </div>
                                     <div class="ranking-media">
-                                        <span class="media-nota <%= comp.media >= 7 ? 'apto' : (comp.media >= 5 ? 'desenvolvimento' : 'inapto') %>">
-                                            <%= comp.media.toFixed(1) %>
-                                        </span>
+                                        <span class="media-nota <%= comp.media >= 7 ? 'apto' : (comp.media >= 5 ? 'desenvolvimento' : 'inapto') %>"><%= comp.media.toFixed(1) %></span>
                                     </div>
                                 </div>
                             <% }); %>
@@ -190,19 +173,12 @@
 
         <footer class="dash-footer">
             <div class="footer-actions">
-                <a href="/dashboard/edit" class="btn-secondary-dash">
-                    <i class="fas fa-pencil-alt"></i> GERENCIAR COMPETÊNCIAS
-                </a>
-                <a href="/dashboard/graficos" class="btn-secondary-dash">
-                    <i class="fas fa-chart-pie"></i> VER ESTATÍSTICAS
-                </a>
-                <a href="/manuais" class="btn-secondary-dash">
-                    <i class="fas fa-book-open"></i> MANUAL
-                </a>
+                <a href="/dashboard/edit" class="btn-secondary-dash"><i class="fas fa-pencil-alt"></i> GERENCIAR</a>
+                <a href="/dashboard/graficos" class="btn-secondary-dash"><i class="fas fa-chart-pie"></i> ESTATÍSTICAS</a>
+                <a href="/manuais" class="btn-secondary-dash"><i class="fas fa-book-open"></i> MANUAL</a>
             </div>
             <div class="footer-credits">
-                <p>© 2026 AnalisAI</p>
-                <a href="/dashboard/equipe"><p>Time de desenvolvedores</p></a>
+                <p>© 2026 AnalisAI
             </div>
         </footer>
     </div>
@@ -211,7 +187,6 @@
         function showRanking(tipo) {
             document.querySelectorAll('.ranking-tab').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.ranking-content').forEach(content => content.classList.remove('active'));
-            
             if (tipo === 'geral') {
                 document.querySelectorAll('.ranking-tab')[0].classList.add('active');
                 document.getElementById('rankingGeral').classList.add('active');

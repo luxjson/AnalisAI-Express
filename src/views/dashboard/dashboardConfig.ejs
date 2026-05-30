@@ -13,11 +13,25 @@
     <%- include('../partials/barProfessor') %>
     
     <div class="main-layout">
-        <header class="dash-header">
-            <div class="logo">
-                <img src="/IMG/logo3-white.png" alt="AnalisAI">
+       <header class="dash-header">
+            <div class="header-left">
+                <h1>
+                    Configurações Gerais
+                </h1>
             </div>
-            <h2 class="page-title">CONFIGURAÇÕES</h2>
+            
+            <div class="header-user">
+                <div class="user-profile-group">
+                    <div class="user-details">
+                        <span class="user-name"><strong><%= user %></strong></span>
+                        <span class="user-role" style="color: #888888;">Professor</span>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <%- include('../partials/notificacoes', { notificacaoClasse: 'header-icon' }) %>
+                    <a href="/dashboard/config" class="header-icon"><i class="fas fa-cog"></i></a>
+                </div>
+            </div>
         </header>
         
         <main class="dash-content">
@@ -74,9 +88,9 @@
                 
                 <div class="perfil-main">
                     <div class="config-tabs">
-                        <button class="b <%= abaAtiva === 'dados' ? 'active' : '' %>" onclick="mudarAba('dados')">DADOS PESSOAIS</button>
-                        <button class="b <%= abaAtiva === 'notificacoes' ? 'active' : '' %>" onclick="mudarAba('notificacoes')">NOTIFICAÇÕES</button>
-                        <button class="b <%= abaAtiva === 'senha' ? 'active' : '' %>" onclick="mudarAba('senha')">ALTERAR SENHA</button>
+                        <button class="btn-secondary-dash <%= abaAtiva === 'dados' ? 'active' : '' %>" onclick="mudarAba('dados')">DADOS PESSOAIS</button>
+                        <button class="btn-secondary-dash <%= abaAtiva === 'notificacoes' ? 'active' : '' %>" onclick="mudarAba('notificacoes')">NOTIFICAÇÕES</button>
+                        <button class="btn-secondary-dash <%= abaAtiva === 'senha' ? 'active' : '' %>" onclick="mudarAba('senha')">ALTERAR SENHA</button>
                     </div>
                     
                     <div id="abaDados" class="tab-content <%= abaAtiva === 'dados' ? 'active' : '' %>">
@@ -164,7 +178,7 @@
                                 </div>
                         </form>
                         
-                        <button class="b" onclick="salvarConfiguracoes()" style="margin-top: 20px;">
+                        <button class="btn-secondary-dash" onclick="salvarConfiguracoes()" style="margin-top: 20px;">
                             <i class="fas fa-save"></i> SALVAR CONFIGURAÇÕES
                         </button>
                     </div>
@@ -200,11 +214,11 @@
                                 <input type="password" name="confirmar_senha" class="form-input" required>
                             </div>
                             
-                            <button type="submit" class="b">
+                            <button type="submit" class="btn-secondary-dash">
                                 <i class="fas fa-save"></i> ALTERAR SENHA
                             </button>
                         </form>
-                        <div style="margin-top: 30px; padding: 20px; background: #1a1a1a; border-radius: 10px;">
+                        <div style="margin-top: 30px; padding: 20px; background: #21734628; border-radius: 10px;">
                             <p style="color: #888; font-size: 0.9rem;">
                                 <i class="fas fa-shield-alt" style="color: #217346; margin-right: 10px;"></i>
                                 Sua senha é pessoal e intransferível. Não compartilhe com ninguém.
@@ -218,17 +232,17 @@
     
     <script>
         function mudarAba(aba) {
-            document.querySelectorAll('.b').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.btn-secondary-dash').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
             
             if (aba === 'dados') {
-                document.querySelectorAll('.b')[0].classList.add('active');
+                document.querySelectorAll('.btn-secondary-dash')[0].classList.add('active');
                 document.getElementById('abaDados').classList.add('active');
             } else if (aba === 'notificacoes') {
-                document.querySelectorAll('.b')[1].classList.add('active');
+                document.querySelectorAll('.btn-secondary-dash')[1].classList.add('active');
                 document.getElementById('abaNotificacoes').classList.add('active');
             } else {
-                document.querySelectorAll('.b')[2].classList.add('active');
+                document.querySelectorAll('.btn-secondary-dash')[2].classList.add('active');
                 document.getElementById('abaSenha').classList.add('active');
             }
         }

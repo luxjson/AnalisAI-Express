@@ -12,6 +12,7 @@ exports.showTermos = (req, res) => {
 
 exports.showManuais = (req, res) => {
     res.render('manuais', {
+        user: req.session.user,
         userCargo: req.session.userCargo,
         isAdmin: req.session.userCargo === 'Admin'
     });
@@ -19,6 +20,7 @@ exports.showManuais = (req, res) => {
 
 exports.showManualDeUso = (req, res) => {
     res.render('manualDoProfessor', {
+        user: req.session.user,
         userCargo: req.session.userCargo,
         isAdmin: req.session.userCargo === 'Admin'
     });
@@ -26,6 +28,7 @@ exports.showManualDeUso = (req, res) => {
 
 exports.showManualDoAluno = (req, res) => {
     res.render('manualDoAluno', {
+        user: req.session.user,
         userCargo: req.session.userCargo,
         isAdmin: req.session.userCargo === 'Admin'
     });

@@ -3,7 +3,7 @@
     --secondary-color: #030303;
     --card-bg: #070707;
     --text-color: #ffffff;
-    --font-family: 'Inter-Medium';
+    --font-family: 'helvetica';
 }
 
 @font-face {
@@ -11,6 +11,11 @@
     src: url('../FONTs/Inter-Medium.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+}
+
+@font-face {
+    font-family: 'helvetica';
+    src: url('../FONTs/HelveticaNowDisplay-Bold.ttf') format('truetype');
 }
 
 @keyframes fadeInPage {
@@ -87,7 +92,7 @@ body {
 
 .a {
     background: transparent;
-    border: 2px solid #222;
+    border: 2px solid #2e3134;
     color: white;
     padding: 12px 25px;
     cursor: pointer;
@@ -119,7 +124,7 @@ body {
 
 .b {
     background: transparent;
-    border: 2px solid #222;
+    border: 2px solid #2e3134;
     color: var(--text-secondary);
     padding: 12px 25px;
     cursor: pointer;
@@ -173,7 +178,7 @@ body {
 
 .botao-acessar {
     background: transparent;
-    border: 2px solid #222;
+    border: 2px solid #2e3134;
     color: white;
     padding: 18px 60px;
     font-size: 1.1rem;
@@ -254,7 +259,7 @@ body {
 
 .features-section {
     padding: 80px 20px;
-    background-color: #050505;
+    background-color: #030303;
 }
 
 .features-grid {
@@ -291,7 +296,7 @@ details {
     border-radius: 10px;
     margin-bottom: 10px;
     cursor: pointer;
-    border: 2px solid #222;
+    border: 2px solid #2e3134;
 }
 
 details[open] { border-color: var(--primary-color); }

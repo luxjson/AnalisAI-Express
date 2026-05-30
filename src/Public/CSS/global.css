@@ -3,7 +3,7 @@
     --secondary-color: #0e0e0e;
     --footer-color: #0e0e0e;
     --text-color: #ffffff;
-    --font-family: 'Inter-Medium';
+    --font-family: 'helvetica';
 }
 
 @font-face {
@@ -11,6 +11,11 @@
     src: url('../FONTs/Inter-Medium.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+}
+
+@font-face {
+    font-family: 'helvetica';
+    src: url('../FONTs/HelveticaNowDisplay-Bold.ttf') format('truetype');
 }
 
 * { 
