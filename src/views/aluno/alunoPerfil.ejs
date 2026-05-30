@@ -39,7 +39,6 @@
             justify-content: center;
             font-size: 3.8rem;
             color: white;
-            box-shadow: 0 10px 30px rgba(33, 115, 70, 0.2);
         }
 
         .perfil-info-base h2 { color: white; margin-bottom: 5px; }
@@ -78,9 +77,9 @@
         .tabs-nav {
             display: flex;
             gap: 10px;
-            background: #000;
+            background: #131314;
             padding: 8px;
-            border-radius: 20px;
+            border-radius: 200000px;
             margin-bottom: 35px;
             border: 1px solid var(--border-color);
         }
@@ -91,7 +90,7 @@
             background: transparent;
             border: none;
             color: var(--text-gray);
-            border-radius: 14px;
+            border-radius: 10000px;
             cursor: pointer;
             font-size: 0.8rem;
             text-transform: uppercase;
@@ -232,7 +231,6 @@
                 <div class="perfil-main">
                     <nav class="tabs-nav">
                         <button class="tab-btn <%= abaAtiva === 'dados' ? 'active' : '' %>" onclick="mudarAba('dados')">Meus Dados</button>
-                        <button class="tab-btn <%= abaAtiva === 'config' ? 'active' : '' %>" onclick="mudarAba('config')">Notificações</button>
                         <button class="tab-btn <%= abaAtiva === 'senha' ? 'active' : '' %>" onclick="mudarAba('senha')">Segurança</button>
                     </nav>
 
@@ -242,29 +240,6 @@
                             <div class="info-display-item"><label>Turma / Ano</label><div class="value"><i class="fas fa-graduation-cap"></i> <%= aluno.ano_escolar %></div></div>
                             <div class="info-display-item"><label>Idade</label><div class="value"><i class="fas fa-calendar-day"></i> <%= aluno.idade %> anos</div></div>
                         </div>
-                    </div>
-
-                    <div id="abaConfig" class="tab-content <%= abaAtiva === 'config' ? 'active' : '' %>">
-                        <div id="ajaxSucesso" class="alert alert-success" style="display: none; margin-bottom: 20px;"><i class="fas fa-check-circle"></i> Sincronizado!</div>
-                        <form id="configForm">
-                            <div class="toggle-item">
-                                <div><h4 style="color: white; ">Notificações Internas</h4><p style="color: #666;">Alertas dentro da plataforma</p></div>
-                                <div class="toggle-switch active" id="sw_ativas" onclick="toggleOpt(this, 'notificacoes_ativas')"></div>
-                                <input type="hidden" name="notificacoes_ativas" id="notificacoes_ativas" value="true">
-                            </div>
-                            <div class="toggle-item">
-                                <div><h4 style="color: white; ">Avisos de Notas</h4><p style="color: #666;">Receber alertas de novas avaliações</p></div>
-                                <div class="toggle-switch active" id="sw_avaliacoes" onclick="toggleOpt(this, 'notificacoes_avaliacoes')"></div>
-                                <input type="hidden" name="notificacoes_avaliacoes" id="notificacoes_avaliacoes" value="true">
-                            </div>
-                            <div class="toggle-item">
-                                <div><h4 style="color: white;">Cópia por E-mail</h4><p style="color: #666;">Enviar notificações importantes para o e-mail</p></div>
-                                <div class="toggle-switch" id="sw_email" onclick="toggleOpt(this, 'notificacoes_email')"></div>
-                                <input type="hidden" name="notificacoes_email" id="notificacoes_email" value="false">
-                            </div>
-                            <input type="hidden" name="notificacoes_tarefas" id="notificacoes_tarefas" value="true">
-                        </form>
-                        <button class="btn-salvar-green" onclick="salvarConfig()"><i class="fas fa-save"></i> Salvar Preferências</button>
                     </div>
 
                     <div id="abaSenha" class="tab-content <%= abaAtiva === 'senha' ? 'active' : '' %>">
@@ -278,7 +253,7 @@
                             <label style="color: #666; font-size: 0.7rem; margin-top: 20px; margin-bottom: 8px; display: block;">CONFIRMAR NOVA SENHA</label>
                             <input type="password" name="confirmar_senha" class="filter-input" required>
                             
-                            <button type="submit" class="btn-salvar-green" style="margin-top: 30px;"><i class="fas fa-key"></i> Atualizar Senha</button>
+                            <button type="submit" class="btn-secondary-dash" style="margin-top: 30px;"><i class="fas fa-key"></i> Atualizar Senha</button>
                         </form>
                     </div>
                 </div>
@@ -291,7 +266,7 @@
             document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             document.getElementById('aba' + abaId.charAt(0).toUpperCase() + abaId.slice(1)).classList.add('active');
-            const btns = {'dados':0, 'config':1, 'senha':2};
+            const btns = {'dados':0, 'senha':1};
             document.querySelectorAll('.tab-btn')[btns[abaId]].classList.add('active');
             const url = new URL(window.location);
             url.searchParams.set('aba', abaId);
@@ -306,7 +281,6 @@
         function salvarConfig() {
             const data = {
                 notificacoes_ativas: document.getElementById('notificacoes_ativas').value === 'true',
-                notificacoes_email: document.getElementById('notificacoes_email').value === 'true',
                 notificacoes_avaliacoes: document.getElementById('notificacoes_avaliacoes').value === 'true',
                 notificacoes_tarefas: true
             };

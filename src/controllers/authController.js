@@ -46,7 +46,7 @@ exports.showLogin = (req, res) => {
 exports.loginProfessor = async (req, res) => {
     const { usuario, senha } = req.body;
     try {
-        const result = await db.query('SELECT * FROM usuarios WHERE email = $1', [usuario]);
+        const result = await db.query('SELECT * FROM usuarios WHERE email = $1', [usuario.toLowerCase()]);
         if (result.rows.length === 0) {
             req.flash('error_msg', 'E-mail não encontrado');
             return res.render('login', { error_msg: req.flash('error_msg')[0], success_msg: null, tipo: 'professor' });
@@ -80,7 +80,9 @@ exports.loginProfessor = async (req, res) => {
 };
 
 exports.loginAluno = async (req, res) => {
-    const { matricula, email, senha } = req.body;
+    let { matricula, email, senha } = req.body;
+    matricula = matricula.toUpperCase();
+    email = email.toLowerCase();
     const tipo = 'aluno';
     if (!matricula && !email) {
         req.flash('error_msg', 'Informe matrícula ou e-mail');

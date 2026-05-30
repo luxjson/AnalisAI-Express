@@ -81,7 +81,7 @@
                                 <tr>
                                     <td><%= user.id %></td>
                                     <td><%= user.nome %></td>
-                                    <td><%= user.email %></td>
+                                    <td><%= user.email.toLowerCase() %></td>
                                     <td><%= user.cargo %></td>
                                     <td>
                                         <span class="status <%= user.status === 'ATIVO' ? 'apto' : 'inapto' %>">
@@ -89,7 +89,7 @@
                                         </span>
                                     </td>
                                     <td class="td-actions">
-                                        <button class="btn-table-add" onclick="editUser('<%= user.id %>', '<%= user.nome %>', '<%= user.email %>', '<%= user.cargo %>', '<%= user.status %>')" title="Editar">
+                                        <button class="btn-table-add" onclick="editUser('<%= user.id %>', '<%= user.nome %>', '<%= user.email.toLowerCase() %>', '<%= user.cargo %>', '<%= user.status %>')" title="Editar">
                                             <i class="fa-solid fa-pen"></i>
                                         </button>
                                         <% if (user.id !== userId) { %>
@@ -236,9 +236,9 @@
         }
 
         document.getElementById('userSearchInput').addEventListener('keyup', function() {
-            const filter = this.value.toUpperCase();
+            const filter = this.value.toLowerCase();
             document.querySelectorAll("#userTableBody tr").forEach(row => {
-                const text = row.textContent.toUpperCase();
+                const text = row.textContent.toLowerCase();
                 row.style.display = text.includes(filter) ? "" : "none";
             });
         });
