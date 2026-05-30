@@ -271,7 +271,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #030303;
+    background-color: var(--bg-dark);
     z-index: 100000;
     padding: 25px;
     align-items: center;
@@ -286,8 +286,8 @@
 }
 
 .restriction-card {
-    background-color: #0d0d0d;
-    border: 1px solid #2e3134;
+    background-color: var(--sidebar-bg);
+    border: 2px solid #2e3134;
     width: 100%;
     max-width: 420px;
     padding: 60px 40px;
@@ -354,7 +354,6 @@
 
 .restriction-card p span {
     color: white;
-    font-weight: bold;
 }
 
 .restriction-card strong {
@@ -396,4 +395,90 @@
 @keyframes slideUpBlocker {
     from { opacity: 0; transform: translateY(30px) scale(0.9); }
     to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+    /* ============================================================
+   RESPONSIVIDADE MOBILE - SIDEBAR & MODAL
+   ============================================================ */
+@media screen and (max-width: 768px) {
+    /* Transforma a Sidebar em Bottom Bar */
+    .sidebar {
+        width: 100%;
+        height: 65px;
+        flex-direction: row;
+        top: auto;
+        bottom: 0;
+        padding: 0 10px;
+        border-right: none;
+        border-top: 1px solid #262626;
+    }
+
+    /* Alinha as seções horizontalmente */
+    .sidebar-top, .sidebar-bottom {
+        flex-direction: row;
+        width: auto;
+        gap: 5px;
+    }
+
+    /* Esconde elementos para limpar o visual mobile */
+    .logo-container, 
+    .divider, 
+    .link-text, 
+    .active-indicator {
+        display: none !important;
+    }
+
+    /* Ajusta os links para caberem lado a lado */
+    .side-link {
+        margin-bottom: 0;
+        width: 36px;
+        height: 36px;
+        justify-content: center;
+    }
+
+    .icon-box {
+        width: 42px;
+        height: 42px;
+        font-size: 1.2rem;
+    }
+
+    /* Ajuste do Modal no Mobile */
+    .modal-new-card {
+        width: 92%;
+        padding: 40px 20px;
+        border-radius: 24px;
+    }
+
+    .modal-new-card::before {
+        width: 60px; /* Linha vermelha menor */
+    }
+
+    .modal-new-logo {
+        width: 130px;
+    }
+
+    .modal-new-info-grid {
+        gap: 20px; /* Reduz o espaço entre os itens do grid */
+    }
+
+    .modal-new-text {
+        font-size: 13px;
+    }
+
+    /* Garante que o conteúdo da página não fique escondido atrás da barra */
+    .main-layout {
+        margin-left: 0 !important;
+        margin-bottom: 65px !important; /* Espaço para a bottom bar */
+    }
+}
+
+/* Ajuste extra para celulares muito pequenos */
+@media screen and (max-width: 380px) {
+    .sidebar {
+        padding: 0 5px;
+    }
+    .icon-box {
+        width: 38px;
+        height: 38px;
+    }
 }

@@ -561,8 +561,10 @@ body.dash-body {
 
 @media screen and (max-width: 768px) {
     .main-layout {
-        margin-left: 0;
-        margin-bottom: 80px;
+        margin-top: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        margin-bottom: 100px;
         padding: 20px;
     }
 
@@ -596,6 +598,10 @@ body.dash-body {
     .btn-secondary-dash {
         width: 100%;
         justify-content: center;
+    }
+
+    .footer-credits {
+        display: none
     }
 }
 
