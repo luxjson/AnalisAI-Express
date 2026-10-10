@@ -26,172 +26,140 @@ export default function Aluno_alunoTarefas({ data, handlers }) {
         />
         <LoadingElement as="div" className={"main-layout"} root={true}>
           <PageHeader key="page-header" data={data} handlers={handlers} />
-          <LoadingElement as="main" className={"dash-content"}>
+          <main className={"dash-content"}>
             {(() => {
               const nodes = [];
               nodes.push(
-                <LoadingElement
-                  as="section"
+                <section
                   className={"welcome-banner"}
                   style={styleFrom(
                     "background: linear-gradient(90deg, #1b5e38 0%, #217346 100%);",
                   )}
                   key={nodes.length}
                 >
-                  <LoadingElement as="div" className={"banner-text"}>
-                    <LoadingElement as="h1">
-                      <LoadingElement
-                        as="i"
-                        className={"fas fa-tasks"}
-                      ></LoadingElement>
+                  <div className={"banner-text"}>
+                    <h1>
+                      <i className={"fas fa-tasks"}></i>
                       {" Minhas Tarefas"}
-                    </LoadingElement>
-                    <LoadingElement as="p">
+                    </h1>
+                    <p>
                       {
                         "Gerencie suas entregas, acompanhe prazos e visualize os feedbacks dos seus professores em um só lugar."
                       }
-                    </LoadingElement>
-                  </LoadingElement>
-                </LoadingElement>,
+                    </p>
+                  </div>
+                </section>,
               );
               if (success_msg && success_msg.length > 0) {
                 nodes.push(
-                  <LoadingElement
-                    as="div"
+                  <div
                     className={"alert alert-success"}
                     style={styleFrom("margin-bottom: 25px;")}
                     key={nodes.length}
                   >
-                    <LoadingElement
-                      as="i"
-                      className={"fas fa-check-circle"}
-                    ></LoadingElement>
+                    <i className={"fas fa-check-circle"}></i>
                     <LoadingValue
                       slot="aluno/alunoTarefas:1"
                       width="12ch"
                       known={false}
                       value={success_msg}
                     />
-                  </LoadingElement>,
+                  </div>,
                 );
               }
               if (error_msg && error_msg.length > 0) {
                 nodes.push(
-                  <LoadingElement
-                    as="div"
+                  <div
                     className={"alert alert-error"}
                     style={styleFrom("margin-bottom: 25px;")}
                     key={nodes.length}
                   >
-                    <LoadingElement
-                      as="i"
-                      className={"fas fa-exclamation-triangle"}
-                    ></LoadingElement>
+                    <i className={"fas fa-exclamation-triangle"}></i>
                     <LoadingValue
                       slot="aluno/alunoTarefas:2"
                       width="12ch"
                       known={false}
                       value={error_msg}
                     />
-                  </LoadingElement>,
+                  </div>,
                 );
               }
               nodes.push(
-                <LoadingElement
-                  as="section"
-                  className={"section-container"}
-                  key={nodes.length}
-                >
-                  <LoadingElement as="div" className={"dash-grid"}>
-                    <LoadingElement as="div" className={"stats-card"}>
-                      <LoadingElement as="h3">{"TOTAL"}</LoadingElement>
-                      <LoadingElement as="p" className={"stats-number"}>
+                <section className={"section-container"} key={nodes.length}>
+                  <div className={"dash-grid"}>
+                    <div className={"stats-card"}>
+                      <h3>{"TOTAL"}</h3>
+                      <p className={"stats-number"}>
                         <LoadingValue
                           slot="aluno/alunoTarefas:3"
                           width="3ch"
                           known={false}
                           value={stats.total || 0}
                         />
-                      </LoadingElement>
-                    </LoadingElement>
-                    <LoadingElement
-                      as="div"
-                      className={"stats-card desenvolvimento"}
-                    >
-                      <LoadingElement as="h3">{"PENDENTES"}</LoadingElement>
-                      <LoadingElement as="p" className={"stats-number"}>
+                      </p>
+                    </div>
+                    <div className={"stats-card desenvolvimento"}>
+                      <h3>{"PENDENTES"}</h3>
+                      <p className={"stats-number"}>
                         <LoadingValue
                           slot="aluno/alunoTarefas:4"
                           width="3ch"
                           known={false}
                           value={stats.pendentes || 0}
                         />
-                      </LoadingElement>
-                    </LoadingElement>
-                    <LoadingElement
-                      as="div"
+                      </p>
+                    </div>
+                    <div
                       className={"stats-card"}
                       style={styleFrom("border-left: 6px solid #70b5f9;")}
                     >
-                      <LoadingElement as="h3">{"AGUARDANDO"}</LoadingElement>
-                      <LoadingElement as="p" className={"stats-number"}>
+                      <h3>{"AGUARDANDO"}</h3>
+                      <p className={"stats-number"}>
                         <LoadingValue
                           slot="aluno/alunoTarefas:5"
                           width="3ch"
                           known={false}
                           value={stats.aguardando || 0}
                         />
-                      </LoadingElement>
-                    </LoadingElement>
-                    <LoadingElement as="div" className={"stats-card apto"}>
-                      <LoadingElement as="h3">{"CONCLUÍDAS"}</LoadingElement>
-                      <LoadingElement as="p" className={"stats-number"}>
+                      </p>
+                    </div>
+                    <div className={"stats-card apto"}>
+                      <h3>{"CONCLUÍDAS"}</h3>
+                      <p className={"stats-number"}>
                         <LoadingValue
                           slot="aluno/alunoTarefas:6"
                           width="3ch"
                           known={false}
                           value={stats.concluidas || 0}
                         />
-                      </LoadingElement>
-                    </LoadingElement>
-                    <LoadingElement as="div" className={"stats-card inapto"}>
-                      <LoadingElement as="h3">{"ATRASADAS"}</LoadingElement>
-                      <LoadingElement as="p" className={"stats-number"}>
+                      </p>
+                    </div>
+                    <div className={"stats-card inapto"}>
+                      <h3>{"ATRASADAS"}</h3>
+                      <p className={"stats-number"}>
                         <LoadingValue
                           slot="aluno/alunoTarefas:7"
                           width="3ch"
                           known={false}
                           value={stats.atrasadas || 0}
                         />
-                      </LoadingElement>
-                    </LoadingElement>
-                  </LoadingElement>
-                </LoadingElement>,
+                      </p>
+                    </div>
+                  </div>
+                </section>,
               );
               nodes.push(
-                <LoadingElement
-                  as="section"
-                  className={"section-container"}
-                  key={nodes.length}
-                >
+                <section className={"section-container"} key={nodes.length}>
                   {(() => {
                     const nodes = [];
                     nodes.push(
-                      <LoadingElement
-                        as="h2"
-                        className={"section-title-2"}
-                        key={nodes.length}
-                      >
+                      <h2 className={"section-title-2"} key={nodes.length}>
                         {" LISTA DE ATIVIDADES"}
-                      </LoadingElement>,
+                      </h2>,
                     );
                     if (tarefas && tarefas.length > 0) {
                       nodes.push(
-                        <LoadingElement
-                          as="div"
-                          className={"dash-grid"}
-                          key={nodes.length}
-                        >
+                        <div className={"dash-grid"} key={nodes.length}>
                           {(() => {
                             const nodes = [];
                             tarefas.forEach((tarefa) => {
@@ -225,8 +193,7 @@ export default function Aluno_alunoTarefas({ data, handlers }) {
                                 dataLimite < hoje &&
                                 tarefa.status === "PENDENTE";
                               nodes.push(
-                                <LoadingElement
-                                  as="div"
+                                <div
                                   className={"stats-card"}
                                   style={styleFrom(
                                     "border-left: 6px solid " +
@@ -238,8 +205,7 @@ export default function Aluno_alunoTarefas({ data, handlers }) {
                                   {(() => {
                                     const nodes = [];
                                     nodes.push(
-                                      <LoadingElement
-                                        as="div"
+                                      <div
                                         style={styleFrom(
                                           "display: flex; justify-content: space-between; align-items: center;",
                                         )}
@@ -269,8 +235,7 @@ export default function Aluno_alunoTarefas({ data, handlers }) {
                                           );
                                           if (tarefa.data_limite) {
                                             nodes.push(
-                                              <LoadingElement
-                                                as="span"
+                                              <span
                                                 style={styleFrom(
                                                   "font-size: 0.75rem; color: " +
                                                     (isUrgent
@@ -279,12 +244,11 @@ export default function Aluno_alunoTarefas({ data, handlers }) {
                                                 )}
                                                 key={nodes.length}
                                               >
-                                                <LoadingElement
-                                                  as="i"
+                                                <i
                                                   className={
                                                     "far fa-calendar-alt"
                                                   }
-                                                ></LoadingElement>
+                                                ></i>
                                                 <LoadingValue
                                                   slot="aluno/alunoTarefas:9"
                                                   width="10ch"
@@ -293,20 +257,16 @@ export default function Aluno_alunoTarefas({ data, handlers }) {
                                                     tarefa.data_limite_formatada
                                                   }
                                                 />
-                                              </LoadingElement>,
+                                              </span>,
                                             );
                                           }
                                           return nodes;
                                         })()}
-                                      </LoadingElement>,
+                                      </div>,
                                     );
                                     nodes.push(
-                                      <LoadingElement
-                                        as="div"
-                                        key={nodes.length}
-                                      >
-                                        <LoadingElement
-                                          as="h3"
+                                      <div key={nodes.length}>
+                                        <h3
                                           style={styleFrom(
                                             "color: var(--text-white); font-size: 1.15rem; margin-bottom: 5px; text-transform: none;",
                                           )}
@@ -317,17 +277,13 @@ export default function Aluno_alunoTarefas({ data, handlers }) {
                                             known={false}
                                             value={tarefa.titulo}
                                           />
-                                        </LoadingElement>
-                                        <LoadingElement
-                                          as="span"
+                                        </h3>
+                                        <span
                                           style={styleFrom(
                                             "font-size: 0.7rem; color: var(--text-gray); text-transform: uppercase; letter-spacing: 1px;",
                                           )}
                                         >
-                                          <LoadingElement
-                                            as="i"
-                                            className={"fas fa-tag"}
-                                          ></LoadingElement>
+                                          <i className={"fas fa-tag"}></i>
                                           <LoadingValue
                                             slot="aluno/alunoTarefas:11"
                                             width="min(18ch, 100%)"
@@ -336,13 +292,12 @@ export default function Aluno_alunoTarefas({ data, handlers }) {
                                               tarefa.competencia_nome || "Geral"
                                             }
                                           />
-                                        </LoadingElement>
-                                      </LoadingElement>,
+                                        </span>
+                                      </div>,
                                     );
                                     if (tarefa.descricao) {
                                       nodes.push(
-                                        <LoadingElement
-                                          as="p"
+                                        <p
                                           style={styleFrom(
                                             "font-size: 0.85rem; color: var(--text-gray); line-height: 1.5; margin: 5px 0;",
                                           )}
@@ -367,7 +322,7 @@ export default function Aluno_alunoTarefas({ data, handlers }) {
                                                 : ""
                                             }
                                           />
-                                        </LoadingElement>,
+                                        </p>,
                                       );
                                     }
                                     if (
@@ -375,36 +330,31 @@ export default function Aluno_alunoTarefas({ data, handlers }) {
                                       tarefa.feedback
                                     ) {
                                       nodes.push(
-                                        <LoadingElement
-                                          as="div"
+                                        <div
                                           style={styleFrom(
                                             "background: rgba(212, 160, 23, 0.1); border: 1px solid var(--color-desenvolvimento); padding: 12px; border-radius: 10px;",
                                           )}
                                           key={nodes.length}
                                         >
-                                          <LoadingElement
-                                            as="p"
+                                          <p
                                             style={styleFrom(
                                               "font-size: 0.8rem; color: var(--color-desenvolvimento);",
                                             )}
                                           >
-                                            <LoadingElement
-                                              as="i"
+                                            <i
                                               className={
                                                 "fas fa-exclamation-circle"
                                               }
-                                            ></LoadingElement>
-                                            <LoadingElement as="strong">
-                                              {"Feedback:"}
-                                            </LoadingElement>
+                                            ></i>
+                                            <strong>{"Feedback:"}</strong>
                                             <LoadingValue
                                               slot="aluno/alunoTarefas:14"
                                               width="min(32ch, 100%)"
                                               known={false}
                                               value={tarefa.feedback}
                                             />
-                                          </LoadingElement>
-                                        </LoadingElement>,
+                                          </p>
+                                        </div>,
                                       );
                                     }
                                     if (
@@ -412,8 +362,7 @@ export default function Aluno_alunoTarefas({ data, handlers }) {
                                       tarefa.nota
                                     ) {
                                       nodes.push(
-                                        <LoadingElement
-                                          as="div"
+                                        <div
                                           style={styleFrom(
                                             "display: flex; align-items: center; gap: 15px; background: rgba(255,255,255,0.03); padding: 15px; border-radius: 12px;",
                                           )}
@@ -422,8 +371,7 @@ export default function Aluno_alunoTarefas({ data, handlers }) {
                                           {(() => {
                                             const nodes = [];
                                             nodes.push(
-                                              <LoadingElement
-                                                as="span"
+                                              <span
                                                 className={"media-nota apto"}
                                                 style={styleFrom(
                                                   "font-size: 1.4rem;",
@@ -438,12 +386,11 @@ export default function Aluno_alunoTarefas({ data, handlers }) {
                                                     tarefa.nota,
                                                   ).toFixed(1)}
                                                 />
-                                              </LoadingElement>,
+                                              </span>,
                                             );
                                             if (tarefa.feedback) {
                                               nodes.push(
-                                                <LoadingElement
-                                                  as="p"
+                                                <p
                                                   style={styleFrom(
                                                     "font-size: 0.8rem; color: var(--text-gray); font-style: italic;",
                                                   )}
@@ -457,17 +404,16 @@ export default function Aluno_alunoTarefas({ data, handlers }) {
                                                     value={tarefa.feedback}
                                                   />
                                                   {'"'}
-                                                </LoadingElement>,
+                                                </p>,
                                               );
                                             }
                                             return nodes;
                                           })()}
-                                        </LoadingElement>,
+                                        </div>,
                                       );
                                     }
                                     nodes.push(
-                                      <LoadingElement
-                                        as="div"
+                                      <div
                                         style={styleFrom(
                                           "margin-top: auto; padding-top: 15px;",
                                         )}
@@ -477,8 +423,7 @@ export default function Aluno_alunoTarefas({ data, handlers }) {
                                           const nodes = [];
                                           if (canSubmit) {
                                             nodes.push(
-                                              <LoadingElement
-                                                as="button"
+                                              <button
                                                 className={"btn-secondary-dash"}
                                                 style={styleFrom(
                                                   " justify-content: center;",
@@ -491,12 +436,11 @@ export default function Aluno_alunoTarefas({ data, handlers }) {
                                                 }}
                                                 key={nodes.length}
                                               >
-                                                <LoadingElement
-                                                  as="i"
+                                                <i
                                                   className={
                                                     "fas fa-paper-plane"
                                                   }
-                                                ></LoadingElement>
+                                                ></i>
                                                 <LoadingValue
                                                   slot="aluno/alunoTarefas:17"
                                                   width="12ch"
@@ -508,28 +452,26 @@ export default function Aluno_alunoTarefas({ data, handlers }) {
                                                       : "ENVIAR TAREFA"
                                                   }
                                                 />
-                                              </LoadingElement>,
+                                              </button>,
                                             );
                                           } else if (
                                             tarefa.status === "ENTREGUE"
                                           ) {
                                             nodes.push(
-                                              <LoadingElement
-                                                as="div"
+                                              <div
                                                 style={styleFrom(
                                                   "text-align: center; font-size: 0.8rem; color: var(--text-muted);",
                                                 )}
                                                 key={nodes.length}
                                               >
-                                                <LoadingElement
-                                                  as="i"
+                                                <i
                                                   className={
                                                     "fas fa-check-circle"
                                                   }
                                                   style={styleFrom(
                                                     "color: #70b5f9;",
                                                   )}
-                                                ></LoadingElement>
+                                                ></i>
                                                 {" Entregue em "}
                                                 <LoadingValue
                                                   slot="aluno/alunoTarefas:18"
@@ -539,156 +481,124 @@ export default function Aluno_alunoTarefas({ data, handlers }) {
                                                     tarefa.data_entrega_formatada
                                                   }
                                                 />
-                                              </LoadingElement>,
+                                              </div>,
                                             );
                                           } else if (
                                             tarefa.status === "CONCLUIDA"
                                           ) {
                                             nodes.push(
-                                              <LoadingElement
-                                                as="div"
+                                              <div
                                                 style={styleFrom(
                                                   "text-align: center; font-size: 0.8rem; color: var(--text-muted);",
                                                 )}
                                                 key={nodes.length}
                                               >
-                                                <LoadingElement
-                                                  as="i"
+                                                <i
                                                   className={
                                                     "fas fa-certificate"
                                                   }
                                                   style={styleFrom(
                                                     "color: var(--color-apto);",
                                                   )}
-                                                ></LoadingElement>
+                                                ></i>
                                                 {
                                                   " Atividade Avaliada\n                                        "
                                                 }
-                                              </LoadingElement>,
+                                              </div>,
                                             );
                                           }
                                           return nodes;
                                         })()}
-                                      </LoadingElement>,
+                                      </div>,
                                     );
                                     return nodes;
                                   })()}
-                                </LoadingElement>,
+                                </div>,
                               );
                             });
                             return nodes;
                           })()}
-                        </LoadingElement>,
+                        </div>,
                       );
                     } else {
                       nodes.push(
-                        <LoadingElement
-                          as="div"
+                        <div
                           className={"stats-card"}
                           style={styleFrom(
                             "text-align: center; padding: 80px;",
                           )}
                           key={nodes.length}
                         >
-                          <LoadingElement
-                            as="i"
+                          <i
                             className={"fas fa-tasks"}
                             style={styleFrom(
                               "font-size: 4rem; color: var(--border-color); margin-bottom: 20px;",
                             )}
-                          ></LoadingElement>
-                          <LoadingElement
-                            as="p"
-                            style={styleFrom("color: var(--text-gray);")}
-                          >
+                          ></i>
+                          <p style={styleFrom("color: var(--text-gray);")}>
                             {"Você não possui tarefas pendentes no momento."}
-                          </LoadingElement>
-                        </LoadingElement>,
+                          </p>
+                        </div>,
                       );
                     }
                     return nodes;
                   })()}
-                </LoadingElement>,
+                </section>,
               );
               return nodes;
             })()}
-          </LoadingElement>
-          <LoadingElement as="footer" className={"dash-footer"}>
-            <LoadingElement as="div" className={"footer-actions"}>
-              <LoadingElement
-                as="a"
-                href={"/aluno"}
-                className={"btn-secondary-dash"}
-              >
-                <LoadingElement
-                  as="i"
-                  className={"fas fa-arrow-left"}
-                ></LoadingElement>
+          </main>
+          <footer className={"dash-footer"}>
+            <div className={"footer-actions"}>
+              <a href={"/aluno"} className={"btn-secondary-dash"}>
+                <i className={"fas fa-arrow-left"}></i>
                 {" VOLTAR AO PAINEL\n                "}
-              </LoadingElement>
-            </LoadingElement>
-            <LoadingElement as="div" className={"footer-credits"}>
-              <LoadingElement as="p">{"© 2026 AnalisAI"}</LoadingElement>
-            </LoadingElement>
-          </LoadingElement>
+              </a>
+            </div>
+            <div className={"footer-credits"}>
+              <p>{"© 2026 AnalisAI"}</p>
+            </div>
+          </footer>
         </LoadingElement>
-        <LoadingElement
-          as="div"
-          id={"modalEnvioTarefa"}
-          className={"modal-overlay"}
-        >
-          <LoadingElement as="div" className={"modal-content"}>
-            <LoadingElement
-              as="button"
+        <div id={"modalEnvioTarefa"} className={"modal-overlay"}>
+          <div className={"modal-content"}>
+            <button
               className={"close-btn"}
               onClick={(event) => {
                 handlers.fecharModalEnvio();
               }}
             >
-              <LoadingElement
-                as="i"
-                className={"ph-bold ph-x"}
-              ></LoadingElement>
-            </LoadingElement>
-            <LoadingElement as="h2" className={"section-title-2"}>
+              <i className={"ph-bold ph-x"}></i>
+            </button>
+            <h2 className={"section-title-2"}>
               {"\n                ENVIAR TAREFA\n            "}
-            </LoadingElement>
-            <LoadingElement
-              as="p"
+            </h2>
+            <p
               id={"tarefaTituloEnvio"}
               style={styleFrom(
                 "color: #fff; font-size: 1rem; margin-bottom: 25px; opacity: 0.8;",
               )}
-            ></LoadingElement>
-            <LoadingElement
-              as="form"
+            ></p>
+            <form
               id={"formEnvioTarefa"}
               method={"POST"}
               encType={"multipart/form-data"}
             >
-              <LoadingElement
-                as="input"
-                type={"hidden"}
-                name={"_csrf"}
-                value={csrfToken}
-              />
-              <LoadingElement
-                as="div"
+              <input type={"hidden"} name={"_csrf"} value={csrfToken} />
+              <div
                 style={styleFrom(
                   "display: flex; flex-direction: column; gap: 20px;",
                 )}
               >
-                <LoadingElement as="div">
-                  <LoadingElement
-                    as="label"
+                <div>
+                  <label
                     style={styleFrom(
                       "font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px;",
                     )}
                   >
                     {"Resposta em Texto"}
-                  </LoadingElement>
-                  <LoadingElement
-                    as="textarea"
+                  </label>
+                  <textarea
                     name={"resposta_texto"}
                     style={styleFrom(
                       [
@@ -699,19 +609,17 @@ export default function Aluno_alunoTarefas({ data, handlers }) {
                     )}
                     placeholder={"Descreva sua resposta aqui..."}
                     defaultValue={""}
-                  ></LoadingElement>
-                </LoadingElement>
-                <LoadingElement as="div">
-                  <LoadingElement
-                    as="label"
+                  ></textarea>
+                </div>
+                <div>
+                  <label
                     style={styleFrom(
                       "font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px;",
                     )}
                   >
                     {"Anexar Arquivo"}
-                  </LoadingElement>
-                  <LoadingElement
-                    as="div"
+                  </label>
+                  <div
                     style={styleFrom(
                       "border: 2px dashed var(--border-color); border-radius: 20px; padding: 30px; text-align: center; cursor: pointer; transition: 0.3s;",
                     )}
@@ -727,51 +635,41 @@ export default function Aluno_alunoTarefas({ data, handlers }) {
                       document.getElementById("arquivoInput").click();
                     }}
                   >
-                    <LoadingElement
-                      as="i"
+                    <i
                       className={"fas fa-file-upload"}
                       style={styleFrom(
                         "font-size: 2rem; color: #333; margin-bottom: 10px;",
                       )}
-                    ></LoadingElement>
-                    <LoadingElement
-                      as="p"
-                      style={styleFrom("font-size: 0.8rem; color: #888;")}
-                    >
+                    ></i>
+                    <p style={styleFrom("font-size: 0.8rem; color: #888;")}>
                       {"Clique para selecionar (PDF, Imagens ou Documentos)"}
-                    </LoadingElement>
-                    <LoadingElement
-                      as="input"
+                    </p>
+                    <input
                       type={"file"}
                       id={"arquivoInput"}
                       name={"arquivo"}
                       style={styleFrom("display: none;")}
                     />
-                  </LoadingElement>
-                  <LoadingElement
-                    as="div"
+                  </div>
+                  <div
                     id={"nomeArquivo"}
                     style={styleFrom(
                       "font-size: 0.75rem; color: var(--color-apto); margin-top: 10px; text-align: center;",
                     )}
-                  ></LoadingElement>
-                </LoadingElement>
-                <LoadingElement
-                  as="button"
+                  ></div>
+                </div>
+                <button
                   type={"submit"}
                   className={"btn-secondary-dash"}
                   style={styleFrom("justify-content: center; height: 55px;")}
                 >
-                  <LoadingElement
-                    as="i"
-                    className={"fas fa-paper-plane"}
-                  ></LoadingElement>
+                  <i className={"fas fa-paper-plane"}></i>
                   {" FINALIZAR ENTREGA\n                    "}
-                </LoadingElement>
-              </LoadingElement>
-            </LoadingElement>
-          </LoadingElement>
-        </LoadingElement>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
       </React.Fragment>
     </>
   );
@@ -789,21 +687,19 @@ export function PageHeader({ data, handlers }) {
     csrfToken = null,
   } = data;
   return (
-    <LoadingElement as="header" className={"dash-header"}>
-      <LoadingElement as="div" className={"header-left"}>
-        <LoadingElement as="div" className={"logo"}>
-          <LoadingElement
-            as="img"
+    <header className={"dash-header"}>
+      <div className={"header-left"}>
+        <div className={"logo"}>
+          <img
             src={"/images/logo3-green.png"}
             alt={"AnalisAI"}
             style={styleFrom("height: 40px;")}
           />
-        </LoadingElement>
-      </LoadingElement>
-      <LoadingElement as="div" className={"header-user"}>
-        <LoadingElement as="div" className={"user-profile-group"}>
-          <LoadingElement
-            as="div"
+        </div>
+      </div>
+      <div className={"header-user"}>
+        <div className={"user-profile-group"}>
+          <div
             className={"user-avatar"}
             style={styleFrom("background: var(--color-apto);")}
           >
@@ -813,29 +709,29 @@ export function PageHeader({ data, handlers }) {
               known={true}
               value={aluno.nome.charAt(0).toUpperCase()}
             />
-          </LoadingElement>
-          <LoadingElement as="div" className={"user-details"}>
-            <LoadingElement as="span" className={"user-name"}>
-              <LoadingElement as="strong">
+          </div>
+          <div className={"user-details"}>
+            <span className={"user-name"}>
+              <strong>
                 <LoadingValue
                   slot="aluno/alunoTarefas:20"
                   width="min(18ch, 100%)"
                   known={true}
                   value={aluno.nome}
                 />
-              </LoadingElement>
-            </LoadingElement>
-            <LoadingElement as="span" className={"user-email"}>
+              </strong>
+            </span>
+            <span className={"user-email"}>
               <LoadingValue
                 slot="aluno/alunoTarefas:21"
                 width="12ch"
                 known={true}
                 value={aluno.ano_escolar}
               />
-            </LoadingElement>
-          </LoadingElement>
-        </LoadingElement>
-        <LoadingElement as="div" className={"header-actions"}>
+            </span>
+          </div>
+        </div>
+        <div className={"header-actions"}>
           <Partials_notificacoes
             data={{
               ...data,
@@ -845,8 +741,8 @@ export function PageHeader({ data, handlers }) {
             }}
             handlers={handlers}
           />
-        </LoadingElement>
-      </LoadingElement>
-    </LoadingElement>
+        </div>
+      </div>
+    </header>
   );
 }

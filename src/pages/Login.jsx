@@ -12,83 +12,56 @@ export default function Login({ data, handlers }) {
     <>
       <React.Fragment>
         <LoadingElement as="div" className={"login-wrapper"} root={true}>
-          <LoadingElement as="div" style={styleFrom("margin-bottom: 20px;")}>
-            <LoadingElement
-              as="a"
+          <div style={styleFrom("margin-bottom: 20px;")}>
+            <a
               href={"/"}
               className={"btn-secondary-dash"}
               style={styleFrom("text-decoration: none;")}
             >
-              <LoadingElement
-                as="i"
-                className={"fas fa-undo-alt"}
-              ></LoadingElement>
+              <i className={"fas fa-undo-alt"}></i>
               {" VOLTAR\n            "}
-            </LoadingElement>
-          </LoadingElement>
-          <LoadingElement as="div" className={"login-card"}>
+            </a>
+          </div>
+          <div className={"login-card"}>
             {(() => {
               const nodes = [];
               nodes.push(
-                <LoadingElement
-                  as="div"
-                  className={"login-logo"}
-                  key={nodes.length}
-                >
-                  <LoadingElement
-                    as="img"
+                <div className={"login-logo"} key={nodes.length}>
+                  <img
                     src={"/images/logo3-white.png"}
                     alt={"AnalisAI"}
                     id={"logoimg"}
                   />
-                </LoadingElement>,
+                </div>,
               );
               if (error_msg && error_msg.length > 0) {
                 nodes.push(
-                  <LoadingElement
-                    as="div"
-                    className={"alert-box error"}
-                    key={nodes.length}
-                  >
-                    <LoadingElement
-                      as="i"
-                      className={"fas fa-exclamation-circle"}
-                    ></LoadingElement>
+                  <div className={"alert-box error"} key={nodes.length}>
+                    <i className={"fas fa-exclamation-circle"}></i>
                     <LoadingValue
                       slot="login:1"
                       width="12ch"
                       known={false}
                       value={error_msg}
                     />
-                  </LoadingElement>,
+                  </div>,
                 );
               }
               if (success_msg && success_msg.length > 0) {
                 nodes.push(
-                  <LoadingElement
-                    as="div"
-                    className={"alert-box success"}
-                    key={nodes.length}
-                  >
-                    <LoadingElement
-                      as="i"
-                      className={"fas fa-check-circle"}
-                    ></LoadingElement>
+                  <div className={"alert-box success"} key={nodes.length}>
+                    <i className={"fas fa-check-circle"}></i>
                     <LoadingValue
                       slot="login:2"
                       width="12ch"
                       known={false}
                       value={success_msg}
                     />
-                  </LoadingElement>,
+                  </div>,
                 );
               }
               nodes.push(
-                <LoadingElement
-                  as="div"
-                  className={"login-tabs"}
-                  key={nodes.length}
-                >
+                <div className={"login-tabs"} key={nodes.length}>
                   <LoadingElement
                     as="button"
                     className={
@@ -114,7 +87,7 @@ export default function Login({ data, handlers }) {
                   >
                     {"ALUNO"}
                   </LoadingElement>
-                </LoadingElement>,
+                </div>,
               );
               nodes.push(
                 <LoadingElement
@@ -127,21 +100,14 @@ export default function Login({ data, handlers }) {
                   key={nodes.length}
                   tone={true}
                 >
-                  <LoadingElement
-                    as="form"
+                  <form
                     action={"/login/professor"}
                     method={"POST"}
                     style={styleFrom("display: flex;flex-direction: column;")}
                   >
-                    <LoadingElement
-                      as="input"
-                      type={"hidden"}
-                      name={"_csrf"}
-                      value={csrfToken}
-                    />
-                    <LoadingElement as="div" className={"input-group"}>
-                      <LoadingElement
-                        as="input"
+                    <input type={"hidden"} name={"_csrf"} value={csrfToken} />
+                    <div className={"input-group"}>
+                      <input
                         type={"text"}
                         name={"usuario"}
                         placeholder={"E-MAIL INSTITUCIONAL"}
@@ -151,32 +117,26 @@ export default function Login({ data, handlers }) {
                         }}
                         required={true}
                       />
-                    </LoadingElement>
-                    <LoadingElement as="div" className={"input-group"}>
-                      <LoadingElement
-                        as="input"
+                    </div>
+                    <div className={"input-group"}>
+                      <input
                         type={"password"}
                         name={"senha"}
                         placeholder={"SENHA"}
                         required={true}
                       />
-                    </LoadingElement>
-                    <LoadingElement
-                      as="button"
+                    </div>
+                    <button
                       type={"submit"}
                       className={"btn-secondary-dash"}
                       style={styleFrom("justify-content: center;")}
                     >
                       {"ENTRAR NO SISTEMA"}
-                    </LoadingElement>
-                  </LoadingElement>
-                  <LoadingElement
-                    as="a"
-                    href={"/esqueci-senha"}
-                    className={"link-esqueci"}
-                  >
+                    </button>
+                  </form>
+                  <a href={"/esqueci-senha"} className={"link-esqueci"}>
                     {"Esqueci minha senha"}
-                  </LoadingElement>
+                  </a>
                 </LoadingElement>,
               );
               nodes.push(
@@ -189,33 +149,20 @@ export default function Login({ data, handlers }) {
                   key={nodes.length}
                   tone={true}
                 >
-                  <LoadingElement as="div" className={"info-box-login"}>
-                    <LoadingElement
-                      as="i"
-                      className={"fas fa-info-circle"}
-                    ></LoadingElement>
+                  <div className={"info-box-login"}>
+                    <i className={"fas fa-info-circle"}></i>
                     {
                       " Use sua matrícula ou e-mail cadastrado\n                "
                     }
-                  </LoadingElement>
-                  <LoadingElement
-                    as="form"
+                  </div>
+                  <form
                     action={"/login/aluno"}
                     method={"POST"}
                     style={styleFrom("display: flex;flex-direction: column;")}
                   >
-                    <LoadingElement
-                      as="input"
-                      type={"hidden"}
-                      name={"_csrf"}
-                      value={csrfToken}
-                    />
-                    <LoadingElement
-                      as="div"
-                      className={"input-group input-group-aluno"}
-                    >
-                      <LoadingElement
-                        as="input"
+                    <input type={"hidden"} name={"_csrf"} value={csrfToken} />
+                    <div className={"input-group input-group-aluno"}>
+                      <input
                         type={"text"}
                         name={"matricula"}
                         placeholder={"MATRÍCULA"}
@@ -224,13 +171,9 @@ export default function Login({ data, handlers }) {
                             event.currentTarget.value.toLowerCase();
                         }}
                       />
-                    </LoadingElement>
-                    <LoadingElement
-                      as="div"
-                      className={"input-group input-group-aluno"}
-                    >
-                      <LoadingElement
-                        as="input"
+                    </div>
+                    <div className={"input-group input-group-aluno"}>
+                      <input
                         type={"email"}
                         name={"email"}
                         onInput={(event) => {
@@ -239,39 +182,30 @@ export default function Login({ data, handlers }) {
                         }}
                         placeholder={"E-MAIL"}
                       />
-                    </LoadingElement>
-                    <LoadingElement
-                      as="div"
-                      className={"input-group input-group-aluno"}
-                    >
-                      <LoadingElement
-                        as="input"
+                    </div>
+                    <div className={"input-group input-group-aluno"}>
+                      <input
                         type={"password"}
                         name={"senha"}
                         placeholder={"SENHA"}
                         required={true}
                       />
-                    </LoadingElement>
-                    <LoadingElement
-                      as="button"
+                    </div>
+                    <button
                       type={"submit"}
                       className={"btn-secondary-dash"}
                       style={styleFrom("justify-content: center;")}
                     >
                       {"ENTRAR NO SISTEMA"}
-                    </LoadingElement>
-                  </LoadingElement>
+                    </button>
+                  </form>
                 </LoadingElement>,
               );
               return nodes;
             })()}
-          </LoadingElement>
-          <LoadingElement
-            as="footer"
-            style={styleFrom("margin-top: 30px; text-align: center;")}
-          >
-            <LoadingElement
-              as="a"
+          </div>
+          <footer style={styleFrom("margin-top: 30px; text-align: center;")}>
+            <a
               href={"/termos"}
               className={"btn-secondary-dash"}
               style={styleFrom(
@@ -279,8 +213,8 @@ export default function Login({ data, handlers }) {
               )}
             >
               {"\n                TERMOS DE SERVIÇO\n            "}
-            </LoadingElement>
-          </LoadingElement>
+            </a>
+          </footer>
         </LoadingElement>
       </React.Fragment>
     </>

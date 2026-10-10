@@ -6,66 +6,40 @@ export default function Dashboard_dashboardEquipe({ data, handlers }) {
     <>
       <React.Fragment>
         <LoadingElement as="div" className={"team-wrapper"} root={true}>
-          <LoadingElement as="div" className={"team-logo"}>
-            <LoadingElement
-              as="img"
-              src={"/images/logo3-white.png"}
-              alt={"AnalisAI"}
-            />
-            <LoadingElement as="h3">{"Time de Desenvolvimento"}</LoadingElement>
-          </LoadingElement>
-          <LoadingElement as="div" className={"team-card"}>
-            <LoadingElement as="div" className={"team-grid"}>
-              <LoadingElement as="div" className={"team-section"}>
-                <LoadingElement as="div" className={"team-section-title"}>
-                  <LoadingElement
-                    as="i"
-                    className={"ph-bold ph-pencil"}
-                  ></LoadingElement>
+          <div className={"team-logo"}>
+            <img src={"/images/logo3-white.png"} alt={"AnalisAI"} />
+            <h3>{"Time de Desenvolvimento"}</h3>
+          </div>
+          <div className={"team-card"}>
+            <div className={"team-grid"}>
+              <div className={"team-section"}>
+                <div className={"team-section-title"}>
+                  <i className={"ph-bold ph-pencil"}></i>
                   {" Front-end\n                    "}
-                </LoadingElement>
-                <LoadingElement as="p">
-                  {"Lucas Eduardo Duarte Pereira"}
-                </LoadingElement>
-                <LoadingElement as="p">
-                  {"Ellefer Fernanda Bovaroti Rizzo"}
-                </LoadingElement>
-              </LoadingElement>
-              <LoadingElement as="div" className={"team-section"}>
-                <LoadingElement as="div" className={"team-section-title"}>
-                  <LoadingElement
-                    as="i"
-                    className={"ph-bold ph-terminal-window"}
-                  ></LoadingElement>
+                </div>
+                <p>{"Lucas Eduardo Duarte Pereira"}</p>
+                <p>{"Ellefer Fernanda Bovaroti Rizzo"}</p>
+              </div>
+              <div className={"team-section"}>
+                <div className={"team-section-title"}>
+                  <i className={"ph-bold ph-terminal-window"}></i>
                   {" Back-end\n                    "}
-                </LoadingElement>
-                <LoadingElement as="p">
-                  {"Lucas Eduardo Duarte Pereira"}
-                </LoadingElement>
-                <LoadingElement as="p">
-                  {"Isabella Li Affa Sanches"}
-                </LoadingElement>
-              </LoadingElement>
-              <LoadingElement as="div" className={"team-section"}>
-                <LoadingElement as="div" className={"team-section-title"}>
-                  <LoadingElement
-                    as="i"
-                    className={"ph-bold ph-database"}
-                  ></LoadingElement>
+                </div>
+                <p>{"Lucas Eduardo Duarte Pereira"}</p>
+                <p>{"Isabella Li Affa Sanches"}</p>
+              </div>
+              <div className={"team-section"}>
+                <div className={"team-section-title"}>
+                  <i className={"ph-bold ph-database"}></i>
                   {" Banco de Dados\n                    "}
-                </LoadingElement>
-                <LoadingElement as="p">
-                  {"Isabella Li Affa Sanches"}
-                </LoadingElement>
-                <LoadingElement as="p">
-                  {"Luiz Otávio da Silva Mattarugo"}
-                </LoadingElement>
-              </LoadingElement>
-            </LoadingElement>
-            <LoadingElement as="div" className={"team-divider"}>
-              <LoadingElement as="div" className={"team-actions"}>
-                <LoadingElement
-                  as="a"
+                </div>
+                <p>{"Isabella Li Affa Sanches"}</p>
+                <p>{"Luiz Otávio da Silva Mattarugo"}</p>
+              </div>
+            </div>
+            <div className={"team-divider"}>
+              <div className={"team-actions"}>
+                <a
                   href={"#"}
                   onClick={(event) => {
                     event.preventDefault();
@@ -73,26 +47,16 @@ export default function Dashboard_dashboardEquipe({ data, handlers }) {
                   }}
                   className={"btn-secondary-dash"}
                 >
-                  <LoadingElement
-                    as="i"
-                    className={"ph-bold ph-arrow-left"}
-                  ></LoadingElement>
+                  <i className={"ph-bold ph-arrow-left"}></i>
                   {" Voltar ao Painel\n                    "}
-                </LoadingElement>
-                <LoadingElement
-                  as="a"
-                  href={"/dashboard"}
-                  className={"btn-secondary-dash"}
-                >
-                  <LoadingElement
-                    as="i"
-                    className={"ph-bold ph-house"}
-                  ></LoadingElement>
+                </a>
+                <a href={"/dashboard"} className={"btn-secondary-dash"}>
+                  <i className={"ph-bold ph-house"}></i>
                   {" Dashboard\n                    "}
-                </LoadingElement>
-              </LoadingElement>
-            </LoadingElement>
-          </LoadingElement>
+                </a>
+              </div>
+            </div>
+          </div>
         </LoadingElement>
       </React.Fragment>
     </>

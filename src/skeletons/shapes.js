@@ -1,55 +1,6 @@
-export const rows = (length, create) =>
+const rows = (length, create) =>
   Array.from({ length }, (_, index) => create(index));
-export const competence = () => ({
-  id: 0,
-  nome: "",
-  categoria: "",
-  nota: 0,
-  gradeClass: "skeleton",
-  observacoes: " ",
-  data_registro: "1970-01-01",
-  data_formatada: "",
-});
-export const student = () => ({
-  id: 0,
-  nome: "",
-  email: "",
-  ano_escolar: "",
-  idade: 0,
-  presenca: 0,
-  matricula: "",
-  media_competencias: 0,
-  nivel: "",
-  nivelClass: "skeleton",
-  competencias: rows(2, competence),
-});
-export const ranking = () => ({
-  nome: "",
-  total_avaliacoes: 0,
-  media: 0,
-  gradeClass: "skeleton",
-});
-export const task = () => ({
-  id: 0,
-  tarefa_aluno_id: 0,
-  titulo: "",
-  descricao: " ",
-  turma: "",
-  prioridade: "MEDIA",
-  status: "PENDENTE",
-  data_entrega: "1970-01-01",
-  data_limite: "1970-01-01",
-  data_limite_formatada: "",
-  professor_nome: "",
-  competencia_nome: "",
-  total_alunos: 0,
-  concluidas: 0,
-  entregues: 0,
-  devolvidas: 0,
-  atrasadas: 0,
-  feedback: "",
-  nota: null,
-});
+
 export function calendarShape(search = "") {
   const params = new URLSearchParams(search),
     today = new Date();

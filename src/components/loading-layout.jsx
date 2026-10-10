@@ -1,4 +1,5 @@
 import React, { createContext, useContext } from "react";
+import { SkeletonSidebarContent } from "./Skeleton";
 
 const LoadingContext = createContext(null);
 
@@ -15,45 +16,8 @@ export function SkeletonFrame({ view, children }) {
   );
 }
 
-export function LoadingValue({ value, slot, width = "12ch" }) {
-  const view = useContext(LoadingContext);
-  if (!view) return <>{value}</>;
-  return (
-    <span
-      className="skeleton-shape skeleton-value"
-      data-skeleton-slot={slot}
-      aria-hidden="true"
-      style={{ width }}
-    >
-      {"\u00a0"}
-    </span>
-  );
-}
-
-function maskText(children) {
-  return React.Children.map(children, (child) => {
-    if (
-      (typeof child !== "string" && typeof child !== "number") ||
-      !String(child).trim()
-    )
-      return child;
-    return (
-      <span className="skeleton-copy" aria-hidden="true">
-        {child}
-      </span>
-    );
-  });
-}
-
-function placeholderKind(tag, props) {
-  if (
-    ["button", "input", "select", "textarea", "summary"].includes(tag) ||
-    (tag === "a" && /(?:^|\s)btn(?:-|\s|$)/.test(props.className || ""))
-  )
-    return "control";
-  if (tag === "i") return "icon";
-  if (["img", "svg", "video", "iframe", "object"].includes(tag)) return "media";
-  return undefined;
+export function LoadingValue({ value }) {
+  return <>{value}</>;
 }
 
 export function LoadingElement({
@@ -66,49 +30,38 @@ export function LoadingElement({
   ...props
 }) {
   const view = useContext(LoadingContext);
-  if (!view) return <Tag {...props}>{children}</Tag>;
-  const kind = placeholderKind(Tag, props);
-  const rawText = ["option", "textarea", "title", "style"].includes(Tag);
-  if (Tag === "script") return null;
-  const loading = {
-    ...(Tag === "iframe" ? { src: undefined, srcDoc: "" } : {}),
-    ...(root
-      ? {
-          className: `${props.className || ""} skeleton-route`,
-          inert: true,
-          "aria-busy": true,
-          "data-skeleton-view": view,
-        }
-      : {}),
-    ...(tone ? { "data-skeleton-tone": true } : {}),
-    ...(fill ? { "data-skeleton-fill": true } : {}),
-    ...(options ? { "data-skeleton-options": true } : {}),
-    ...(kind && !(Tag === "input" && props.type === "hidden")
-      ? { "data-skeleton-kind": kind, "aria-hidden": true, inert: true }
-      : {}),
-  };
-  return (
-    <Tag {...props} {...loading}>
-      {rawText ? children : maskText(children)}
-    </Tag>
-  );
+  if (view && root && Tag === "aside") {
+    return (
+      <Tag
+        {...props}
+        className={`${props.className || ""} skeleton-route`}
+        data-skeleton-view={view}
+        aria-busy="true"
+        inert
+      >
+        <SkeletonSidebarContent
+          kind={view.endsWith("aluno") ? "aluno" : "professor"}
+        />
+      </Tag>
+    );
+  }
+  if (view && Tag === "button") {
+    return (
+      <Tag
+        {...props}
+        className={`${props.className || ""} skeleton skeleton-mobile-toggle`}
+        aria-hidden="true"
+        inert
+      />
+    );
+  }
+  return <Tag {...props}>{children}</Tag>;
 }
 
 export function PageDataScript(props) {
-  const view = useContext(LoadingContext);
-  return view ? null : <script {...props} />;
+  return <script {...props} />;
 }
 
-export function LoadingCanvas({ variant = "plot", frame = false, ...props }) {
-  const view = useContext(LoadingContext);
-  if (!view) return <canvas {...props} />;
-  return (
-    <canvas
-      {...props}
-      className={`${props.className || ""} skeleton-canvas skeleton-${variant}`}
-      aria-hidden="true"
-      data-skeleton-chart={props.id}
-      data-skeleton-frame={frame || undefined}
-    />
-  );
+export function LoadingCanvas({ variant, frame, ...props }) {
+  return <canvas {...props} />;
 }

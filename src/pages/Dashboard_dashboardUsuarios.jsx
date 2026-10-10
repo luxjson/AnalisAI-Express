@@ -35,144 +35,122 @@ export default function Dashboard_dashboardUsuarios({ data, handlers }) {
             );
             if (success_msg && success_msg.length > 0) {
               nodes.push(
-                <LoadingElement
-                  as="div"
-                  className={"alert alert-success"}
-                  key={nodes.length}
-                >
+                <div className={"alert alert-success"} key={nodes.length}>
                   <LoadingValue
                     slot="dashboard/dashboardUsuarios:1"
                     width="12ch"
                     known={false}
                     value={success_msg}
                   />
-                  <LoadingElement
-                    as="span"
+                  <span
                     className={"close-alert"}
                     onClick={(event) => {
                       event.currentTarget.parentElement.style.display = "none";
                     }}
                   >
                     {"×"}
-                  </LoadingElement>
-                </LoadingElement>,
+                  </span>
+                </div>,
               );
             }
             if (error_msg && error_msg.length > 0) {
               nodes.push(
-                <LoadingElement
-                  as="div"
-                  className={"alert alert-error"}
-                  key={nodes.length}
-                >
+                <div className={"alert alert-error"} key={nodes.length}>
                   <LoadingValue
                     slot="dashboard/dashboardUsuarios:2"
                     width="12ch"
                     known={false}
                     value={error_msg}
                   />
-                  <LoadingElement
-                    as="span"
+                  <span
                     className={"close-alert"}
                     onClick={(event) => {
                       event.currentTarget.parentElement.style.display = "none";
                     }}
                   >
                     {"×"}
-                  </LoadingElement>
-                </LoadingElement>,
+                  </span>
+                </div>,
               );
             }
             nodes.push(
-              <LoadingElement as="div" className={"toolbar"} key={nodes.length}>
-                <LoadingElement as="div" className={"action-buttons"}>
-                  <LoadingElement
-                    as="button"
+              <div className={"toolbar"} key={nodes.length}>
+                <div className={"action-buttons"}>
+                  <button
                     className={"btn-secondary-dash"}
                     onClick={(event) => {
                       handlers.openAddUserModal();
                     }}
                     title={"Novo Usuário"}
                   >
-                    <LoadingElement
-                      as="i"
-                      className={"fas fa-user-plus"}
-                    ></LoadingElement>
+                    <i className={"fas fa-user-plus"}></i>
                     {" NOVO USUÁRIO\n                "}
-                  </LoadingElement>
-                </LoadingElement>
-                <LoadingElement as="div" className={"search-container"}>
-                  <LoadingElement
-                    as="i"
-                    className={"fas fa-search"}
-                  ></LoadingElement>
-                  <LoadingElement
-                    as="input"
+                  </button>
+                </div>
+                <div className={"search-container"}>
+                  <i className={"fas fa-search"}></i>
+                  <input
                     type={"text"}
                     id={"userSearchInput"}
                     placeholder={"Pesquisar por nome ou e-mail..."}
                   />
-                </LoadingElement>
-              </LoadingElement>,
+                </div>
+              </div>,
             );
             nodes.push(
-              <LoadingElement
-                as="main"
-                className={"edit-content"}
-                key={nodes.length}
-              >
-                <LoadingElement as="div" className={"table-container"}>
-                  <LoadingElement as="table" className={"alunos-table"}>
-                    <LoadingElement as="thead">
-                      <LoadingElement as="tr">
-                        <LoadingElement as="th">{"ID"}</LoadingElement>
-                        <LoadingElement as="th">{"NOME"}</LoadingElement>
-                        <LoadingElement as="th">{"E-MAIL"}</LoadingElement>
-                        <LoadingElement as="th">{"CARGO"}</LoadingElement>
-                        <LoadingElement as="th">{"STATUS"}</LoadingElement>
-                        <LoadingElement as="th">{"AÇÕES"}</LoadingElement>
-                      </LoadingElement>
-                    </LoadingElement>
-                    <LoadingElement as="tbody" id={"userTableBody"}>
+              <main className={"edit-content"} key={nodes.length}>
+                <div className={"table-container"}>
+                  <table className={"alunos-table"}>
+                    <thead>
+                      <tr>
+                        <th>{"ID"}</th>
+                        <th>{"NOME"}</th>
+                        <th>{"E-MAIL"}</th>
+                        <th>{"CARGO"}</th>
+                        <th>{"STATUS"}</th>
+                        <th>{"AÇÕES"}</th>
+                      </tr>
+                    </thead>
+                    <tbody id={"userTableBody"}>
                       {(() => {
                         const nodes = [];
                         if (usuarios && usuarios.length > 0) {
                           usuarios.forEach((user) => {
                             nodes.push(
-                              <LoadingElement as="tr" key={nodes.length}>
-                                <LoadingElement as="td">
+                              <tr key={nodes.length}>
+                                <td>
                                   <LoadingValue
                                     slot="dashboard/dashboardUsuarios:3"
                                     width="12ch"
                                     known={true}
                                     value={user.id}
                                   />
-                                </LoadingElement>
-                                <LoadingElement as="td">
+                                </td>
+                                <td>
                                   <LoadingValue
                                     slot="dashboard/dashboardUsuarios:4"
                                     width="min(18ch, 100%)"
                                     known={true}
                                     value={user.nome}
                                   />
-                                </LoadingElement>
-                                <LoadingElement as="td">
+                                </td>
+                                <td>
                                   <LoadingValue
                                     slot="dashboard/dashboardUsuarios:5"
                                     width="22ch"
                                     known={true}
                                     value={user.email.toLowerCase()}
                                   />
-                                </LoadingElement>
-                                <LoadingElement as="td">
+                                </td>
+                                <td>
                                   <LoadingValue
                                     slot="dashboard/dashboardUsuarios:6"
                                     width="12ch"
                                     known={true}
                                     value={user.cargo}
                                   />
-                                </LoadingElement>
-                                <LoadingElement as="td">
+                                </td>
+                                <td>
                                   <LoadingElement
                                     as="span"
                                     className={
@@ -190,16 +168,12 @@ export default function Dashboard_dashboardUsuarios({ data, handlers }) {
                                       value={user.status}
                                     />
                                   </LoadingElement>
-                                </LoadingElement>
-                                <LoadingElement
-                                  as="td"
-                                  className={"td-actions"}
-                                >
+                                </td>
+                                <td className={"td-actions"}>
                                   {(() => {
                                     const nodes = [];
                                     nodes.push(
-                                      <LoadingElement
-                                        as="button"
+                                      <button
                                         className={"btn-table-add"}
                                         data-id={user.id}
                                         data-name={user.nome}
@@ -218,17 +192,15 @@ export default function Dashboard_dashboardUsuarios({ data, handlers }) {
                                         title={"Editar"}
                                         key={nodes.length}
                                       >
-                                        <LoadingElement
-                                          as="i"
+                                        <i
                                           className={"ph-bold ph-pen"}
                                           aria-hidden={"true"}
-                                        ></LoadingElement>
-                                      </LoadingElement>,
+                                        ></i>
+                                      </button>,
                                     );
                                     if (user.id !== userId) {
                                       nodes.push(
-                                        <LoadingElement
-                                          as="a"
+                                        <a
                                           href={"#"}
                                           data-id={user.id}
                                           data-name={user.nome}
@@ -242,195 +214,129 @@ export default function Dashboard_dashboardUsuarios({ data, handlers }) {
                                           className={"delete-link"}
                                           key={nodes.length}
                                         >
-                                          <LoadingElement
-                                            as="i"
+                                          <i
                                             className={"ph-bold ph-trash"}
                                             aria-hidden={"true"}
-                                          ></LoadingElement>
-                                        </LoadingElement>,
+                                          ></i>
+                                        </a>,
                                       );
                                     }
                                     return nodes;
                                   })()}
-                                </LoadingElement>
-                              </LoadingElement>,
+                                </td>
+                              </tr>,
                             );
                           });
                         } else {
                           nodes.push(
-                            <LoadingElement as="tr" key={nodes.length}>
-                              <LoadingElement
-                                as="td"
+                            <tr key={nodes.length}>
+                              <td
                                 colSpan={"6"}
                                 style={styleFrom(
                                   "padding: 50px; text-align: center;",
                                 )}
                               >
                                 {"Nenhum usuário encontrado."}
-                              </LoadingElement>
-                            </LoadingElement>,
+                              </td>
+                            </tr>,
                           );
                         }
                         return nodes;
                       })()}
-                    </LoadingElement>
-                  </LoadingElement>
-                </LoadingElement>
-              </LoadingElement>,
+                    </tbody>
+                  </table>
+                </div>
+              </main>,
             );
             nodes.push(
-              <LoadingElement
-                as="footer"
-                className={"dash-footer"}
-                key={nodes.length}
-              >
-                <LoadingElement
-                  as="a"
-                  href={"/dashboard/edit"}
-                  className={"btn-secondary-dash"}
-                >
-                  <LoadingElement
-                    as="i"
-                    className={"fas fa-pencil-alt"}
-                  ></LoadingElement>
+              <footer className={"dash-footer"} key={nodes.length}>
+                <a href={"/dashboard/edit"} className={"btn-secondary-dash"}>
+                  <i className={"fas fa-pencil-alt"}></i>
                   {" EDITOR DE NOTAS\n            "}
-                </LoadingElement>
-                <LoadingElement as="div" className={"footer-credits"}>
-                  <LoadingElement as="p">
-                    {"© 2026 AnalisAI\n            "}
-                  </LoadingElement>
-                </LoadingElement>
-              </LoadingElement>,
+                </a>
+                <div className={"footer-credits"}>
+                  <p>{"© 2026 AnalisAI\n            "}</p>
+                </div>
+              </footer>,
             );
             return nodes;
           })()}
         </LoadingElement>
-        <LoadingElement as="div" id={"userModal"} className={"modal-overlay"}>
-          <LoadingElement as="div" className={"modal-content"}>
-            <LoadingElement
-              as="button"
+        <div id={"userModal"} className={"modal-overlay"}>
+          <div className={"modal-content"}>
+            <button
               className={"close-btn"}
               onClick={(event) => {
                 handlers.closeUserModal();
               }}
             >
-              <LoadingElement
-                as="i"
-                className={"ph-bold ph-x"}
-              ></LoadingElement>
-            </LoadingElement>
-            <LoadingElement
-              as="h2"
-              className={"section-title-2"}
-              id={"userModalTitle"}
-            >
+              <i className={"ph-bold ph-x"}></i>
+            </button>
+            <h2 className={"section-title-2"} id={"userModalTitle"}>
               {"NOVO USUÁRIO"}
-            </LoadingElement>
-            <LoadingElement
-              as="form"
+            </h2>
+            <form
               id={"userForm"}
               action={"/dashboard/usuarios/add"}
               method={"POST"}
               className={"filter-options"}
             >
-              <LoadingElement
-                as="input"
-                type={"hidden"}
-                name={"_csrf"}
-                value={csrfToken}
-              />
-              <LoadingElement
-                as="input"
-                type={"hidden"}
-                name={"id"}
-                id={"userId"}
-              />
-              <LoadingElement as="label">{"NOME COMPLETO:"}</LoadingElement>
-              <LoadingElement
-                as="input"
+              <input type={"hidden"} name={"_csrf"} value={csrfToken} />
+              <input type={"hidden"} name={"id"} id={"userId"} />
+              <label>{"NOME COMPLETO:"}</label>
+              <input
                 type={"text"}
                 name={"nome"}
                 id={"userName"}
                 className={"filter-input"}
                 required={true}
               />
-              <LoadingElement
-                as="label"
-                style={styleFrom("margin-top: 15px; display: block;")}
-              >
+              <label style={styleFrom("margin-top: 15px; display: block;")}>
                 {"E-MAIL:"}
-              </LoadingElement>
-              <LoadingElement
-                as="input"
+              </label>
+              <input
                 type={"email"}
                 name={"email"}
                 id={"userEmail"}
                 className={"filter-input"}
                 required={true}
               />
-              <LoadingElement as="div" id={"passwordField"}>
-                <LoadingElement
-                  as="label"
-                  style={styleFrom("margin-top: 15px; display: block;")}
-                >
+              <div id={"passwordField"}>
+                <label style={styleFrom("margin-top: 15px; display: block;")}>
                   {"SENHA:"}
-                </LoadingElement>
-                <LoadingElement
-                  as="input"
+                </label>
+                <input
                   type={"password"}
                   name={"senha"}
                   className={"filter-input"}
                 />
-              </LoadingElement>
-              <LoadingElement
-                as="label"
-                style={styleFrom("margin-top: 15px; display: block;")}
-              >
+              </div>
+              <label style={styleFrom("margin-top: 15px; display: block;")}>
                 {"CARGO:"}
-              </LoadingElement>
-              <LoadingElement
-                as="select"
+              </label>
+              <select
                 name={"cargo"}
                 id={"userCargo"}
                 className={"filter-input"}
               >
-                <LoadingElement as="option" value={"Professor"}>
-                  {"Professor"}
-                </LoadingElement>
-                <LoadingElement as="option" value={"Coordenador"}>
-                  {"Coordenador"}
-                </LoadingElement>
-                <LoadingElement as="option" value={"Admin"}>
-                  {"Admin"}
-                </LoadingElement>
-              </LoadingElement>
-              <LoadingElement
-                as="div"
-                id={"statusField"}
-                style={styleFrom("display: none;")}
-              >
-                <LoadingElement
-                  as="label"
-                  style={styleFrom("margin-top: 15px; display: block;")}
-                >
+                <option value={"Professor"}>{"Professor"}</option>
+                <option value={"Coordenador"}>{"Coordenador"}</option>
+                <option value={"Admin"}>{"Admin"}</option>
+              </select>
+              <div id={"statusField"} style={styleFrom("display: none;")}>
+                <label style={styleFrom("margin-top: 15px; display: block;")}>
                   {"STATUS:"}
-                </LoadingElement>
-                <LoadingElement
-                  as="select"
+                </label>
+                <select
                   name={"status"}
                   id={"userStatus"}
                   className={"filter-input"}
                 >
-                  <LoadingElement as="option" value={"ATIVO"}>
-                    {"ATIVO"}
-                  </LoadingElement>
-                  <LoadingElement as="option" value={"INATIVO"}>
-                    {"INATIVO"}
-                  </LoadingElement>
-                </LoadingElement>
-              </LoadingElement>
-              <LoadingElement
-                as="button"
+                  <option value={"ATIVO"}>{"ATIVO"}</option>
+                  <option value={"INATIVO"}>{"INATIVO"}</option>
+                </select>
+              </div>
+              <button
                 type={"submit"}
                 className={"btn-secondary-dash"}
                 style={styleFrom(
@@ -438,53 +344,38 @@ export default function Dashboard_dashboardUsuarios({ data, handlers }) {
                 )}
               >
                 {"SALVAR USUÁRIO"}
-              </LoadingElement>
-            </LoadingElement>
-          </LoadingElement>
-        </LoadingElement>
-        <LoadingElement
-          as="div"
-          id={"permissionModal"}
-          className={"modal-overlay"}
-        >
-          <LoadingElement
-            as="div"
+              </button>
+            </form>
+          </div>
+        </div>
+        <div id={"permissionModal"} className={"modal-overlay"}>
+          <div
             className={"modal-content"}
             style={styleFrom("max-width: 400px; border-color: #ff0101;")}
           >
-            <LoadingElement
-              as="button"
+            <button
               className={"close-btn"}
               onClick={(event) => {
                 handlers.closePermissionModal();
               }}
             >
-              <LoadingElement
-                as="i"
-                className={"ph-bold ph-x"}
-              ></LoadingElement>
-            </LoadingElement>
-            <LoadingElement as="div" style={styleFrom("text-align: center;")}>
-              <LoadingElement
-                as="div"
+              <i className={"ph-bold ph-x"}></i>
+            </button>
+            <div style={styleFrom("text-align: center;")}>
+              <div
                 style={styleFrom(
                   "font-size: 4rem; color: #ff0101; margin-bottom: 15px;",
                 )}
               >
-                <LoadingElement
-                  as="i"
-                  className={"fas fa-shield-alt"}
-                ></LoadingElement>
-              </LoadingElement>
-              <LoadingElement
-                as="h2"
+                <i className={"fas fa-shield-alt"}></i>
+              </div>
+              <h2
                 className={"section-title-2"}
                 style={styleFrom("color: #ff0101; margin-bottom: 15px;")}
               >
                 {"\n                    ACESSO NEGADO\n                "}
-              </LoadingElement>
-              <LoadingElement
-                as="p"
+              </h2>
+              <p
                 style={styleFrom(
                   "color: #888; font-size: 1rem; margin-bottom: 20px;",
                 )}
@@ -492,9 +383,8 @@ export default function Dashboard_dashboardUsuarios({ data, handlers }) {
                 {
                   "\n                    Apenas administradores podem gerenciar usuários.\n                "
                 }
-              </LoadingElement>
-              <LoadingElement
-                as="button"
+              </p>
+              <button
                 className={"btn-action"}
                 onClick={(event) => {
                   handlers.closePermissionModal();
@@ -503,15 +393,12 @@ export default function Dashboard_dashboardUsuarios({ data, handlers }) {
                   "width: 100%; justify-content: center; border-color: #ff0101; color: #ff0101;",
                 )}
               >
-                <LoadingElement
-                  as="i"
-                  className={"fas fa-times"}
-                ></LoadingElement>
+                <i className={"fas fa-times"}></i>
                 {" ENTENDI\n                "}
-              </LoadingElement>
-            </LoadingElement>
-          </LoadingElement>
-        </LoadingElement>
+              </button>
+            </div>
+          </div>
+        </div>
         <PageDataScript type="application/json" id="dashboard-usuarios-data">
           {String(isAdmin)}
         </PageDataScript>
@@ -531,42 +418,36 @@ export function PageHeader({ data, handlers }) {
     isAdmin = null,
   } = data;
   return (
-    <LoadingElement as="header" className={"dash-header"}>
-      <LoadingElement as="div" className={"header-left"}>
-        <LoadingElement as="h1">
-          {"\n                    Gestão de Usuários\n                "}
-        </LoadingElement>
-      </LoadingElement>
-      <LoadingElement as="div" className={"header-user"}>
-        <LoadingElement as="div" className={"user-profile-group"}>
-          <LoadingElement as="div" className={"user-details"}>
-            <LoadingElement as="span" className={"user-name"}>
-              <LoadingElement as="strong">
+    <header className={"dash-header"}>
+      <div className={"header-left"}>
+        <h1>{"\n                    Gestão de Usuários\n                "}</h1>
+      </div>
+      <div className={"header-user"}>
+        <div className={"user-profile-group"}>
+          <div className={"user-details"}>
+            <span className={"user-name"}>
+              <strong>
                 <LoadingValue
                   slot="dashboard/dashboardUsuarios:8"
                   width="12ch"
                   known={true}
                   value={user}
                 />
-              </LoadingElement>
-            </LoadingElement>
-            <LoadingElement
-              as="span"
-              className={"user-role"}
-              style={styleFrom("color: #888888;")}
-            >
-              <LoadingElement as="strong">
+              </strong>
+            </span>
+            <span className={"user-role"} style={styleFrom("color: #888888;")}>
+              <strong>
                 <LoadingValue
                   slot="dashboard/dashboardUsuarios:9"
                   width="12ch"
                   known={true}
                   value={userCargo}
                 />
-              </LoadingElement>
-            </LoadingElement>
-          </LoadingElement>
-        </LoadingElement>
-        <LoadingElement as="div" className={"header-actions"}>
+              </strong>
+            </span>
+          </div>
+        </div>
+        <div className={"header-actions"}>
           <Partials_notificacoes
             data={{
               ...data,
@@ -576,8 +457,8 @@ export function PageHeader({ data, handlers }) {
             }}
             handlers={handlers}
           />
-        </LoadingElement>
-      </LoadingElement>
-    </LoadingElement>
+        </div>
+      </div>
+    </header>
   );
 }

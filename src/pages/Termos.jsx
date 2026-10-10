@@ -7,78 +7,66 @@ export default function Termos({ data, handlers }) {
     <>
       <React.Fragment>
         <LoadingElement as="div" className={"login-wrapper"} root={true}>
-          <LoadingElement as="div" className={"login-card"}>
-            <LoadingElement as="div" className={"termos-header"}>
-              <LoadingElement
-                as="img"
+          <div className={"login-card"}>
+            <div className={"termos-header"}>
+              <img
                 src={"/images/logo3-white.png"}
                 alt={"AnalisAI"}
                 style={styleFrom("height: 40px;")}
               />
-              <LoadingElement as="h2">{"Termos de Serviço"}</LoadingElement>
-            </LoadingElement>
-            <LoadingElement as="div" className={"termos-scroller"}>
-              <LoadingElement as="p">
-                <LoadingElement as="strong">{"1. Aceitação:"}</LoadingElement>
+              <h2>{"Termos de Serviço"}</h2>
+            </div>
+            <div className={"termos-scroller"}>
+              <p>
+                <strong>{"1. Aceitação:"}</strong>
                 {
                   " Ao acessar o AnalisAI, você concorda com estes Termos. Se não concordar, não utilize a plataforma."
                 }
-              </LoadingElement>
-              <LoadingElement as="p">
-                <LoadingElement as="strong">
-                  {"2. Uso do Sistema:"}
-                </LoadingElement>
+              </p>
+              <p>
+                <strong>{"2. Uso do Sistema:"}</strong>
                 {[
                   " O AnalisAI é uma ferramenta de análise de avanços educacionais. ",
                   "O serviço pode ser modificado ou descontinuado a qualquer ",
                   "momento visando a melhoria da experiência pedagógica.",
                 ].join("")}
-              </LoadingElement>
-              <LoadingElement as="p">
-                <LoadingElement as="strong">
-                  {"3. Conta e Segurança:"}
-                </LoadingElement>
+              </p>
+              <p>
+                <strong>{"3. Conta e Segurança:"}</strong>
                 {[
                   " Você é responsável por manter seus dados de acesso seguros. ",
                   "Qualquer atividade na sua conta é de sua inteira ",
                   "responsabilidade. Recomendamos o uso de senhas fortes.",
                 ].join("")}
-              </LoadingElement>
-              <LoadingElement as="p">
-                <LoadingElement as="strong">
-                  {"4. Propriedade Intelectual:"}
-                </LoadingElement>
+              </p>
+              <p>
+                <strong>{"4. Propriedade Intelectual:"}</strong>
                 {[
                   " Todo o conteúdo do AnalisAI pertence ao SENAI. É proibido ",
                   "copiar, vender ou usar comercialmente qualquer parte desta ",
                   "interface ou lógica de dados sem autorização prévia.",
                 ].join("")}
-              </LoadingElement>
-              <LoadingElement as="p">
-                <LoadingElement as="strong">
-                  {"5. Limitação de Responsabilidade:"}
-                </LoadingElement>
+              </p>
+              <p>
+                <strong>{"5. Limitação de Responsabilidade:"}</strong>
                 {[
                   ' O sistema é fornecido "como está". O SENAI não se ',
                   "responsabiliza por decisões tomadas exclusivamente com base nas ",
                   "análises automáticas geradas, sendo estas ferramentas de apoio ",
                   "ao docente.",
                 ].join("")}
-              </LoadingElement>
-              <LoadingElement as="p">
-                <LoadingElement as="strong">
-                  {"6. Proteção de Dados:"}
-                </LoadingElement>
+              </p>
+              <p>
+                <strong>{"6. Proteção de Dados:"}</strong>
                 {[
                   " O tratamento de dados pessoais de alunos e professores segue ",
                   "rigorosamente a LGPD, sendo utilizados estritamente para fins ",
                   "educacionais e de monitoramento de competências.",
                 ].join("")}
-              </LoadingElement>
-            </LoadingElement>
-            <LoadingElement as="div" className={"button-area"}>
-              <LoadingElement
-                as="a"
+              </p>
+            </div>
+            <div className={"button-area"}>
+              <a
                 href={"#"}
                 onClick={(event) => {
                   event.preventDefault();
@@ -87,14 +75,11 @@ export default function Termos({ data, handlers }) {
                 className={"btn-secondary-dash"}
                 style={styleFrom("text-decoration: none; padding: 12px 40px;")}
               >
-                <LoadingElement
-                  as="i"
-                  className={"fas fa-arrow-left"}
-                ></LoadingElement>
+                <i className={"fas fa-arrow-left"}></i>
                 {" VOLTAR\n                "}
-              </LoadingElement>
-            </LoadingElement>
-          </LoadingElement>
+              </a>
+            </div>
+          </div>
         </LoadingElement>
       </React.Fragment>
     </>

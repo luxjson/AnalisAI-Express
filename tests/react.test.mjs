@@ -763,112 +763,114 @@ test("session guards preserve student, professor and administrator access rules"
   );
 });
 
-test("all 25 individual skeletons mask static and dynamic content while preserving native containers", async () => {
+test("all 25 page skeletons use empty blocks without native content or API values", async () => {
   const { default: Dispatcher } = await vite.ssrLoadModule(
     "/src/components/PageSkeleton.jsx",
   );
-  const { baseData } = await vite.ssrLoadModule("/src/services/page-loader.js");
-  const { PersistentSidebarContext } = await vite.ssrLoadModule(
-    "/src/components/layout-context.js",
-  );
-  let maskedPages = 0;
-  const base = baseData({
-    csrfToken: "test-only",
-    identity: { kind: "aluno", id: 1, nome: "Teste", ano_escolar: "1º MÉDIO" },
-  });
-  function render(Component, props) {
-    return new JSDOM(
-      renderToStaticMarkup(
-        React.createElement(
-          PersistentSidebarContext.Provider,
-          { value: true },
-          React.createElement(Component, props),
-        ),
-      ),
-    ).window.document;
-  }
-  function layout(document) {
-    return [...document.body.querySelectorAll("*")]
-      .filter(
-        (element) =>
-          !element.matches(
-            ".skeleton-shape,.skeleton-copy,.skeleton-status,script",
-          ),
-      )
-      .map((element) => ({
-        tag: element.tagName,
-        id: element.id,
-        classes: element.className
-          .toString()
-          .split(/\s+/)
-          .filter((name) => name && !name.startsWith("skeleton-"))
-          .join(" "),
-        style: element.getAttribute("style"),
-        labels: element.getAttribute("aria-label"),
-        type: element.getAttribute("type"),
-      }));
-  }
   for (const [view, meta] of Object.entries(manifest)) {
     if (view.startsWith("partials/")) continue;
-    const { default: Page } = await vite.ssrLoadModule(
-      "/src/pages/" + meta.component + ".jsx",
-    );
-    const { default: Skeleton, loadingData } = await vite.ssrLoadModule(
+    const { default: Skeleton } = await vite.ssrLoadModule(
       "/src/skeletons/" + meta.component + ".jsx",
     );
-    const pending = render(Dispatcher, {
-      view,
-      module: { Skeleton },
-      data: base,
-      handlers: {},
-    });
-    const native = render(Page, { data: loadingData(base), handlers: {} });
+    const pending = new JSDOM(
+      renderToStaticMarkup(
+        React.createElement(Dispatcher, {
+          view,
+          module: { Skeleton },
+          data: {
+            user: "Nome real não pode aparecer",
+            csrfToken: "token-nao-renderizar",
+          },
+          handlers: {},
+        }),
+      ),
+    ).window.document;
     assert.ok(pending.querySelector('[aria-busy="true"][inert]'), view);
-    assert.deepEqual(
-      layout(pending),
-      layout(native),
-      view + " container/class/inline-style parity",
-    );
-    assert.ok(!pending.body.textContent.includes("Carregando AnalisAI"), view);
+    const blocks = pending.querySelectorAll(".skeleton");
+    assert.ok(blocks.length > 0, view);
+    if (view === "index") {
+      assert.ok(
+        pending.querySelector('.sidebar[data-skeleton-view="sidebar/public"]'),
+      );
+      assert.equal(
+        pending.querySelectorAll(".sidebar .skeleton-side-link").length,
+        3,
+      );
+    }
+    for (const block of blocks) {
+      assert.equal(block.children.length, 0, view);
+      assert.equal(block.textContent, "", view);
+      assert.equal(block.getAttribute("aria-hidden"), "true", view);
+    }
     assert.equal(
-      pending.querySelectorAll('script[type="application/json"]').length,
-      0,
-      view,
-    );
-    assert.equal(
-      native.querySelectorAll(
-        ".skeleton-shape,.skeleton-copy,[data-skeleton-kind],[inert],.skeleton-status",
+      pending.querySelectorAll(
+        "script,img,iframe,canvas,input,select,textarea,button,form,.skeleton-copy,.skeleton-value",
       ).length,
       0,
-      view + " loaded page",
+      view,
     );
-    if (pending.querySelector(".skeleton-copy")) maskedPages++;
+    assert.ok(!pending.body.innerHTML.includes("Nome real não pode aparecer"));
+    assert.ok(!pending.body.innerHTML.includes("token-nao-renderizar"));
     const texts = pending.createTreeWalker(pending.body, 4);
     while (texts.nextNode()) {
       const node = texts.currentNode;
-      if (!node.textContent.trim()) continue;
-      assert.ok(
-        node.parentElement.closest(
-          ".skeleton-copy,.skeleton-value,.skeleton-status,[data-skeleton-kind],script,style",
-        ),
-        view + " unmasked text: " + node.textContent.slice(0, 80),
-      );
+      if (node.textContent.trim())
+        assert.ok(
+          node.parentElement.closest(".skeleton-status"),
+          view + " exposed text: " + node.textContent,
+        );
     }
-    for (const leaf of pending.querySelectorAll(
-      'i,img,iframe,svg,button,input:not([type="hidden"]),select,textarea',
-    ))
-      assert.ok(
-        leaf.hasAttribute("data-skeleton-kind"),
-        view + " " + leaf.outerHTML.slice(0, 100),
-      );
-    for (const placeholder of pending.querySelectorAll(".skeleton-shape"))
-      assert.equal(placeholder.textContent.trim(), "");
   }
-  assert.equal(maskedPages, 25, "all pages include static text placeholders");
-  assert.match(
-    fs.readFileSync(path.join(root, "src/styles/skeleton.css"), "utf8"),
-    /prefers-reduced-motion/,
+});
+
+test("skeleton blocks and lines preserve the supplied site's shape and animation values", async () => {
+  const reference = JSON.parse(
+    fs.readFileSync(
+      path.join(root, "tests/fixtures/skeleton-reference.json"),
+      "utf8",
+    ),
   );
+  const css = fs.readFileSync(
+    path.join(root, "src/styles/skeleton.css"),
+    "utf8",
+  );
+  const rule = css.match(/\.skeleton\.skeleton-mobile-toggle\s*\{([^}]+)\}/)[1];
+  const compact = (value) => value.replace(/\s+/g, "");
+  for (const [property, expected] of [
+    ["min-height", reference.minHeight],
+    ["border-radius", reference.borderRadius],
+    ["background", reference.gradient],
+    ["background-size", reference.backgroundSize],
+    ["animation", reference.animation],
+  ]) {
+    const actual = rule.match(
+      new RegExp("(?:^|[;\\n])\\s*" + property + "\\s*:\\s*([^;]+);"),
+    )[1];
+    assert.equal(compact(actual), compact(expected), property);
+  }
+  assert.ok(
+    compact(css).includes("from{background-position:" + reference.from + ";}"),
+  );
+  assert.ok(
+    compact(css).includes("to{background-position:" + reference.to + ";}"),
+  );
+  assert.ok(compact(css).includes("gap:" + reference.lineGap + ";"));
+  const { SkeletonLines } = await vite.ssrLoadModule(
+    "/src/components/Skeleton.jsx",
+  );
+  const document = new JSDOM(
+    renderToStaticMarkup(React.createElement(SkeletonLines, { count: 3 })),
+  ).window.document;
+  const lines = [...document.querySelectorAll(".skeleton")];
+  assert.deepEqual(
+    lines.map((line) => line.style.width),
+    ["100%", "100%", reference.lastLineWidth],
+  );
+  for (const line of lines) {
+    assert.equal(line.style.height, reference.lineHeight);
+    assert.equal(line.style.borderRadius, reference.lineRadius);
+  }
+  assert.match(css, /prefers-reduced-motion/);
 });
 
 test("calendar skeleton keeps the selected month grid, controls and event-list layout", async () => {
@@ -887,7 +889,15 @@ test("calendar skeleton keeps the selected month grid, controls and event-list l
     29,
   );
   assert.ok(document.querySelector(".calendario-header"));
-  assert.ok(document.body.textContent.includes("PRÓXIMOS EVENTOS"));
+  assert.equal(document.querySelectorAll(".evento-lista-item").length, 3);
+  assert.equal(
+    document.querySelectorAll(".calendario-header > .skeleton").length,
+    3,
+  );
+  assert.equal(
+    document.querySelectorAll(".calendario-sidebar .skeleton-field").length,
+    2,
+  );
   assert.ok(document.querySelector('[aria-busy="true"][inert]'));
 });
 
@@ -900,9 +910,9 @@ test("loading charts fill the native fixed frames and disappear on the loaded pa
       React.createElement(Skeleton, { data: { user: "Teste" }, handlers: {} }),
     ),
   ).window.document;
-  const canvas = document.querySelector("#evolucaoChart");
-  assert.ok(canvas.hasAttribute("data-skeleton-frame"));
-  assert.equal(canvas.parentElement.style.height, "400px");
+  const chart = document.querySelector(".skeleton-chart-frame");
+  assert.equal(chart.style.height, "400px");
+  assert.equal(document.querySelector("canvas"), null);
   assert.equal(
     document.querySelectorAll(".ranking-list .ranking-item").length,
     5,
@@ -988,9 +998,9 @@ test("SPA keeps the sidebar, aborts stale page loads and reopens pages without d
     await wait(() => releaseSlow && container.querySelector(".skeleton-route"));
     assert.equal(container.querySelector(".sidebar"), sidebar);
     assert.ok(sidebar.classList.contains("skeleton-route"));
-    assert.ok(sidebar.querySelector(".skeleton-copy"));
-    assert.ok(container.querySelector(".dash-header .skeleton-copy"));
-    assert.ok(container.querySelector(".row-triple .skeleton-shape"));
+    assert.ok(sidebar.querySelector(".skeleton"));
+    assert.ok(container.querySelector(".dash-header .skeleton"));
+    assert.ok(container.querySelector(".row-triple .skeleton"));
     navigate("/dashboard/ia");
     await wait(() => container.querySelector(".ai-chat textarea"));
     assert.equal(slowSignal.aborted, true);
@@ -1011,7 +1021,7 @@ test("SPA keeps the sidebar, aborts stale page loads and reopens pages without d
     button.click();
     assert.equal(sidebar.classList.contains("is-open"), false);
     assert.equal(container.querySelectorAll(".sidebar").length, 1);
-    assert.equal(sidebar.querySelector(".skeleton-copy"), null);
+    assert.equal(sidebar.querySelector(".skeleton"), null);
     assert.equal(container.querySelectorAll('[role="alert"]').length, 0);
   } finally {
     flushSync(() => root.unmount());
@@ -1021,7 +1031,7 @@ test("SPA keeps the sidebar, aborts stale page loads and reopens pages without d
   }
 });
 
-test("both sidebar skeletons mask navigation, branding, known names and mobile controls", async () => {
+test("both sidebar skeletons use empty blocks and expose no branding, links, names or forms", async () => {
   const { SidebarSkeleton } = await vite.ssrLoadModule(
     "/src/components/PageSkeleton.jsx",
   );
@@ -1033,31 +1043,21 @@ test("both sidebar skeletons mask navigation, branding, known names and mobile c
           data: {
             user: "Nome já conhecido",
             userCargo: "Admin",
-            cargo: "Admin",
             csrfToken: "test-only",
           },
         }),
       ),
     ).window.document;
     assert.ok(document.querySelector(".sidebar.skeleton-route[inert]"));
-    assert.ok(document.querySelector(".side-link .skeleton-copy"));
-    assert.ok(document.querySelector('img[data-skeleton-kind="media"]'));
-    assert.ok(
-      document.querySelector(
-        '.mobile-menu-toggle[data-skeleton-kind="control"][inert]',
-      ),
+    assert.ok(document.querySelector(".skeleton-side-link .skeleton"));
+    assert.ok(document.querySelector(".mobile-menu-toggle.skeleton[inert]"));
+    assert.equal(
+      document.querySelectorAll("a,img,button,form,input").length,
+      0,
     );
-    const texts = document.createTreeWalker(document.body, 4);
-    while (texts.nextNode()) {
-      const node = texts.currentNode;
-      if (!node.textContent.trim()) continue;
-      assert.ok(
-        node.parentElement.closest(
-          ".skeleton-copy,.skeleton-value,.skeleton-status,[data-skeleton-kind]",
-        ),
-        kind + " unmasked text: " + node.textContent.slice(0, 80),
-      );
-    }
+    assert.ok(!document.body.textContent.includes("Nome já conhecido"));
+    for (const block of document.querySelectorAll(".skeleton"))
+      assert.equal(block.textContent, "");
   }
 });
 

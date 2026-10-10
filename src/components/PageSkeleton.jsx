@@ -1,17 +1,18 @@
 import React from "react";
-import { SkeletonFrame } from "./loading-layout";
-import ProfessorSidebar from "./Partials_barProfessor";
-import StudentSidebar from "./Partials_barAluno";
+import { Skeleton, SkeletonScreen, SkeletonSidebarContent } from "./Skeleton";
 
-export function SidebarSkeleton({ kind = "professor", data = {} }) {
-  const Sidebar = kind === "aluno" ? StudentSidebar : ProfessorSidebar;
+export function SidebarSkeleton({ kind = "professor" }) {
   return (
-    <SkeletonFrame view={"sidebar/" + kind}>
-      <Sidebar
-        data={{ ...data, csrfToken: data.csrfToken || "" }}
-        handlers={{}}
+    <>
+      <div
+        className="mobile-menu-toggle skeleton skeleton-mobile-toggle"
+        aria-hidden="true"
+        inert
       />
-    </SkeletonFrame>
+      <SkeletonScreen as="aside" view={"sidebar/" + kind} className="sidebar">
+        <SkeletonSidebarContent kind={kind} />
+      </SkeletonScreen>
+    </>
   );
 }
 
@@ -21,12 +22,13 @@ export default function PageSkeleton({
   data = {},
   handlers = {},
 }) {
-  const Skeleton = module?.Skeleton;
-  return Skeleton ? (
-    <Skeleton data={data} handlers={handlers} />
+  const PageLoadingComponent = module?.Skeleton;
+  return PageLoadingComponent ? (
+    <PageLoadingComponent data={data} handlers={handlers} />
   ) : (
-    <span className="skeleton-status" role="status" data-pending-layout={view}>
-      Preparando página…
-    </span>
+    <SkeletonScreen view={view} className="main-layout">
+      <Skeleton style={{ width: "45%", height: 42, marginBottom: 40 }} />
+      <Skeleton style={{ width: "100%", height: 180 }} />
+    </SkeletonScreen>
   );
 }

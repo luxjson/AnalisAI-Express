@@ -40,97 +40,82 @@ export default function Aluno_alunoEvolucao({ data, handlers }) {
               root={true}
             >
               <PageHeader key="page-header" data={data} handlers={handlers} />
-              <LoadingElement as="main" className={"dash-content"}>
+              <main className={"dash-content"}>
                 {(() => {
                   const nodes = [];
                   if (competencias && competencias.length > 0) {
                     nodes.push(
-                      <LoadingElement
-                        as="section"
+                      <section
                         className={"welcome-banner"}
                         style={styleFrom(
                           "background: linear-gradient(90deg, #1b5e38 0%, #217346 100%); padding-bottom: 60px;",
                         )}
                         key={nodes.length}
                       >
-                        <LoadingElement as="div" className={"banner-text"}>
-                          <LoadingElement as="h1">
-                            {"Sua Jornada Acadêmica"}
-                          </LoadingElement>
-                          <LoadingElement as="p">
+                        <div className={"banner-text"}>
+                          <h1>{"Sua Jornada Acadêmica"}</h1>
+                          <p>
                             {
                               "Acompanhe em tempo real o seu crescimento e a consolidação das suas competências."
                             }
-                          </LoadingElement>
-                        </LoadingElement>
-                      </LoadingElement>,
+                          </p>
+                        </div>
+                      </section>,
                     );
                     nodes.push(
-                      <LoadingElement
-                        as="section"
-                        className={"filter-bar"}
-                        key={nodes.length}
-                      >
-                        <LoadingElement as="div" className={"periodo-selector"}>
-                          <LoadingElement
-                            as="button"
+                      <section className={"filter-bar"} key={nodes.length}>
+                        <div className={"periodo-selector"}>
+                          <button
                             className={"periodo-btn active"}
                             onClick={(event) => {
                               handlers.mudarPeriodo("7d", event.currentTarget);
                             }}
                           >
                             {"7 Dias"}
-                          </LoadingElement>
-                          <LoadingElement
-                            as="button"
+                          </button>
+                          <button
                             className={"periodo-btn"}
                             onClick={(event) => {
                               handlers.mudarPeriodo("30d", event.currentTarget);
                             }}
                           >
                             {"30 Dias"}
-                          </LoadingElement>
-                          <LoadingElement
-                            as="button"
+                          </button>
+                          <button
                             className={"periodo-btn"}
                             onClick={(event) => {
                               handlers.mudarPeriodo("90d", event.currentTarget);
                             }}
                           >
                             {"90 Dias"}
-                          </LoadingElement>
-                          <LoadingElement
-                            as="button"
+                          </button>
+                          <button
                             className={"periodo-btn"}
                             onClick={(event) => {
                               handlers.mudarPeriodo("all", event.currentTarget);
                             }}
                           >
                             {"Todo o Curso"}
-                          </LoadingElement>
-                        </LoadingElement>
-                      </LoadingElement>,
+                          </button>
+                        </div>
+                      </section>,
                     );
                     nodes.push(
-                      <LoadingElement
-                        as="section"
+                      <section
                         className={"section-container"}
                         key={nodes.length}
                       >
-                        <LoadingElement
-                          as="div"
+                        <div
                           className={"stats-card"}
                           style={styleFrom("padding: 40px;")}
                         >
-                          <LoadingElement
-                            as="h2"
+                          <h2
                             className={"section-title-2"}
                             style={styleFrom("margin-bottom: 30px;")}
                           >
                             {"Desempenho Temporal"}
-                          </LoadingElement>
-                          <LoadingElement
-                            as="div"
+                          </h2>
+                          <div
                             style={styleFrom(
                               "height: 400px; position: relative;",
                             )}
@@ -140,29 +125,27 @@ export default function Aluno_alunoEvolucao({ data, handlers }) {
                               variant="plot"
                               frame={true}
                             ></LoadingCanvas>
-                          </LoadingElement>
-                        </LoadingElement>
-                      </LoadingElement>,
+                          </div>
+                        </div>
+                      </section>,
                     );
                     if (categorias && categorias.length > 0) {
                       nodes.push(
-                        <LoadingElement
-                          as="section"
+                        <section
                           className={"section-container"}
                           key={nodes.length}
                         >
-                          <LoadingElement as="h2" className={"section-title-2"}>
+                          <h2 className={"section-title-2"}>
                             {"Performance por Área de Conhecimento"}
-                          </LoadingElement>
-                          <LoadingElement as="div" className={"dash-grid"}>
+                          </h2>
+                          <div className={"dash-grid"}>
                             {(() => {
                               const nodes = [];
                               categorias.forEach((cat) => {
                                 let mediaCat = cat.media / 10;
                                 let colorClass = cat.gradeClass;
                                 nodes.push(
-                                  <LoadingElement
-                                    as="div"
+                                  <div
                                     className={"stats-card"}
                                     style={styleFrom(
                                       "border-left: 5px solid var(--color-" +
@@ -171,14 +154,12 @@ export default function Aluno_alunoEvolucao({ data, handlers }) {
                                     )}
                                     key={nodes.length}
                                   >
-                                    <LoadingElement
-                                      as="div"
+                                    <div
                                       style={styleFrom(
                                         "display: flex; justify-content: space-between; align-items: center;",
                                       )}
                                     >
-                                      <LoadingElement
-                                        as="h3"
+                                      <h3
                                         style={styleFrom(
                                           "margin-bottom: 0; color: var(--text-white);",
                                         )}
@@ -189,7 +170,7 @@ export default function Aluno_alunoEvolucao({ data, handlers }) {
                                           known={false}
                                           value={cat.categoria}
                                         />
-                                      </LoadingElement>
+                                      </h3>
                                       <LoadingElement
                                         as="span"
                                         className={"media-nota " + colorClass}
@@ -202,11 +183,8 @@ export default function Aluno_alunoEvolucao({ data, handlers }) {
                                           value={mediaCat.toFixed(1)}
                                         />
                                       </LoadingElement>
-                                    </LoadingElement>
-                                    <LoadingElement
-                                      as="div"
-                                      className={"progresso-bar-container"}
-                                    >
+                                    </div>
+                                    <div className={"progresso-bar-container"}>
                                       <LoadingElement
                                         as="div"
                                         className={"progresso-bar-fill"}
@@ -219,9 +197,8 @@ export default function Aluno_alunoEvolucao({ data, handlers }) {
                                         )}
                                         fill={true}
                                       ></LoadingElement>
-                                    </LoadingElement>
-                                    <LoadingElement
-                                      as="p"
+                                    </div>
+                                    <p
                                       style={styleFrom(
                                         "font-size: 0.7rem; color: var(--text-muted); margin-top: 10px; text-transform: uppercase;",
                                       )}
@@ -236,73 +213,58 @@ export default function Aluno_alunoEvolucao({ data, handlers }) {
                                         value={cat.media.toFixed(0)}
                                       />
                                       {"%\n                                "}
-                                    </LoadingElement>
-                                  </LoadingElement>,
+                                    </p>
+                                  </div>,
                                 );
                               });
                               return nodes;
                             })()}
-                          </LoadingElement>
-                        </LoadingElement>,
+                          </div>
+                        </section>,
                       );
                     }
                     nodes.push(
-                      <LoadingElement
-                        as="section"
+                      <section
                         className={"section-container"}
                         key={nodes.length}
                       >
-                        <LoadingElement as="h2" className={"section-title-2"}>
+                        <h2 className={"section-title-2"}>
                           {"Histórico de Registros"}
-                        </LoadingElement>
-                        <LoadingElement as="div" className={"ranking-list"}>
+                        </h2>
+                        <div className={"ranking-list"}>
                           {(() => {
                             const nodes = [];
                             competencias.forEach((comp) => {
                               let n = parseFloat(comp.nota) || 0;
                               let c = comp.gradeClass;
                               nodes.push(
-                                <LoadingElement
-                                  as="div"
+                                <div
                                   className={"ranking-item"}
                                   key={nodes.length}
                                 >
-                                  <LoadingElement
-                                    as="div"
+                                  <div
                                     className={"ranking-position"}
                                     style={styleFrom(
                                       "background: rgba(255,255,255,0.05); color: #666;",
                                     )}
                                   >
-                                    <LoadingElement
-                                      as="i"
-                                      className={"far fa-calendar-alt"}
-                                    ></LoadingElement>
-                                  </LoadingElement>
-                                  <LoadingElement
-                                    as="div"
-                                    className={"ranking-info"}
-                                  >
+                                    <i className={"far fa-calendar-alt"}></i>
+                                  </div>
+                                  <div className={"ranking-info"}>
                                     {(() => {
                                       const nodes = [];
                                       nodes.push(
-                                        <LoadingElement
-                                          as="h4"
-                                          key={nodes.length}
-                                        >
+                                        <h4 key={nodes.length}>
                                           <LoadingValue
                                             slot="aluno/alunoEvolucao:4"
                                             width="min(18ch, 100%)"
                                             known={false}
                                             value={comp.nome}
                                           />
-                                        </LoadingElement>,
+                                        </h4>,
                                       );
                                       nodes.push(
-                                        <LoadingElement
-                                          as="p"
-                                          key={nodes.length}
-                                        >
+                                        <p key={nodes.length}>
                                           <LoadingValue
                                             slot="aluno/alunoEvolucao:5"
                                             width="10ch"
@@ -316,12 +278,11 @@ export default function Aluno_alunoEvolucao({ data, handlers }) {
                                             known={false}
                                             value={comp.categoria || "Geral"}
                                           />
-                                        </LoadingElement>,
+                                        </p>,
                                       );
                                       if (comp.observacoes) {
                                         nodes.push(
-                                          <LoadingElement
-                                            as="p"
+                                          <p
                                             style={styleFrom(
                                               "text-transform: none; color: var(--text-gray); margin-top: 5px; font-style: italic;",
                                             )}
@@ -339,16 +300,13 @@ export default function Aluno_alunoEvolucao({ data, handlers }) {
                                             {
                                               '"\n                                        '
                                             }
-                                          </LoadingElement>,
+                                          </p>,
                                         );
                                       }
                                       return nodes;
                                     })()}
-                                  </LoadingElement>
-                                  <LoadingElement
-                                    as="div"
-                                    className={"ranking-media"}
-                                  >
+                                  </div>
+                                  <div className={"ranking-media"}>
                                     <LoadingElement
                                       as="span"
                                       className={"media-nota " + c}
@@ -361,65 +319,51 @@ export default function Aluno_alunoEvolucao({ data, handlers }) {
                                         value={n.toFixed(1)}
                                       />
                                     </LoadingElement>
-                                  </LoadingElement>
-                                </LoadingElement>,
+                                  </div>
+                                </div>,
                               );
                             });
                             return nodes;
                           })()}
-                        </LoadingElement>
-                      </LoadingElement>,
+                        </div>
+                      </section>,
                     );
                   } else {
                     nodes.push(
-                      <LoadingElement
-                        as="div"
+                      <div
                         className={"stats-card"}
                         style={styleFrom("text-align: center; padding: 100px;")}
                         key={nodes.length}
                       >
-                        <LoadingElement
-                          as="i"
+                        <i
                           className={"fas fa-chart-line"}
                           style={styleFrom(
                             "font-size: 4rem; color: var(--border-color); margin-bottom: 20px;",
                           )}
-                        ></LoadingElement>
-                        <LoadingElement as="h3">
-                          {"Nenhum dado para exibir"}
-                        </LoadingElement>
-                        <LoadingElement
-                          as="p"
-                          style={styleFrom("color: var(--text-gray);")}
-                        >
+                        ></i>
+                        <h3>{"Nenhum dado para exibir"}</h3>
+                        <p style={styleFrom("color: var(--text-gray);")}>
                           {
                             "Suas avaliações aparecerão aqui assim que forem registradas."
                           }
-                        </LoadingElement>
-                      </LoadingElement>,
+                        </p>
+                      </div>,
                     );
                   }
                   return nodes;
                 })()}
-              </LoadingElement>
-              <LoadingElement as="footer" className={"dash-footer"}>
-                <LoadingElement as="div" className={"footer-actions"}>
-                  <LoadingElement
-                    as="a"
-                    href={"/aluno"}
-                    className={"btn-secondary-dash"}
-                  >
-                    <LoadingElement
-                      as="i"
-                      className={"fas fa-arrow-left"}
-                    ></LoadingElement>
+              </main>
+              <footer className={"dash-footer"}>
+                <div className={"footer-actions"}>
+                  <a href={"/aluno"} className={"btn-secondary-dash"}>
+                    <i className={"fas fa-arrow-left"}></i>
                     {" VOLTAR AO PAINEL"}
-                  </LoadingElement>
-                </LoadingElement>
-                <LoadingElement as="div" className={"footer-credits"}>
-                  <LoadingElement as="p">{"© 2026 AnalisAI"}</LoadingElement>
-                </LoadingElement>
-              </LoadingElement>
+                  </a>
+                </div>
+                <div className={"footer-credits"}>
+                  <p>{"© 2026 AnalisAI"}</p>
+                </div>
+              </footer>
             </LoadingElement>,
           );
           if (historico && historico.length > 0) {
@@ -450,21 +394,19 @@ export function PageHeader({ data, handlers }) {
     historico = [],
   } = data;
   return (
-    <LoadingElement as="header" className={"dash-header"}>
-      <LoadingElement as="div" className={"header-left"}>
-        <LoadingElement as="div" className={"logo"}>
-          <LoadingElement
-            as="img"
+    <header className={"dash-header"}>
+      <div className={"header-left"}>
+        <div className={"logo"}>
+          <img
             src={"/images/logo3-green.png"}
             alt={"AnalisAI"}
             style={styleFrom("height: 40px;")}
           />
-        </LoadingElement>
-      </LoadingElement>
-      <LoadingElement as="div" className={"header-user"}>
-        <LoadingElement as="div" className={"user-profile-group"}>
-          <LoadingElement
-            as="div"
+        </div>
+      </div>
+      <div className={"header-user"}>
+        <div className={"user-profile-group"}>
+          <div
             className={"user-avatar"}
             style={styleFrom("background: var(--color-apto);")}
           >
@@ -474,29 +416,29 @@ export function PageHeader({ data, handlers }) {
               known={true}
               value={aluno.nome.charAt(0).toUpperCase()}
             />
-          </LoadingElement>
-          <LoadingElement as="div" className={"user-details"}>
-            <LoadingElement as="span" className={"user-name"}>
-              <LoadingElement as="strong">
+          </div>
+          <div className={"user-details"}>
+            <span className={"user-name"}>
+              <strong>
                 <LoadingValue
                   slot="aluno/alunoEvolucao:10"
                   width="min(18ch, 100%)"
                   known={true}
                   value={aluno.nome}
                 />
-              </LoadingElement>
-            </LoadingElement>
-            <LoadingElement as="span" className={"user-email"}>
+              </strong>
+            </span>
+            <span className={"user-email"}>
               <LoadingValue
                 slot="aluno/alunoEvolucao:11"
                 width="12ch"
                 known={true}
                 value={aluno.ano_escolar}
               />
-            </LoadingElement>
-          </LoadingElement>
-        </LoadingElement>
-        <LoadingElement as="div" className={"header-actions"}>
+            </span>
+          </div>
+        </div>
+        <div className={"header-actions"}>
           <Partials_notificacoes
             data={{
               ...data,
@@ -506,8 +448,8 @@ export function PageHeader({ data, handlers }) {
             }}
             handlers={handlers}
           />
-        </LoadingElement>
-      </LoadingElement>
-    </LoadingElement>
+        </div>
+      </div>
+    </header>
   );
 }

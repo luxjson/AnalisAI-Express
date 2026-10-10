@@ -21,12 +21,10 @@ export default function Dashboard_dashboardGraficos({ data, handlers }) {
         />
         <LoadingElement as="div" className={"main-layout"} root={true}>
           <PageHeader key="page-header" data={data} handlers={handlers} />
-          <LoadingElement as="main" className={"dash-content graficos-grid"}>
-            <LoadingElement as="p" className={"section-label"}>
-              {"PANORAMA DE NÍVEIS"}
-            </LoadingElement>
-            <LoadingElement as="div" className={"row-triple"}>
-              <LoadingElement as="div" className={"dash-card card-grafico"}>
+          <main className={"dash-content graficos-grid"}>
+            <p className={"section-label"}>{"PANORAMA DE NÍVEIS"}</p>
+            <div className={"row-triple"}>
+              <div className={"dash-card card-grafico"}>
                 {(() => {
                   const nodes = [];
                   if (stats.total > 0) {
@@ -38,43 +36,34 @@ export default function Dashboard_dashboardGraficos({ data, handlers }) {
                       ></LoadingCanvas>,
                     );
                     nodes.push(
-                      <LoadingElement
-                        as="p"
+                      <p
                         className={"chart-label label-verde"}
                         key={nodes.length}
                       >
                         {"ALUNOS APTOS"}
-                      </LoadingElement>,
+                      </p>,
                     );
                     nodes.push(
-                      <LoadingElement
-                        as="p"
-                        className={"chart-value"}
-                        key={nodes.length}
-                      >
+                      <p className={"chart-value"} key={nodes.length}>
                         <LoadingValue
                           slot="dashboard/dashboardGraficos:1"
                           width="3ch"
                           known={false}
                           value={stats.apto}
                         />
-                      </LoadingElement>,
+                      </p>,
                     );
                   } else {
                     nodes.push(
-                      <LoadingElement
-                        as="div"
-                        className={"empty-chart"}
-                        key={nodes.length}
-                      >
+                      <div className={"empty-chart"} key={nodes.length}>
                         {"SEM DADOS PARA EXIBIR"}
-                      </LoadingElement>,
+                      </div>,
                     );
                   }
                   return nodes;
                 })()}
-              </LoadingElement>
-              <LoadingElement as="div" className={"dash-card card-grafico"}>
+              </div>
+              <div className={"dash-card card-grafico"}>
                 {(() => {
                   const nodes = [];
                   if (stats.total > 0) {
@@ -86,43 +75,34 @@ export default function Dashboard_dashboardGraficos({ data, handlers }) {
                       ></LoadingCanvas>,
                     );
                     nodes.push(
-                      <LoadingElement
-                        as="p"
+                      <p
                         className={"chart-label label-vermelho"}
                         key={nodes.length}
                       >
                         {"ALUNOS INAPTOS"}
-                      </LoadingElement>,
+                      </p>,
                     );
                     nodes.push(
-                      <LoadingElement
-                        as="p"
-                        className={"chart-value"}
-                        key={nodes.length}
-                      >
+                      <p className={"chart-value"} key={nodes.length}>
                         <LoadingValue
                           slot="dashboard/dashboardGraficos:2"
                           width="3ch"
                           known={false}
                           value={stats.inapto}
                         />
-                      </LoadingElement>,
+                      </p>,
                     );
                   } else {
                     nodes.push(
-                      <LoadingElement
-                        as="div"
-                        className={"empty-chart"}
-                        key={nodes.length}
-                      >
+                      <div className={"empty-chart"} key={nodes.length}>
                         {"SEM DADOS PARA EXIBIR"}
-                      </LoadingElement>,
+                      </div>,
                     );
                   }
                   return nodes;
                 })()}
-              </LoadingElement>
-              <LoadingElement as="div" className={"dash-card card-grafico"}>
+              </div>
+              <div className={"dash-card card-grafico"}>
                 {(() => {
                   const nodes = [];
                   if (stats.total > 0) {
@@ -134,47 +114,38 @@ export default function Dashboard_dashboardGraficos({ data, handlers }) {
                       ></LoadingCanvas>,
                     );
                     nodes.push(
-                      <LoadingElement
-                        as="p"
+                      <p
                         className={"chart-label label-amarelo"}
                         key={nodes.length}
                       >
                         {"EM DESENVOLVIMENTO"}
-                      </LoadingElement>,
+                      </p>,
                     );
                     nodes.push(
-                      <LoadingElement
-                        as="p"
-                        className={"chart-value"}
-                        key={nodes.length}
-                      >
+                      <p className={"chart-value"} key={nodes.length}>
                         <LoadingValue
                           slot="dashboard/dashboardGraficos:3"
                           width="3ch"
                           known={false}
                           value={stats.total - stats.apto - stats.inapto}
                         />
-                      </LoadingElement>,
+                      </p>,
                     );
                   } else {
                     nodes.push(
-                      <LoadingElement
-                        as="div"
-                        className={"empty-chart"}
-                        key={nodes.length}
-                      >
+                      <div className={"empty-chart"} key={nodes.length}>
                         {"SEM DADOS PARA EXIBIR"}
-                      </LoadingElement>,
+                      </div>,
                     );
                   }
                   return nodes;
                 })()}
-              </LoadingElement>
-            </LoadingElement>
-            <LoadingElement as="p" className={"section-label"}>
+              </div>
+            </div>
+            <p className={"section-label"}>
               {"DESEMPENHO MÉDIO — ENSINO MÉDIO"}
-            </LoadingElement>
-            <LoadingElement as="div" className={"dash-card card-grafico-large"}>
+            </p>
+            <div className={"dash-card card-grafico-large"}>
               {(() => {
                 const nodes = [];
                 if (stats.mediaMedio !== undefined && stats.total > 0) {
@@ -186,37 +157,29 @@ export default function Dashboard_dashboardGraficos({ data, handlers }) {
                     ></LoadingCanvas>,
                   );
                   nodes.push(
-                    <LoadingElement
-                      as="p"
-                      className={"chart-value-large"}
-                      key={nodes.length}
-                    >
+                    <p className={"chart-value-large"} key={nodes.length}>
                       <LoadingValue
                         slot="dashboard/dashboardGraficos:4"
                         width="3ch"
                         known={false}
                         value={stats.mediaMedio}
                       />
-                    </LoadingElement>,
+                    </p>,
                   );
                 } else {
                   nodes.push(
-                    <LoadingElement
-                      as="div"
-                      className={"empty-chart"}
-                      key={nodes.length}
-                    >
+                    <div className={"empty-chart"} key={nodes.length}>
                       {"NENHUM DADO DISPONÍVEL"}
-                    </LoadingElement>,
+                    </div>,
                   );
                 }
                 return nodes;
               })()}
-            </LoadingElement>
-            <LoadingElement as="p" className={"section-label"}>
+            </div>
+            <p className={"section-label"}>
               {"DESEMPENHO MÉDIO — ENSINO FUNDAMENTAL"}
-            </LoadingElement>
-            <LoadingElement as="div" className={"dash-card card-grafico-small"}>
+            </p>
+            <div className={"dash-card card-grafico-small"}>
               {(() => {
                 const nodes = [];
                 if (stats.mediaFundamental !== undefined && stats.total > 0) {
@@ -228,67 +191,46 @@ export default function Dashboard_dashboardGraficos({ data, handlers }) {
                     ></LoadingCanvas>,
                   );
                   nodes.push(
-                    <LoadingElement
-                      as="p"
-                      className={"chart-value-large"}
-                      key={nodes.length}
-                    >
+                    <p className={"chart-value-large"} key={nodes.length}>
                       <LoadingValue
                         slot="dashboard/dashboardGraficos:5"
                         width="3ch"
                         known={false}
                         value={stats.mediaFundamental}
                       />
-                    </LoadingElement>,
+                    </p>,
                   );
                 } else {
                   nodes.push(
-                    <LoadingElement
-                      as="div"
-                      className={"empty-chart"}
-                      key={nodes.length}
-                    >
+                    <div className={"empty-chart"} key={nodes.length}>
                       {"NENHUM DADO DISPONÍVEL"}
-                    </LoadingElement>,
+                    </div>,
                   );
                 }
                 return nodes;
               })()}
-            </LoadingElement>
-          </LoadingElement>
-          <LoadingElement as="footer" className={"dash-footer"}>
-            <LoadingElement as="div" className={"footer-actions"}>
-              <LoadingElement
-                as="a"
-                href={"/dashboard/edit"}
-                className={"btn-secondary-dash"}
-              >
-                <LoadingElement
-                  as="i"
-                  className={"fas fa-arrow-left"}
-                ></LoadingElement>
+            </div>
+          </main>
+          <footer className={"dash-footer"}>
+            <div className={"footer-actions"}>
+              <a href={"/dashboard/edit"} className={"btn-secondary-dash"}>
+                <i className={"fas fa-arrow-left"}></i>
                 {" VOLTAR AO EDITOR\n                "}
-              </LoadingElement>
-              <LoadingElement
-                as="button"
+              </a>
+              <button
                 onClick={(event) => {
                   handlers.atualizarGraficos();
                 }}
                 className={"btn-secondary-dash"}
               >
-                <LoadingElement
-                  as="i"
-                  className={"fas fa-sync-alt"}
-                ></LoadingElement>
+                <i className={"fas fa-sync-alt"}></i>
                 {" ATUALIZAR\n                "}
-              </LoadingElement>
-            </LoadingElement>
-            <LoadingElement as="div" className={"footer-credits"}>
-              <LoadingElement as="p">
-                {"© 2026 AnalisAI\n                "}
-              </LoadingElement>
-            </LoadingElement>
-          </LoadingElement>
+              </button>
+            </div>
+            <div className={"footer-credits"}>
+              <p>{"© 2026 AnalisAI\n                "}</p>
+            </div>
+          </footer>
         </LoadingElement>
         <PageDataScript type="application/json" id="dashboard-graficos-data">
           {String(safeJson(stats))}
@@ -300,40 +242,36 @@ export default function Dashboard_dashboardGraficos({ data, handlers }) {
 export function PageHeader({ data, handlers }) {
   const { user = "", userCargo = null, stats = {} } = data;
   return (
-    <LoadingElement as="header" className={"dash-header"}>
-      <LoadingElement as="div" className={"header-left"}>
-        <LoadingElement as="h1">{"Relatorios"}</LoadingElement>
-      </LoadingElement>
-      <LoadingElement as="div" className={"header-user"}>
-        <LoadingElement as="div" className={"user-profile-group"}>
-          <LoadingElement as="div" className={"user-details"}>
-            <LoadingElement as="span" className={"user-name"}>
-              <LoadingElement as="strong">
+    <header className={"dash-header"}>
+      <div className={"header-left"}>
+        <h1>{"Relatorios"}</h1>
+      </div>
+      <div className={"header-user"}>
+        <div className={"user-profile-group"}>
+          <div className={"user-details"}>
+            <span className={"user-name"}>
+              <strong>
                 <LoadingValue
                   slot="dashboard/dashboardGraficos:6"
                   width="12ch"
                   known={true}
                   value={user}
                 />
-              </LoadingElement>
-            </LoadingElement>
-            <LoadingElement
-              as="span"
-              className={"user-role"}
-              style={styleFrom("color: #888888;")}
-            >
-              <LoadingElement as="strong">
+              </strong>
+            </span>
+            <span className={"user-role"} style={styleFrom("color: #888888;")}>
+              <strong>
                 <LoadingValue
                   slot="dashboard/dashboardGraficos:7"
                   width="12ch"
                   known={true}
                   value={userCargo}
                 />
-              </LoadingElement>
-            </LoadingElement>
-          </LoadingElement>
-        </LoadingElement>
-        <LoadingElement as="div" className={"header-actions"}>
+              </strong>
+            </span>
+          </div>
+        </div>
+        <div className={"header-actions"}>
           <Partials_notificacoes
             data={{
               ...data,
@@ -343,8 +281,8 @@ export function PageHeader({ data, handlers }) {
             }}
             handlers={handlers}
           />
-        </LoadingElement>
-      </LoadingElement>
-    </LoadingElement>
+        </div>
+      </div>
+    </header>
   );
 }

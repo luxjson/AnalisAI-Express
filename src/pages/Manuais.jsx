@@ -39,15 +39,14 @@ export default function Manuais({ data, handlers }) {
               root={true}
             >
               <PageHeader key="page-header" data={data} handlers={handlers} />
-              <LoadingElement as="main" className={"cards"}>
-                <LoadingElement as="div" className={"card"}>
-                  <LoadingElement as="h1" className={"title"}>
+              <main className={"cards"}>
+                <div className={"card"}>
+                  <h1 className={"title"}>
                     {
                       "\n                    Manual do Professor\n                "
                     }
-                  </LoadingElement>
-                  <LoadingElement
-                    as="a"
+                  </h1>
+                  <a
                     href={"/manuais/professor"}
                     id={"professorBtn"}
                     className={"button"}
@@ -55,22 +54,21 @@ export default function Manuais({ data, handlers }) {
                     {
                       "\n                    \n                    Acessar\n                "
                     }
-                  </LoadingElement>
-                </LoadingElement>
-                <LoadingElement as="div" className={"card"}>
-                  <LoadingElement as="h1" className={"title"}>
+                  </a>
+                </div>
+                <div className={"card"}>
+                  <h1 className={"title"}>
                     {"\n                    Manual do Aluno\n                "}
-                  </LoadingElement>
-                  <LoadingElement
-                    as="a"
+                  </h1>
+                  <a
                     href={"/manuais/aluno"}
                     id={"alunoBtn"}
                     className={"button-1"}
                   >
                     {"\n                    Acessar\n                "}
-                  </LoadingElement>
-                </LoadingElement>
-              </LoadingElement>
+                  </a>
+                </div>
+              </main>
             </LoadingElement>,
           );
           return nodes;
@@ -82,28 +80,26 @@ export default function Manuais({ data, handlers }) {
 export function PageHeader({ data, handlers }) {
   const { userCargo = null, user = "" } = data;
   return (
-    <LoadingElement as="header" className={"dash-header"}>
-      <LoadingElement as="div" className={"header-left"}>
-        <LoadingElement as="h1">
-          {"\n                    Manual do Usuário\n                "}
-        </LoadingElement>
-      </LoadingElement>
-      <LoadingElement as="div" className={"header-user"}>
-        <LoadingElement as="div" className={"user-profile-group"}>
-          <LoadingElement as="div" className={"user-details"}>
-            <LoadingElement as="span" className={"user-name"}>
-              <LoadingElement as="strong">
+    <header className={"dash-header"}>
+      <div className={"header-left"}>
+        <h1>{"\n                    Manual do Usuário\n                "}</h1>
+      </div>
+      <div className={"header-user"}>
+        <div className={"user-profile-group"}>
+          <div className={"user-details"}>
+            <span className={"user-name"}>
+              <strong>
                 <LoadingValue
                   slot="manuais:1"
                   width="12ch"
                   known={true}
                   value={user}
                 />
-              </LoadingElement>
-            </LoadingElement>
-          </LoadingElement>
-        </LoadingElement>
-        <LoadingElement as="div" className={"header-actions"}>
+              </strong>
+            </span>
+          </div>
+        </div>
+        <div className={"header-actions"}>
           <Partials_notificacoes
             data={{
               ...data,
@@ -113,8 +109,8 @@ export function PageHeader({ data, handlers }) {
             }}
             handlers={handlers}
           />
-        </LoadingElement>
-      </LoadingElement>
-    </LoadingElement>
+        </div>
+      </div>
+    </header>
   );
 }

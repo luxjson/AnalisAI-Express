@@ -39,119 +39,94 @@ export default function Aluno_alunoCompetencias({ data, handlers }) {
               root={true}
             >
               <PageHeader key="page-header" data={data} handlers={handlers} />
-              <LoadingElement as="main" className={"dash-content"}>
+              <main className={"dash-content"}>
                 {(() => {
                   const nodes = [];
                   nodes.push(
-                    <LoadingElement
-                      as="section"
+                    <section
                       className={"welcome-banner"}
                       style={styleFrom(
                         "background: linear-gradient(90deg, #1b5e38 0%, #217346 100%); padding: 40px;",
                       )}
                       key={nodes.length}
                     >
-                      <LoadingElement as="div" className={"banner-text"}>
-                        <LoadingElement as="h1">
-                          <LoadingElement
-                            as="i"
-                            className={"fas fa-medal"}
-                          ></LoadingElement>
+                      <div className={"banner-text"}>
+                        <h1>
+                          <i className={"fas fa-medal"}></i>
                           {" Relatório de Competências"}
-                        </LoadingElement>
-                        <LoadingElement as="p">
+                        </h1>
+                        <p>
                           {
                             "Filtre, analise e acompanhe o detalhamento de cada habilidade avaliada pelos seus professores."
                           }
-                        </LoadingElement>
-                      </LoadingElement>
-                    </LoadingElement>,
+                        </p>
+                      </div>
+                    </section>,
                   );
                   nodes.push(
-                    <LoadingElement
-                      as="section"
-                      className={"section-container"}
-                      key={nodes.length}
-                    >
-                      <LoadingElement as="div" className={"dash-grid"}>
-                        <LoadingElement as="div" className={"stats-card"}>
-                          <LoadingElement as="h3">
-                            {"TOTAL AVALIADAS"}
-                          </LoadingElement>
-                          <LoadingElement as="p" className={"stats-number"}>
+                    <section className={"section-container"} key={nodes.length}>
+                      <div className={"dash-grid"}>
+                        <div className={"stats-card"}>
+                          <h3>{"TOTAL AVALIADAS"}</h3>
+                          <p className={"stats-number"}>
                             <LoadingValue
                               slot="aluno/alunoCompetencias:1"
                               width="3ch"
                               known={false}
                               value={stats.total || 0}
                             />
-                          </LoadingElement>
-                        </LoadingElement>
-                        <LoadingElement as="div" className={"stats-card apto"}>
-                          <LoadingElement as="h3">{"APTAS"}</LoadingElement>
-                          <LoadingElement as="p" className={"stats-number"}>
+                          </p>
+                        </div>
+                        <div className={"stats-card apto"}>
+                          <h3>{"APTAS"}</h3>
+                          <p className={"stats-number"}>
                             <LoadingValue
                               slot="aluno/alunoCompetencias:2"
                               width="3ch"
                               known={false}
                               value={stats.aptas || 0}
                             />
-                          </LoadingElement>
-                        </LoadingElement>
-                        <LoadingElement
-                          as="div"
-                          className={"stats-card desenvolvimento"}
-                        >
-                          <LoadingElement as="h3">
-                            {"EM DESENVOLVIMENTO"}
-                          </LoadingElement>
-                          <LoadingElement as="p" className={"stats-number"}>
+                          </p>
+                        </div>
+                        <div className={"stats-card desenvolvimento"}>
+                          <h3>{"EM DESENVOLVIMENTO"}</h3>
+                          <p className={"stats-number"}>
                             <LoadingValue
                               slot="aluno/alunoCompetencias:3"
                               width="3ch"
                               known={false}
                               value={stats.desenvolvimento || 0}
                             />
-                          </LoadingElement>
-                        </LoadingElement>
-                        <LoadingElement
-                          as="div"
-                          className={"stats-card inapto"}
-                        >
-                          <LoadingElement as="h3">{"INAPTAS"}</LoadingElement>
-                          <LoadingElement as="p" className={"stats-number"}>
+                          </p>
+                        </div>
+                        <div className={"stats-card inapto"}>
+                          <h3>{"INAPTAS"}</h3>
+                          <p className={"stats-number"}>
                             <LoadingValue
                               slot="aluno/alunoCompetencias:4"
                               width="3ch"
                               known={false}
                               value={stats.inaptas || 0}
                             />
-                          </LoadingElement>
-                        </LoadingElement>
-                      </LoadingElement>
-                    </LoadingElement>,
+                          </p>
+                        </div>
+                      </div>
+                    </section>,
                   );
                   nodes.push(
-                    <LoadingElement
-                      as="section"
-                      className={"section-container"}
-                      key={nodes.length}
-                    >
-                      <LoadingElement
-                        as="div"
+                    <section className={"section-container"} key={nodes.length}>
+                      <div
                         className={"stats-card"}
                         style={styleFrom(
                           "padding: 25px; display: flex; flex-direction: column; gap: 15px; justify-content: space-between;",
                         )}
                       >
-                        <LoadingElement
-                          as="div"
+                        <div
                           style={styleFrom(
                             "display: flex; gap: 15px; flex-wrap: wrap; align-items: center; flex: 1; justify-content: space-between;",
                           )}
                         >
-                          <LoadingElement
-                            as="input"
+                          <input
                             type={"text"}
                             id={"searchInput"}
                             style={styleFrom(
@@ -159,113 +134,75 @@ export default function Aluno_alunoCompetencias({ data, handlers }) {
                             )}
                             placeholder={"Pesquisar competência..."}
                           />
-                          <LoadingElement
-                            as="select"
+                          <select
                             id={"categoriaFilter"}
                             style={styleFrom(
                               "flex: 1; background: var(--card-bg); border: 1px solid var(--border-color); padding: 12px; border-radius: 10px; color: var(--text-white); max-width: 25%",
                             )}
                           >
-                            <LoadingElement as="option" value={""}>
-                              {"TODAS CATEGORIAS"}
-                            </LoadingElement>
-                            <LoadingElement as="option" value={"Técnica"}>
-                              {"TÉCNICA"}
-                            </LoadingElement>
-                            <LoadingElement
-                              as="option"
-                              value={"Comportamental"}
-                            >
+                            <option value={""}>{"TODAS CATEGORIAS"}</option>
+                            <option value={"Técnica"}>{"TÉCNICA"}</option>
+                            <option value={"Comportamental"}>
                               {"COMPORTAMENTAL"}
-                            </LoadingElement>
-                            <LoadingElement as="option" value={"Cognitiva"}>
-                              {"COGNITIVA"}
-                            </LoadingElement>
-                          </LoadingElement>
-                          <LoadingElement
-                            as="select"
+                            </option>
+                            <option value={"Cognitiva"}>{"COGNITIVA"}</option>
+                          </select>
+                          <select
                             id={"nivelFilter"}
                             style={styleFrom(
                               "flex: 1; background: var(--card-bg); border: 1px solid var(--border-color); padding: 12px; border-radius: 10px; color: var(--text-white); max-width: 25%;",
                             )}
                           >
-                            <LoadingElement as="option" value={""}>
-                              {"TODOS OS NÍVEIS"}
-                            </LoadingElement>
-                            <LoadingElement as="option" value={"apto"}>
-                              {"APTO"}
-                            </LoadingElement>
-                            <LoadingElement
-                              as="option"
-                              value={"desenvolvimento"}
-                            >
+                            <option value={""}>{"TODOS OS NÍVEIS"}</option>
+                            <option value={"apto"}>{"APTO"}</option>
+                            <option value={"desenvolvimento"}>
                               {"DESENVOLVIMENTO"}
-                            </LoadingElement>
-                            <LoadingElement as="option" value={"inapto"}>
-                              {"INAPTO"}
-                            </LoadingElement>
-                          </LoadingElement>
-                        </LoadingElement>
-                        <LoadingElement
-                          as="div"
-                          style={styleFrom("display: flex; gap: 15px;")}
-                        >
-                          <LoadingElement
-                            as="button"
+                            </option>
+                            <option value={"inapto"}>{"INAPTO"}</option>
+                          </select>
+                        </div>
+                        <div style={styleFrom("display: flex; gap: 15px;")}>
+                          <button
                             onClick={(event) => {
                               handlers.aplicarFiltros();
                             }}
                             className={"btn-secondary-dash"}
                             style={styleFrom("height: 50px;")}
                           >
-                            <LoadingElement
-                              as="i"
-                              className={"fas fa-filter"}
-                            ></LoadingElement>
+                            <i className={"fas fa-filter"}></i>
                             {" FILTRAR\n                        "}
-                          </LoadingElement>
-                          <LoadingElement
-                            as="button"
+                          </button>
+                          <button
                             onClick={(event) => {
                               handlers.limparFiltros();
                             }}
                             className={"btn-secondary-dash"}
                             style={styleFrom("height: 50px;")}
                           >
-                            <LoadingElement
-                              as="i"
-                              className={"fas fa-times"}
-                            ></LoadingElement>
-                          </LoadingElement>
-                        </LoadingElement>
-                      </LoadingElement>
-                    </LoadingElement>,
+                            <i className={"fas fa-times"}></i>
+                          </button>
+                        </div>
+                      </div>
+                    </section>,
                   );
                   nodes.push(
-                    <LoadingElement
-                      as="section"
-                      className={"section-container"}
-                      key={nodes.length}
-                    >
+                    <section className={"section-container"} key={nodes.length}>
                       {(() => {
                         const nodes = [];
                         nodes.push(
-                          <LoadingElement
-                            as="div"
+                          <div
                             style={styleFrom(
                               "display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;",
                             )}
                             key={nodes.length}
                           >
-                            <LoadingElement
-                              as="h2"
+                            <h2
                               className={"section-title-2"}
                               style={styleFrom("margin-bottom: 0;")}
                             >
                               {"DETALHAMENTO"}
-                            </LoadingElement>
-                            <LoadingElement
-                              as="select"
+                            </h2>
+                            <select
                               id={"ordenarSelect"}
                               onChange={(event) => {
                                 handlers.ordenarCompetencias();
@@ -274,19 +211,16 @@ export default function Aluno_alunoCompetencias({ data, handlers }) {
                                 "background: var(--card-bg); border: 1px solid var(--border-color); padding: 8px 15px; border-radius: 8px; color: #888; font-size: 0.8rem;",
                               )}
                             >
-                              <LoadingElement as="option" value={"data_desc"}>
+                              <option value={"data_desc"}>
                                 {"MAIS RECENTES"}
-                              </LoadingElement>
-                              <LoadingElement as="option" value={"nome_asc"}>
-                                {"A-Z"}
-                              </LoadingElement>
-                            </LoadingElement>
-                          </LoadingElement>,
+                              </option>
+                              <option value={"nome_asc"}>{"A-Z"}</option>
+                            </select>
+                          </div>,
                         );
                         if (competencias && competencias.length > 0) {
                           nodes.push(
-                            <LoadingElement
-                              as="div"
+                            <div
                               className={"dash-grid"}
                               id={"competenciasGrid"}
                               key={nodes.length}
@@ -316,16 +250,14 @@ export default function Aluno_alunoCompetencias({ data, handlers }) {
                                       {(() => {
                                         const nodes = [];
                                         nodes.push(
-                                          <LoadingElement
-                                            as="div"
+                                          <div
                                             style={styleFrom(
                                               "display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;",
                                             )}
                                             key={nodes.length}
                                           >
-                                            <LoadingElement as="div">
-                                              <LoadingElement
-                                                as="h3"
+                                            <div>
+                                              <h3
                                                 style={styleFrom(
                                                   "color: var(--text-white); font-size: 1.1rem; margin-bottom: 5px;",
                                                 )}
@@ -336,17 +268,13 @@ export default function Aluno_alunoCompetencias({ data, handlers }) {
                                                   known={false}
                                                   value={comp.nome}
                                                 />
-                                              </LoadingElement>
-                                              <LoadingElement
-                                                as="span"
+                                              </h3>
+                                              <span
                                                 style={styleFrom(
                                                   "font-size: 0.7rem; color: var(--text-gray); text-transform: uppercase; letter-spacing: 1px;",
                                                 )}
                                               >
-                                                <LoadingElement
-                                                  as="i"
-                                                  className={"fas fa-tag"}
-                                                ></LoadingElement>
+                                                <i className={"fas fa-tag"}></i>
                                                 <LoadingValue
                                                   slot="aluno/alunoCompetencias:6"
                                                   width="min(18ch, 100%)"
@@ -355,8 +283,8 @@ export default function Aluno_alunoCompetencias({ data, handlers }) {
                                                     comp.categoria || "GERAL"
                                                   }
                                                 />
-                                              </LoadingElement>
-                                            </LoadingElement>
+                                              </span>
+                                            </div>
                                             <LoadingElement
                                               as="span"
                                               className={
@@ -374,11 +302,10 @@ export default function Aluno_alunoCompetencias({ data, handlers }) {
                                                 value={notaNum.toFixed(1)}
                                               />
                                             </LoadingElement>
-                                          </LoadingElement>,
+                                          </div>,
                                         );
                                         nodes.push(
-                                          <LoadingElement
-                                            as="p"
+                                          <p
                                             style={styleFrom(
                                               "font-size: 0.85rem; color: var(--text-gray); line-height: 1.5; margin-bottom: 15px;",
                                             )}
@@ -393,25 +320,22 @@ export default function Aluno_alunoCompetencias({ data, handlers }) {
                                                 "Sem descrição disponível."
                                               }
                                             />
-                                          </LoadingElement>,
+                                          </p>,
                                         );
                                         if (comp.observacoes) {
                                           nodes.push(
-                                            <LoadingElement
-                                              as="div"
+                                            <div
                                               style={styleFrom(
                                                 "background: rgba(255,255,255,0.03); padding: 12px; border-radius: 10px; margin-bottom: 15px;",
                                               )}
                                               key={nodes.length}
                                             >
-                                              <LoadingElement
-                                                as="p"
+                                              <p
                                                 style={styleFrom(
                                                   "font-size: 0.8rem; color: #aaa; font-style: italic;",
                                                 )}
                                               >
-                                                <LoadingElement
-                                                  as="i"
+                                                <i
                                                   className={
                                                     "fas fa-quote-left"
                                                   }
@@ -420,36 +344,34 @@ export default function Aluno_alunoCompetencias({ data, handlers }) {
                                                       statusClass +
                                                       ");",
                                                   )}
-                                                ></LoadingElement>
+                                                ></i>
                                                 <LoadingValue
                                                   slot="aluno/alunoCompetencias:9"
                                                   width="min(32ch, 100%)"
                                                   known={false}
                                                   value={comp.observacoes}
                                                 />
-                                              </LoadingElement>
-                                            </LoadingElement>,
+                                              </p>
+                                            </div>,
                                           );
                                         }
                                         nodes.push(
-                                          <LoadingElement
-                                            as="div"
+                                          <div
                                             style={styleFrom(
                                               "border-top: 1px solid var(--border-soft); padding-top: 15px; font-size: 0.75rem; color: var(--text-muted);",
                                             )}
                                             key={nodes.length}
                                           >
-                                            <LoadingElement
-                                              as="i"
+                                            <i
                                               className={"far fa-calendar-alt"}
-                                            ></LoadingElement>
+                                            ></i>
                                             <LoadingValue
                                               slot="aluno/alunoCompetencias:10"
                                               width="10ch"
                                               known={false}
                                               value={comp.data_formatada}
                                             />
-                                          </LoadingElement>,
+                                          </div>,
                                         );
                                         return nodes;
                                       })()}
@@ -458,52 +380,45 @@ export default function Aluno_alunoCompetencias({ data, handlers }) {
                                 });
                                 return nodes;
                               })()}
-                            </LoadingElement>,
+                            </div>,
                           );
                         } else {
                           nodes.push(
-                            <LoadingElement
-                              as="div"
+                            <div
                               className={"stats-card"}
                               style={styleFrom(
                                 "text-align: center; padding: 80px;",
                               )}
                               key={nodes.length}
                             >
-                              <LoadingElement
-                                as="i"
+                              <i
                                 className={"fas fa-clipboard-list"}
                                 style={styleFrom(
                                   "font-size: 4rem; color: var(--border-color); margin-bottom: 20px;",
                                 )}
-                              ></LoadingElement>
-                              <LoadingElement as="h3">
-                                {"Nenhuma competência avaliada"}
-                              </LoadingElement>
-                            </LoadingElement>,
+                              ></i>
+                              <h3>{"Nenhuma competência avaliada"}</h3>
+                            </div>,
                           );
                         }
                         return nodes;
                       })()}
-                    </LoadingElement>,
+                    </section>,
                   );
                   if (competencias && competencias.length > 0) {
                     nodes.push(
-                      <LoadingElement
-                        as="section"
+                      <section
                         className={"section-container"}
                         key={nodes.length}
                       >
-                        <LoadingElement as="div" className={"stats-card"}>
-                          <LoadingElement
-                            as="h2"
+                        <div className={"stats-card"}>
+                          <h2
                             className={"section-title-2"}
                             style={styleFrom("margin-bottom: 20px;")}
                           >
                             {"DESEMPENHO POR HABILIDADE"}
-                          </LoadingElement>
-                          <LoadingElement
-                            as="div"
+                          </h2>
+                          <div
                             style={styleFrom(
                               "height: 300px; position: relative;",
                             )}
@@ -513,32 +428,25 @@ export default function Aluno_alunoCompetencias({ data, handlers }) {
                               variant="plot"
                               frame={true}
                             ></LoadingCanvas>
-                          </LoadingElement>
-                        </LoadingElement>
-                      </LoadingElement>,
+                          </div>
+                        </div>
+                      </section>,
                     );
                   }
                   return nodes;
                 })()}
-              </LoadingElement>
-              <LoadingElement as="footer" className={"dash-footer"}>
-                <LoadingElement as="div" className={"footer-actions"}>
-                  <LoadingElement
-                    as="a"
-                    href={"/aluno"}
-                    className={"btn-secondary-dash"}
-                  >
-                    <LoadingElement
-                      as="i"
-                      className={"fas fa-arrow-left"}
-                    ></LoadingElement>
+              </main>
+              <footer className={"dash-footer"}>
+                <div className={"footer-actions"}>
+                  <a href={"/aluno"} className={"btn-secondary-dash"}>
+                    <i className={"fas fa-arrow-left"}></i>
                     {" VOLTAR AO PAINEL\n                "}
-                  </LoadingElement>
-                </LoadingElement>
-                <LoadingElement as="div" className={"footer-credits"}>
-                  <LoadingElement as="p">{"© 2026 AnalisAI"}</LoadingElement>
-                </LoadingElement>
-              </LoadingElement>
+                  </a>
+                </div>
+                <div className={"footer-credits"}>
+                  <p>{"© 2026 AnalisAI"}</p>
+                </div>
+              </footer>
             </LoadingElement>,
           );
           if (competencias && competencias.length > 0) {
@@ -568,21 +476,19 @@ export function PageHeader({ data, handlers }) {
     competencias = [],
   } = data;
   return (
-    <LoadingElement as="header" className={"dash-header"}>
-      <LoadingElement as="div" className={"header-left"}>
-        <LoadingElement as="div" className={"logo"}>
-          <LoadingElement
-            as="img"
+    <header className={"dash-header"}>
+      <div className={"header-left"}>
+        <div className={"logo"}>
+          <img
             src={"/images/logo3-green.png"}
             alt={"AnalisAI"}
             style={styleFrom("height: 40px;")}
           />
-        </LoadingElement>
-      </LoadingElement>
-      <LoadingElement as="div" className={"header-user"}>
-        <LoadingElement as="div" className={"user-profile-group"}>
-          <LoadingElement
-            as="div"
+        </div>
+      </div>
+      <div className={"header-user"}>
+        <div className={"user-profile-group"}>
+          <div
             className={"user-avatar"}
             style={styleFrom("background: var(--color-apto);")}
           >
@@ -592,29 +498,29 @@ export function PageHeader({ data, handlers }) {
               known={true}
               value={aluno.nome.charAt(0).toUpperCase()}
             />
-          </LoadingElement>
-          <LoadingElement as="div" className={"user-details"}>
-            <LoadingElement as="span" className={"user-name"}>
-              <LoadingElement as="strong">
+          </div>
+          <div className={"user-details"}>
+            <span className={"user-name"}>
+              <strong>
                 <LoadingValue
                   slot="aluno/alunoCompetencias:12"
                   width="min(18ch, 100%)"
                   known={true}
                   value={aluno.nome}
                 />
-              </LoadingElement>
-            </LoadingElement>
-            <LoadingElement as="span" className={"user-email"}>
+              </strong>
+            </span>
+            <span className={"user-email"}>
               <LoadingValue
                 slot="aluno/alunoCompetencias:13"
                 width="12ch"
                 known={true}
                 value={aluno.ano_escolar}
               />
-            </LoadingElement>
-          </LoadingElement>
-        </LoadingElement>
-        <LoadingElement as="div" className={"header-actions"}>
+            </span>
+          </div>
+        </div>
+        <div className={"header-actions"}>
           <Partials_notificacoes
             data={{
               ...data,
@@ -624,8 +530,8 @@ export function PageHeader({ data, handlers }) {
             }}
             handlers={handlers}
           />
-        </LoadingElement>
-      </LoadingElement>
-    </LoadingElement>
+        </div>
+      </div>
+    </header>
   );
 }

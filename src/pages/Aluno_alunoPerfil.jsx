@@ -24,60 +24,58 @@ export default function Aluno_alunoPerfil({ data, handlers }) {
         />
         <LoadingElement as="div" className={"main-layout"} root={true}>
           <PageHeader key="page-header" data={data} handlers={handlers} />
-          <LoadingElement as="main" className={"dash-content"}>
-            <LoadingElement as="section" className={"welcome-banner"}>
-              <LoadingElement as="div" className={"banner-text"}>
-                <LoadingElement as="h1">
-                  {"Configurações do Estudante"}
-                </LoadingElement>
-                <LoadingElement as="p">
+          <main className={"dash-content"}>
+            <section className={"welcome-banner"}>
+              <div className={"banner-text"}>
+                <h1>{"Configurações do Estudante"}</h1>
+                <p>
                   {"Gerencie seus dados e preferências de alertas do sistema."}
-                </LoadingElement>
-              </LoadingElement>
-            </LoadingElement>
-            <LoadingElement as="div" className={"perfil-grid"}>
-              <LoadingElement as="aside" className={"perfil-sidebar-card"}>
-                <LoadingElement as="div" className={"avatar-circle"}>
+                </p>
+              </div>
+            </section>
+            <div className={"perfil-grid"}>
+              <aside className={"perfil-sidebar-card"}>
+                <div className={"avatar-circle"}>
                   <LoadingValue
                     slot="aluno/alunoPerfil:1"
                     width="min(18ch, 100%)"
                     known={true}
                     value={aluno.nome.charAt(0).toUpperCase()}
                   />
-                </LoadingElement>
-                <LoadingElement as="div" className={"perfil-info-base"}>
-                  <LoadingElement as="h2">
+                </div>
+                <div className={"perfil-info-base"}>
+                  <h2>
                     <LoadingValue
                       slot="aluno/alunoPerfil:2"
                       width="min(18ch, 100%)"
                       known={true}
                       value={aluno.nome}
                     />
-                  </LoadingElement>
-                  <LoadingElement as="p">
+                  </h2>
+                  <p>
                     <LoadingValue
                       slot="aluno/alunoPerfil:3"
                       width="12ch"
                       known={true}
                       value={aluno.ano_escolar}
                     />
-                  </LoadingElement>
-                </LoadingElement>
-                <LoadingElement as="div" className={"perfil-stats-row"}>
-                  <LoadingElement as="div" className={"stat-item"}>
-                    <LoadingElement as="span">{"Avaliações"}</LoadingElement>
-                    <LoadingElement as="strong">
+                  </p>
+                </div>
+                <div className={"perfil-stats-row"}>
+                  <div className={"stat-item"}>
+                    <span>{"Avaliações"}</span>
+                    <strong>
                       <LoadingValue
                         slot="aluno/alunoPerfil:4"
                         width="12ch"
                         known={false}
                         value={competencias.length}
                       />
-                    </LoadingElement>
-                  </LoadingElement>
-                  <LoadingElement as="div" className={"stat-item"}>
-                    <LoadingElement as="span">{"Presença"}</LoadingElement>
-                    <LoadingElement as="strong">
+                    </strong>
+                  </div>
+                  <div className={"stat-item"}>
+                    <span>{"Presença"}</span>
+                    <strong>
                       <LoadingValue
                         slot="aluno/alunoPerfil:5"
                         width="3ch"
@@ -85,61 +83,46 @@ export default function Aluno_alunoPerfil({ data, handlers }) {
                         value={aluno.presenca}
                       />
                       {"%"}
-                    </LoadingElement>
-                  </LoadingElement>
-                </LoadingElement>
-                <LoadingElement
-                  as="div"
-                  style={styleFrom("text-align: left; padding: 0 10px;")}
-                >
-                  <LoadingElement
-                    as="div"
+                    </strong>
+                  </div>
+                </div>
+                <div style={styleFrom("text-align: left; padding: 0 10px;")}>
+                  <div
                     style={styleFrom(
                       "display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 10px;",
                     )}
                   >
-                    <LoadingElement
-                      as="span"
-                      style={styleFrom("color: var(--text-gray);")}
-                    >
+                    <span style={styleFrom("color: var(--text-gray);")}>
                       {"Matrícula:"}
-                    </LoadingElement>
-                    <LoadingElement
-                      as="span"
-                      style={styleFrom("color: white;")}
-                    >
+                    </span>
+                    <span style={styleFrom("color: white;")}>
                       <LoadingValue
                         slot="aluno/alunoPerfil:6"
                         width="12ch"
                         known={false}
                         value={aluno.matricula}
                       />
-                    </LoadingElement>
-                  </LoadingElement>
-                  <LoadingElement
-                    as="div"
+                    </span>
+                  </div>
+                  <div
                     style={styleFrom(
                       "display: flex; justify-content: space-between; font-size: 0.85rem;",
                     )}
                   >
-                    <LoadingElement
-                      as="span"
-                      style={styleFrom("color: var(--text-gray);")}
-                    >
+                    <span style={styleFrom("color: var(--text-gray);")}>
                       {"Conta:"}
-                    </LoadingElement>
-                    <LoadingElement
-                      as="span"
+                    </span>
+                    <span
                       className={"media-nota apto"}
                       style={styleFrom("font-size: 0.6rem; padding: 2px 10px;")}
                     >
                       {"ATIVO"}
-                    </LoadingElement>
-                  </LoadingElement>
-                </LoadingElement>
-              </LoadingElement>
-              <LoadingElement as="div" className={"perfil-main"}>
-                <LoadingElement as="nav" className={"tabs-nav"}>
+                    </span>
+                  </div>
+                </div>
+              </aside>
+              <div className={"perfil-main"}>
+                <nav className={"tabs-nav"}>
                   <LoadingElement
                     as="button"
                     className={
@@ -164,7 +147,7 @@ export default function Aluno_alunoPerfil({ data, handlers }) {
                   >
                     {"Segurança"}
                   </LoadingElement>
-                </LoadingElement>
+                </nav>
                 <LoadingElement
                   as="div"
                   id={"abaDados"}
@@ -173,48 +156,35 @@ export default function Aluno_alunoPerfil({ data, handlers }) {
                   }
                   tone={true}
                 >
-                  <LoadingElement as="div" className={"info-grid"}>
-                    <LoadingElement as="div" className={"info-display-item"}>
-                      <LoadingElement as="label">
-                        {"Nome Completo"}
-                      </LoadingElement>
-                      <LoadingElement as="div" className={"value"}>
-                        <LoadingElement
-                          as="i"
-                          className={"fas fa-user"}
-                        ></LoadingElement>
+                  <div className={"info-grid"}>
+                    <div className={"info-display-item"}>
+                      <label>{"Nome Completo"}</label>
+                      <div className={"value"}>
+                        <i className={"fas fa-user"}></i>
                         <LoadingValue
                           slot="aluno/alunoPerfil:7"
                           width="min(18ch, 100%)"
                           known={true}
                           value={aluno.nome}
                         />
-                      </LoadingElement>
-                    </LoadingElement>
-                    <LoadingElement as="div" className={"info-display-item"}>
-                      <LoadingElement as="label">
-                        {"Turma / Ano"}
-                      </LoadingElement>
-                      <LoadingElement as="div" className={"value"}>
-                        <LoadingElement
-                          as="i"
-                          className={"fas fa-graduation-cap"}
-                        ></LoadingElement>
+                      </div>
+                    </div>
+                    <div className={"info-display-item"}>
+                      <label>{"Turma / Ano"}</label>
+                      <div className={"value"}>
+                        <i className={"fas fa-graduation-cap"}></i>
                         <LoadingValue
                           slot="aluno/alunoPerfil:8"
                           width="12ch"
                           known={true}
                           value={aluno.ano_escolar}
                         />
-                      </LoadingElement>
-                    </LoadingElement>
-                    <LoadingElement as="div" className={"info-display-item"}>
-                      <LoadingElement as="label">{"Idade"}</LoadingElement>
-                      <LoadingElement as="div" className={"value"}>
-                        <LoadingElement
-                          as="i"
-                          className={"fas fa-calendar-day"}
-                        ></LoadingElement>
+                      </div>
+                    </div>
+                    <div className={"info-display-item"}>
+                      <label>{"Idade"}</label>
+                      <div className={"value"}>
+                        <i className={"fas fa-calendar-day"}></i>
                         <LoadingValue
                           slot="aluno/alunoPerfil:9"
                           width="3ch"
@@ -222,9 +192,9 @@ export default function Aluno_alunoPerfil({ data, handlers }) {
                           value={aluno.idade}
                         />
                         {" anos"}
-                      </LoadingElement>
-                    </LoadingElement>
-                  </LoadingElement>
+                      </div>
+                    </div>
+                  </div>
                 </LoadingElement>
                 <LoadingElement
                   as="div"
@@ -234,60 +204,42 @@ export default function Aluno_alunoPerfil({ data, handlers }) {
                   }
                   tone={true}
                 >
-                  <LoadingElement
-                    as="form"
+                  <form
                     action={"/aluno/alterar-senha?aba=senha"}
                     method={"POST"}
                   >
-                    <LoadingElement
-                      as="input"
-                      type={"hidden"}
-                      name={"_csrf"}
-                      value={csrfToken}
-                    />
-                    <LoadingElement as="label">{"SENHA ATUAL"}</LoadingElement>
-                    <LoadingElement
-                      as="input"
+                    <input type={"hidden"} name={"_csrf"} value={csrfToken} />
+                    <label>{"SENHA ATUAL"}</label>
+                    <input
                       type={"password"}
                       name={"senha_atual"}
                       className={"filter-input"}
                       required={true}
                     />
-                    <LoadingElement as="label">{"NOVA SENHA"}</LoadingElement>
-                    <LoadingElement
-                      as="input"
+                    <label>{"NOVA SENHA"}</label>
+                    <input
                       type={"password"}
                       name={"nova_senha"}
                       className={"filter-input"}
                       required={true}
                       minLength={"12"}
                     />
-                    <LoadingElement as="label">
-                      {"CONFIRMAR NOVA SENHA"}
-                    </LoadingElement>
-                    <LoadingElement
-                      as="input"
+                    <label>{"CONFIRMAR NOVA SENHA"}</label>
+                    <input
                       type={"password"}
                       name={"confirmar_senha"}
                       className={"filter-input"}
                       required={true}
                     />
-                    <LoadingElement
-                      as="button"
-                      type={"submit"}
-                      className={"btn-secondary-dash"}
-                    >
-                      <LoadingElement
-                        as="i"
-                        className={"fas fa-key"}
-                      ></LoadingElement>
+                    <button type={"submit"} className={"btn-secondary-dash"}>
+                      <i className={"fas fa-key"}></i>
                       {" Atualizar Senha"}
-                    </LoadingElement>
-                  </LoadingElement>
+                    </button>
+                  </form>
                 </LoadingElement>
-              </LoadingElement>
-            </LoadingElement>
-          </LoadingElement>
+              </div>
+            </div>
+          </main>
         </LoadingElement>
       </React.Fragment>
     </>
@@ -304,45 +256,42 @@ export function PageHeader({ data, handlers }) {
     csrfToken = null,
   } = data;
   return (
-    <LoadingElement as="header" className={"dash-header"}>
-      <LoadingElement as="div" className={"header-left"}>
-        <LoadingElement as="div" className={"logo"}>
-          <LoadingElement
-            as="img"
+    <header className={"dash-header"}>
+      <div className={"header-left"}>
+        <div className={"logo"}>
+          <img
             src={"/images/logo3-green.png"}
             alt={"AnalisAI"}
             style={styleFrom("height: 40px;")}
           />
-        </LoadingElement>
-      </LoadingElement>
-      <LoadingElement as="div" className={"header-user"}>
-        <LoadingElement as="div" className={"user-profile-group"}>
-          <LoadingElement
-            as="div"
+        </div>
+      </div>
+      <div className={"header-user"}>
+        <div className={"user-profile-group"}>
+          <div
             className={"user-details"}
             style={styleFrom("text-align: right; padding-right: 15px;")}
           >
-            <LoadingElement as="span" className={"user-name"}>
-              <LoadingElement as="strong">
+            <span className={"user-name"}>
+              <strong>
                 <LoadingValue
                   slot="aluno/alunoPerfil:10"
                   width="min(18ch, 100%)"
                   known={true}
                   value={aluno.nome}
                 />
-              </LoadingElement>
-            </LoadingElement>
-            <LoadingElement as="span" className={"user-email"}>
+              </strong>
+            </span>
+            <span className={"user-email"}>
               <LoadingValue
                 slot="aluno/alunoPerfil:11"
                 width="12ch"
                 known={true}
                 value={aluno.ano_escolar}
               />
-            </LoadingElement>
-          </LoadingElement>
-          <LoadingElement
-            as="div"
+            </span>
+          </div>
+          <div
             className={"user-avatar"}
             style={styleFrom(
               "background: var(--student-green); width: 45px; height: 45px; font-size: 1.2rem;",
@@ -354,9 +303,9 @@ export function PageHeader({ data, handlers }) {
               known={true}
               value={aluno.nome.charAt(0).toUpperCase()}
             />
-          </LoadingElement>
-        </LoadingElement>
-        <LoadingElement as="div" className={"header-actions"}>
+          </div>
+        </div>
+        <div className={"header-actions"}>
           <Partials_notificacoes
             data={{
               ...data,
@@ -366,8 +315,8 @@ export function PageHeader({ data, handlers }) {
             }}
             handlers={handlers}
           />
-        </LoadingElement>
-      </LoadingElement>
-    </LoadingElement>
+        </div>
+      </div>
+    </header>
   );
 }

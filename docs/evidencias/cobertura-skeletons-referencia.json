@@ -1,0 +1,202 @@
+[
+  {
+    "view": "error",
+    "loadedMarkupUnchanged": true,
+    "emptyBlocks": 5,
+    "allBlocksEmpty": true,
+    "visibleNativeText": [],
+    "liveControlsOrMedia": 0
+  },
+  {
+    "view": "esqueciSenha",
+    "loadedMarkupUnchanged": true,
+    "emptyBlocks": 9,
+    "allBlocksEmpty": true,
+    "visibleNativeText": [],
+    "liveControlsOrMedia": 0
+  },
+  {
+    "view": "index",
+    "loadedMarkupUnchanged": true,
+    "emptyBlocks": 41,
+    "allBlocksEmpty": true,
+    "visibleNativeText": [],
+    "liveControlsOrMedia": 0
+  },
+  {
+    "view": "login",
+    "loadedMarkupUnchanged": true,
+    "emptyBlocks": 11,
+    "allBlocksEmpty": true,
+    "visibleNativeText": [],
+    "liveControlsOrMedia": 0
+  },
+  {
+    "view": "manuais",
+    "loadedMarkupUnchanged": true,
+    "emptyBlocks": 13,
+    "allBlocksEmpty": true,
+    "visibleNativeText": [],
+    "liveControlsOrMedia": 0
+  },
+  {
+    "view": "manualDoAluno",
+    "loadedMarkupUnchanged": true,
+    "emptyBlocks": 8,
+    "allBlocksEmpty": true,
+    "visibleNativeText": [],
+    "liveControlsOrMedia": 0
+  },
+  {
+    "view": "manualDoProfessor",
+    "loadedMarkupUnchanged": true,
+    "emptyBlocks": 8,
+    "allBlocksEmpty": true,
+    "visibleNativeText": [],
+    "liveControlsOrMedia": 0
+  },
+  {
+    "view": "termos",
+    "loadedMarkupUnchanged": true,
+    "emptyBlocks": 19,
+    "allBlocksEmpty": true,
+    "visibleNativeText": [],
+    "liveControlsOrMedia": 0
+  },
+  {
+    "view": "aluno/alunoCompetencias",
+    "loadedMarkupUnchanged": true,
+    "emptyBlocks": 47,
+    "allBlocksEmpty": true,
+    "visibleNativeText": [],
+    "liveControlsOrMedia": 0
+  },
+  {
+    "view": "aluno/alunoDashboard",
+    "loadedMarkupUnchanged": true,
+    "emptyBlocks": 46,
+    "allBlocksEmpty": true,
+    "visibleNativeText": [],
+    "liveControlsOrMedia": 0
+  },
+  {
+    "view": "aluno/alunoEvolucao",
+    "loadedMarkupUnchanged": true,
+    "emptyBlocks": 52,
+    "allBlocksEmpty": true,
+    "visibleNativeText": [],
+    "liveControlsOrMedia": 0
+  },
+  {
+    "view": "aluno/alunoIA",
+    "loadedMarkupUnchanged": true,
+    "emptyBlocks": 14,
+    "allBlocksEmpty": true,
+    "visibleNativeText": [],
+    "liveControlsOrMedia": 0
+  },
+  {
+    "view": "aluno/alunoPerfil",
+    "loadedMarkupUnchanged": true,
+    "emptyBlocks": 25,
+    "allBlocksEmpty": true,
+    "visibleNativeText": [],
+    "liveControlsOrMedia": 0
+  },
+  {
+    "view": "aluno/alunoTarefas",
+    "loadedMarkupUnchanged": true,
+    "emptyBlocks": 36,
+    "allBlocksEmpty": true,
+    "visibleNativeText": [],
+    "liveControlsOrMedia": 0
+  },
+  {
+    "view": "dashboard/dashboardCalendario",
+    "loadedMarkupUnchanged": true,
+    "emptyBlocks": 90,
+    "allBlocksEmpty": true,
+    "visibleNativeText": [],
+    "liveControlsOrMedia": 0
+  },
+  {
+    "view": "dashboard/dashboardConfig",
+    "loadedMarkupUnchanged": true,
+    "emptyBlocks": 23,
+    "allBlocksEmpty": true,
+    "visibleNativeText": [],
+    "liveControlsOrMedia": 0
+  },
+  {
+    "view": "dashboard/dashboardEdit",
+    "loadedMarkupUnchanged": true,
+    "emptyBlocks": 61,
+    "allBlocksEmpty": true,
+    "visibleNativeText": [],
+    "liveControlsOrMedia": 0
+  },
+  {
+    "view": "dashboard/dashboardEquipe",
+    "loadedMarkupUnchanged": true,
+    "emptyBlocks": 15,
+    "allBlocksEmpty": true,
+    "visibleNativeText": [],
+    "liveControlsOrMedia": 0
+  },
+  {
+    "view": "dashboard/dashboardGraficos",
+    "loadedMarkupUnchanged": true,
+    "emptyBlocks": 26,
+    "allBlocksEmpty": true,
+    "visibleNativeText": [],
+    "liveControlsOrMedia": 0
+  },
+  {
+    "view": "dashboard/dashboardIA",
+    "loadedMarkupUnchanged": true,
+    "emptyBlocks": 14,
+    "allBlocksEmpty": true,
+    "visibleNativeText": [],
+    "liveControlsOrMedia": 0
+  },
+  {
+    "view": "dashboard/dashboardMain",
+    "loadedMarkupUnchanged": true,
+    "emptyBlocks": 53,
+    "allBlocksEmpty": true,
+    "visibleNativeText": [],
+    "liveControlsOrMedia": 0
+  },
+  {
+    "view": "dashboard/dashboardSolicitacoes",
+    "loadedMarkupUnchanged": true,
+    "emptyBlocks": 20,
+    "allBlocksEmpty": true,
+    "visibleNativeText": [],
+    "liveControlsOrMedia": 0
+  },
+  {
+    "view": "dashboard/dashboardTarefas",
+    "loadedMarkupUnchanged": true,
+    "emptyBlocks": 37,
+    "allBlocksEmpty": true,
+    "visibleNativeText": [],
+    "liveControlsOrMedia": 0
+  },
+  {
+    "view": "dashboard/dashboardUsuarios",
+    "loadedMarkupUnchanged": true,
+    "emptyBlocks": 40,
+    "allBlocksEmpty": true,
+    "visibleNativeText": [],
+    "liveControlsOrMedia": 0
+  },
+  {
+    "view": "API/index",
+    "loadedMarkupUnchanged": true,
+    "emptyBlocks": 45,
+    "allBlocksEmpty": true,
+    "visibleNativeText": [],
+    "liveControlsOrMedia": 0
+  }
+]

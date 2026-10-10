@@ -1,0 +1,14 @@
+{
+  "source": "Deadsmile-Games-Website(2).zip: src/components/ui/Skeleton.jsx and src/styles/global.css",
+  "minHeight": "16px",
+  "borderRadius": "10px",
+  "gradient": "linear-gradient(100deg,#24242420%,#33345%,#24242470%)",
+  "backgroundSize": "220%100%",
+  "animation": "skeleton-shimmer1.8sease-in-outinfinite",
+  "from": "100%0",
+  "to": "-100%0",
+  "lineHeight": "16px",
+  "lineRadius": "6px",
+  "lastLineWidth": "65%",
+  "lineGap": "12px"
+}
