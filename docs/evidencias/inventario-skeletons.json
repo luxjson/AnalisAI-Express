@@ -1,0 +1,1742 @@
+[
+  {
+    "view": "error",
+    "page": "Error",
+    "source": "deliverable/site/src/pages/Error.jsx",
+    "skeleton": "deliverable/site/src/skeletons/Error.jsx",
+    "slots": [
+      {
+        "slot": "error:1",
+        "parent": "p",
+        "className": "message",
+        "expression": "mensagem",
+        "width": "12ch",
+        "known": false
+      },
+      {
+        "slot": "error:2",
+        "parent": "p",
+        "className": "value",
+        "expression": "erroDetalhe",
+        "width": "12ch",
+        "known": false
+      }
+    ],
+    "layoutSourceShared": true
+  },
+  {
+    "view": "esqueciSenha",
+    "page": "EsqueciSenha",
+    "source": "deliverable/site/src/pages/EsqueciSenha.jsx",
+    "skeleton": "deliverable/site/src/skeletons/EsqueciSenha.jsx",
+    "slots": [
+      {
+        "slot": "esqueciSenha:1",
+        "parent": "div",
+        "className": "alert-box error",
+        "expression": "error_msg",
+        "width": "12ch",
+        "known": false
+      },
+      {
+        "slot": "esqueciSenha:2",
+        "parent": "div",
+        "className": "alert-box success",
+        "expression": "success_msg",
+        "width": "12ch",
+        "known": false
+      }
+    ],
+    "layoutSourceShared": true
+  },
+  {
+    "view": "index",
+    "page": "Index",
+    "source": "deliverable/site/src/pages/Index.jsx",
+    "skeleton": "deliverable/site/src/skeletons/Index.jsx",
+    "slots": [],
+    "layoutSourceShared": true
+  },
+  {
+    "view": "login",
+    "page": "Login",
+    "source": "deliverable/site/src/pages/Login.jsx",
+    "skeleton": "deliverable/site/src/skeletons/Login.jsx",
+    "slots": [
+      {
+        "slot": "login:1",
+        "parent": "div",
+        "className": "alert-box error",
+        "expression": "error_msg",
+        "width": "12ch",
+        "known": false
+      },
+      {
+        "slot": "login:2",
+        "parent": "div",
+        "className": "alert-box success",
+        "expression": "success_msg",
+        "width": "12ch",
+        "known": false
+      }
+    ],
+    "layoutSourceShared": true
+  },
+  {
+    "view": "manuais",
+    "page": "Manuais",
+    "source": "deliverable/site/src/pages/Manuais.jsx",
+    "skeleton": "deliverable/site/src/skeletons/Manuais.jsx",
+    "slots": [
+      {
+        "slot": "manuais:1",
+        "parent": "strong",
+        "className": "",
+        "expression": "user",
+        "width": "12ch",
+        "known": true
+      }
+    ],
+    "layoutSourceShared": true
+  },
+  {
+    "view": "manualDoAluno",
+    "page": "ManualDoAluno",
+    "source": "deliverable/site/src/pages/ManualDoAluno.jsx",
+    "skeleton": "deliverable/site/src/skeletons/ManualDoAluno.jsx",
+    "slots": [
+      {
+        "slot": "manualDoAluno:1",
+        "parent": "strong",
+        "className": "",
+        "expression": "user",
+        "width": "12ch",
+        "known": true
+      }
+    ],
+    "layoutSourceShared": true
+  },
+  {
+    "view": "manualDoProfessor",
+    "page": "ManualDoProfessor",
+    "source": "deliverable/site/src/pages/ManualDoProfessor.jsx",
+    "skeleton": "deliverable/site/src/skeletons/ManualDoProfessor.jsx",
+    "slots": [
+      {
+        "slot": "manualDoProfessor:1",
+        "parent": "strong",
+        "className": "",
+        "expression": "user",
+        "width": "12ch",
+        "known": true
+      }
+    ],
+    "layoutSourceShared": true
+  },
+  {
+    "view": "termos",
+    "page": "Termos",
+    "source": "deliverable/site/src/pages/Termos.jsx",
+    "skeleton": "deliverable/site/src/skeletons/Termos.jsx",
+    "slots": [],
+    "layoutSourceShared": true
+  },
+  {
+    "view": "aluno/alunoCompetencias",
+    "page": "Aluno_alunoCompetencias",
+    "source": "deliverable/site/src/pages/Aluno_alunoCompetencias.jsx",
+    "skeleton": "deliverable/site/src/skeletons/Aluno_alunoCompetencias.jsx",
+    "slots": [
+      {
+        "slot": "aluno/alunoCompetencias:1",
+        "parent": "p",
+        "className": "stats-number",
+        "expression": "stats.total || 0",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoCompetencias:2",
+        "parent": "p",
+        "className": "stats-number",
+        "expression": "stats.aptas || 0",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoCompetencias:3",
+        "parent": "p",
+        "className": "stats-number",
+        "expression": "stats.desenvolvimento || 0",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoCompetencias:4",
+        "parent": "p",
+        "className": "stats-number",
+        "expression": "stats.inaptas || 0",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoCompetencias:5",
+        "parent": "h3",
+        "className": "",
+        "expression": "comp.nome",
+        "width": "min(18ch, 100%)",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoCompetencias:6",
+        "parent": "span",
+        "className": "",
+        "expression": "comp.categoria || \"GERAL\"",
+        "width": "min(18ch, 100%)",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoCompetencias:7",
+        "parent": "span",
+        "className": "",
+        "expression": "notaNum.toFixed(1)",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoCompetencias:8",
+        "parent": "p",
+        "className": "",
+        "expression": "comp.descricao || \"Sem descrição disponível.\"",
+        "width": "min(32ch, 100%)",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoCompetencias:9",
+        "parent": "p",
+        "className": "",
+        "expression": "comp.observacoes",
+        "width": "min(32ch, 100%)",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoCompetencias:10",
+        "parent": "div",
+        "className": "",
+        "expression": "comp.data_formatada",
+        "width": "10ch",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoCompetencias:11",
+        "parent": "div",
+        "className": "user-avatar",
+        "expression": "aluno.nome.charAt(0).toUpperCase()",
+        "width": "min(18ch, 100%)",
+        "known": true
+      },
+      {
+        "slot": "aluno/alunoCompetencias:12",
+        "parent": "strong",
+        "className": "",
+        "expression": "aluno.nome",
+        "width": "min(18ch, 100%)",
+        "known": true
+      },
+      {
+        "slot": "aluno/alunoCompetencias:13",
+        "parent": "span",
+        "className": "user-email",
+        "expression": "aluno.ano_escolar",
+        "width": "12ch",
+        "known": true
+      }
+    ],
+    "layoutSourceShared": true
+  },
+  {
+    "view": "aluno/alunoDashboard",
+    "page": "Aluno_alunoDashboard",
+    "source": "deliverable/site/src/pages/Aluno_alunoDashboard.jsx",
+    "skeleton": "deliverable/site/src/skeletons/Aluno_alunoDashboard.jsx",
+    "slots": [
+      {
+        "slot": "aluno/alunoDashboard:1",
+        "parent": "h1",
+        "className": "",
+        "expression": "aluno.nome.split(\" \")[0].toUpperCase()",
+        "width": "min(18ch, 100%)",
+        "known": true
+      },
+      {
+        "slot": "aluno/alunoDashboard:2",
+        "parent": "p",
+        "className": "stats-number",
+        "expression": "aluno.matricula",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoDashboard:3",
+        "parent": "p",
+        "className": "stats-number",
+        "expression": "mediaGeralNum.toFixed(1)",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoDashboard:4",
+        "parent": "p",
+        "className": "stats-number",
+        "expression": "aluno.presenca",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoDashboard:5",
+        "parent": "p",
+        "className": "stats-number",
+        "expression": "competencias.length",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoDashboard:6",
+        "parent": "p",
+        "className": "stats-number",
+        "expression": "data.performanceSummary?.aptas || 0",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoDashboard:7",
+        "parent": "p",
+        "className": "stats-number",
+        "expression": "data.performanceSummary?.melhorar || 0",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoDashboard:8",
+        "parent": "div",
+        "className": "ranking-position",
+        "expression": "index + 1",
+        "width": "12ch",
+        "known": true
+      },
+      {
+        "slot": "aluno/alunoDashboard:9",
+        "parent": "h4",
+        "className": "",
+        "expression": "comp.nome",
+        "width": "min(18ch, 100%)",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoDashboard:10",
+        "parent": "p",
+        "className": "",
+        "expression": "comp.data_formatada",
+        "width": "10ch",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoDashboard:11",
+        "parent": "p",
+        "className": "",
+        "expression": "comp.observacoes",
+        "width": "min(32ch, 100%)",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoDashboard:12",
+        "parent": "span",
+        "className": "",
+        "expression": "notaNum.toFixed(1)",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoDashboard:13",
+        "parent": "div",
+        "className": "user-avatar",
+        "expression": "aluno.nome.charAt(0).toUpperCase()",
+        "width": "min(18ch, 100%)",
+        "known": true
+      },
+      {
+        "slot": "aluno/alunoDashboard:14",
+        "parent": "strong",
+        "className": "",
+        "expression": "aluno.nome",
+        "width": "min(18ch, 100%)",
+        "known": true
+      },
+      {
+        "slot": "aluno/alunoDashboard:15",
+        "parent": "span",
+        "className": "user-email",
+        "expression": "aluno.ano_escolar",
+        "width": "12ch",
+        "known": true
+      }
+    ],
+    "layoutSourceShared": true
+  },
+  {
+    "view": "aluno/alunoEvolucao",
+    "page": "Aluno_alunoEvolucao",
+    "source": "deliverable/site/src/pages/Aluno_alunoEvolucao.jsx",
+    "skeleton": "deliverable/site/src/skeletons/Aluno_alunoEvolucao.jsx",
+    "slots": [
+      {
+        "slot": "aluno/alunoEvolucao:1",
+        "parent": "h3",
+        "className": "",
+        "expression": "cat.categoria",
+        "width": "min(18ch, 100%)",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoEvolucao:2",
+        "parent": "span",
+        "className": "",
+        "expression": "mediaCat.toFixed(1)",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoEvolucao:3",
+        "parent": "p",
+        "className": "",
+        "expression": "cat.media.toFixed(0)",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoEvolucao:4",
+        "parent": "h4",
+        "className": "",
+        "expression": "comp.nome",
+        "width": "min(18ch, 100%)",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoEvolucao:5",
+        "parent": "p",
+        "className": "",
+        "expression": "comp.data_formatada",
+        "width": "10ch",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoEvolucao:6",
+        "parent": "p",
+        "className": "",
+        "expression": "comp.categoria || \"Geral\"",
+        "width": "min(18ch, 100%)",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoEvolucao:7",
+        "parent": "p",
+        "className": "",
+        "expression": "comp.observacoes",
+        "width": "min(32ch, 100%)",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoEvolucao:8",
+        "parent": "span",
+        "className": "",
+        "expression": "n.toFixed(1)",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoEvolucao:9",
+        "parent": "div",
+        "className": "user-avatar",
+        "expression": "aluno.nome.charAt(0).toUpperCase()",
+        "width": "min(18ch, 100%)",
+        "known": true
+      },
+      {
+        "slot": "aluno/alunoEvolucao:10",
+        "parent": "strong",
+        "className": "",
+        "expression": "aluno.nome",
+        "width": "min(18ch, 100%)",
+        "known": true
+      },
+      {
+        "slot": "aluno/alunoEvolucao:11",
+        "parent": "span",
+        "className": "user-email",
+        "expression": "aluno.ano_escolar",
+        "width": "12ch",
+        "known": true
+      }
+    ],
+    "layoutSourceShared": true
+  },
+  {
+    "view": "aluno/alunoIA",
+    "page": "Aluno_alunoIA",
+    "source": "deliverable/site/src/pages/Aluno_alunoIA.jsx",
+    "skeleton": "deliverable/site/src/skeletons/Aluno_alunoIA.jsx",
+    "slots": [],
+    "layoutSourceShared": true
+  },
+  {
+    "view": "aluno/alunoPerfil",
+    "page": "Aluno_alunoPerfil",
+    "source": "deliverable/site/src/pages/Aluno_alunoPerfil.jsx",
+    "skeleton": "deliverable/site/src/skeletons/Aluno_alunoPerfil.jsx",
+    "slots": [
+      {
+        "slot": "aluno/alunoPerfil:1",
+        "parent": "div",
+        "className": "avatar-circle",
+        "expression": "aluno.nome.charAt(0).toUpperCase()",
+        "width": "min(18ch, 100%)",
+        "known": true
+      },
+      {
+        "slot": "aluno/alunoPerfil:2",
+        "parent": "h2",
+        "className": "",
+        "expression": "aluno.nome",
+        "width": "min(18ch, 100%)",
+        "known": true
+      },
+      {
+        "slot": "aluno/alunoPerfil:3",
+        "parent": "p",
+        "className": "",
+        "expression": "aluno.ano_escolar",
+        "width": "12ch",
+        "known": true
+      },
+      {
+        "slot": "aluno/alunoPerfil:4",
+        "parent": "strong",
+        "className": "",
+        "expression": "competencias.length",
+        "width": "12ch",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoPerfil:5",
+        "parent": "strong",
+        "className": "",
+        "expression": "aluno.presenca",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoPerfil:6",
+        "parent": "span",
+        "className": "",
+        "expression": "aluno.matricula",
+        "width": "12ch",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoPerfil:7",
+        "parent": "div",
+        "className": "value",
+        "expression": "aluno.nome",
+        "width": "min(18ch, 100%)",
+        "known": true
+      },
+      {
+        "slot": "aluno/alunoPerfil:8",
+        "parent": "div",
+        "className": "value",
+        "expression": "aluno.ano_escolar",
+        "width": "12ch",
+        "known": true
+      },
+      {
+        "slot": "aluno/alunoPerfil:9",
+        "parent": "div",
+        "className": "value",
+        "expression": "aluno.idade",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoPerfil:10",
+        "parent": "strong",
+        "className": "",
+        "expression": "aluno.nome",
+        "width": "min(18ch, 100%)",
+        "known": true
+      },
+      {
+        "slot": "aluno/alunoPerfil:11",
+        "parent": "span",
+        "className": "user-email",
+        "expression": "aluno.ano_escolar",
+        "width": "12ch",
+        "known": true
+      },
+      {
+        "slot": "aluno/alunoPerfil:12",
+        "parent": "div",
+        "className": "user-avatar",
+        "expression": "aluno.nome.charAt(0).toUpperCase()",
+        "width": "min(18ch, 100%)",
+        "known": true
+      }
+    ],
+    "layoutSourceShared": true
+  },
+  {
+    "view": "aluno/alunoTarefas",
+    "page": "Aluno_alunoTarefas",
+    "source": "deliverable/site/src/pages/Aluno_alunoTarefas.jsx",
+    "skeleton": "deliverable/site/src/skeletons/Aluno_alunoTarefas.jsx",
+    "slots": [
+      {
+        "slot": "aluno/alunoTarefas:1",
+        "parent": "div",
+        "className": "alert alert-success",
+        "expression": "success_msg",
+        "width": "12ch",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoTarefas:2",
+        "parent": "div",
+        "className": "alert alert-error",
+        "expression": "error_msg",
+        "width": "12ch",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoTarefas:3",
+        "parent": "p",
+        "className": "stats-number",
+        "expression": "stats.total || 0",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoTarefas:4",
+        "parent": "p",
+        "className": "stats-number",
+        "expression": "stats.pendentes || 0",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoTarefas:5",
+        "parent": "p",
+        "className": "stats-number",
+        "expression": "stats.aguardando || 0",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoTarefas:6",
+        "parent": "p",
+        "className": "stats-number",
+        "expression": "stats.concluidas || 0",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoTarefas:7",
+        "parent": "p",
+        "className": "stats-number",
+        "expression": "stats.atrasadas || 0",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoTarefas:8",
+        "parent": "span",
+        "className": "",
+        "expression": "statusLabel",
+        "width": "12ch",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoTarefas:9",
+        "parent": "span",
+        "className": "",
+        "expression": "tarefa.data_limite_formatada",
+        "width": "10ch",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoTarefas:10",
+        "parent": "h3",
+        "className": "",
+        "expression": "tarefa.titulo",
+        "width": "min(18ch, 100%)",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoTarefas:11",
+        "parent": "span",
+        "className": "",
+        "expression": "tarefa.competencia_nome || \"Geral\"",
+        "width": "min(18ch, 100%)",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoTarefas:12",
+        "parent": "p",
+        "className": "",
+        "expression": "tarefa.descricao.substring(0, 120)",
+        "width": "min(32ch, 100%)",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoTarefas:13",
+        "parent": "p",
+        "className": "",
+        "expression": "tarefa.descricao.length > 120 ? \"...\" : \"\"",
+        "width": "min(32ch, 100%)",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoTarefas:14",
+        "parent": "p",
+        "className": "",
+        "expression": "tarefa.feedback",
+        "width": "min(32ch, 100%)",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoTarefas:15",
+        "parent": "span",
+        "className": "media-nota apto",
+        "expression": "parseFloat(tarefa.nota).toFixed(1)",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoTarefas:16",
+        "parent": "p",
+        "className": "",
+        "expression": "tarefa.feedback",
+        "width": "min(32ch, 100%)",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoTarefas:17",
+        "parent": "button",
+        "className": "btn-secondary-dash",
+        "expression": "tarefa.status === \"DEVOLVIDA\" ? \"REENVIAR TAREFA\" : \"ENVIAR TAREFA\"",
+        "width": "12ch",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoTarefas:18",
+        "parent": "div",
+        "className": "",
+        "expression": "tarefa.data_entrega_formatada",
+        "width": "10ch",
+        "known": false
+      },
+      {
+        "slot": "aluno/alunoTarefas:19",
+        "parent": "div",
+        "className": "user-avatar",
+        "expression": "aluno.nome.charAt(0).toUpperCase()",
+        "width": "min(18ch, 100%)",
+        "known": true
+      },
+      {
+        "slot": "aluno/alunoTarefas:20",
+        "parent": "strong",
+        "className": "",
+        "expression": "aluno.nome",
+        "width": "min(18ch, 100%)",
+        "known": true
+      },
+      {
+        "slot": "aluno/alunoTarefas:21",
+        "parent": "span",
+        "className": "user-email",
+        "expression": "aluno.ano_escolar",
+        "width": "12ch",
+        "known": true
+      }
+    ],
+    "layoutSourceShared": true
+  },
+  {
+    "view": "dashboard/dashboardCalendario",
+    "page": "Dashboard_dashboardCalendario",
+    "source": "deliverable/site/src/pages/Dashboard_dashboardCalendario.jsx",
+    "skeleton": "deliverable/site/src/skeletons/Dashboard_dashboardCalendario.jsx",
+    "slots": [
+      {
+        "slot": "dashboard/dashboardCalendario:1",
+        "parent": "div",
+        "className": "alert alert-success",
+        "expression": "success_msg",
+        "width": "12ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardCalendario:2",
+        "parent": "div",
+        "className": "alert alert-error",
+        "expression": "error_msg",
+        "width": "12ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardCalendario:3",
+        "parent": "h2",
+        "className": "",
+        "expression": "new Date(filtros.ano, filtros.mes - 1).toLocaleDateString(\"pt-BR\", {\n  month: \"long\",\n  year: \"numeric\"\n})",
+        "width": "10ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardCalendario:4",
+        "parent": "div",
+        "className": "dia-numero",
+        "expression": "dia",
+        "width": "12ch",
+        "known": true
+      },
+      {
+        "slot": "dashboard/dashboardCalendario:5",
+        "parent": "div",
+        "className": "evento-item evento-feriado",
+        "expression": "f.nome",
+        "width": "min(18ch, 100%)",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardCalendario:6",
+        "parent": "div",
+        "className": "evento-item",
+        "expression": "e.titulo",
+        "width": "min(18ch, 100%)",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardCalendario:7",
+        "parent": "span",
+        "className": "legenda-texto",
+        "expression": "t.tipo",
+        "width": "12ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardCalendario:8",
+        "parent": "span",
+        "className": "legenda-count",
+        "expression": "t.total",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardCalendario:9",
+        "parent": "div",
+        "className": "evento-lista-titulo",
+        "expression": "e.titulo",
+        "width": "min(18ch, 100%)",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardCalendario:10",
+        "parent": "div",
+        "className": "evento-lista-data",
+        "expression": "parseCalendarDate(e.data_inicio).toLocaleDateString(\"pt-BR\")",
+        "width": "10ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardCalendario:11",
+        "parent": "strong",
+        "className": "",
+        "expression": "user",
+        "width": "12ch",
+        "known": true
+      },
+      {
+        "slot": "dashboard/dashboardCalendario:12",
+        "parent": "strong",
+        "className": "",
+        "expression": "userCargo",
+        "width": "12ch",
+        "known": true
+      }
+    ],
+    "layoutSourceShared": true
+  },
+  {
+    "view": "dashboard/dashboardConfig",
+    "page": "Dashboard_dashboardConfig",
+    "source": "deliverable/site/src/pages/Dashboard_dashboardConfig.jsx",
+    "skeleton": "deliverable/site/src/skeletons/Dashboard_dashboardConfig.jsx",
+    "slots": [
+      {
+        "slot": "dashboard/dashboardConfig:1",
+        "parent": "div",
+        "className": "avatar-circle",
+        "expression": "user.charAt(0).toUpperCase()",
+        "width": "12ch",
+        "known": true
+      },
+      {
+        "slot": "dashboard/dashboardConfig:2",
+        "parent": "h2",
+        "className": "",
+        "expression": "user",
+        "width": "12ch",
+        "known": true
+      },
+      {
+        "slot": "dashboard/dashboardConfig:3",
+        "parent": "p",
+        "className": "",
+        "expression": "cargo",
+        "width": "12ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardConfig:4",
+        "parent": "strong",
+        "className": "",
+        "expression": "stats.tarefas || 0",
+        "width": "12ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardConfig:5",
+        "parent": "strong",
+        "className": "",
+        "expression": "stats.alunos || 0",
+        "width": "12ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardConfig:6",
+        "parent": "span",
+        "className": "",
+        "expression": "ultimoAcesso || \"---\"",
+        "width": "12ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardConfig:7",
+        "parent": "div",
+        "className": "value",
+        "expression": "user",
+        "width": "12ch",
+        "known": true
+      },
+      {
+        "slot": "dashboard/dashboardConfig:8",
+        "parent": "div",
+        "className": "value",
+        "expression": "email",
+        "width": "22ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardConfig:9",
+        "parent": "div",
+        "className": "value",
+        "expression": "cargo",
+        "width": "12ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardConfig:10",
+        "parent": "div",
+        "className": "alert alert-success",
+        "expression": "success_msg",
+        "width": "12ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardConfig:11",
+        "parent": "div",
+        "className": "alert alert-error",
+        "expression": "error_msg",
+        "width": "12ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardConfig:12",
+        "parent": "strong",
+        "className": "",
+        "expression": "user",
+        "width": "12ch",
+        "known": true
+      },
+      {
+        "slot": "dashboard/dashboardConfig:13",
+        "parent": "strong",
+        "className": "",
+        "expression": "userCargo",
+        "width": "12ch",
+        "known": true
+      }
+    ],
+    "layoutSourceShared": true
+  },
+  {
+    "view": "dashboard/dashboardEdit",
+    "page": "Dashboard_dashboardEdit",
+    "source": "deliverable/site/src/pages/Dashboard_dashboardEdit.jsx",
+    "skeleton": "deliverable/site/src/skeletons/Dashboard_dashboardEdit.jsx",
+    "slots": [
+      {
+        "slot": "dashboard/dashboardEdit:1",
+        "parent": "div",
+        "className": "alert alert-success",
+        "expression": "success_msg",
+        "width": "12ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardEdit:2",
+        "parent": "div",
+        "className": "alert alert-error",
+        "expression": "error_msg",
+        "width": "12ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardEdit:3",
+        "parent": "td",
+        "className": "",
+        "expression": "aluno.id",
+        "width": "12ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardEdit:4",
+        "parent": "td",
+        "className": "",
+        "expression": "aluno.nome",
+        "width": "min(18ch, 100%)",
+        "known": true
+      },
+      {
+        "slot": "dashboard/dashboardEdit:5",
+        "parent": "td",
+        "className": "",
+        "expression": "aluno.ano_escolar",
+        "width": "12ch",
+        "known": true
+      },
+      {
+        "slot": "dashboard/dashboardEdit:6",
+        "parent": "td",
+        "className": "",
+        "expression": "aluno.idade",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardEdit:7",
+        "parent": "strong",
+        "className": "",
+        "expression": "mediaCompetencias.toFixed(1)",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardEdit:8",
+        "parent": "small",
+        "className": "",
+        "expression": "aluno.competencias.length",
+        "width": "12ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardEdit:9",
+        "parent": "td",
+        "className": "",
+        "expression": "aluno.presenca",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardEdit:10",
+        "parent": "td",
+        "className": "",
+        "expression": "nivelReal",
+        "width": "12ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardEdit:11",
+        "parent": "h3",
+        "className": "",
+        "expression": "aluno.nome",
+        "width": "min(18ch, 100%)",
+        "known": true
+      },
+      {
+        "slot": "dashboard/dashboardEdit:12",
+        "parent": "span",
+        "className": "competencia-ano",
+        "expression": "aluno.ano_escolar",
+        "width": "12ch",
+        "known": true
+      },
+      {
+        "slot": "dashboard/dashboardEdit:13",
+        "parent": "span",
+        "className": "competencia-nome",
+        "expression": "comp.nome",
+        "width": "min(18ch, 100%)",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardEdit:14",
+        "parent": "span",
+        "className": "competencia-desc",
+        "expression": "comp.observacoes.substring(0, 30)",
+        "width": "min(32ch, 100%)",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardEdit:15",
+        "parent": "span",
+        "className": "competencia-desc",
+        "expression": "comp.observacoes.length > 30 ? \"...\" : \"\"",
+        "width": "min(32ch, 100%)",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardEdit:16",
+        "parent": "span",
+        "className": "",
+        "expression": "parseFloat(comp.nota).toFixed(1)",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardEdit:17",
+        "parent": "h3",
+        "className": "",
+        "expression": "aluno.nome",
+        "width": "min(18ch, 100%)",
+        "known": true
+      },
+      {
+        "slot": "dashboard/dashboardEdit:18",
+        "parent": "strong",
+        "className": "",
+        "expression": "user",
+        "width": "12ch",
+        "known": true
+      },
+      {
+        "slot": "dashboard/dashboardEdit:19",
+        "parent": "strong",
+        "className": "",
+        "expression": "userCargo",
+        "width": "12ch",
+        "known": true
+      }
+    ],
+    "layoutSourceShared": true
+  },
+  {
+    "view": "dashboard/dashboardEquipe",
+    "page": "Dashboard_dashboardEquipe",
+    "source": "deliverable/site/src/pages/Dashboard_dashboardEquipe.jsx",
+    "skeleton": "deliverable/site/src/skeletons/Dashboard_dashboardEquipe.jsx",
+    "slots": [],
+    "layoutSourceShared": true
+  },
+  {
+    "view": "dashboard/dashboardGraficos",
+    "page": "Dashboard_dashboardGraficos",
+    "source": "deliverable/site/src/pages/Dashboard_dashboardGraficos.jsx",
+    "skeleton": "deliverable/site/src/skeletons/Dashboard_dashboardGraficos.jsx",
+    "slots": [
+      {
+        "slot": "dashboard/dashboardGraficos:1",
+        "parent": "p",
+        "className": "chart-value",
+        "expression": "stats.apto",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardGraficos:2",
+        "parent": "p",
+        "className": "chart-value",
+        "expression": "stats.inapto",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardGraficos:3",
+        "parent": "p",
+        "className": "chart-value",
+        "expression": "stats.total - stats.apto - stats.inapto",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardGraficos:4",
+        "parent": "p",
+        "className": "chart-value-large",
+        "expression": "stats.mediaMedio",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardGraficos:5",
+        "parent": "p",
+        "className": "chart-value-large",
+        "expression": "stats.mediaFundamental",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardGraficos:6",
+        "parent": "strong",
+        "className": "",
+        "expression": "user",
+        "width": "12ch",
+        "known": true
+      },
+      {
+        "slot": "dashboard/dashboardGraficos:7",
+        "parent": "strong",
+        "className": "",
+        "expression": "userCargo",
+        "width": "12ch",
+        "known": true
+      }
+    ],
+    "layoutSourceShared": true
+  },
+  {
+    "view": "dashboard/dashboardIA",
+    "page": "Dashboard_dashboardIA",
+    "source": "deliverable/site/src/pages/Dashboard_dashboardIA.jsx",
+    "skeleton": "deliverable/site/src/skeletons/Dashboard_dashboardIA.jsx",
+    "slots": [],
+    "layoutSourceShared": true
+  },
+  {
+    "view": "dashboard/dashboardMain",
+    "page": "Dashboard_dashboardMain",
+    "source": "deliverable/site/src/pages/Dashboard_dashboardMain.jsx",
+    "skeleton": "deliverable/site/src/skeletons/Dashboard_dashboardMain.jsx",
+    "slots": [
+      {
+        "slot": "dashboard/dashboardMain:1",
+        "parent": "h1",
+        "className": "",
+        "expression": "user.split(\" \")[0].toUpperCase()",
+        "width": "12ch",
+        "known": true
+      },
+      {
+        "slot": "dashboard/dashboardMain:2",
+        "parent": "p",
+        "className": "stats-number",
+        "expression": "data.schoolSummary?.[\"MÉDIO\"]?.total || 0",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardMain:3",
+        "parent": "p",
+        "className": "stats-number",
+        "expression": "data.schoolSummary?.[\"MÉDIO\"]?.apto || 0",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardMain:4",
+        "parent": "p",
+        "className": "stats-number",
+        "expression": "data.schoolSummary?.[\"MÉDIO\"]?.inapto || 0",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardMain:5",
+        "parent": "p",
+        "className": "stats-number",
+        "expression": "data.schoolSummary?.[\"MÉDIO\"]?.desenvolvimento || 0",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardMain:6",
+        "parent": "p",
+        "className": "stats-number",
+        "expression": "data.schoolSummary?.[\"FUNDAMENTAL\"]?.total || 0",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardMain:7",
+        "parent": "p",
+        "className": "stats-number",
+        "expression": "data.schoolSummary?.[\"FUNDAMENTAL\"]?.apto || 0",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardMain:8",
+        "parent": "p",
+        "className": "stats-number",
+        "expression": "data.schoolSummary?.[\"FUNDAMENTAL\"]?.inapto || 0",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardMain:9",
+        "parent": "p",
+        "className": "stats-number",
+        "expression": "data.schoolSummary?.[\"FUNDAMENTAL\"]?.desenvolvimento || 0",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardMain:10",
+        "parent": "div",
+        "className": "",
+        "expression": "index + 1",
+        "width": "12ch",
+        "known": true
+      },
+      {
+        "slot": "dashboard/dashboardMain:11",
+        "parent": "h4",
+        "className": "",
+        "expression": "comp.nome",
+        "width": "min(18ch, 100%)",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardMain:12",
+        "parent": "p",
+        "className": "",
+        "expression": "comp.total_avaliacoes",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardMain:13",
+        "parent": "span",
+        "className": "",
+        "expression": "comp.media.toFixed(1)",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardMain:14",
+        "parent": "div",
+        "className": "",
+        "expression": "index + 1",
+        "width": "12ch",
+        "known": true
+      },
+      {
+        "slot": "dashboard/dashboardMain:15",
+        "parent": "h4",
+        "className": "",
+        "expression": "comp.nome",
+        "width": "min(18ch, 100%)",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardMain:16",
+        "parent": "p",
+        "className": "",
+        "expression": "comp.total_avaliacoes",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardMain:17",
+        "parent": "span",
+        "className": "",
+        "expression": "comp.media.toFixed(1)",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardMain:18",
+        "parent": "div",
+        "className": "",
+        "expression": "index + 1",
+        "width": "12ch",
+        "known": true
+      },
+      {
+        "slot": "dashboard/dashboardMain:19",
+        "parent": "h4",
+        "className": "",
+        "expression": "comp.nome",
+        "width": "min(18ch, 100%)",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardMain:20",
+        "parent": "p",
+        "className": "",
+        "expression": "comp.total_avaliacoes",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardMain:21",
+        "parent": "span",
+        "className": "",
+        "expression": "comp.media.toFixed(1)",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardMain:22",
+        "parent": "strong",
+        "className": "",
+        "expression": "user",
+        "width": "12ch",
+        "known": true
+      },
+      {
+        "slot": "dashboard/dashboardMain:23",
+        "parent": "strong",
+        "className": "",
+        "expression": "userCargo",
+        "width": "12ch",
+        "known": true
+      }
+    ],
+    "layoutSourceShared": true
+  },
+  {
+    "view": "dashboard/dashboardSolicitacoes",
+    "page": "Dashboard_dashboardSolicitacoes",
+    "source": "deliverable/site/src/pages/Dashboard_dashboardSolicitacoes.jsx",
+    "skeleton": "deliverable/site/src/skeletons/Dashboard_dashboardSolicitacoes.jsx",
+    "slots": [
+      {
+        "slot": "dashboard/dashboardSolicitacoes:1",
+        "parent": "div",
+        "className": "solicitacao-nome",
+        "expression": "s.nome",
+        "width": "min(18ch, 100%)",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardSolicitacoes:2",
+        "parent": "div",
+        "className": "solicitacao-email",
+        "expression": "s.email",
+        "width": "22ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardSolicitacoes:3",
+        "parent": "div",
+        "className": "solicitacao-data",
+        "expression": "new Date(s.data_solicitacao).toLocaleString(\"pt-BR\")",
+        "width": "10ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardSolicitacoes:4",
+        "parent": "strong",
+        "className": "",
+        "expression": "user",
+        "width": "12ch",
+        "known": true
+      },
+      {
+        "slot": "dashboard/dashboardSolicitacoes:5",
+        "parent": "strong",
+        "className": "",
+        "expression": "userCargo",
+        "width": "12ch",
+        "known": true
+      }
+    ],
+    "layoutSourceShared": true
+  },
+  {
+    "view": "dashboard/dashboardTarefas",
+    "page": "Dashboard_dashboardTarefas",
+    "source": "deliverable/site/src/pages/Dashboard_dashboardTarefas.jsx",
+    "skeleton": "deliverable/site/src/skeletons/Dashboard_dashboardTarefas.jsx",
+    "slots": [
+      {
+        "slot": "dashboard/dashboardTarefas:1",
+        "parent": "div",
+        "className": "alert alert-success",
+        "expression": "success_msg",
+        "width": "12ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardTarefas:2",
+        "parent": "div",
+        "className": "alert alert-error",
+        "expression": "error_msg",
+        "width": "12ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardTarefas:3",
+        "parent": "h3",
+        "className": "",
+        "expression": "stats.total || 0",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardTarefas:4",
+        "parent": "h3",
+        "className": "",
+        "expression": "stats.ativas || 0",
+        "width": "12ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardTarefas:5",
+        "parent": "h3",
+        "className": "",
+        "expression": "stats.atrasadas || 0",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardTarefas:6",
+        "parent": "div",
+        "className": "",
+        "expression": "prioridadeText",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardTarefas:7",
+        "parent": "h3",
+        "className": "tarefa-titulo",
+        "expression": "tarefa.titulo",
+        "width": "min(18ch, 100%)",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardTarefas:8",
+        "parent": "span",
+        "className": "tarefa-turma",
+        "expression": "tarefa.turma",
+        "width": "12ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardTarefas:9",
+        "parent": "p",
+        "className": "tarefa-descricao",
+        "expression": "tarefa.descricao || \"Sem descrição\"",
+        "width": "min(32ch, 100%)",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardTarefas:10",
+        "parent": "div",
+        "className": "",
+        "expression": "tarefa.data_entrega ? new Date(tarefa.data_entrega).toLocaleDateString(\"pt-BR\") : \"Sem data\"",
+        "width": "10ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardTarefas:11",
+        "parent": "div",
+        "className": "tarefa-data",
+        "expression": "tarefa.professor_nome || \"Professor\"",
+        "width": "min(18ch, 100%)",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardTarefas:12",
+        "parent": "span",
+        "className": "",
+        "expression": "concluidas",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardTarefas:13",
+        "parent": "span",
+        "className": "",
+        "expression": "totalAlunos",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardTarefas:14",
+        "parent": "span",
+        "className": "",
+        "expression": "statusTarefa",
+        "width": "12ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardTarefas:15",
+        "parent": "span",
+        "className": "",
+        "expression": "concluidas || 0",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardTarefas:16",
+        "parent": "span",
+        "className": "",
+        "expression": "totalAlunos || 0",
+        "width": "3ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardTarefas:17",
+        "parent": "h4",
+        "className": "",
+        "expression": "aluno.nome",
+        "width": "min(18ch, 100%)",
+        "known": true
+      },
+      {
+        "slot": "dashboard/dashboardTarefas:18",
+        "parent": "p",
+        "className": "",
+        "expression": "aluno.ano_escolar",
+        "width": "12ch",
+        "known": true
+      },
+      {
+        "slot": "dashboard/dashboardTarefas:19",
+        "parent": "strong",
+        "className": "",
+        "expression": "user",
+        "width": "12ch",
+        "known": true
+      },
+      {
+        "slot": "dashboard/dashboardTarefas:20",
+        "parent": "strong",
+        "className": "",
+        "expression": "userCargo",
+        "width": "12ch",
+        "known": true
+      }
+    ],
+    "layoutSourceShared": true
+  },
+  {
+    "view": "dashboard/dashboardUsuarios",
+    "page": "Dashboard_dashboardUsuarios",
+    "source": "deliverable/site/src/pages/Dashboard_dashboardUsuarios.jsx",
+    "skeleton": "deliverable/site/src/skeletons/Dashboard_dashboardUsuarios.jsx",
+    "slots": [
+      {
+        "slot": "dashboard/dashboardUsuarios:1",
+        "parent": "div",
+        "className": "alert alert-success",
+        "expression": "success_msg",
+        "width": "12ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardUsuarios:2",
+        "parent": "div",
+        "className": "alert alert-error",
+        "expression": "error_msg",
+        "width": "12ch",
+        "known": false
+      },
+      {
+        "slot": "dashboard/dashboardUsuarios:3",
+        "parent": "td",
+        "className": "",
+        "expression": "user.id",
+        "width": "12ch",
+        "known": true
+      },
+      {
+        "slot": "dashboard/dashboardUsuarios:4",
+        "parent": "td",
+        "className": "",
+        "expression": "user.nome",
+        "width": "min(18ch, 100%)",
+        "known": true
+      },
+      {
+        "slot": "dashboard/dashboardUsuarios:5",
+        "parent": "td",
+        "className": "",
+        "expression": "user.email.toLowerCase()",
+        "width": "22ch",
+        "known": true
+      },
+      {
+        "slot": "dashboard/dashboardUsuarios:6",
+        "parent": "td",
+        "className": "",
+        "expression": "user.cargo",
+        "width": "12ch",
+        "known": true
+      },
+      {
+        "slot": "dashboard/dashboardUsuarios:7",
+        "parent": "span",
+        "className": "",
+        "expression": "user.status",
+        "width": "12ch",
+        "known": true
+      },
+      {
+        "slot": "dashboard/dashboardUsuarios:8",
+        "parent": "strong",
+        "className": "",
+        "expression": "user",
+        "width": "12ch",
+        "known": true
+      },
+      {
+        "slot": "dashboard/dashboardUsuarios:9",
+        "parent": "strong",
+        "className": "",
+        "expression": "userCargo",
+        "width": "12ch",
+        "known": true
+      }
+    ],
+    "layoutSourceShared": true
+  },
+  {
+    "view": "API/index",
+    "page": "API_index",
+    "source": "deliverable/site/src/pages/API_index.jsx",
+    "skeleton": "deliverable/site/src/skeletons/API_index.jsx",
+    "slots": [
+      {
+        "slot": "API/index:1",
+        "parent": "span",
+        "className": "",
+        "expression": "baseUrl",
+        "width": "12ch",
+        "known": true
+      }
+    ],
+    "layoutSourceShared": true
+  }
+]

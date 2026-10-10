@@ -6,48 +6,67 @@ export default function Error({ data, handlers }) {
     <>
       <React.Fragment>
         <LoadingElement as="div" className={"page"} root={true}>
-          <div className={"content"}>
+          <LoadingElement as="div" className={"content"}>
             {(() => {
               const nodes = [];
               nodes.push(
-                <h1 className={"heading"} key={nodes.length}>
+                <LoadingElement
+                  as="h1"
+                  className={"heading"}
+                  key={nodes.length}
+                >
                   {"\r\n                Se você está lendo isso,"}
-                  <br />
+                  <LoadingElement as="br" />
                   {"\r\n                algo deu terrivelmente,"}
-                  <br />
+                  <LoadingElement as="br" />
                   {"\r\n                terrivelmente errado.\r\n            "}
-                </h1>,
+                </LoadingElement>,
               );
               if (mensagem) {
                 nodes.push(
-                  <p className={"message"} key={nodes.length}>
+                  <LoadingElement
+                    as="p"
+                    className={"message"}
+                    key={nodes.length}
+                  >
                     <LoadingValue
                       slot="error:1"
                       width="12ch"
                       known={false}
                       value={mensagem}
                     />
-                  </p>,
+                  </LoadingElement>,
                 );
               }
               if (erroDetalhe) {
                 nodes.push(
-                  <div className={"detail-box"} key={nodes.length}>
-                    <p className={"label"}>{"DETALHES"}</p>
-                    <p className={"value"}>
+                  <LoadingElement
+                    as="div"
+                    className={"detail-box"}
+                    key={nodes.length}
+                  >
+                    <LoadingElement as="p" className={"label"}>
+                      {"DETALHES"}
+                    </LoadingElement>
+                    <LoadingElement as="p" className={"value"}>
                       <LoadingValue
                         slot="error:2"
                         width="12ch"
                         known={false}
                         value={erroDetalhe}
                       />
-                    </p>
-                  </div>,
+                    </LoadingElement>
+                  </LoadingElement>,
                 );
               }
               nodes.push(
-                <div className={"actions"} key={nodes.length}>
-                  <a
+                <LoadingElement
+                  as="div"
+                  className={"actions"}
+                  key={nodes.length}
+                >
+                  <LoadingElement
+                    as="a"
                     href={"#"}
                     onClick={(event) => {
                       event.preventDefault();
@@ -56,19 +75,34 @@ export default function Error({ data, handlers }) {
                     className={"btn"}
                   >
                     {"\r\n                    Voltar "}
-                    <i className={"fas fa-arrow-left arrow"}></i>
-                  </a>
-                </div>,
+                    <LoadingElement
+                      as="i"
+                      className={"fas fa-arrow-left arrow"}
+                    ></LoadingElement>
+                  </LoadingElement>
+                </LoadingElement>,
               );
               return nodes;
             })()}
-          </div>
-          <div className={"code-stack"} aria-hidden={"true"}>
-            <span className={"layer l1"}>{"404"}</span>
-            <span className={"layer l2"}>{"404"}</span>
-            <span className={"layer l3"}>{"404"}</span>
-          </div>
-          <footer className={"credits"}>{"© 2026 AnalisAI"}</footer>
+          </LoadingElement>
+          <LoadingElement
+            as="div"
+            className={"code-stack"}
+            aria-hidden={"true"}
+          >
+            <LoadingElement as="span" className={"layer l1"}>
+              {"404"}
+            </LoadingElement>
+            <LoadingElement as="span" className={"layer l2"}>
+              {"404"}
+            </LoadingElement>
+            <LoadingElement as="span" className={"layer l3"}>
+              {"404"}
+            </LoadingElement>
+          </LoadingElement>
+          <LoadingElement as="footer" className={"credits"}>
+            {"© 2026 AnalisAI"}
+          </LoadingElement>
         </LoadingElement>
       </React.Fragment>
     </>

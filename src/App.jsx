@@ -22,6 +22,7 @@ import { PersistentSidebarContext } from "./components/layout-context";
 import ProfessorSidebar from "./components/Partials_barProfessor";
 import StudentSidebar from "./components/Partials_barAluno";
 import PageSkeleton, { SidebarSkeleton } from "./components/PageSkeleton";
+import { SkeletonFrame } from "./components/loading-layout";
 const pages = import.meta.glob("./pages/*.jsx");
 const skeletons = import.meta.glob("./skeletons/*.jsx");
 const cache = new Map(),
@@ -47,8 +48,9 @@ export function loadPageModule(view) {
   return cache.get(view);
 }
 const hrefNow = () => window.location.pathname + window.location.search;
-function Shell({ kind, data, handlers, onError }) {
+function Shell({ kind, data, handlers, onError, pending }) {
   useLayoutEffect(() => {
+    if (pending) return;
     const scope = createInteractionScope();
     initializeInteractions(
       kind === "aluno" ? "partials/barAluno" : "partials/barProfessor",
@@ -60,9 +62,13 @@ function Shell({ kind, data, handlers, onError }) {
       if (scope.active) onError(error.message);
     });
     return () => scope.dispose();
-  }, [kind, data.userId, data.userCargo, handlers]);
+  }, [kind, data.userId, data.userCargo, handlers, pending]);
   const Sidebar = kind === "aluno" ? StudentSidebar : ProfessorSidebar;
-  return <Sidebar data={data} handlers={handlers} />;
+  return (
+    <SkeletonFrame view={pending ? "sidebar/" + kind : null}>
+      <Sidebar data={data} handlers={handlers} />
+    </SkeletonFrame>
+  );
 }
 export default function App() {
   const [route, setRoute] = useState(() => ({
@@ -250,6 +256,7 @@ export default function App() {
             data={baseData(session, url.search)}
             handlers={handlers.current}
             onError={setError}
+            pending={current?.status !== "ready"}
           />
         ) : (
           <SidebarSkeleton kind={kind} data={data} />

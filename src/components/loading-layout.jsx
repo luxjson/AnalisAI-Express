@@ -6,17 +6,18 @@ export function SkeletonFrame({ view, children }) {
   return (
     <LoadingContext.Provider value={view}>
       {children}
-      <span className="skeleton-status" role="status">
-        Preparando informações…
-      </span>
+      {view && (
+        <span className="skeleton-status" role="status">
+          Preparando página…
+        </span>
+      )}
     </LoadingContext.Provider>
   );
 }
 
-export function LoadingValue({ value, slot, width = "12ch", known = false }) {
+export function LoadingValue({ value, slot, width = "12ch" }) {
   const view = useContext(LoadingContext);
-  if (!view || (known && value !== null && value !== undefined && value !== ""))
-    return <>{value}</>;
+  if (!view) return <>{value}</>;
   return (
     <span
       className="skeleton-shape skeleton-value"
@@ -27,6 +28,32 @@ export function LoadingValue({ value, slot, width = "12ch", known = false }) {
       {"\u00a0"}
     </span>
   );
+}
+
+function maskText(children) {
+  return React.Children.map(children, (child) => {
+    if (
+      (typeof child !== "string" && typeof child !== "number") ||
+      !String(child).trim()
+    )
+      return child;
+    return (
+      <span className="skeleton-copy" aria-hidden="true">
+        {child}
+      </span>
+    );
+  });
+}
+
+function placeholderKind(tag, props) {
+  if (
+    ["button", "input", "select", "textarea", "summary"].includes(tag) ||
+    (tag === "a" && /(?:^|\s)btn(?:-|\s|$)/.test(props.className || ""))
+  )
+    return "control";
+  if (tag === "i") return "icon";
+  if (["img", "svg", "video", "iframe", "object"].includes(tag)) return "media";
+  return undefined;
 }
 
 export function LoadingElement({
@@ -40,7 +67,11 @@ export function LoadingElement({
 }) {
   const view = useContext(LoadingContext);
   if (!view) return <Tag {...props}>{children}</Tag>;
+  const kind = placeholderKind(Tag, props);
+  const rawText = ["option", "textarea", "title", "style"].includes(Tag);
+  if (Tag === "script") return null;
   const loading = {
+    ...(Tag === "iframe" ? { src: undefined, srcDoc: "" } : {}),
     ...(root
       ? {
           className: `${props.className || ""} skeleton-route`,
@@ -52,10 +83,13 @@ export function LoadingElement({
     ...(tone ? { "data-skeleton-tone": true } : {}),
     ...(fill ? { "data-skeleton-fill": true } : {}),
     ...(options ? { "data-skeleton-options": true } : {}),
+    ...(kind && !(Tag === "input" && props.type === "hidden")
+      ? { "data-skeleton-kind": kind, "aria-hidden": true, inert: true }
+      : {}),
   };
   return (
     <Tag {...props} {...loading}>
-      {children}
+      {rawText ? children : maskText(children)}
     </Tag>
   );
 }

@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-10",
+  "siteTestsPassed": 51,
+  "siteTestsFailed": 0,
+  "buildPassed": true,
+  "pagesWithFullSkeleton": 25,
+  "sidebarsWithFullSkeleton": 2,
+  "nativeElementsCovered": 2232,
+  "loadedMarkupUnchangedPages": 25,
+  "unmaskedTexts": 0,
+  "allOriginalCssPreserved": true,
+  "apiRuntimeUnchanged": true,
+  "lastApiTestsPassed": 42,
+  "pixelComparisonPerformed": false,
+  "referenceImagesReviewed": 6,
+  "formatCheck": {
+    "checked": 94,
+    "bad": []
+  },
+  "notes": [
+    "Textos fixos e dados, ícones, imagens e controles ficam mascarados durante a espera.",
+    "Skeleton mantém JSX, estrutura e regras responsivas nativas.",
+    "Imagem e textos não são desfocados; usam placeholders sólidos com shimmer.",
+    "CSS novo só afeta elementos marcados enquanto carregam.",
+    "Comparação de pixels não executada: Chromium não iniciou neste ambiente."
+  ]
+}

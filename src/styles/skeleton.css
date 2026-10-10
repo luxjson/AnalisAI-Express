@@ -1,19 +1,113 @@
 .skeleton-route {
-  --color-skeleton: var(--border-color, #2c2c2c);
+  --skeleton-base: var(--border-color, #2c2c2c);
+  --skeleton-highlight: #414447;
+}
+.skeleton-copy {
+  display: inline !important;
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  transform: none !important;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  text-shadow: none !important;
+  text-decoration: none !important;
+  font: inherit !important;
+  letter-spacing: inherit !important;
+  white-space: inherit !important;
+  border-radius: 4px !important;
+  background-color: transparent !important;
+  background-image: linear-gradient(
+    90deg,
+    var(--skeleton-base, #2c2c2c) 35%,
+    var(--skeleton-highlight, #414447) 50%,
+    var(--skeleton-base, #2c2c2c) 65%
+  ) !important;
+  background-repeat: no-repeat !important;
+  background-size: 200% 72% !important;
+  background-position: 200% 55%;
+  background-clip: padding-box !important;
+  -webkit-background-clip: padding-box !important;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  animation: analisai-copy-shimmer 1.6s linear infinite;
+}
+.skeleton-copy::before,
+.skeleton-copy::after {
+  content: none !important;
+}
+[data-skeleton-kind] {
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  text-shadow: none !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  background-color: var(--skeleton-base, #2c2c2c) !important;
+  background-image: linear-gradient(
+    90deg,
+    transparent 35%,
+    var(--skeleton-highlight, rgba(255, 255, 255, 0.12)) 50%,
+    transparent 65%
+  ) !important;
+  background-size: 200% 100% !important;
+  animation: analisai-chart-shimmer 1.6s linear infinite !important;
+  pointer-events: none !important;
+}
+[data-skeleton-kind] > *,
+[data-skeleton-kind]::before,
+[data-skeleton-kind]::after {
+  visibility: hidden !important;
+}
+[data-skeleton-kind="icon"] {
+  display: inline-block;
+  width: 1em;
+  min-width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+  border-radius: 4px;
+}
+img[data-skeleton-kind="media"] {
+  object-fit: none !important;
+  object-position: 100000px 100000px !important;
+  border-radius: 6px;
+}
+[data-skeleton-kind="control"]::placeholder {
+  color: transparent !important;
+}
+[data-skeleton-kind="control"] {
+  appearance: none;
+  accent-color: var(--skeleton-base, #2c2c2c);
+  caret-color: transparent;
+}
+[data-skeleton-kind="control"]::-webkit-calendar-picker-indicator,
+[data-skeleton-kind="control"]::-webkit-file-upload-button {
+  visibility: hidden;
+}
+@keyframes analisai-copy-shimmer {
+  from {
+    background-position: 200% 55%;
+  }
+  to {
+    background-position: -200% 55%;
+  }
 }
 .skeleton-shape {
   position: relative;
   overflow: hidden;
   max-width: 100%;
   border-radius: 4px;
-  background: var(--skeleton-base, #2b2b2b);
+  background: var(--skeleton-base, #2b2b2b) !important;
 }
 .skeleton-value {
   display: inline-block;
   color: transparent;
   vertical-align: baseline;
-  font: inherit;
-  line-height: inherit;
+  font: inherit !important;
+  line-height: inherit !important;
   white-space: pre;
 }
 .skeleton-shape::after {
@@ -108,10 +202,12 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .skeleton-shape::after,
+  .skeleton-copy,
+  [data-skeleton-kind],
   .skeleton-canvas,
   .skeleton-route [data-skeleton-fill],
   .skeleton-route [data-skeleton-options] {
-    animation: none;
+    animation: none !important;
   }
   .skeleton-shape::after {
     transform: none;

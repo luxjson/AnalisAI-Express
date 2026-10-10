@@ -7,72 +7,116 @@ export default function EsqueciSenha({ data, handlers }) {
     <>
       <React.Fragment>
         <LoadingElement as="div" className={"login-wrapper"} root={true}>
-          <div style={styleFrom("margin-bottom: 20px;")}>
-            <a
+          <LoadingElement as="div" style={styleFrom("margin-bottom: 20px;")}>
+            <LoadingElement
+              as="a"
               href={"/login"}
               className={"btn-secondary-dash"}
               style={styleFrom("text-decoration: none;")}
             >
-              <i className={"fas fa-undo-alt"}></i>
+              <LoadingElement
+                as="i"
+                className={"fas fa-undo-alt"}
+              ></LoadingElement>
               {" VOLTAR\n            "}
-            </a>
-          </div>
-          <div className={"login-card"}>
+            </LoadingElement>
+          </LoadingElement>
+          <LoadingElement as="div" className={"login-card"}>
             {(() => {
               const nodes = [];
               nodes.push(
-                <div className={"login-logo"} key={nodes.length}>
-                  <img src={"/images/logo3-white.png"} alt={"AnalisAI"} />
-                </div>,
+                <LoadingElement
+                  as="div"
+                  className={"login-logo"}
+                  key={nodes.length}
+                >
+                  <LoadingElement
+                    as="img"
+                    src={"/images/logo3-white.png"}
+                    alt={"AnalisAI"}
+                  />
+                </LoadingElement>,
               );
               nodes.push(
-                <h2 className={"page-title"} key={nodes.length}>
+                <LoadingElement
+                  as="h2"
+                  className={"page-title"}
+                  key={nodes.length}
+                >
                   {"Recuperar Senha"}
-                </h2>,
+                </LoadingElement>,
               );
               if (error_msg && error_msg.length > 0) {
                 nodes.push(
-                  <div className={"alert-box error"} key={nodes.length}>
-                    <i className={"fas fa-exclamation-circle"}></i>
+                  <LoadingElement
+                    as="div"
+                    className={"alert-box error"}
+                    key={nodes.length}
+                  >
+                    <LoadingElement
+                      as="i"
+                      className={"fas fa-exclamation-circle"}
+                    ></LoadingElement>
                     <LoadingValue
                       slot="esqueciSenha:1"
                       width="12ch"
                       known={false}
                       value={error_msg}
                     />
-                  </div>,
+                  </LoadingElement>,
                 );
               }
               if (success_msg && success_msg.length > 0) {
                 nodes.push(
-                  <div className={"alert-box success"} key={nodes.length}>
-                    <i className={"fas fa-check-circle"}></i>
+                  <LoadingElement
+                    as="div"
+                    className={"alert-box success"}
+                    key={nodes.length}
+                  >
+                    <LoadingElement
+                      as="i"
+                      className={"fas fa-check-circle"}
+                    ></LoadingElement>
                     <LoadingValue
                       slot="esqueciSenha:2"
                       width="12ch"
                       known={false}
                       value={success_msg}
                     />
-                  </div>,
+                  </LoadingElement>,
                 );
               }
               nodes.push(
-                <div className={"info-box-login"} key={nodes.length}>
-                  <i className={"fas fa-info-circle"}></i>
+                <LoadingElement
+                  as="div"
+                  className={"info-box-login"}
+                  key={nodes.length}
+                >
+                  <LoadingElement
+                    as="i"
+                    className={"fas fa-info-circle"}
+                  ></LoadingElement>
                   {
                     " Informe seu e-mail para solicitar a redefinição da sua senha.\n            "
                   }
-                </div>,
+                </LoadingElement>,
               );
               nodes.push(
-                <form
+                <LoadingElement
+                  as="form"
                   action={"/esqueci-senha/solicitar"}
                   method={"POST"}
                   key={nodes.length}
                 >
-                  <input type={"hidden"} name={"_csrf"} value={csrfToken} />
-                  <div className={"input-group"}>
-                    <input
+                  <LoadingElement
+                    as="input"
+                    type={"hidden"}
+                    name={"_csrf"}
+                    value={csrfToken}
+                  />
+                  <LoadingElement as="div" className={"input-group"}>
+                    <LoadingElement
+                      as="input"
                       type={"email"}
                       name={"email"}
                       placeholder={"SEU E-MAIL CADASTRADO"}
@@ -82,8 +126,9 @@ export default function EsqueciSenha({ data, handlers }) {
                       }}
                       required={true}
                     />
-                  </div>
-                  <button
+                  </LoadingElement>
+                  <LoadingElement
+                    as="button"
                     type={"submit"}
                     className={"btn-secondary-dash"}
                     style={styleFrom(
@@ -93,11 +138,12 @@ export default function EsqueciSenha({ data, handlers }) {
                     {
                       "\n                    SOLICITAR REDEFINIÇÃO\n                "
                     }
-                  </button>
-                </form>,
+                  </LoadingElement>
+                </LoadingElement>,
               );
               nodes.push(
-                <p
+                <LoadingElement
+                  as="p"
                   style={styleFrom(
                     "text-align: center; margin-top: 25px; color: #555; font-size: 0.8rem;",
                   )}
@@ -106,13 +152,17 @@ export default function EsqueciSenha({ data, handlers }) {
                   {
                     "\n                Um administrador será notificado para validar seu pedido.\n            "
                   }
-                </p>,
+                </LoadingElement>,
               );
               return nodes;
             })()}
-          </div>
-          <footer style={styleFrom("margin-top: 30px; text-align: center;")}>
-            <a
+          </LoadingElement>
+          <LoadingElement
+            as="footer"
+            style={styleFrom("margin-top: 30px; text-align: center;")}
+          >
+            <LoadingElement
+              as="a"
               href={"/termos"}
               className={"btn-secondary-dash"}
               style={styleFrom(
@@ -120,8 +170,8 @@ export default function EsqueciSenha({ data, handlers }) {
               )}
             >
               {"\n                TERMOS DE SERVIÇO\n            "}
-            </a>
-          </footer>
+            </LoadingElement>
+          </LoadingElement>
         </LoadingElement>
       </React.Fragment>
     </>

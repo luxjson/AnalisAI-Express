@@ -15,19 +15,26 @@ export default function ManualDoAluno({ data, handlers }) {
         />
         <LoadingElement as="div" className={"main-layout"} root={true}>
           <PageHeader key="page-header" data={data} handlers={handlers} />
-          <div className={"pdf-header"}>
-            <a
+          <LoadingElement as="div" className={"pdf-header"}>
+            <LoadingElement
+              as="a"
               href={"/pdf/manual-do-aluno.pdf"}
               download={true}
               className={"btn-secondary-dash"}
             >
-              <i className={"fas fa-download"}></i>
+              <LoadingElement
+                as="i"
+                className={"fas fa-download"}
+              ></LoadingElement>
               {" BAIXAR PDF\n            "}
-            </a>
-          </div>
-          <div className={"pdf-container"}>
-            <iframe src={"/pdf/manual-do-aluno.pdf"}></iframe>
-          </div>
+            </LoadingElement>
+          </LoadingElement>
+          <LoadingElement as="div" className={"pdf-container"}>
+            <LoadingElement
+              as="iframe"
+              src={"/pdf/manual-do-aluno.pdf"}
+            ></LoadingElement>
+          </LoadingElement>
         </LoadingElement>
       </React.Fragment>
     </>
@@ -36,26 +43,28 @@ export default function ManualDoAluno({ data, handlers }) {
 export function PageHeader({ data, handlers }) {
   const { user = "" } = data;
   return (
-    <header className={"dash-header"}>
-      <div className={"header-left"}>
-        <h1>{"\n                    Manual do Aluno\n                "}</h1>
-      </div>
-      <div className={"header-user"}>
-        <div className={"user-profile-group"}>
-          <div className={"user-details"}>
-            <span className={"user-name"}>
-              <strong>
+    <LoadingElement as="header" className={"dash-header"}>
+      <LoadingElement as="div" className={"header-left"}>
+        <LoadingElement as="h1">
+          {"\n                    Manual do Aluno\n                "}
+        </LoadingElement>
+      </LoadingElement>
+      <LoadingElement as="div" className={"header-user"}>
+        <LoadingElement as="div" className={"user-profile-group"}>
+          <LoadingElement as="div" className={"user-details"}>
+            <LoadingElement as="span" className={"user-name"}>
+              <LoadingElement as="strong">
                 <LoadingValue
                   slot="manualDoAluno:1"
                   width="12ch"
                   known={true}
                   value={user}
                 />
-              </strong>
-            </span>
-          </div>
-        </div>
-        <div className={"header-actions"}>
+              </LoadingElement>
+            </LoadingElement>
+          </LoadingElement>
+        </LoadingElement>
+        <LoadingElement as="div" className={"header-actions"}>
           <Partials_notificacoes
             data={{
               ...data,
@@ -65,8 +74,8 @@ export function PageHeader({ data, handlers }) {
             }}
             handlers={handlers}
           />
-        </div>
-      </div>
-    </header>
+        </LoadingElement>
+      </LoadingElement>
+    </LoadingElement>
   );
 }

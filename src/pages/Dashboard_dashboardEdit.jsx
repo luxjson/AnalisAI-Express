@@ -35,48 +35,59 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
             );
             if (success_msg && success_msg.length > 0) {
               nodes.push(
-                <div className={"alert alert-success"} key={nodes.length}>
+                <LoadingElement
+                  as="div"
+                  className={"alert alert-success"}
+                  key={nodes.length}
+                >
                   <LoadingValue
                     slot="dashboard/dashboardEdit:1"
                     width="12ch"
                     known={false}
                     value={success_msg}
                   />
-                  <span
+                  <LoadingElement
+                    as="span"
                     className={"close-alert"}
                     onClick={(event) => {
                       event.currentTarget.parentElement.style.display = "none";
                     }}
                   >
                     {"×"}
-                  </span>
-                </div>,
+                  </LoadingElement>
+                </LoadingElement>,
               );
             }
             if (error_msg && error_msg.length > 0) {
               nodes.push(
-                <div className={"alert alert-error"} key={nodes.length}>
+                <LoadingElement
+                  as="div"
+                  className={"alert alert-error"}
+                  key={nodes.length}
+                >
                   <LoadingValue
                     slot="dashboard/dashboardEdit:2"
                     width="12ch"
                     known={false}
                     value={error_msg}
                   />
-                  <span
+                  <LoadingElement
+                    as="span"
                     className={"close-alert"}
                     onClick={(event) => {
                       event.currentTarget.parentElement.style.display = "none";
                     }}
                   >
                     {"×"}
-                  </span>
-                </div>,
+                  </LoadingElement>
+                </LoadingElement>,
               );
             }
             nodes.push(
-              <div className={"toolbar"} key={nodes.length}>
-                <div className={"action-buttons"}>
-                  <button
+              <LoadingElement as="div" className={"toolbar"} key={nodes.length}>
+                <LoadingElement as="div" className={"action-buttons"}>
+                  <LoadingElement
+                    as="button"
                     className={"btn-icon btn-filter"}
                     id={"btnFilter"}
                     onClick={(event) => {
@@ -84,65 +95,90 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                     }}
                     title={"Filtrar"}
                   >
-                    <i className={"fas fa-filter"}></i>
-                  </button>
-                  <button
+                    <LoadingElement
+                      as="i"
+                      className={"fas fa-filter"}
+                    ></LoadingElement>
+                  </LoadingElement>
+                  <LoadingElement
+                    as="button"
                     className={"btn-secondary-dash"}
                     onClick={(event) => {
                       handlers.openAddModal();
                     }}
                     title={"Adicionar Aluno"}
                   >
-                    <i className={"fas fa-plus"}></i>
+                    <LoadingElement
+                      as="i"
+                      className={"fas fa-plus"}
+                    ></LoadingElement>
                     {" ADICIONAR ALUNO\n                "}
-                  </button>
-                  <button
+                  </LoadingElement>
+                  <LoadingElement
+                    as="button"
                     className={"btn-secondary-dash"}
                     onClick={(event) => {
                       handlers.openImportModal();
                     }}
                     title={"Importar Planilha"}
                   >
-                    <i className={"fas fa-file-import"}></i>
+                    <LoadingElement
+                      as="i"
+                      className={"fas fa-file-import"}
+                    ></LoadingElement>
                     {" IMPORTAR TABELA\n                "}
-                  </button>
-                  <button
+                  </LoadingElement>
+                  <LoadingElement
+                    as="button"
                     className={"btn-secondary-dash"}
                     onClick={(event) => {
                       handlers.exportarTabelaParaExcel();
                     }}
                     title={"Exportar Tabela"}
                   >
-                    <i className={"fas fa-file-export"}></i>
+                    <LoadingElement
+                      as="i"
+                      className={"fas fa-file-export"}
+                    ></LoadingElement>
                     {" EXPORTAR TABELA\n                "}
-                  </button>
-                </div>
-                <div className={"search-container"}>
-                  <i className={"fas fa-search"}></i>
-                  <input
+                  </LoadingElement>
+                </LoadingElement>
+                <LoadingElement as="div" className={"search-container"}>
+                  <LoadingElement
+                    as="i"
+                    className={"fas fa-search"}
+                  ></LoadingElement>
+                  <LoadingElement
+                    as="input"
                     type={"text"}
                     id={"searchInput"}
                     placeholder={"Pesquisar aluno..."}
                   />
-                </div>
-              </div>,
+                </LoadingElement>
+              </LoadingElement>,
             );
             nodes.push(
-              <div
+              <LoadingElement
+                as="div"
                 id={"importModal"}
                 className={"modal-overlay"}
                 key={nodes.length}
               >
-                <div className={"modal-content"}>
-                  <button
+                <LoadingElement as="div" className={"modal-content"}>
+                  <LoadingElement
+                    as="button"
                     className={"close-btn"}
                     onClick={(event) => {
                       handlers.closeImportModal();
                     }}
                   >
-                    <i className={"ph-bold ph-x"}></i>
-                  </button>
-                  <h2
+                    <LoadingElement
+                      as="i"
+                      className={"ph-bold ph-x"}
+                    ></LoadingElement>
+                  </LoadingElement>
+                  <LoadingElement
+                    as="h2"
                     className={"section-title-2"}
                     style={styleFrom(
                       "text-align: center; margin-bottom: 30px; font-size: 1.2rem;",
@@ -151,53 +187,63 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                     {
                       "\n                    IMPORTAR PLANILHA\n                "
                     }
-                  </h2>
-                  <a
+                  </LoadingElement>
+                  <LoadingElement
+                    as="a"
                     href={"/baixar-modelo-importacao"}
                     className={"btn-secondary-dash"}
                     style={styleFrom(
                       "display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 10px; margin-bottom: 15px; text-decoration: none; height: 55px;",
                     )}
                   >
-                    <i className={"fas fa-download"}></i>
+                    <LoadingElement
+                      as="i"
+                      className={"fas fa-download"}
+                    ></LoadingElement>
                     {"\n                    BAIXAR MODELO\n                "}
-                  </a>
-                  <div
+                  </LoadingElement>
+                  <LoadingElement
+                    as="div"
                     className={"file-drop-area"}
                     onClick={(event) => {
                       document.getElementById("fileInput").click();
                     }}
                     style={styleFrom("padding: 25px; margin: 15px 0;")}
                   >
-                    <i
+                    <LoadingElement
+                      as="i"
                       className={"fas fa-cloud-upload-alt"}
                       style={styleFrom(
                         "font-size: 2rem; color: var(--text-muted);",
                       )}
-                    ></i>
-                    <span
+                    ></LoadingElement>
+                    <LoadingElement
+                      as="span"
                       className={"file-msg"}
                       style={styleFrom(
                         "font-size: 0.8rem; color: var(--text-gray);",
                       )}
                     >
                       {"Clique ou arraste"}
-                    </span>
-                    <span
+                    </LoadingElement>
+                    <LoadingElement
+                      as="span"
                       style={styleFrom(
                         "color: var(--text-muted); font-size: 0.7rem;",
                       )}
                     >
                       {".xlsx, .xls, .csv"}
-                    </span>
-                    <input
+                    </LoadingElement>
+                    <LoadingElement
+                      as="input"
                       type={"file"}
                       id={"fileInput"}
                       accept={".xlsx,.xls,.csv"}
                       style={styleFrom("display: none;")}
                     />
-                  </div>
-                  <div
+                  </LoadingElement>
+                  <LoadingElement
+                    as="div"
                     id={"fileName"}
                     className={"file-name"}
                     style={styleFrom(
@@ -207,14 +253,19 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                         "border-radius: 8px; margin-bottom: 10px;",
                       ].join(""),
                     )}
-                  ></div>
-                  <div style={styleFrom("margin: 15px 0; text-align: center;")}>
-                    <label
+                  ></LoadingElement>
+                  <LoadingElement
+                    as="div"
+                    style={styleFrom("margin: 15px 0; text-align: center;")}
+                  >
+                    <LoadingElement
+                      as="label"
                       style={styleFrom(
                         "display: inline-flex; align-items: center; gap: 5px; color: var(--text-white); cursor: pointer; font-size: 0.8rem;",
                       )}
                     >
-                      <input
+                      <LoadingElement
+                        as="input"
                         type={"checkbox"}
                         id={"primeiraLinhaCabecalho"}
                         defaultChecked={true}
@@ -225,9 +276,10 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                       {
                         "\n                        1ª linha cabeçalho\n                    "
                       }
-                    </label>
-                  </div>
-                  <button
+                    </LoadingElement>
+                  </LoadingElement>
+                  <LoadingElement
+                    as="button"
                     type={"button"}
                     className={"btn-secondary-dash"}
                     onClick={(event) => {
@@ -237,72 +289,88 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                       "width: 100%; padding: 12px; font-size: 0.9rem; margin-top: 5px; justify-content: center; height: 55px",
                     )}
                   >
-                    <i className={"fas fa-file-import"}></i>
+                    <LoadingElement
+                      as="i"
+                      className={"fas fa-file-import"}
+                    ></LoadingElement>
                     {" IMPORTAR\n                "}
-                  </button>
-                  <p
+                  </LoadingElement>
+                  <LoadingElement
+                    as="p"
                     style={styleFrom(
                       "color: var(--text-muted); font-size: 0.65rem; text-align: center; margin-top: 20px;",
                     )}
                   >
-                    <i
+                    <LoadingElement
+                      as="i"
                       className={"fas fa-info-circle"}
                       style={styleFrom("color: var(--success-green);")}
-                    ></i>
+                    ></LoadingElement>
                     {
                       "\n                    Use o modelo para formato correto\n                "
                     }
-                  </p>
-                </div>
-              </div>,
+                  </LoadingElement>
+                </LoadingElement>
+              </LoadingElement>,
             );
             nodes.push(
-              <div
+              <LoadingElement
+                as="div"
                 id={"previewImportModal"}
                 className={"modal-overlay"}
                 key={nodes.length}
               >
-                <div
+                <LoadingElement
+                  as="div"
                   className={"modal-content"}
                   style={styleFrom(
                     "max-width: 600px; border-color: var(--success-green);",
                   )}
                 >
-                  <button
+                  <LoadingElement
+                    as="button"
                     className={"close-btn"}
                     onClick={(event) => {
                       handlers.closePreviewModal();
                     }}
                   >
-                    <i className={"ph-bold ph-x"}></i>
-                  </button>
-                  <h2
+                    <LoadingElement
+                      as="i"
+                      className={"ph-bold ph-x"}
+                    ></LoadingElement>
+                  </LoadingElement>
+                  <LoadingElement
+                    as="h2"
                     className={"section-title-2"}
                     style={styleFrom(
                       "text-align: center; margin-bottom: 20px; color: var(--success-green);",
                     )}
                   >
                     {"\n                    PRÉ-VISUALIZAÇÃO\n                "}
-                  </h2>
-                  <div
+                  </LoadingElement>
+                  <LoadingElement
+                    as="div"
                     style={styleFrom(
                       "text-align: center; margin-bottom: 20px;",
                     )}
                   >
-                    <i
+                    <LoadingElement
+                      as="i"
                       className={"fas fa-check-circle"}
                       style={styleFrom(
                         "font-size: 3rem; color: var(--success-green);",
                       )}
-                    ></i>
-                    <p
+                    ></LoadingElement>
+                    <LoadingElement
+                      as="p"
                       style={styleFrom(
                         "color: var(--text-white); font-size: 1.1rem; margin: 10px 0;",
                       )}
                       id={"previewCount"}
-                    ></p>
-                  </div>
-                  <div
+                    ></LoadingElement>
+                  </LoadingElement>
+                  <LoadingElement
+                    as="div"
                     style={styleFrom(
                       [
                         "background: var(--card-bg); border: 2px solid ",
@@ -311,49 +379,59 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                       ].join(""),
                     )}
                   >
-                    <table
+                    <LoadingElement
+                      as="table"
                       style={styleFrom(
                         "width: 100%; border-collapse: collapse;",
                       )}
                     >
-                      <thead>
-                        <tr
+                      <LoadingElement as="thead">
+                        <LoadingElement
+                          as="tr"
                           style={styleFrom(
                             "border-bottom: 1px solid var(--border-color);",
                           )}
                         >
-                          <th
+                          <LoadingElement
+                            as="th"
                             style={styleFrom(
                               "padding: 8px; text-align: left; color: var(--text-gray);",
                             )}
                           >
                             {"NOME"}
-                          </th>
-                          <th
+                          </LoadingElement>
+                          <LoadingElement
+                            as="th"
                             style={styleFrom(
                               "padding: 8px; text-align: left; color: var(--text-gray);",
                             )}
                           >
                             {"ANO"}
-                          </th>
-                          <th
+                          </LoadingElement>
+                          <LoadingElement
+                            as="th"
                             style={styleFrom(
                               "padding: 8px; text-align: left; color: var(--text-gray);",
                             )}
                           >
                             {"COMPETÊNCIAS"}
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody id={"previewList"}></tbody>
-                    </table>
-                  </div>
-                  <div
+                          </LoadingElement>
+                        </LoadingElement>
+                      </LoadingElement>
+                      <LoadingElement
+                        as="tbody"
+                        id={"previewList"}
+                      ></LoadingElement>
+                    </LoadingElement>
+                  </LoadingElement>
+                  <LoadingElement
+                    as="div"
                     style={styleFrom(
                       "display: flex; gap: 10px; margin-top: 20px;",
                     )}
                   >
-                    <button
+                    <LoadingElement
+                      as="button"
                       className={"btn-secondary-dash"}
                       onClick={(event) => {
                         handlers.confirmarImportacao();
@@ -362,64 +440,90 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                         "flex: 1; justify-content: center; background: var(--success-green-alpha); border-color: var(--success-green); color: var(--text-white);",
                       )}
                     >
-                      <i className={"fas fa-check"}></i>
+                      <LoadingElement
+                        as="i"
+                        className={"fas fa-check"}
+                      ></LoadingElement>
                       {" CONFIRMAR\n                    "}
-                    </button>
-                    <button
+                    </LoadingElement>
+                    <LoadingElement
+                      as="button"
                       className={"btn-secondary-dash"}
                       onClick={(event) => {
                         handlers.closePreviewModal();
                       }}
                       style={styleFrom("flex: 1; justify-content: center;")}
                     >
-                      <i className={"fas fa-times"}></i>
+                      <LoadingElement
+                        as="i"
+                        className={"fas fa-times"}
+                      ></LoadingElement>
                       {" CANCELAR\n                    "}
-                    </button>
-                  </div>
-                </div>
-              </div>,
+                    </LoadingElement>
+                  </LoadingElement>
+                </LoadingElement>
+              </LoadingElement>,
             );
             nodes.push(
-              <main className={"edit-content"} key={nodes.length}>
-                <section className={"ai-editor-panel"}>
-                  <details className={"ai-accordion"}>
-                    <summary className={"ai-accordion-summary"}>
-                      <div
+              <LoadingElement
+                as="main"
+                className={"edit-content"}
+                key={nodes.length}
+              >
+                <LoadingElement as="section" className={"ai-editor-panel"}>
+                  <LoadingElement as="details" className={"ai-accordion"}>
+                    <LoadingElement
+                      as="summary"
+                      className={"ai-accordion-summary"}
+                    >
+                      <LoadingElement
+                        as="div"
                         className={"ai-panel-heading"}
                         style={styleFrom(
                           "cursor: pointer; display: flex; align-items: center; justify-content: space-between; width: 100%;",
                         )}
                       >
-                        <div>
-                          <h2 className={"section-title-2"}>
+                        <LoadingElement as="div">
+                          <LoadingElement as="h2" className={"section-title-2"}>
                             {"SITUAÇÃO DO ALUNO"}
-                          </h2>
-                          <p>
+                          </LoadingElement>
+                          <LoadingElement as="p">
                             {
                               "Gere uma leitura objetiva com base nas competências, presença e tarefas registradas."
                             }
-                          </p>
-                        </div>
-                        <div
+                          </LoadingElement>
+                        </LoadingElement>
+                        <LoadingElement
+                          as="div"
                           style={styleFrom(
                             "display: flex; align-items: center; gap: 16px;",
                           )}
                         >
-                          <a
+                          <LoadingElement
+                            as="a"
                             className={"btn-secondary-dash"}
                             href={"/dashboard/ia"}
                           >
-                            <i className={"fas fa-comments"}></i>
+                            <LoadingElement
+                              as="i"
+                              className={"fas fa-comments"}
+                            ></LoadingElement>
                             {" ABRIR CHAT"}
-                          </a>
-                          <span className={"ai-accordion-icon"}>
-                            <i className={"ph-bold ph-caret-down"}></i>
-                          </span>
-                        </div>
-                      </div>
-                    </summary>
-                    <div className={"ai-accordion-content"}>
-                      <div className={"ai-editor-controls"}>
+                          </LoadingElement>
+                          <LoadingElement
+                            as="span"
+                            className={"ai-accordion-icon"}
+                          >
+                            <LoadingElement
+                              as="i"
+                              className={"ph-bold ph-caret-down"}
+                            ></LoadingElement>
+                          </LoadingElement>
+                        </LoadingElement>
+                      </LoadingElement>
+                    </LoadingElement>
+                    <LoadingElement as="div" className={"ai-accordion-content"}>
+                      <LoadingElement as="div" className={"ai-editor-controls"}>
                         <LoadingElement
                           as="select"
                           id={"aiStudentSelect"}
@@ -428,91 +532,131 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                           {(() => {
                             const nodes = [];
                             nodes.push(
-                              <option value={""} key={nodes.length}>
+                              <LoadingElement
+                                as="option"
+                                value={""}
+                                key={nodes.length}
+                              >
                                 {"Selecione um aluno"}
-                              </option>,
+                              </LoadingElement>,
                             );
                             alunos.forEach((aluno) => {
                               nodes.push(
-                                <option value={aluno.id} key={nodes.length}>
+                                <LoadingElement
+                                  as="option"
+                                  value={aluno.id}
+                                  key={nodes.length}
+                                >
                                   {aluno.nome}
                                   {" - "}
                                   {aluno.ano_escolar}
-                                </option>,
+                                </LoadingElement>,
                               );
                             });
                             return nodes;
                           })()}
                         </LoadingElement>
-                        <button
+                        <LoadingElement
+                          as="button"
                           className={"btn-secondary-dash"}
                           id={"aiAnalyzeStudent"}
                           type={"button"}
                         >
-                          <i className={"fas fa-chart-line"}></i>
+                          <LoadingElement
+                            as="i"
+                            className={"fas fa-chart-line"}
+                          ></LoadingElement>
                           {" ANALISAR"}
-                        </button>
-                      </div>
-                      <div
+                        </LoadingElement>
+                      </LoadingElement>
+                      <LoadingElement
+                        as="div"
                         className={"ai-suggestion-list"}
                         aria-label={"Sugestões de análise"}
                       >
-                        <button
+                        <LoadingElement
+                          as="button"
                           type={"button"}
                           className={"ai-suggestion"}
                           data-ai-prompt={
                             "Elabore um diagnóstico pedagógico em texto corrido sobre este aluno, analisando rendimento geral, competências e pontos de atenção."
                           }
                         >
-                          <i className={"fas fa-list-check"}></i>
-                          <span>{"Diagnóstico"}</span>
-                        </button>
-                        <button
+                          <LoadingElement
+                            as="i"
+                            className={"fas fa-list-check"}
+                          ></LoadingElement>
+                          <LoadingElement as="span">
+                            {"Diagnóstico"}
+                          </LoadingElement>
+                        </LoadingElement>
+                        <LoadingElement
+                          as="button"
                           type={"button"}
                           className={"ai-suggestion"}
                           data-ai-prompt={
                             "Sugira intervenções pedagógicas personalizadas e estratégias ativas para fortalecer o aprendizado deste aluno."
                           }
                         >
-                          <i className={"fas fa-lightbulb"}></i>
-                          <span>{"Intervenções"}</span>
-                        </button>
-                        <button
+                          <LoadingElement
+                            as="i"
+                            className={"fas fa-lightbulb"}
+                          ></LoadingElement>
+                          <LoadingElement as="span">
+                            {"Intervenções"}
+                          </LoadingElement>
+                        </LoadingElement>
+                        <LoadingElement
+                          as="button"
                           type={"button"}
                           className={"ai-suggestion"}
                           data-ai-prompt={
                             "Faça uma análise detalhada sobre o engajamento, frequência e tarefas deste aluno, propondo ações práticas."
                           }
                         >
-                          <i className={"fas fa-arrow-trend-up"}></i>
-                          <span>{"Engajamento"}</span>
-                        </button>
-                      </div>
-                      <div
+                          <LoadingElement
+                            as="i"
+                            className={"fas fa-arrow-trend-up"}
+                          ></LoadingElement>
+                          <LoadingElement as="span">
+                            {"Engajamento"}
+                          </LoadingElement>
+                        </LoadingElement>
+                      </LoadingElement>
+                      <LoadingElement
+                        as="div"
                         id={"aiEditorResult"}
                         className={"ai-result"}
                         aria-live={"polite"}
                       >
                         {"A análise aparecerá aqui."}
-                      </div>
-                    </div>
-                  </details>
-                </section>
-                <div className={"table-container"}>
-                  <table className={"alunos-table"} id={"alunosTable"}>
-                    <thead>
-                      <tr>
-                        <th>{"ID"}</th>
-                        <th>{"ALUNO"}</th>
-                        <th>{"ANO ESCOLAR"}</th>
-                        <th>{"IDADE"}</th>
-                        <th>{"MÉDIA DE NOTAS"}</th>
-                        <th>{"PRESENÇA (%)"}</th>
-                        <th>{"NÍVEL"}</th>
-                        <th>{"AÇÕES"}</th>
-                      </tr>
-                    </thead>
-                    <tbody id={"alunosTableBody"}>
+                      </LoadingElement>
+                    </LoadingElement>
+                  </LoadingElement>
+                </LoadingElement>
+                <LoadingElement as="div" className={"table-container"}>
+                  <LoadingElement
+                    as="table"
+                    className={"alunos-table"}
+                    id={"alunosTable"}
+                  >
+                    <LoadingElement as="thead">
+                      <LoadingElement as="tr">
+                        <LoadingElement as="th">{"ID"}</LoadingElement>
+                        <LoadingElement as="th">{"ALUNO"}</LoadingElement>
+                        <LoadingElement as="th">{"ANO ESCOLAR"}</LoadingElement>
+                        <LoadingElement as="th">{"IDADE"}</LoadingElement>
+                        <LoadingElement as="th">
+                          {"MÉDIA DE NOTAS"}
+                        </LoadingElement>
+                        <LoadingElement as="th">
+                          {"PRESENÇA (%)"}
+                        </LoadingElement>
+                        <LoadingElement as="th">{"NÍVEL"}</LoadingElement>
+                        <LoadingElement as="th">{"AÇÕES"}</LoadingElement>
+                      </LoadingElement>
+                    </LoadingElement>
+                    <LoadingElement as="tbody" id={"alunosTableBody"}>
                       {(() => {
                         const nodes = [];
                         if (alunos && alunos.length > 0) {
@@ -525,59 +669,67 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                             const nivelReal = aluno.nivel;
                             const nivelClass = aluno.nivelClass;
                             nodes.push(
-                              <tr
+                              <LoadingElement
+                                as="tr"
                                 data-aluno-id={aluno.id}
                                 data-presenca={aluno.presenca}
                                 key={nodes.length}
                               >
-                                <td>
+                                <LoadingElement as="td">
                                   <LoadingValue
                                     slot="dashboard/dashboardEdit:3"
                                     width="12ch"
                                     known={false}
                                     value={aluno.id}
                                   />
-                                </td>
-                                <td>
+                                </LoadingElement>
+                                <LoadingElement as="td">
                                   <LoadingValue
                                     slot="dashboard/dashboardEdit:4"
                                     width="min(18ch, 100%)"
                                     known={true}
                                     value={aluno.nome}
                                   />
-                                </td>
-                                <td>
+                                </LoadingElement>
+                                <LoadingElement as="td">
                                   <LoadingValue
                                     slot="dashboard/dashboardEdit:5"
                                     width="12ch"
                                     known={true}
                                     value={aluno.ano_escolar}
                                   />
-                                </td>
-                                <td>
+                                </LoadingElement>
+                                <LoadingElement as="td">
                                   <LoadingValue
                                     slot="dashboard/dashboardEdit:6"
                                     width="3ch"
                                     known={false}
                                     value={aluno.idade}
                                   />
-                                </td>
-                                <td className={"media-notas"}>
+                                </LoadingElement>
+                                <LoadingElement
+                                  as="td"
+                                  className={"media-notas"}
+                                >
                                   {(() => {
                                     const nodes = [];
                                     if (temCompetencias) {
                                       nodes.push(
-                                        <strong key={nodes.length}>
+                                        <LoadingElement
+                                          as="strong"
+                                          key={nodes.length}
+                                        >
                                           <LoadingValue
                                             slot="dashboard/dashboardEdit:7"
                                             width="3ch"
                                             known={false}
                                             value={mediaCompetencias.toFixed(1)}
                                           />
-                                        </strong>,
+                                        </LoadingElement>,
                                       );
                                       nodes.push(
-                                        <small
+                                        <LoadingElement
+                                          as="small"
                                           style={styleFrom(
                                             "color: #888; display: block;",
                                           )}
@@ -591,22 +743,23 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                                             value={aluno.competencias.length}
                                           />
                                           {" competências)"}
-                                        </small>,
+                                        </LoadingElement>,
                                       );
                                     } else {
                                       nodes.push(
-                                        <span
+                                        <LoadingElement
+                                          as="span"
                                           style={styleFrom("color: #888;")}
                                           key={nodes.length}
                                         >
                                           {"Sem competências"}
-                                        </span>,
+                                        </LoadingElement>,
                                       );
                                     }
                                     return nodes;
                                   })()}
-                                </td>
-                                <td>
+                                </LoadingElement>
+                                <LoadingElement as="td">
                                   <LoadingValue
                                     slot="dashboard/dashboardEdit:9"
                                     width="3ch"
@@ -614,7 +767,7 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                                     value={aluno.presenca}
                                   />
                                   {"%"}
-                                </td>
+                                </LoadingElement>
                                 <LoadingElement
                                   as="td"
                                   className={"status " + nivelClass}
@@ -627,8 +780,12 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                                     value={nivelReal}
                                   />
                                 </LoadingElement>
-                                <td className={"td-actions"}>
-                                  <button
+                                <LoadingElement
+                                  as="td"
+                                  className={"td-actions"}
+                                >
+                                  <LoadingElement
+                                    as="button"
                                     type={"button"}
                                     className={"btn-table-edit"}
                                     data-id={aluno.id}
@@ -643,12 +800,14 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                                     }}
                                     title={"Editar Aluno"}
                                   >
-                                    <i
+                                    <LoadingElement
+                                      as="i"
                                       className={"ph-bold ph-pen"}
                                       aria-hidden={"true"}
-                                    ></i>
-                                  </button>
-                                  <a
+                                    ></LoadingElement>
+                                  </LoadingElement>
+                                  <LoadingElement
+                                    as="a"
                                     href={"#"}
                                     data-id={aluno.id}
                                     data-name={aluno.nome}
@@ -662,37 +821,43 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                                     className={"delete-link"}
                                     title={"Excluir Aluno"}
                                   >
-                                    <i
+                                    <LoadingElement
+                                      as="i"
                                       className={"ph-bold ph-trash"}
                                       aria-hidden={"true"}
-                                    ></i>
-                                  </a>
-                                </td>
-                              </tr>,
+                                    ></LoadingElement>
+                                  </LoadingElement>
+                                </LoadingElement>
+                              </LoadingElement>,
                             );
                           });
                         }
                         return nodes;
                       })()}
-                    </tbody>
-                  </table>
-                </div>
-                <div className={"competencias-section"}>
-                  <h2 className={"section-title-2"}>
+                    </LoadingElement>
+                  </LoadingElement>
+                </LoadingElement>
+                <LoadingElement as="div" className={"competencias-section"}>
+                  <LoadingElement as="h2" className={"section-title-2"}>
                     {"COMPETÊNCIAS POR ALUNO"}
-                  </h2>
-                  <div
+                  </LoadingElement>
+                  <LoadingElement
+                    as="div"
                     className={"search-container"}
                     style={styleFrom("margin-bottom: 25px; max-width: 400px;")}
                   >
-                    <i className={"fas fa-search"}></i>
-                    <input
+                    <LoadingElement
+                      as="i"
+                      className={"fas fa-search"}
+                    ></LoadingElement>
+                    <LoadingElement
+                      as="input"
                       type={"text"}
                       id={"competenciasSearchInput"}
                       placeholder={"Procurar competências de aluno..."}
                     />
-                  </div>
-                  <div className={"competencias-grid"}>
+                  </LoadingElement>
+                  <LoadingElement as="div" className={"competencias-grid"}>
                     {(() => {
                       const nodes = [];
                       if (alunos && alunos.length > 0) {
@@ -702,30 +867,40 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                             aluno.competencias.length > 0
                           ) {
                             nodes.push(
-                              <div
+                              <LoadingElement
+                                as="div"
                                 className={"competencia-card"}
                                 data-aluno-nome={aluno.nome.toLowerCase()}
                                 key={nodes.length}
                               >
-                                <div className={"competencia-header"}>
-                                  <h3>
+                                <LoadingElement
+                                  as="div"
+                                  className={"competencia-header"}
+                                >
+                                  <LoadingElement as="h3">
                                     <LoadingValue
                                       slot="dashboard/dashboardEdit:11"
                                       width="min(18ch, 100%)"
                                       known={true}
                                       value={aluno.nome}
                                     />
-                                  </h3>
-                                  <span className={"competencia-ano"}>
+                                  </LoadingElement>
+                                  <LoadingElement
+                                    as="span"
+                                    className={"competencia-ano"}
+                                  >
                                     <LoadingValue
                                       slot="dashboard/dashboardEdit:12"
                                       width="12ch"
                                       known={true}
                                       value={aluno.ano_escolar}
                                     />
-                                  </span>
-                                </div>
-                                <div className={"competencia-list"}>
+                                  </LoadingElement>
+                                </LoadingElement>
+                                <LoadingElement
+                                  as="div"
+                                  className={"competencia-list"}
+                                >
                                   {(() => {
                                     const nodes = [];
                                     aluno.competencias.forEach((comp) => {
@@ -734,15 +909,20 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                                           ? "em-desenvolvimento"
                                           : comp.gradeClass;
                                       nodes.push(
-                                        <div
+                                        <LoadingElement
+                                          as="div"
                                           className={"competencia-item"}
                                           key={nodes.length}
                                         >
-                                          <div className={"competencia-info"}>
+                                          <LoadingElement
+                                            as="div"
+                                            className={"competencia-info"}
+                                          >
                                             {(() => {
                                               const nodes = [];
                                               nodes.push(
-                                                <span
+                                                <LoadingElement
+                                                  as="span"
                                                   className={"competencia-nome"}
                                                   key={nodes.length}
                                                 >
@@ -752,11 +932,12 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                                                     known={false}
                                                     value={comp.nome}
                                                   />
-                                                </span>,
+                                                </LoadingElement>,
                                               );
                                               if (comp.observacoes) {
                                                 nodes.push(
-                                                  <span
+                                                  <LoadingElement
+                                                    as="span"
                                                     className={
                                                       "competencia-desc"
                                                     }
@@ -782,12 +963,12 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                                                           : ""
                                                       }
                                                     />
-                                                  </span>,
+                                                  </LoadingElement>,
                                                 );
                                               }
                                               return nodes;
                                             })()}
-                                          </div>
+                                          </LoadingElement>
                                           <LoadingElement
                                             as="span"
                                             className={
@@ -804,37 +985,42 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                                               ).toFixed(1)}
                                             />
                                           </LoadingElement>
-                                        </div>,
+                                        </LoadingElement>,
                                       );
                                     });
                                     return nodes;
                                   })()}
-                                </div>
-                              </div>,
+                                </LoadingElement>
+                              </LoadingElement>,
                             );
                           }
                         });
                       }
                       return nodes;
                     })()}
-                  </div>
-                </div>
-                <div className={"evolution-container"}>
-                  <h2 className={"section-title-2"}>
+                  </LoadingElement>
+                </LoadingElement>
+                <LoadingElement as="div" className={"evolution-container"}>
+                  <LoadingElement as="h2" className={"section-title-2"}>
                     {"EVOLUÇÃO INDIVIDUAL POR ALUNO"}
-                  </h2>
-                  <div
+                  </LoadingElement>
+                  <LoadingElement
+                    as="div"
                     className={"search-container"}
                     style={styleFrom("margin-bottom: 25px; max-width: 400px;")}
                   >
-                    <i className={"fas fa-search"}></i>
-                    <input
+                    <LoadingElement
+                      as="i"
+                      className={"fas fa-search"}
+                    ></LoadingElement>
+                    <LoadingElement
+                      as="input"
                       type={"text"}
                       id={"chartSearchInput"}
                       placeholder={"Procurar gráfico de aluno..."}
                     />
-                  </div>
-                  <div className={"charts-grid"}>
+                  </LoadingElement>
+                  <LoadingElement as="div" className={"charts-grid"}>
                     {(() => {
                       const nodes = [];
                       if (alunos && alunos.length > 0) {
@@ -844,12 +1030,13 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                             aluno.competencias.length > 0
                           ) {
                             nodes.push(
-                              <div
+                              <LoadingElement
+                                as="div"
                                 className={"chart-card"}
                                 data-aluno-nome={aluno.nome.toLowerCase()}
                                 key={nodes.length}
                               >
-                                <h3>
+                                <LoadingElement as="h3">
                                   {"ALUNO: "}
                                   <LoadingValue
                                     slot="dashboard/dashboardEdit:17"
@@ -857,8 +1044,9 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                                     known={true}
                                     value={aluno.nome}
                                   />
-                                </h3>
-                                <div
+                                </LoadingElement>
+                                <LoadingElement
+                                  as="div"
                                   className={"chart-wrapper"}
                                   style={styleFrom(
                                     "position: relative; height: 300px; width: 100%;",
@@ -869,64 +1057,96 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                                     variant="plot"
                                     frame={true}
                                   ></LoadingCanvas>
-                                </div>
-                              </div>,
+                                </LoadingElement>
+                              </LoadingElement>,
                             );
                           }
                         });
                       }
                       return nodes;
                     })()}
-                  </div>
-                </div>
-              </main>,
+                  </LoadingElement>
+                </LoadingElement>
+              </LoadingElement>,
             );
             nodes.push(
-              <div
+              <LoadingElement
+                as="div"
                 id={"filterModal"}
                 className={"modal-overlay"}
                 key={nodes.length}
               >
-                <div className={"modal-content"}>
-                  <button
+                <LoadingElement as="div" className={"modal-content"}>
+                  <LoadingElement
+                    as="button"
                     className={"close-btn"}
                     onClick={(event) => {
                       handlers.closeFilter();
                     }}
                   >
-                    <i className={"ph-bold ph-x"}></i>
-                  </button>
-                  <h2 className={"section-title-2"}>{"FILTRAR LISTA"}</h2>
-                  <div className={"filter-options"}>
-                    <label>{"ANO ESCOLAR:"}</label>
-                    <select id={"filterAno"} className={"filter-input"}>
-                      <option value={""}>{"TODOS OS ANOS"}</option>
-                      <option value={"1º MÉDIO"}>{"1º MÉDIO"}</option>
-                      <option value={"2º MÉDIO"}>{"2º MÉDIO"}</option>
-                      <option value={"3º MÉDIO"}>{"3º MÉDIO"}</option>
-                      <option value={"9º FUNDAMENTAL"}>
+                    <LoadingElement
+                      as="i"
+                      className={"ph-bold ph-x"}
+                    ></LoadingElement>
+                  </LoadingElement>
+                  <LoadingElement as="h2" className={"section-title-2"}>
+                    {"FILTRAR LISTA"}
+                  </LoadingElement>
+                  <LoadingElement as="div" className={"filter-options"}>
+                    <LoadingElement as="label">{"ANO ESCOLAR:"}</LoadingElement>
+                    <LoadingElement
+                      as="select"
+                      id={"filterAno"}
+                      className={"filter-input"}
+                    >
+                      <LoadingElement as="option" value={""}>
+                        {"TODOS OS ANOS"}
+                      </LoadingElement>
+                      <LoadingElement as="option" value={"1º MÉDIO"}>
+                        {"1º MÉDIO"}
+                      </LoadingElement>
+                      <LoadingElement as="option" value={"2º MÉDIO"}>
+                        {"2º MÉDIO"}
+                      </LoadingElement>
+                      <LoadingElement as="option" value={"3º MÉDIO"}>
+                        {"3º MÉDIO"}
+                      </LoadingElement>
+                      <LoadingElement as="option" value={"9º FUNDAMENTAL"}>
                         {"9º FUNDAMENTAL"}
-                      </option>
-                    </select>
-                    <label
+                      </LoadingElement>
+                    </LoadingElement>
+                    <LoadingElement
+                      as="label"
                       style={styleFrom("margin-top: 15px; display: block;")}
                     >
                       {"STATUS:"}
-                    </label>
-                    <select id={"filterStatus"} className={"filter-input"}>
-                      <option value={""}>{"TODOS OS NÍVEIS"}</option>
-                      <option value={"APTO"}>{"APTO"}</option>
-                      <option value={"INAPTO"}>{"INAPTO"}</option>
-                      <option value={"EM DESENVOLVIMENTO"}>
+                    </LoadingElement>
+                    <LoadingElement
+                      as="select"
+                      id={"filterStatus"}
+                      className={"filter-input"}
+                    >
+                      <LoadingElement as="option" value={""}>
+                        {"TODOS OS NÍVEIS"}
+                      </LoadingElement>
+                      <LoadingElement as="option" value={"APTO"}>
+                        {"APTO"}
+                      </LoadingElement>
+                      <LoadingElement as="option" value={"INAPTO"}>
+                        {"INAPTO"}
+                      </LoadingElement>
+                      <LoadingElement as="option" value={"EM DESENVOLVIMENTO"}>
                         {"EM DESENVOLVIMENTO"}
-                      </option>
-                    </select>
-                    <div
+                      </LoadingElement>
+                    </LoadingElement>
+                    <LoadingElement
+                      as="div"
                       style={styleFrom(
                         "display: flex; gap: 10px; margin-top: 25px;",
                       )}
                     >
-                      <button
+                      <LoadingElement
+                        as="button"
                         className={"btn-secondary-dash"}
                         onClick={(event) => {
                           handlers.applyFilter();
@@ -934,8 +1154,9 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                         style={styleFrom("flex: 2; justify-content: center;")}
                       >
                         {"FILTRAR"}
-                      </button>
-                      <button
+                      </LoadingElement>
+                      <LoadingElement
+                        as="button"
                         className={"btn-secondary-dash"}
                         onClick={(event) => {
                           handlers.clearFilters();
@@ -943,46 +1164,63 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                         style={styleFrom("flex: 1; justify-content: center;")}
                       >
                         {"LIMPAR"}
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>,
+                      </LoadingElement>
+                    </LoadingElement>
+                  </LoadingElement>
+                </LoadingElement>
+              </LoadingElement>,
             );
             nodes.push(
-              <div
+              <LoadingElement
+                as="div"
                 id={"addAlunoModal"}
                 className={"modal-overlay"}
                 key={nodes.length}
               >
-                <div
+                <LoadingElement
+                  as="div"
                   className={"modal-content claude-modal claude-create-student"}
                 >
-                  <button
+                  <LoadingElement
+                    as="button"
                     className={"close-btn"}
                     onClick={(event) => {
                       handlers.closeAddModal();
                     }}
                   >
-                    <i className={"ph-bold ph-x"}></i>
-                  </button>
-                  <div className={"claude-modal-heading"}>
-                    <span className={"claude-modal-kicker"}>{"Alunos"}</span>
-                    <h2>{"Adicionar aluno"}</h2>
-                    <p>
+                    <LoadingElement
+                      as="i"
+                      className={"ph-bold ph-x"}
+                    ></LoadingElement>
+                  </LoadingElement>
+                  <LoadingElement as="div" className={"claude-modal-heading"}>
+                    <LoadingElement as="span" className={"claude-modal-kicker"}>
+                      {"Alunos"}
+                    </LoadingElement>
+                    <LoadingElement as="h2">{"Adicionar aluno"}</LoadingElement>
+                    <LoadingElement as="p">
                       {
                         "Cadastre um novo aluno para acompanhar seu desempenho acadêmico."
                       }
-                    </p>
-                  </div>
-                  <form
+                    </LoadingElement>
+                  </LoadingElement>
+                  <LoadingElement
+                    as="form"
                     action={"/dashboard/add-aluno"}
                     method={"POST"}
                     className={"filter-options claude-form"}
                   >
-                    <input type={"hidden"} name={"_csrf"} value={csrfToken} />
-                    <label>{"NOME COMPLETO:"}</label>
-                    <input
+                    <LoadingElement
+                      as="input"
+                      type={"hidden"}
+                      name={"_csrf"}
+                      value={csrfToken}
+                    />
+                    <LoadingElement as="label">
+                      {"NOME COMPLETO:"}
+                    </LoadingElement>
+                    <LoadingElement
+                      as="input"
                       type={"text"}
                       name={"nome"}
                       className={"filter-input"}
@@ -997,27 +1235,40 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                       placeholder={"Nome do aluno"}
                       required={true}
                     />
-                    <label
+                    <LoadingElement
+                      as="label"
                       style={styleFrom("margin-top: 15px; display: block;")}
                     >
                       {"ANO ESCOLAR:"}
-                    </label>
-                    <select name={"ano_escolar"} className={"filter-input"}>
-                      <option value={"1º MÉDIO"}>{"1º MÉDIO"}</option>
-                      <option value={"2º MÉDIO"}>{"2º MÉDIO"}</option>
-                      <option value={"3º MÉDIO"}>{"3º MÉDIO"}</option>
-                      <option value={"9º FUNDAMENTAL"}>
+                    </LoadingElement>
+                    <LoadingElement
+                      as="select"
+                      name={"ano_escolar"}
+                      className={"filter-input"}
+                    >
+                      <LoadingElement as="option" value={"1º MÉDIO"}>
+                        {"1º MÉDIO"}
+                      </LoadingElement>
+                      <LoadingElement as="option" value={"2º MÉDIO"}>
+                        {"2º MÉDIO"}
+                      </LoadingElement>
+                      <LoadingElement as="option" value={"3º MÉDIO"}>
+                        {"3º MÉDIO"}
+                      </LoadingElement>
+                      <LoadingElement as="option" value={"9º FUNDAMENTAL"}>
                         {"9º FUNDAMENTAL"}
-                      </option>
-                    </select>
-                    <div
+                      </LoadingElement>
+                    </LoadingElement>
+                    <LoadingElement
+                      as="div"
                       style={styleFrom(
                         "display: flex; gap: 10px; margin-top: 15px;",
                       )}
                     >
-                      <div style={styleFrom("flex: 1;")}>
-                        <label>{"IDADE:"}</label>
-                        <input
+                      <LoadingElement as="div" style={styleFrom("flex: 1;")}>
+                        <LoadingElement as="label">{"IDADE:"}</LoadingElement>
+                        <LoadingElement
+                          as="input"
                           type={"number"}
                           name={"idade"}
                           min={"14"}
@@ -1025,10 +1276,11 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                           className={"filter-input"}
                           required={true}
                         />
-                      </div>
-                    </div>
-                    <div className={"claude-modal-actions"}>
-                      <button
+                      </LoadingElement>
+                    </LoadingElement>
+                    <LoadingElement as="div" className={"claude-modal-actions"}>
+                      <LoadingElement
+                        as="button"
                         type={"button"}
                         className={"claude-btn-secondary"}
                         onClick={(event) => {
@@ -1036,47 +1288,66 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                         }}
                       >
                         {"Cancelar"}
-                      </button>
-                      <button type={"submit"} className={"claude-btn-primary"}>
+                      </LoadingElement>
+                      <LoadingElement
+                        as="button"
+                        type={"submit"}
+                        className={"claude-btn-primary"}
+                      >
                         {"Criar aluno"}
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </div>,
+                      </LoadingElement>
+                    </LoadingElement>
+                  </LoadingElement>
+                </LoadingElement>
+              </LoadingElement>,
             );
             nodes.push(
-              <div
+              <LoadingElement
+                as="div"
                 id={"editAlunoModal"}
                 className={"modal-overlay"}
                 key={nodes.length}
               >
-                <div
+                <LoadingElement
+                  as="div"
                   className={"modal-content"}
                   style={styleFrom("max-width: 450px; padding: 30px;")}
                 >
-                  <button
+                  <LoadingElement
+                    as="button"
                     className={"close-btn"}
                     onClick={(event) => {
                       handlers.closeEditModal();
                     }}
                   >
-                    <i className={"ph-bold ph-x"}></i>
-                  </button>
-                  <h2
+                    <LoadingElement
+                      as="i"
+                      className={"ph-bold ph-x"}
+                    ></LoadingElement>
+                  </LoadingElement>
+                  <LoadingElement
+                    as="h2"
                     className={"section-title-2"}
                     style={styleFrom("font-size: 1.1rem; margin-bottom: 20px;")}
                   >
-                    <i className={"fas fa-user-edit"}></i>
-                    <span id={"editNomeAluno"}></span>
-                  </h2>
-                  <div
+                    <LoadingElement
+                      as="i"
+                      className={"fas fa-user-edit"}
+                    ></LoadingElement>
+                    <LoadingElement
+                      as="span"
+                      id={"editNomeAluno"}
+                    ></LoadingElement>
+                  </LoadingElement>
+                  <LoadingElement
+                    as="div"
                     className={"edit-tabs"}
                     style={styleFrom(
                       "display: grid; grid-template-columns: 1fr 1fr;border-bottom: none;",
                     )}
                   >
-                    <button
+                    <LoadingElement
+                      as="button"
                       className={"tab-btn active"}
                       onClick={(event) => {
                         handlers.showEditTab("info");
@@ -1084,8 +1355,9 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                       id={"btn-tab-info"}
                     >
                       {"ACESSO"}
-                    </button>
-                    <button
+                    </LoadingElement>
+                    <LoadingElement
+                      as="button"
                       className={"tab-btn"}
                       onClick={(event) => {
                         handlers.showEditTab("notas");
@@ -1093,8 +1365,9 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                       id={"btn-tab-notas"}
                     >
                       {"NOTAS"}
-                    </button>
-                    <button
+                    </LoadingElement>
+                    <LoadingElement
+                      as="button"
                       className={"tab-btn"}
                       onClick={(event) => {
                         handlers.showEditTab("add");
@@ -1102,8 +1375,9 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                       id={"btn-tab-add"}
                     >
                       {"LANÇAR"}
-                    </button>
-                    <button
+                    </LoadingElement>
+                    <LoadingElement
+                      as="button"
                       className={"tab-btn"}
                       onClick={(event) => {
                         handlers.showEditTab("presenca");
@@ -1111,63 +1385,82 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                       id={"btn-tab-presenca"}
                     >
                       {"FALTAS"}
-                    </button>
-                  </div>
-                  <div
+                    </LoadingElement>
+                  </LoadingElement>
+                  <LoadingElement
+                    as="div"
                     style={styleFrom(
                       "margin-top: 20px; border-top: 1px solid var(--border-color); padding-top: 15px;",
                     )}
                   >
-                    <div id={"editInfoTab"} className={"tab-content active"}>
-                      <div id={"loginInfo"}></div>
-                    </div>
-                    <div
+                    <LoadingElement
+                      as="div"
+                      id={"editInfoTab"}
+                      className={"tab-content active"}
+                    >
+                      <LoadingElement
+                        as="div"
+                        id={"loginInfo"}
+                      ></LoadingElement>
+                    </LoadingElement>
+                    <LoadingElement
+                      as="div"
                       id={"editNotasTab"}
                       className={"tab-content"}
                       style={styleFrom("display: none;")}
                     >
-                      <h3
+                      <LoadingElement
+                        as="h3"
                         style={styleFrom(
                           "font-size: 0.7rem; color: var(--text-gray); margin-bottom: 10px; letter-spacing: 1px;",
                         )}
                       >
                         {"COMPETÊNCIAS REGISTRADAS"}
-                      </h3>
-                      <div
+                      </LoadingElement>
+                      <LoadingElement
+                        as="div"
                         id={"competenciasListContainer"}
                         className={"competencias-list-edit"}
                         style={styleFrom("max-height: 200px;")}
-                      ></div>
-                    </div>
-                    <div
+                      ></LoadingElement>
+                    </LoadingElement>
+                    <LoadingElement
+                      as="div"
                       id={"editAddTab"}
                       className={"tab-content"}
                       style={styleFrom("display: none;")}
                     >
-                      <form
+                      <LoadingElement
+                        as="form"
                         action={"/dashboard/adicionar-competencia"}
                         method={"POST"}
                         className={"filter-options"}
                       >
-                        <input
+                        <LoadingElement
+                          as="input"
                           type={"hidden"}
                           name={"_csrf"}
                           value={csrfToken}
                         />
-                        <input
+                        <LoadingElement
+                          as="input"
                           type={"hidden"}
                           name={"aluno_id"}
                           id={"editAlunoIdComp"}
                         />
-                        <div
+                        <LoadingElement
+                          as="div"
                           style={styleFrom(
                             "display: grid; grid-template-columns: 2fr 1fr; gap: 10px;",
                           )}
                         >
-                          <div>
-                            <label style={styleFrom("margin-top: 0;")}>
+                          <LoadingElement as="div">
+                            <LoadingElement
+                              as="label"
+                              style={styleFrom("margin-top: 0;")}
+                            >
                               {"COMPETÊNCIA:"}
-                            </label>
+                            </LoadingElement>
                             <LoadingElement
                               as="select"
                               name={"competencia_id"}
@@ -1181,9 +1474,13 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                               {(() => {
                                 const nodes = [];
                                 nodes.push(
-                                  <option value={""} key={nodes.length}>
+                                  <LoadingElement
+                                    as="option"
+                                    value={""}
+                                    key={nodes.length}
+                                  >
                                     {"SELECIONE..."}
-                                  </option>,
+                                  </LoadingElement>,
                                 );
                                 if (
                                   listaCompetencias &&
@@ -1191,24 +1488,29 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                                 ) {
                                   listaCompetencias.forEach((comp) => {
                                     nodes.push(
-                                      <option
+                                      <LoadingElement
+                                        as="option"
                                         value={comp.id}
                                         key={nodes.length}
                                       >
                                         {comp.nome}
-                                      </option>,
+                                      </LoadingElement>,
                                     );
                                   });
                                 }
                                 return nodes;
                               })()}
                             </LoadingElement>
-                          </div>
-                          <div>
-                            <label style={styleFrom("margin-top: 0;")}>
+                          </LoadingElement>
+                          <LoadingElement as="div">
+                            <LoadingElement
+                              as="label"
+                              style={styleFrom("margin-top: 0;")}
+                            >
                               {"NOTA:"}
-                            </label>
-                            <input
+                            </LoadingElement>
+                            <LoadingElement
+                              as="input"
                               type={"number"}
                               step={"0.1"}
                               name={"nota"}
@@ -1220,12 +1522,16 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                               )}
                               required={true}
                             />
-                          </div>
-                        </div>
-                        <label style={styleFrom("margin-top: 10px;")}>
+                          </LoadingElement>
+                        </LoadingElement>
+                        <LoadingElement
+                          as="label"
+                          style={styleFrom("margin-top: 10px;")}
+                        >
                           {"OBSERVAÇÕES:"}
-                        </label>
-                        <textarea
+                        </LoadingElement>
+                        <LoadingElement
+                          as="textarea"
                           name={"observacoes"}
                           className={"filter-input"}
                           style={styleFrom(
@@ -1233,8 +1539,9 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                           )}
                           placeholder={"Feedback..."}
                           defaultValue={""}
-                        ></textarea>
-                        <button
+                        ></LoadingElement>
+                        <LoadingElement
+                          as="button"
                           type={"submit"}
                           className={"btn-secondary-dash"}
                           style={styleFrom(
@@ -1242,33 +1549,41 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                           )}
                         >
                           {"REGISTRAR NOTA"}
-                        </button>
-                      </form>
-                    </div>
-                    <div
+                        </LoadingElement>
+                      </LoadingElement>
+                    </LoadingElement>
+                    <LoadingElement
+                      as="div"
                       id={"editPresencaTab"}
                       className={"tab-content"}
                       style={styleFrom("display: none;")}
                     >
-                      <form
+                      <LoadingElement
+                        as="form"
                         action={"/dashboard/atualizar-presenca"}
                         method={"POST"}
                         className={"filter-options"}
                       >
-                        <input
+                        <LoadingElement
+                          as="input"
                           type={"hidden"}
                           name={"_csrf"}
                           value={csrfToken}
                         />
-                        <input
+                        <LoadingElement
+                          as="input"
                           type={"hidden"}
                           name={"aluno_id"}
                           id={"editAlunoId"}
                         />
-                        <label style={styleFrom("margin-top: 0;")}>
+                        <LoadingElement
+                          as="label"
+                          style={styleFrom("margin-top: 0;")}
+                        >
                           {"FREQUÊNCIA ATUAL (%)"}
-                        </label>
-                        <input
+                        </LoadingElement>
+                        <LoadingElement
+                          as="input"
                           type={"number"}
                           name={"presenca"}
                           id={"editPresencaInput"}
@@ -1278,7 +1593,8 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                           style={styleFrom("padding: 10px;")}
                           required={true}
                         />
-                        <button
+                        <LoadingElement
+                          as="button"
                           type={"submit"}
                           className={"btn-secondary-dash"}
                           style={styleFrom(
@@ -1286,99 +1602,127 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                           )}
                         >
                           {"ATUALIZAR STATUS"}
-                        </button>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </div>,
+                        </LoadingElement>
+                      </LoadingElement>
+                    </LoadingElement>
+                  </LoadingElement>
+                </LoadingElement>
+              </LoadingElement>,
             );
             nodes.push(
-              <div
+              <LoadingElement
+                as="div"
                 id={"exportSuccessModal"}
                 className={"modal-overlay"}
                 key={nodes.length}
               >
-                <div
+                <LoadingElement
+                  as="div"
                   className={"modal-content"}
                   style={styleFrom(
                     "display: flex; flex-direction: column; align-items: center;",
                   )}
                 >
-                  <button
+                  <LoadingElement
+                    as="button"
                     className={"close-btn"}
                     onClick={(event) => {
                       handlers.closeExportModal();
                     }}
                   >
-                    <i className={"ph-bold ph-x"}></i>
-                  </button>
-                  <h2
+                    <LoadingElement
+                      as="i"
+                      className={"ph-bold ph-x"}
+                    ></LoadingElement>
+                  </LoadingElement>
+                  <LoadingElement
+                    as="h2"
                     className={"modal-title-success"}
                     style={styleFrom("color: #fff;")}
                   >
                     {"Relatório Gerado"}
-                  </h2>
-                  <p className={"modal-text-success"}>
+                  </LoadingElement>
+                  <LoadingElement as="p" className={"modal-text-success"}>
                     {
                       "A planilha foi processada com sucesso e o seu download já começou."
                     }
-                  </p>
-                  <button
+                  </LoadingElement>
+                  <LoadingElement
+                    as="button"
                     className={"btn-secondary-dash"}
                     onClick={(event) => {
                       handlers.closeExportModal();
                     }}
                   >
                     {"CONCLUIR"}
-                  </button>
-                </div>
-              </div>,
+                  </LoadingElement>
+                </LoadingElement>
+              </LoadingElement>,
             );
             nodes.push(
-              <footer className={"dash-footer"} key={nodes.length}>
-                <a
+              <LoadingElement
+                as="footer"
+                className={"dash-footer"}
+                key={nodes.length}
+              >
+                <LoadingElement
+                  as="a"
                   href={"#"}
                   onClick={(event) => {
                     handlers.exportarTabelaParaExcel();
                   }}
                   className={"btn-secondary-dash"}
                 >
-                  <i className={"fas fa-file-export"}></i>
+                  <LoadingElement
+                    as="i"
+                    className={"fas fa-file-export"}
+                  ></LoadingElement>
                   {" EXPORTAR PLANILHA COMPLETA\n            "}
-                </a>
-                <div className={"footer-credits"}>
-                  <p>{"© 2026 AnalisAI\n            "}</p>
-                </div>
-              </footer>,
+                </LoadingElement>
+                <LoadingElement as="div" className={"footer-credits"}>
+                  <LoadingElement as="p">
+                    {"© 2026 AnalisAI\n            "}
+                  </LoadingElement>
+                </LoadingElement>
+              </LoadingElement>,
             );
             return nodes;
           })()}
         </LoadingElement>
-        <div id={"errorModal"} className={"modal-overlay"}>
-          <div
+        <LoadingElement as="div" id={"errorModal"} className={"modal-overlay"}>
+          <LoadingElement
+            as="div"
             className={"modal-content"}
             style={styleFrom(
               "max-width: 450px; border-color: var(--primary-red);",
             )}
           >
-            <button
+            <LoadingElement
+              as="button"
               className={"close-btn"}
               onClick={(event) => {
                 handlers.closeErrorModal();
               }}
             >
-              <i className={"ph-bold ph-x"}></i>
-            </button>
-            <div style={styleFrom("text-align: center;")}>
-              <div
+              <LoadingElement
+                as="i"
+                className={"ph-bold ph-x"}
+              ></LoadingElement>
+            </LoadingElement>
+            <LoadingElement as="div" style={styleFrom("text-align: center;")}>
+              <LoadingElement
+                as="div"
                 style={styleFrom(
                   "font-size: 4rem; color: var(--primary-red); margin-bottom: 15px;",
                 )}
               >
-                <i className={"fas fa-exclamation-triangle"}></i>
-              </div>
-              <h2
+                <LoadingElement
+                  as="i"
+                  className={"fas fa-exclamation-triangle"}
+                ></LoadingElement>
+              </LoadingElement>
+              <LoadingElement
+                as="h2"
                 className={"section-title-2"}
                 style={styleFrom(
                   "color: var(--primary-red); margin-bottom: 15px;",
@@ -1386,28 +1730,32 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                 id={"errorTitulo"}
               >
                 {"\n                    ERRO\n                "}
-              </h2>
-              <p
+              </LoadingElement>
+              <LoadingElement
+                as="p"
                 style={styleFrom(
                   "color: var(--text-gray); font-size: 1rem; margin-bottom: 10px;",
                 )}
                 id={"errorMensagem"}
               >
                 {"\n                    Ocorreu um erro\n                "}
-              </p>
-              <div
+              </LoadingElement>
+              <LoadingElement
+                as="div"
                 style={styleFrom(
                   "background: var(--bg-secondary); border-radius: 8px; padding: 10px; margin: 15px 0;",
                 )}
               >
-                <p
+                <LoadingElement
+                  as="p"
                   style={styleFrom(
                     "color: var(--primary-red); font-size: 0.85rem;",
                   )}
                   id={"errorDetalhe"}
-                ></p>
-              </div>
-              <button
+                ></LoadingElement>
+              </LoadingElement>
+              <LoadingElement
+                as="button"
                 className={"btn-action"}
                 onClick={(event) => {
                   handlers.closeErrorModal();
@@ -1416,97 +1764,118 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                   "width: 100%; justify-content: center; border-color: var(--primary-red); color: var(--primary-red);",
                 )}
               >
-                <i className={"fas fa-times"}></i>
+                <LoadingElement
+                  as="i"
+                  className={"fas fa-times"}
+                ></LoadingElement>
                 {" FECHAR\n                "}
-              </button>
-            </div>
-          </div>
-        </div>
-        <div id={"loadingModal"} className={"modal-overlay"}>
-          <div
+              </LoadingElement>
+            </LoadingElement>
+          </LoadingElement>
+        </LoadingElement>
+        <LoadingElement
+          as="div"
+          id={"loadingModal"}
+          className={"modal-overlay"}
+        >
+          <LoadingElement
+            as="div"
             className={"modal-content"}
             style={styleFrom(
               "max-width: 400px; text-align: center; border-color: var(--success-green);",
             )}
           >
-            <div style={styleFrom("padding: 30px;")}>
-              <div
+            <LoadingElement as="div" style={styleFrom("padding: 30px;")}>
+              <LoadingElement
+                as="div"
                 className={"loading-spinner"}
                 style={styleFrom("margin: 20px auto;")}
               >
-                <i
+                <LoadingElement
+                  as="i"
                   className={"fas fa-circle-notch fa-spin"}
                   style={styleFrom(
                     "font-size: 4rem; color: var(--success-green);",
                   )}
-                ></i>
-              </div>
-              <h3
+                ></LoadingElement>
+              </LoadingElement>
+              <LoadingElement
+                as="h3"
                 style={styleFrom(
                   "color: var(--text-white); margin-bottom: 15px;",
                 )}
               >
                 {"IMPORTANDO DADOS"}
-              </h3>
-              <p
+              </LoadingElement>
+              <LoadingElement
+                as="p"
                 style={styleFrom(
                   "color: var(--text-gray); margin-bottom: 20px;",
                 )}
               >
                 {"Processando alunos e competências..."}
-              </p>
-              <div
+              </LoadingElement>
+              <LoadingElement
+                as="div"
                 style={styleFrom(
                   "width: 100%; height: 6px; background: var(--bg-secondary); border-radius: 10px; overflow: hidden;",
                 )}
               >
-                <div
+                <LoadingElement
+                  as="div"
                   id={"loadingBar"}
                   style={styleFrom(
                     "width: 0%; height: 100%; background: var(--success-green); transition: width 0.3s ease;",
                   )}
-                ></div>
-              </div>
-              <p
+                ></LoadingElement>
+              </LoadingElement>
+              <LoadingElement
+                as="p"
                 id={"loadingStatus"}
                 style={styleFrom(
                   "color: var(--text-gray); font-size: 0.8rem; margin-top: 10px;",
                 )}
               >
                 {"0% concluído"}
-              </p>
-            </div>
-          </div>
-        </div>
-        <div
+              </LoadingElement>
+            </LoadingElement>
+          </LoadingElement>
+        </LoadingElement>
+        <LoadingElement
+          as="div"
           id={"credenciaisModal"}
           className={"modal-overlay"}
           style={styleFrom("display:none;")}
         >
-          <div
+          <LoadingElement
+            as="div"
             className={"modal-content modal-lg"}
             style={styleFrom("max-width: 800px;")}
           >
-            <button
+            <LoadingElement
+              as="button"
               className={"close-btn"}
               onClick={(event) => {
                 handlers.fecharModalCredenciais();
               }}
             >
               {"×"}
-            </button>
-            <h2
+            </LoadingElement>
+            <LoadingElement
+              as="h2"
               style={styleFrom(
                 "color: var(--text-white); margin-bottom: 10px; text-align: center; letter-spacing: 1px;",
               )}
             >
-              <i
+              <LoadingElement
+                as="i"
                 className={"fas fa-user-check"}
                 style={styleFrom("color: var(--success-green);")}
-              ></i>
+              ></LoadingElement>
               {" Alunos Importados com Sucesso!\n        "}
-            </h2>
-            <p
+            </LoadingElement>
+            <LoadingElement
+              as="p"
               style={styleFrom(
                 "color: var(--text-gray); text-align: center; margin-bottom: 20px;",
               )}
@@ -1514,10 +1883,10 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
               {
                 "\n            Abaixo estão as credenciais de acesso para cada aluno. Guarde-as com segurança.\n        "
               }
-            </p>
-            <div id={"credenciaisLista"}></div>
-          </div>
-        </div>
+            </LoadingElement>
+            <LoadingElement as="div" id={"credenciaisLista"}></LoadingElement>
+          </LoadingElement>
+        </LoadingElement>
         <PageDataScript type="application/json" id="dashboard-edit-data">
           {String(safeJson(alunos))}
         </PageDataScript>
@@ -1536,39 +1905,42 @@ export function PageHeader({ data, handlers }) {
     listaCompetencias = [],
   } = data;
   return (
-    <header className={"dash-header"}>
-      <div className={"header-left"}>
-        <h1>{"\n                    Editor de Notas\n                "}</h1>
-      </div>
-      <div className={"header-user"}>
-        <div className={"user-profile-group"}>
-          <div className={"user-details"}>
-            <span className={"user-name"}>
-              <strong>
+    <LoadingElement as="header" className={"dash-header"}>
+      <LoadingElement as="div" className={"header-left"}>
+        <LoadingElement as="h1">
+          {"\n                    Editor de Notas\n                "}
+        </LoadingElement>
+      </LoadingElement>
+      <LoadingElement as="div" className={"header-user"}>
+        <LoadingElement as="div" className={"user-profile-group"}>
+          <LoadingElement as="div" className={"user-details"}>
+            <LoadingElement as="span" className={"user-name"}>
+              <LoadingElement as="strong">
                 <LoadingValue
                   slot="dashboard/dashboardEdit:18"
                   width="12ch"
                   known={true}
                   value={user}
                 />
-              </strong>
-            </span>
-            <span
+              </LoadingElement>
+            </LoadingElement>
+            <LoadingElement
+              as="span"
               className={"user-role"}
               style={styleFrom("color: var(--text-gray);")}
             >
-              <strong>
+              <LoadingElement as="strong">
                 <LoadingValue
                   slot="dashboard/dashboardEdit:19"
                   width="12ch"
                   known={true}
                   value={userCargo}
                 />
-              </strong>
-            </span>
-          </div>
-        </div>
-        <div className={"header-actions"}>
+              </LoadingElement>
+            </LoadingElement>
+          </LoadingElement>
+        </LoadingElement>
+        <LoadingElement as="div" className={"header-actions"}>
           <Partials_notificacoes
             data={{
               ...data,
@@ -1578,8 +1950,8 @@ export function PageHeader({ data, handlers }) {
             }}
             handlers={handlers}
           />
-        </div>
-      </div>
-    </header>
+        </LoadingElement>
+      </LoadingElement>
+    </LoadingElement>
   );
 }

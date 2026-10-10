@@ -1,0 +1,320 @@
+{
+  "error": {
+    "styles": [
+      "/vendor/phosphor/bold/style.css",
+      "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap",
+      "/css/preserved/error.css"
+    ],
+    "bodyClass": "",
+    "title": "Página não encontrada"
+  },
+  "esqueciSenha": {
+    "styles": [
+      "/vendor/phosphor/bold/style.css",
+      "/css/base/dashboard.css",
+      "/css/pages/forgot-password.css",
+      "/css/base/light-theme.css"
+    ],
+    "bodyClass": "dash-body",
+    "title": "Recuperar Senha",
+    "theme": "dark"
+  },
+  "index": {
+    "styles": [
+      "/css/base/dashboard.css",
+      "/css/components/sidebar.css",
+      "/vendor/phosphor/bold/style.css",
+      "/css/pages/home.css",
+      "/css/base/light-theme.css"
+    ],
+    "bodyClass": "dash-body",
+    "title": "AnalisAI | Inteligência em Análise Educacional",
+    "theme": "dark"
+  },
+  "login": {
+    "styles": [
+      "/vendor/phosphor/bold/style.css",
+      "/css/base/dashboard.css",
+      "/css/pages/login.css",
+      "/css/base/light-theme.css"
+    ],
+    "bodyClass": "dash-body",
+    "title": "Login",
+    "theme": "dark"
+  },
+  "manuais": {
+    "styles": [
+      "/vendor/phosphor/bold/style.css",
+      "/css/components/sidebar.css",
+      "/css/base/dashboard.css",
+      "/css/pages/manuals.css",
+      "/css/base/light-theme.css",
+      "/css/components/notifications.css"
+    ],
+    "bodyClass": "dash-body",
+    "title": "Manual",
+    "theme": "dark"
+  },
+  "manualDoAluno": {
+    "styles": [
+      "/vendor/phosphor/bold/style.css",
+      "/css/components/sidebar.css",
+      "/css/base/dashboard.css",
+      "/css/pages/student-manual.css",
+      "/css/base/light-theme.css",
+      "/css/components/sidebar.css",
+      "/vendor/phosphor/regular/style.css",
+      "/css/components/notifications.css"
+    ],
+    "bodyClass": "dash-body",
+    "title": "Manual",
+    "theme": "dark"
+  },
+  "manualDoProfessor": {
+    "styles": [
+      "/vendor/phosphor/bold/style.css",
+      "/css/components/sidebar.css",
+      "/css/base/dashboard.css",
+      "/css/pages/teacher-manual.css",
+      "/css/base/light-theme.css",
+      "/css/components/notifications.css"
+    ],
+    "bodyClass": "dash-body",
+    "title": "Manual",
+    "theme": "dark"
+  },
+  "termos": {
+    "styles": [
+      "/vendor/phosphor/bold/style.css",
+      "/css/base/dashboard.css",
+      "/css/pages/terms.css",
+      "/css/base/light-theme.css"
+    ],
+    "bodyClass": "dash-body",
+    "title": "Termos de Serviço",
+    "theme": "dark"
+  },
+  "aluno/alunoCompetencias": {
+    "styles": [
+      "/vendor/phosphor/bold/style.css",
+      "/css/components/sidebar.css",
+      "/css/base/dashboard.css",
+      "/css/base/light-theme.css",
+      "/css/components/sidebar.css",
+      "/vendor/phosphor/regular/style.css",
+      "/css/components/notifications.css"
+    ],
+    "bodyClass": "dash-body",
+    "title": "Competências",
+    "theme": "dark"
+  },
+  "aluno/alunoDashboard": {
+    "styles": [
+      "/vendor/phosphor/bold/style.css",
+      "/css/components/sidebar.css",
+      "/css/base/dashboard.css",
+      "/css/base/light-theme.css",
+      "/css/components/sidebar.css",
+      "/vendor/phosphor/regular/style.css",
+      "/css/components/notifications.css"
+    ],
+    "bodyClass": "dash-body",
+    "title": "Portal do Aluno",
+    "theme": "dark"
+  },
+  "aluno/alunoEvolucao": {
+    "styles": [
+      "/vendor/phosphor/bold/style.css",
+      "/css/components/sidebar.css",
+      "/css/base/dashboard.css",
+      "/css/pages/student-evolution.css",
+      "/css/base/light-theme.css",
+      "/css/components/sidebar.css",
+      "/vendor/phosphor/regular/style.css",
+      "/css/components/notifications.css"
+    ],
+    "bodyClass": "dash-body",
+    "title": "Evolução",
+    "theme": "dark"
+  },
+  "aluno/alunoIA": {
+    "styles": [
+      "/vendor/phosphor/bold/style.css",
+      "/css/components/sidebar.css",
+      "/css/base/dashboard.css",
+      "/css/pages/ai.css",
+      "/css/base/light-theme.css",
+      "/css/components/sidebar.css",
+      "/vendor/phosphor/regular/style.css"
+    ],
+    "bodyClass": "dash-body ai-page-body ai-student-page",
+    "title": "Agente",
+    "theme": "dark"
+  },
+  "aluno/alunoPerfil": {
+    "styles": [
+      "/vendor/phosphor/bold/style.css",
+      "/css/components/sidebar.css",
+      "/css/base/dashboard.css",
+      "/css/pages/edit.css",
+      "/css/pages/student-profile.css",
+      "/css/components/sidebar.css",
+      "/vendor/phosphor/regular/style.css",
+      "/css/components/notifications.css"
+    ],
+    "bodyClass": "dash-body config-page config-page-student",
+    "title": "Perfil"
+  },
+  "aluno/alunoTarefas": {
+    "styles": [
+      "/vendor/phosphor/bold/style.css",
+      "/css/components/sidebar.css",
+      "/css/pages/edit.css",
+      "/css/base/dashboard.css",
+      "/css/base/light-theme.css",
+      "/css/components/sidebar.css",
+      "/vendor/phosphor/regular/style.css",
+      "/css/components/notifications.css"
+    ],
+    "bodyClass": "dash-body",
+    "title": "Tarefas",
+    "theme": "dark"
+  },
+  "dashboard/dashboardCalendario": {
+    "styles": [
+      "/vendor/phosphor/bold/style.css",
+      "/css/pages/calendar.css",
+      "/css/pages/edit.css",
+      "/css/components/sidebar.css",
+      "/css/base/dashboard.css",
+      "/css/base/light-theme.css",
+      "/css/components/notifications.css"
+    ],
+    "bodyClass": "dash-body",
+    "title": "Calendário Escolar",
+    "theme": "dark"
+  },
+  "dashboard/dashboardConfig": {
+    "styles": [
+      "/vendor/phosphor/bold/style.css",
+      "/css/components/sidebar.css",
+      "/css/base/dashboard.css",
+      "/css/pages/dashboard-config.css",
+      "/css/components/notifications.css"
+    ],
+    "bodyClass": "dash-body config-page config-page-professor",
+    "title": "Configurações"
+  },
+  "dashboard/dashboardEdit": {
+    "styles": [
+      "/vendor/phosphor/bold/style.css",
+      "/css/components/sidebar.css",
+      "/css/base/dashboard.css",
+      "/css/pages/edit.css",
+      "/css/base/light-theme.css",
+      "/css/components/notifications.css"
+    ],
+    "bodyClass": "dash-body",
+    "title": "Editor de Notas",
+    "theme": "dark"
+  },
+  "dashboard/dashboardEquipe": {
+    "styles": [
+      "/vendor/phosphor/bold/style.css",
+      "/css/base/dashboard.css",
+      "/css/pages/team.css",
+      "/css/base/light-theme.css"
+    ],
+    "bodyClass": "dash-body",
+    "title": "Equipe — AnalisAI",
+    "theme": "dark"
+  },
+  "dashboard/dashboardGraficos": {
+    "styles": [
+      "/vendor/phosphor/bold/style.css",
+      "/css/components/sidebar.css",
+      "/css/base/dashboard.css",
+      "/css/pages/charts.css",
+      "/css/base/light-theme.css",
+      "/css/components/notifications.css"
+    ],
+    "bodyClass": "dash-body",
+    "title": "Gráficos de Evolução",
+    "theme": "dark"
+  },
+  "dashboard/dashboardIA": {
+    "styles": [
+      "/vendor/phosphor/bold/style.css",
+      "/css/components/sidebar.css",
+      "/css/base/dashboard.css",
+      "/css/pages/ai.css",
+      "/css/base/light-theme.css"
+    ],
+    "bodyClass": "dash-body ai-page-body ai-teacher-page",
+    "title": "Agente",
+    "theme": "dark"
+  },
+  "dashboard/dashboardMain": {
+    "styles": [
+      "/vendor/phosphor/bold/style.css",
+      "/css/components/sidebar.css",
+      "/css/base/dashboard.css",
+      "/css/base/light-theme.css",
+      "/css/components/notifications.css"
+    ],
+    "bodyClass": "dash-body",
+    "title": "Dashboard",
+    "theme": "dark"
+  },
+  "dashboard/dashboardSolicitacoes": {
+    "styles": [
+      "/vendor/phosphor/bold/style.css",
+      "/css/components/sidebar.css",
+      "/css/pages/edit.css",
+      "/css/base/dashboard.css",
+      "/css/pages/requests.css",
+      "/css/base/light-theme.css",
+      "/css/components/notifications.css"
+    ],
+    "bodyClass": "dash-body",
+    "title": "Solicitações de Senha",
+    "theme": "dark"
+  },
+  "dashboard/dashboardTarefas": {
+    "styles": [
+      "/vendor/phosphor/bold/style.css",
+      "/css/components/sidebar.css",
+      "/css/base/dashboard.css",
+      "/css/pages/edit.css",
+      "/css/pages/tasks.css",
+      "/css/base/light-theme.css",
+      "/css/components/notifications.css"
+    ],
+    "bodyClass": "dash-body",
+    "title": "Gerenciar Tarefas",
+    "theme": "dark"
+  },
+  "dashboard/dashboardUsuarios": {
+    "styles": [
+      "/vendor/phosphor/bold/style.css",
+      "/css/components/sidebar.css",
+      "/css/base/dashboard.css",
+      "/css/pages/edit.css",
+      "/css/pages/users.css",
+      "/css/base/light-theme.css",
+      "/css/components/notifications.css"
+    ],
+    "bodyClass": "dash-body",
+    "title": "Gestão de Usuários",
+    "theme": "dark"
+  },
+  "API/index": {
+    "styles": [
+      "/vendor/phosphor/bold/style.css",
+      "https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap",
+      "/css/preserved/API_index.css"
+    ],
+    "bodyClass": "",
+    "title": "API"
+  }
+}

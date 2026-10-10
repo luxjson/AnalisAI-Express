@@ -17,22 +17,24 @@ export default function Partials_barProfessor({ data, handlers }) {
       {(() => {
         const nodes = [];
         nodes.push(
-          <button
+          <LoadingElement
+            as="button"
             key={nodes.length}
             className={"mobile-menu-toggle"}
             type={"button"}
             aria-label={"Abrir menu"}
             aria-expanded={"false"}
           >
-            <i className={"fas fa-bars"}></i>
-          </button>,
+            <LoadingElement as="i" className={"fas fa-bars"}></LoadingElement>
+          </LoadingElement>,
         );
         nodes.push(
-          <div
+          <LoadingElement
+            as="div"
             key={nodes.length}
             className={"mobile-menu-backdrop"}
             data-close-mobile-menu={""}
-          ></div>,
+          ></LoadingElement>,
         );
         nodes.push(
           <LoadingElement
@@ -41,476 +43,695 @@ export default function Partials_barProfessor({ data, handlers }) {
             className={"sidebar"}
             root={true}
           >
-            <div className={"sidebar-top"}>
+            <LoadingElement as="div" className={"sidebar-top"}>
               {(() => {
                 const nodes = [];
                 nodes.push(
-                  <div className={"logo-container"} key={nodes.length}>
-                    <img
+                  <LoadingElement
+                    as="div"
+                    className={"logo-container"}
+                    key={nodes.length}
+                  >
+                    <LoadingElement
+                      as="img"
                       src={"/images/side-bar-logo.png"}
                       alt={"S"}
                       className={"sideBarLogo"}
                     />
-                  </div>,
+                  </LoadingElement>,
                 );
                 nodes.push(
-                  <div className={"divider"} key={nodes.length}></div>,
+                  <LoadingElement
+                    as="div"
+                    className={"divider"}
+                    key={nodes.length}
+                  ></LoadingElement>,
                 );
                 nodes.push(
-                  <a
+                  <LoadingElement
+                    as="a"
                     href={"/dashboard"}
                     data-sidebar-id={"dashboard"}
                     className={"side-link"}
                     key={nodes.length}
                   >
-                    <div className={"icon-box"}>
-                      <i className={"fas fa-home"}></i>
-                    </div>
-                    <span className={"link-text"}>{"Início"}</span>
-                    <div className={"active-indicator"}></div>
-                  </a>,
+                    <LoadingElement as="div" className={"icon-box"}>
+                      <LoadingElement
+                        as="i"
+                        className={"fas fa-home"}
+                      ></LoadingElement>
+                    </LoadingElement>
+                    <LoadingElement as="span" className={"link-text"}>
+                      {"Início"}
+                    </LoadingElement>
+                    <LoadingElement
+                      as="div"
+                      className={"active-indicator"}
+                    ></LoadingElement>
+                  </LoadingElement>,
                 );
                 nodes.push(
-                  <a
+                  <LoadingElement
+                    as="a"
                     href={"/dashboard/edit"}
                     data-sidebar-id={"edit"}
                     className={"side-link"}
                     key={nodes.length}
                   >
-                    <div className={"icon-box"}>
-                      <i className={"fas fa-pen"}></i>
-                    </div>
-                    <span className={"link-text"}>{"Editor"}</span>
-                    <div className={"active-indicator"}></div>
-                  </a>,
+                    <LoadingElement as="div" className={"icon-box"}>
+                      <LoadingElement
+                        as="i"
+                        className={"fas fa-pen"}
+                      ></LoadingElement>
+                    </LoadingElement>
+                    <LoadingElement as="span" className={"link-text"}>
+                      {"Editor"}
+                    </LoadingElement>
+                    <LoadingElement
+                      as="div"
+                      className={"active-indicator"}
+                    ></LoadingElement>
+                  </LoadingElement>,
                 );
                 nodes.push(
-                  <a
+                  <LoadingElement
+                    as="a"
                     href={"/dashboard/tarefas"}
                     data-sidebar-id={"tasks"}
                     className={"side-link"}
                     key={nodes.length}
                   >
-                    <div className={"icon-box"}>
-                      <i className={"fas fa-tasks"}></i>
-                    </div>
-                    <span className={"link-text"}>{"Tarefas"}</span>
-                    <div className={"active-indicator"}></div>
-                  </a>,
+                    <LoadingElement as="div" className={"icon-box"}>
+                      <LoadingElement
+                        as="i"
+                        className={"fas fa-tasks"}
+                      ></LoadingElement>
+                    </LoadingElement>
+                    <LoadingElement as="span" className={"link-text"}>
+                      {"Tarefas"}
+                    </LoadingElement>
+                    <LoadingElement
+                      as="div"
+                      className={"active-indicator"}
+                    ></LoadingElement>
+                  </LoadingElement>,
                 );
                 nodes.push(
-                  <a
+                  <LoadingElement
+                    as="a"
                     href={"/dashboard/graficos"}
                     data-sidebar-id={"reports"}
                     className={"side-link"}
                     key={nodes.length}
                   >
-                    <div className={"icon-box"}>
-                      <i className={"fas fa-chart-bar"}></i>
-                    </div>
-                    <span className={"link-text"}>{"Relatórios"}</span>
-                    <div className={"active-indicator"}></div>
-                  </a>,
+                    <LoadingElement as="div" className={"icon-box"}>
+                      <LoadingElement
+                        as="i"
+                        className={"fas fa-chart-bar"}
+                      ></LoadingElement>
+                    </LoadingElement>
+                    <LoadingElement as="span" className={"link-text"}>
+                      {"Relatórios"}
+                    </LoadingElement>
+                    <LoadingElement
+                      as="div"
+                      className={"active-indicator"}
+                    ></LoadingElement>
+                  </LoadingElement>,
                 );
                 nodes.push(
-                  <a
+                  <LoadingElement
+                    as="a"
                     href={"/dashboard/calendario"}
                     data-sidebar-id={"calendar"}
                     className={"side-link"}
                     key={nodes.length}
                   >
-                    <div className={"icon-box"}>
-                      <i className={"fas fa-calendar"}></i>
-                    </div>
-                    <span className={"link-text"}>{"Calendário"}</span>
-                    <div className={"active-indicator"}></div>
-                  </a>,
+                    <LoadingElement as="div" className={"icon-box"}>
+                      <LoadingElement
+                        as="i"
+                        className={"fas fa-calendar"}
+                      ></LoadingElement>
+                    </LoadingElement>
+                    <LoadingElement as="span" className={"link-text"}>
+                      {"Calendário"}
+                    </LoadingElement>
+                    <LoadingElement
+                      as="div"
+                      className={"active-indicator"}
+                    ></LoadingElement>
+                  </LoadingElement>,
                 );
                 nodes.push(
-                  <a
+                  <LoadingElement
+                    as="a"
                     href={"/dashboard/ia"}
                     data-sidebar-id={"ai"}
                     className={"side-link"}
                     key={nodes.length}
                   >
-                    <div className={"icon-box"}>
-                      <i
+                    <LoadingElement as="div" className={"icon-box"}>
+                      <LoadingElement
+                        as="i"
                         className={"ph-bold ph-sparkle"}
                         aria-hidden={"true"}
-                      ></i>
-                    </div>
-                    <span className={"link-text"}>{"Agente"}</span>
-                    <div className={"active-indicator"}></div>
-                  </a>,
+                      ></LoadingElement>
+                    </LoadingElement>
+                    <LoadingElement as="span" className={"link-text"}>
+                      {"Agente"}
+                    </LoadingElement>
+                    <LoadingElement
+                      as="div"
+                      className={"active-indicator"}
+                    ></LoadingElement>
+                  </LoadingElement>,
                 );
                 if (userCargo === "Admin") {
                   nodes.push(
-                    <a
+                    <LoadingElement
+                      as="a"
                       href={"/dashboard/usuarios"}
                       data-sidebar-id={"users"}
                       className={"side-link"}
                       key={nodes.length}
                     >
-                      <div className={"icon-box"}>
-                        <i className={"fas fa-users"}></i>
-                      </div>
-                      <span className={"link-text"}>{"Usuários"}</span>
-                      <div className={"active-indicator"}></div>
-                    </a>,
+                      <LoadingElement as="div" className={"icon-box"}>
+                        <LoadingElement
+                          as="i"
+                          className={"fas fa-users"}
+                        ></LoadingElement>
+                      </LoadingElement>
+                      <LoadingElement as="span" className={"link-text"}>
+                        {"Usuários"}
+                      </LoadingElement>
+                      <LoadingElement
+                        as="div"
+                        className={"active-indicator"}
+                      ></LoadingElement>
+                    </LoadingElement>,
                   );
                 }
                 return nodes;
               })()}
-            </div>
-            <div className={"sidebar-bottom"}>
-              <a
+            </LoadingElement>
+            <LoadingElement as="div" className={"sidebar-bottom"}>
+              <LoadingElement
+                as="a"
                 href={"#"}
                 className={"side-link settings-link"}
                 data-settings-modal={""}
               >
-                <div className={"icon-box"}>
-                  <i className={"fas fa-cog"}></i>
-                </div>
-                <span className={"link-text"}>{"Ajustes"}</span>
-                <div className={"active-indicator"}></div>
-              </a>
-              <form
+                <LoadingElement as="div" className={"icon-box"}>
+                  <LoadingElement
+                    as="i"
+                    className={"fas fa-cog"}
+                  ></LoadingElement>
+                </LoadingElement>
+                <LoadingElement as="span" className={"link-text"}>
+                  {"Ajustes"}
+                </LoadingElement>
+                <LoadingElement
+                  as="div"
+                  className={"active-indicator"}
+                ></LoadingElement>
+              </LoadingElement>
+              <LoadingElement
+                as="form"
                 action={"/logout"}
                 method={"POST"}
                 className={"logout-form"}
               >
-                <input
+                <LoadingElement
+                  as="input"
                   type={"hidden"}
                   name={"_csrf"}
                   value={typeof csrfToken !== "undefined" ? csrfToken : ""}
                 />
-                <button type={"submit"} className={"side-link exit-link"}>
-                  <div className={"icon-box"}>
-                    <i className={"fas fa-sign-out-alt"}></i>
-                  </div>
-                  <span className={"link-text"}>{"Sair"}</span>
-                </button>
-              </form>
-            </div>
-            <div
+                <LoadingElement
+                  as="button"
+                  type={"submit"}
+                  className={"side-link exit-link"}
+                >
+                  <LoadingElement as="div" className={"icon-box"}>
+                    <LoadingElement
+                      as="i"
+                      className={"fas fa-sign-out-alt"}
+                    ></LoadingElement>
+                  </LoadingElement>
+                  <LoadingElement as="span" className={"link-text"}>
+                    {"Sair"}
+                  </LoadingElement>
+                </LoadingElement>
+              </LoadingElement>
+            </LoadingElement>
+            <LoadingElement
+              as="div"
               id={"settingsModal"}
               className={"settings-modal"}
               aria-hidden={"true"}
             >
-              <div
+              <LoadingElement
+                as="div"
                 className={"settings-modal-card"}
                 role={"dialog"}
                 aria-modal={"true"}
                 aria-labelledby={"settingsModalTitle"}
               >
-                <aside className={"settings-modal-nav"}>
+                <LoadingElement as="aside" className={"settings-modal-nav"}>
                   {(() => {
                     const nodes = [];
                     nodes.push(
-                      <label className={"settings-search"} key={nodes.length}>
-                        <i className={"ph-bold ph-magnifying-glass"}></i>
-                        <input
+                      <LoadingElement
+                        as="label"
+                        className={"settings-search"}
+                        key={nodes.length}
+                      >
+                        <LoadingElement
+                          as="i"
+                          className={"ph-bold ph-magnifying-glass"}
+                        ></LoadingElement>
+                        <LoadingElement
+                          as="input"
                           type={"search"}
                           data-settings-search={""}
                           placeholder={"Procurar"}
                           aria-label={"Pesquisar configurações"}
                         />
-                      </label>,
+                      </LoadingElement>,
                     );
                     nodes.push(
-                      <span className={"settings-nav-label"} key={nodes.length}>
+                      <LoadingElement
+                        as="span"
+                        className={"settings-nav-label"}
+                        key={nodes.length}
+                      >
                         {"Configurações"}
-                      </span>,
+                      </LoadingElement>,
                     );
                     nodes.push(
-                      <button
+                      <LoadingElement
+                        as="button"
                         className={"settings-nav-item active"}
                         data-settings-section={"general"}
                         key={nodes.length}
                       >
-                        <i className={"ph-bold ph-user-circle"}></i>
+                        <LoadingElement
+                          as="i"
+                          className={"ph-bold ph-user-circle"}
+                        ></LoadingElement>
                         {" Geral"}
-                      </button>,
+                      </LoadingElement>,
                     );
                     nodes.push(
-                      <button
+                      <LoadingElement
+                        as="button"
                         className={"settings-nav-item"}
                         data-settings-section={"account"}
                         key={nodes.length}
                       >
-                        <i className={"ph-bold ph-identification-card"}></i>
+                        <LoadingElement
+                          as="i"
+                          className={"ph-bold ph-identification-card"}
+                        ></LoadingElement>
                         {" Conta"}
-                      </button>,
+                      </LoadingElement>,
                     );
                     nodes.push(
-                      <button
+                      <LoadingElement
+                        as="button"
                         className={"settings-nav-item"}
                         data-settings-section={"privacy"}
                         key={nodes.length}
                       >
-                        <i className={"ph-bold ph-shield-check"}></i>
+                        <LoadingElement
+                          as="i"
+                          className={"ph-bold ph-shield-check"}
+                        ></LoadingElement>
                         {" Privacidade"}
-                      </button>,
+                      </LoadingElement>,
                     );
                     nodes.push(
-                      <button
+                      <LoadingElement
+                        as="button"
                         className={"settings-nav-item"}
                         data-settings-section={"notifications"}
                         key={nodes.length}
                       >
-                        <i className={"ph-bold ph-bell"}></i>
+                        <LoadingElement
+                          as="i"
+                          className={"ph-bold ph-bell"}
+                        ></LoadingElement>
                         {" Notificações"}
-                      </button>,
+                      </LoadingElement>,
                     );
                     if (userCargo === "Admin") {
                       nodes.push(
-                        <span
+                        <LoadingElement
+                          as="span"
                           className={"settings-nav-label"}
                           key={nodes.length}
                         >
                           {"Administração"}
-                        </span>,
+                        </LoadingElement>,
                       );
                       nodes.push(
-                        <button
+                        <LoadingElement
+                          as="button"
                           className={"settings-nav-item"}
                           data-settings-section={"checkup"}
                           key={nodes.length}
                         >
-                          <i className={"ph-bold ph-heartbeat"}></i>
+                          <LoadingElement
+                            as="i"
+                            className={"ph-bold ph-heartbeat"}
+                          ></LoadingElement>
                           {" Checkup do Sistema"}
-                        </button>,
+                        </LoadingElement>,
                       );
                     }
                     return nodes;
                   })()}
-                </aside>
-                <section className={"settings-modal-content"}>
+                </LoadingElement>
+                <LoadingElement
+                  as="section"
+                  className={"settings-modal-content"}
+                >
                   {(() => {
                     const nodes = [];
                     nodes.push(
-                      <button
+                      <LoadingElement
+                        as="button"
                         type={"button"}
                         className={"settings-modal-close"}
                         data-close-settings={""}
                         aria-label={"Fechar"}
                         key={nodes.length}
                       >
-                        <i className={"ph-bold ph-x"}></i>
-                      </button>,
+                        <LoadingElement
+                          as="i"
+                          className={"ph-bold ph-x"}
+                        ></LoadingElement>
+                      </LoadingElement>,
                     );
                     nodes.push(
-                      <div
+                      <LoadingElement
+                        as="div"
                         className={"settings-section active"}
                         data-settings-panel={"general"}
                         key={nodes.length}
                       >
-                        <h2 id={"settingsModalTitle"}>{"Perfil"}</h2>
-                        <div className={"settings-avatar-row"}>
-                          <strong>{"Avatar"}</strong>
-                          <span className={"settings-avatar"}>
+                        <LoadingElement as="h2" id={"settingsModalTitle"}>
+                          {"Perfil"}
+                        </LoadingElement>
+                        <LoadingElement
+                          as="div"
+                          className={"settings-avatar-row"}
+                        >
+                          <LoadingElement as="strong">
+                            {"Avatar"}
+                          </LoadingElement>
+                          <LoadingElement
+                            as="span"
+                            className={"settings-avatar"}
+                          >
                             {user.charAt(0).toUpperCase()}
-                          </span>
-                        </div>
-                        <div className={"settings-field"}>
-                          <label>{"Nome completo"}</label>
-                          <span>{user}</span>
-                        </div>
-                        <div className={"settings-field"}>
-                          <label>{"E-mail institucional"}</label>
-                          <span>
+                          </LoadingElement>
+                        </LoadingElement>
+                        <LoadingElement as="div" className={"settings-field"}>
+                          <LoadingElement as="label">
+                            {"Nome completo"}
+                          </LoadingElement>
+                          <LoadingElement as="span">{user}</LoadingElement>
+                        </LoadingElement>
+                        <LoadingElement as="div" className={"settings-field"}>
+                          <LoadingElement as="label">
+                            {"E-mail institucional"}
+                          </LoadingElement>
+                          <LoadingElement as="span">
                             {typeof email !== "undefined"
                               ? email
                               : "Não informado"}
-                          </span>
-                        </div>
-                        <div className={"settings-field"}>
-                          <label>{"Função"}</label>
-                          <span>
+                          </LoadingElement>
+                        </LoadingElement>
+                        <LoadingElement as="div" className={"settings-field"}>
+                          <LoadingElement as="label">{"Função"}</LoadingElement>
+                          <LoadingElement as="span">
                             {typeof cargo !== "undefined"
                               ? cargo
                               : typeof userCargo !== "undefined"
                                 ? userCargo
                                 : "Professor"}
-                          </span>
-                        </div>
-                      </div>,
+                          </LoadingElement>
+                        </LoadingElement>
+                      </LoadingElement>,
                     );
                     nodes.push(
-                      <div
+                      <LoadingElement
+                        as="div"
                         className={"settings-section"}
                         data-settings-panel={"account"}
                         key={nodes.length}
                       >
-                        <h2>{"Conta"}</h2>
-                        <p className={"settings-help"}>
+                        <LoadingElement as="h2">{"Conta"}</LoadingElement>
+                        <LoadingElement as="p" className={"settings-help"}>
                           {"Altere sua senha diretamente por este painel."}
-                        </p>
-                        <form
+                        </LoadingElement>
+                        <LoadingElement
+                          as="form"
                           className={"settings-password-form"}
                           action={"/dashboard/alterar-senha"}
                           method={"POST"}
                         >
-                          <input
+                          <LoadingElement
+                            as="input"
                             type={"hidden"}
                             name={"_csrf"}
                             value={
                               typeof csrfToken !== "undefined" ? csrfToken : ""
                             }
                           />
-                          <label>{"Senha atual"}</label>
-                          <input
+                          <LoadingElement as="label">
+                            {"Senha atual"}
+                          </LoadingElement>
+                          <LoadingElement
+                            as="input"
                             type={"password"}
                             name={"senha_atual"}
                             required={true}
                             autoComplete={"current-password"}
                           />
-                          <label>{"Nova senha"}</label>
-                          <input
+                          <LoadingElement as="label">
+                            {"Nova senha"}
+                          </LoadingElement>
+                          <LoadingElement
+                            as="input"
                             type={"password"}
                             name={"nova_senha"}
                             required={true}
                             minLength={"12"}
                             autoComplete={"new-password"}
                           />
-                          <label>{"Confirmar nova senha"}</label>
-                          <input
+                          <LoadingElement as="label">
+                            {"Confirmar nova senha"}
+                          </LoadingElement>
+                          <LoadingElement
+                            as="input"
                             type={"password"}
                             name={"confirmar_senha"}
                             required={true}
                             autoComplete={"new-password"}
                           />
-                          <button className={"settings-save"} type={"submit"}>
+                          <LoadingElement
+                            as="button"
+                            className={"settings-save"}
+                            type={"submit"}
+                          >
                             {"Atualizar senha"}
-                          </button>
-                        </form>
-                      </div>,
+                          </LoadingElement>
+                        </LoadingElement>
+                      </LoadingElement>,
                     );
                     nodes.push(
-                      <div
+                      <LoadingElement
+                        as="div"
                         className={"settings-section"}
                         data-settings-panel={"privacy"}
                         key={nodes.length}
                       >
-                        <h2>{"Privacidade"}</h2>
-                        <p className={"settings-help"}>
+                        <LoadingElement as="h2">{"Privacidade"}</LoadingElement>
+                        <LoadingElement as="p" className={"settings-help"}>
                           {
                             "Sua sessão é protegida por autenticação e token CSRF. Nunca compartilhe sua senha. Os dados exibidos neste painel são privados da sua conta."
                           }
-                        </p>
-                      </div>,
+                        </LoadingElement>
+                      </LoadingElement>,
                     );
                     nodes.push(
-                      <div
+                      <LoadingElement
+                        as="div"
                         className={"settings-section"}
                         data-settings-panel={"notifications"}
                         key={nodes.length}
                       >
-                        <h2>{"Notificações"}</h2>
-                        <div className={"settings-field"}>
-                          <label>{"Notificações gerais"}</label>
-                          <button
+                        <LoadingElement as="h2">
+                          {"Notificações"}
+                        </LoadingElement>
+                        <LoadingElement as="div" className={"settings-field"}>
+                          <LoadingElement as="label">
+                            {"Notificações gerais"}
+                          </LoadingElement>
+                          <LoadingElement
+                            as="button"
                             className={"settings-switch"}
                             data-notification={"notificacoes_ativas"}
                             type={"button"}
-                          ></button>
-                        </div>
-                        <div className={"settings-field"}>
-                          <label>{"Atividades de alunos"}</label>
-                          <button
+                          ></LoadingElement>
+                        </LoadingElement>
+                        <LoadingElement as="div" className={"settings-field"}>
+                          <LoadingElement as="label">
+                            {"Atividades de alunos"}
+                          </LoadingElement>
+                          <LoadingElement
+                            as="button"
                             className={"settings-switch"}
                             data-notification={"notificacoes_tarefas"}
                             type={"button"}
-                          ></button>
-                        </div>
-                        <div className={"settings-field"}>
-                          <label>{"Avaliações"}</label>
-                          <button
+                          ></LoadingElement>
+                        </LoadingElement>
+                        <LoadingElement as="div" className={"settings-field"}>
+                          <LoadingElement as="label">
+                            {"Avaliações"}
+                          </LoadingElement>
+                          <LoadingElement
+                            as="button"
                             className={"settings-switch"}
                             data-notification={"notificacoes_avaliacoes"}
                             type={"button"}
-                          ></button>
-                        </div>
-                        <button
+                          ></LoadingElement>
+                        </LoadingElement>
+                        <LoadingElement
+                          as="button"
                           className={"settings-save"}
                           data-save-notifications={""}
                           type={"button"}
                         >
                           {"Salvar notificações"}
-                        </button>
-                        <span
+                        </LoadingElement>
+                        <LoadingElement
+                          as="span"
                           className={"settings-feedback"}
                           data-settings-feedback={""}
-                        ></span>
-                      </div>,
+                        ></LoadingElement>
+                      </LoadingElement>,
                     );
                     nodes.push(
-                      <div
+                      <LoadingElement
+                        as="div"
                         className={"settings-section"}
                         data-settings-panel={"appearance"}
                         key={nodes.length}
                       >
-                        <h2>{"Aparência"}</h2>
-                        <div className={"settings-field settings-choice"}>
-                          <label>{"Tema da interface"}</label>
-                          <span className={"settings-theme-options"}>
-                            <button type={"button"} data-theme={"dark"}>
-                              <i className={"ph-bold ph-moon"}></i>
+                        <LoadingElement as="h2">{"Aparência"}</LoadingElement>
+                        <LoadingElement
+                          as="div"
+                          className={"settings-field settings-choice"}
+                        >
+                          <LoadingElement as="label">
+                            {"Tema da interface"}
+                          </LoadingElement>
+                          <LoadingElement
+                            as="span"
+                            className={"settings-theme-options"}
+                          >
+                            <LoadingElement
+                              as="button"
+                              type={"button"}
+                              data-theme={"dark"}
+                            >
+                              <LoadingElement
+                                as="i"
+                                className={"ph-bold ph-moon"}
+                              ></LoadingElement>
                               {" Escuro"}
-                            </button>
-                            <button type={"button"} data-theme={"light"}>
-                              <i className={"ph-bold ph-sun"}></i>
+                            </LoadingElement>
+                            <LoadingElement
+                              as="button"
+                              type={"button"}
+                              data-theme={"light"}
+                            >
+                              <LoadingElement
+                                as="i"
+                                className={"ph-bold ph-sun"}
+                              ></LoadingElement>
                               {" Claro"}
-                            </button>
-                          </span>
-                        </div>
-                      </div>,
+                            </LoadingElement>
+                          </LoadingElement>
+                        </LoadingElement>
+                      </LoadingElement>,
                     );
                     nodes.push(
-                      <div
+                      <LoadingElement
+                        as="div"
                         className={"settings-section"}
                         data-settings-panel={"preferences"}
                         key={nodes.length}
                       >
-                        <h2>{"Preferências"}</h2>
-                        <div className={"settings-field"}>
-                          <label>{"Reduzir animações"}</label>
-                          <button
+                        <LoadingElement as="h2">
+                          {"Preferências"}
+                        </LoadingElement>
+                        <LoadingElement as="div" className={"settings-field"}>
+                          <LoadingElement as="label">
+                            {"Reduzir animações"}
+                          </LoadingElement>
+                          <LoadingElement
+                            as="button"
                             className={"settings-switch"}
                             data-preference={"reduced-motion"}
                             type={"button"}
-                          ></button>
-                        </div>
-                      </div>,
+                          ></LoadingElement>
+                        </LoadingElement>
+                      </LoadingElement>,
                     );
                     if (userCargo === "Admin") {
                       nodes.push(
-                        <div
+                        <LoadingElement
+                          as="div"
                           className={"settings-section"}
                           data-settings-panel={"checkup"}
                           key={nodes.length}
                         >
-                          <div
+                          <LoadingElement
+                            as="div"
                             id={"checkupAuthContainer"}
                             className={"checkup-step"}
                           >
-                            <h2>{"Checkup do Sistema"}</h2>
-                            <p className={"settings-help"}>
+                            <LoadingElement as="h2">
+                              {"Checkup do Sistema"}
+                            </LoadingElement>
+                            <LoadingElement as="p" className={"settings-help"}>
                               {
                                 "Acesso exclusivo para administradores. Digite a senha administrativa de segurança para desbloquear o diagnóstico do banco de dados."
                               }
-                            </p>
-                            <div
+                            </LoadingElement>
+                            <LoadingElement
+                              as="div"
                               id={"checkupAuthError"}
                               className={"checkup-alert-error"}
                               style={styleFrom("display: none;")}
                             >
-                              <i className={"ph-bold ph-warning-circle"}></i>
-                              <span id={"checkupAuthErrorMsg"}>
+                              <LoadingElement
+                                as="i"
+                                className={"ph-bold ph-warning-circle"}
+                              ></LoadingElement>
+                              <LoadingElement
+                                as="span"
+                                id={"checkupAuthErrorMsg"}
+                              >
                                 {"Senha incorreta."}
-                              </span>
-                            </div>
-                            <form
+                              </LoadingElement>
+                            </LoadingElement>
+                            <LoadingElement
+                              as="form"
                               id={"checkupAuthForm"}
                               className={"settings-password-form"}
                               onSubmit={(event) => {
@@ -518,44 +739,65 @@ export default function Partials_barProfessor({ data, handlers }) {
                                 handlers.submitCheckupPassword();
                               }}
                             >
-                              <label htmlFor={"checkupPasswordInput"}>
+                              <LoadingElement
+                                as="label"
+                                htmlFor={"checkupPasswordInput"}
+                              >
                                 {"Senha administrativa"}
-                              </label>
-                              <input
+                              </LoadingElement>
+                              <LoadingElement
+                                as="input"
                                 type={"password"}
                                 id={"checkupPasswordInput"}
                                 placeholder={"Digite a senha administrativa"}
                                 required={true}
                                 autoComplete={"current-password"}
                               />
-                              <button
+                              <LoadingElement
+                                as="button"
                                 className={"settings-save"}
                                 type={"submit"}
                                 id={"btnUnlockCheckup"}
                               >
-                                <i className={"ph-bold ph-lock-key-open"}></i>
+                                <LoadingElement
+                                  as="i"
+                                  className={"ph-bold ph-lock-key-open"}
+                                ></LoadingElement>
                                 {
                                   " Desbloquear Diagnóstico\n                            "
                                 }
-                              </button>
-                            </form>
-                          </div>
-                          <div
+                              </LoadingElement>
+                            </LoadingElement>
+                          </LoadingElement>
+                          <LoadingElement
+                            as="div"
                             id={"checkupDashboardContainer"}
                             className={"checkup-step"}
                             style={styleFrom("display: none;")}
                           >
-                            <div className={"checkup-header"}>
-                              <div>
-                                <h2>{"Integridade do Banco de Dados"}</h2>
-                                <p className={"settings-help"}>
+                            <LoadingElement
+                              as="div"
+                              className={"checkup-header"}
+                            >
+                              <LoadingElement as="div">
+                                <LoadingElement as="h2">
+                                  {"Integridade do Banco de Dados"}
+                                </LoadingElement>
+                                <LoadingElement
+                                  as="p"
+                                  className={"settings-help"}
+                                >
                                   {
                                     "Varredura profunda tabela a tabela em busca de anomalias, órfãos e dados corrompidos."
                                   }
-                                </p>
-                              </div>
-                              <div className={"checkup-top-actions"}>
-                                <button
+                                </LoadingElement>
+                              </LoadingElement>
+                              <LoadingElement
+                                as="div"
+                                className={"checkup-top-actions"}
+                              >
+                                <LoadingElement
+                                  as="button"
                                   type={"button"}
                                   className={"btn-secondary-dash"}
                                   onClick={(event) => {
@@ -564,14 +806,16 @@ export default function Partials_barProfessor({ data, handlers }) {
                                   id={"btnScanAgain"}
                                   title={"Escanear Novamente"}
                                 >
-                                  <i
+                                  <LoadingElement
+                                    as="i"
                                     className={"ph-bold ph-arrows-clockwise"}
-                                  ></i>
+                                  ></LoadingElement>
                                   {
                                     " Escanear Novamente\n                                "
                                   }
-                                </button>
-                                <button
+                                </LoadingElement>
+                                <LoadingElement
+                                  as="button"
                                   type={"button"}
                                   className={"btn-secondary-dash"}
                                   onClick={(event) => {
@@ -580,29 +824,57 @@ export default function Partials_barProfessor({ data, handlers }) {
                                   id={"btnFixAll"}
                                   title={"Corrigir Todas as Tabelas"}
                                 >
-                                  <i className={"ph-bold ph-wrench"}></i>
+                                  <LoadingElement
+                                    as="i"
+                                    className={"ph-bold ph-wrench"}
+                                  ></LoadingElement>
                                   {
                                     " Corrigir Todas as Tabelas\n                                "
                                   }
-                                </button>
-                              </div>
-                            </div>
-                            <div className={"checkup-backup-banner"}>
-                              <div className={"backup-banner-info"}>
-                                <div className={"backup-icon"}>
-                                  <i className={"ph-bold ph-database"}></i>
-                                </div>
-                                <div className={"backup-text"}>
-                                  <span className={"backup-title"}>
+                                </LoadingElement>
+                              </LoadingElement>
+                            </LoadingElement>
+                            <LoadingElement
+                              as="div"
+                              className={"checkup-backup-banner"}
+                            >
+                              <LoadingElement
+                                as="div"
+                                className={"backup-banner-info"}
+                              >
+                                <LoadingElement
+                                  as="div"
+                                  className={"backup-icon"}
+                                >
+                                  <LoadingElement
+                                    as="i"
+                                    className={"ph-bold ph-database"}
+                                  ></LoadingElement>
+                                </LoadingElement>
+                                <LoadingElement
+                                  as="div"
+                                  className={"backup-text"}
+                                >
+                                  <LoadingElement
+                                    as="span"
+                                    className={"backup-title"}
+                                  >
                                     {"Rotina de Backup Ativa (a cada 7 dias)"}
-                                  </span>
-                                  <span id={"backupBannerDetails"}>
+                                  </LoadingElement>
+                                  <LoadingElement
+                                    as="span"
+                                    id={"backupBannerDetails"}
+                                  >
                                     {"Carregando informações do backup..."}
-                                  </span>
-                                </div>
-                              </div>
-                              <div className={"backup-banner-actions"}>
-                                <button
+                                  </LoadingElement>
+                                </LoadingElement>
+                              </LoadingElement>
+                              <LoadingElement
+                                as="div"
+                                className={"backup-banner-actions"}
+                              >
+                                <LoadingElement
+                                  as="button"
                                   type={"button"}
                                   className={"btn-secondary-dash"}
                                   onClick={(event) => {
@@ -610,88 +882,115 @@ export default function Partials_barProfessor({ data, handlers }) {
                                   }}
                                   id={"btnTriggerBackup"}
                                 >
-                                  <i className={"ph-bold ph-floppy-disk"}></i>
+                                  <LoadingElement
+                                    as="i"
+                                    className={"ph-bold ph-floppy-disk"}
+                                  ></LoadingElement>
                                   {
                                     " Fazer Backup Agora\n                                "
                                   }
-                                </button>
-                              </div>
-                            </div>
-                            <div className={"checkup-overview-grid"}>
-                              <div
+                                </LoadingElement>
+                              </LoadingElement>
+                            </LoadingElement>
+                            <LoadingElement
+                              as="div"
+                              className={"checkup-overview-grid"}
+                            >
+                              <LoadingElement
+                                as="div"
                                 className={"checkup-metric-card"}
                                 id={"metricTotalTables"}
                               >
-                                <span className={"metric-label"}>
+                                <LoadingElement
+                                  as="span"
+                                  className={"metric-label"}
+                                >
                                   {"Tabelas Analisadas"}
-                                </span>
-                                <span
+                                </LoadingElement>
+                                <LoadingElement
+                                  as="span"
                                   className={"metric-value"}
                                   id={"valTotalTables"}
                                 >
                                   {"16"}
-                                </span>
-                              </div>
-                              <div
+                                </LoadingElement>
+                              </LoadingElement>
+                              <LoadingElement
+                                as="div"
                                 className={"checkup-metric-card metric-success"}
                                 id={"metricHealthy"}
                               >
-                                <span className={"metric-label"}>
+                                <LoadingElement
+                                  as="span"
+                                  className={"metric-label"}
+                                >
                                   {"Tabelas Íntegras"}
-                                </span>
-                                <span
+                                </LoadingElement>
+                                <LoadingElement
+                                  as="span"
                                   className={"metric-value"}
                                   id={"valHealthyTables"}
                                 >
                                   {"-"}
-                                </span>
-                              </div>
-                              <div
+                                </LoadingElement>
+                              </LoadingElement>
+                              <LoadingElement
+                                as="div"
                                 className={"checkup-metric-card metric-warning"}
                                 id={"metricIssues"}
                               >
-                                <span className={"metric-label"}>
+                                <LoadingElement
+                                  as="span"
+                                  className={"metric-label"}
+                                >
                                   {"Inconsistências"}
-                                </span>
-                                <span
+                                </LoadingElement>
+                                <LoadingElement
+                                  as="span"
                                   className={"metric-value"}
                                   id={"valTotalIssues"}
                                 >
                                   {"-"}
-                                </span>
-                              </div>
-                            </div>
-                            <div
+                                </LoadingElement>
+                              </LoadingElement>
+                            </LoadingElement>
+                            <LoadingElement
+                              as="div"
                               className={"checkup-tables-list"}
                               id={"checkupTablesList"}
                             >
-                              <div className={"checkup-loading-state"}>
-                                <i
+                              <LoadingElement
+                                as="div"
+                                className={"checkup-loading-state"}
+                              >
+                                <LoadingElement
+                                  as="i"
                                   className={
                                     "ph-bold ph-circle-notch checkup-spin"
                                   }
-                                ></i>
-                                <span>
+                                ></LoadingElement>
+                                <LoadingElement as="span">
                                   {
                                     "Verificando integridade das tabelas e índices relacionais..."
                                   }
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>,
+                                </LoadingElement>
+                              </LoadingElement>
+                            </LoadingElement>
+                          </LoadingElement>
+                        </LoadingElement>,
                       );
                     }
                     return nodes;
                   })()}
-                </section>
-              </div>
-            </div>
+                </LoadingElement>
+              </LoadingElement>
+            </LoadingElement>
           </LoadingElement>,
         );
         if (userCargo === "Admin") {
           nodes.push(
-            <div
+            <LoadingElement
+              as="div"
               key={nodes.length}
               id={"checkupReportModal"}
               className={"checkup-modal-overlay"}
@@ -701,13 +1000,15 @@ export default function Partials_barProfessor({ data, handlers }) {
                   handlers.closeCheckupReportModal();
               }}
             >
-              <div
+              <LoadingElement
+                as="div"
                 className={"checkup-modal-card"}
                 role={"dialog"}
                 aria-modal={"true"}
                 aria-labelledby={"checkupReportTitle"}
               >
-                <button
+                <LoadingElement
+                  as="button"
                   className={"checkup-modal-close"}
                   type={"button"}
                   onClick={(event) => {
@@ -715,107 +1016,137 @@ export default function Partials_barProfessor({ data, handlers }) {
                   }}
                   aria-label={"Fechar"}
                 >
-                  <i className={"ph-bold ph-x"}></i>
-                </button>
-                <div className={"checkup-report-header"}>
-                  <div
+                  <LoadingElement
+                    as="i"
+                    className={"ph-bold ph-x"}
+                  ></LoadingElement>
+                </LoadingElement>
+                <LoadingElement as="div" className={"checkup-report-header"}>
+                  <LoadingElement
+                    as="div"
                     className={"checkup-report-icon-wrapper"}
                     id={"checkupReportIcon"}
                   >
-                    <i className={"ph-bold ph-check-circle"}></i>
-                  </div>
-                  <h2
+                    <LoadingElement
+                      as="i"
+                      className={"ph-bold ph-check-circle"}
+                    ></LoadingElement>
+                  </LoadingElement>
+                  <LoadingElement
+                    as="h2"
                     className={"checkup-report-title"}
                     id={"checkupReportTitle"}
                   >
                     {"Relatório de Alterações"}
-                  </h2>
-                  <p
+                  </LoadingElement>
+                  <LoadingElement
+                    as="p"
                     className={"checkup-report-subtitle"}
                     id={"checkupReportSubtitle"}
                   >
                     {
                       "O sistema isolou e corrigiu com sucesso os problemas detectados no banco de dados."
                     }
-                  </p>
-                </div>
-                <div
+                  </LoadingElement>
+                </LoadingElement>
+                <LoadingElement
+                  as="div"
                   id={"checkupReportList"}
                   className={"checkup-report-container"}
-                ></div>
-                <div className={"checkup-report-footer"}>
-                  <button
+                ></LoadingElement>
+                <LoadingElement as="div" className={"checkup-report-footer"}>
+                  <LoadingElement
+                    as="button"
                     type={"button"}
                     className={"btn-secondary-dash"}
                     onClick={(event) => {
                       handlers.closeCheckupReportModal();
                     }}
                   >
-                    <i className={"ph-bold ph-check-circle"}></i>
+                    <LoadingElement
+                      as="i"
+                      className={"ph-bold ph-check-circle"}
+                    ></LoadingElement>
                     {" CONCLUIR\n            "}
-                  </button>
-                </div>
-              </div>
-            </div>,
+                  </LoadingElement>
+                </LoadingElement>
+              </LoadingElement>
+            </LoadingElement>,
           );
         }
         nodes.push(
-          <div
+          <LoadingElement
+            as="div"
             key={nodes.length}
             id={"infoModal"}
             className={"modal-new-overlay"}
           >
-            <div className={"modal-new-card"}>
-              <button
+            <LoadingElement as="div" className={"modal-new-card"}>
+              <LoadingElement
+                as="button"
                 className={"modal-new-close"}
                 onClick={(event) => {
                   handlers.closeModal();
                 }}
               >
-                <i className={"fas fa-times"}></i>
-              </button>
-              <div
+                <LoadingElement
+                  as="i"
+                  className={"fas fa-times"}
+                ></LoadingElement>
+              </LoadingElement>
+              <LoadingElement
+                as="div"
                 className={"modal-new-header"}
                 style={styleFrom(
                   "justify-content: center;align-items: center;display: flex;flex-direction: column;",
                 )}
               >
-                <img
+                <LoadingElement
+                  as="img"
                   src={"/images/logo3-white.png"}
                   alt={"AnalisAI"}
                   className={"modal-new-logo"}
                 />
-                <div className={"version-badge"}>{"Versão 1.0.4"}</div>
-              </div>
-              <div className={"modal-new-body"}>
-                <p className={"modal-new-text"}>
+                <LoadingElement as="div" className={"version-badge"}>
+                  {"Versão 1.0.4"}
+                </LoadingElement>
+              </LoadingElement>
+              <LoadingElement as="div" className={"modal-new-body"}>
+                <LoadingElement as="p" className={"modal-new-text"}>
                   {[
                     "\n                Plataforma avançada para gestão de competências ",
                     "e análise de desempenho educacional. \n                ",
                     "Desenvolvida para facilitar a visualização de dados e tomada de ",
                     "decisão pedagógica.\n            ",
                   ].join("")}
-                </p>
-                <div className={"modal-new-divider"}></div>
-                <div className={"modal-new-info-grid"}>
-                  <div className={"info-item"}>
-                    <span>{"Ambiente"}</span>
-                    <p>{"Produção"}</p>
-                  </div>
-                  <div className={"info-item"}>
-                    <span>{"Atualização"}</span>
-                    <p>{"Junho 2026"}</p>
-                  </div>
-                </div>
-              </div>
-              <div className={"modal-new-footer"}>
-                <p>{"© 2026 AnalisAI"}</p>
-                <a href={"/dashboard/equipe"} className={"modal-link"}>
+                </LoadingElement>
+                <LoadingElement
+                  as="div"
+                  className={"modal-new-divider"}
+                ></LoadingElement>
+                <LoadingElement as="div" className={"modal-new-info-grid"}>
+                  <LoadingElement as="div" className={"info-item"}>
+                    <LoadingElement as="span">{"Ambiente"}</LoadingElement>
+                    <LoadingElement as="p">{"Produção"}</LoadingElement>
+                  </LoadingElement>
+                  <LoadingElement as="div" className={"info-item"}>
+                    <LoadingElement as="span">{"Atualização"}</LoadingElement>
+                    <LoadingElement as="p">{"Junho 2026"}</LoadingElement>
+                  </LoadingElement>
+                </LoadingElement>
+              </LoadingElement>
+              <LoadingElement as="div" className={"modal-new-footer"}>
+                <LoadingElement as="p">{"© 2026 AnalisAI"}</LoadingElement>
+                <LoadingElement
+                  as="a"
+                  href={"/dashboard/equipe"}
+                  className={"modal-link"}
+                >
                   {"Time de desenvolvimento"}
-                </a>
-              </div>
-            </div>
-          </div>,
+                </LoadingElement>
+              </LoadingElement>
+            </LoadingElement>
+          </LoadingElement>,
         );
         return nodes;
       })()}

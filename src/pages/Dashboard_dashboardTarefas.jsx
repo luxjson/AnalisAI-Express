@@ -37,172 +37,237 @@ export default function Dashboard_dashboardTarefas({ data, handlers }) {
             );
             if (success_msg && success_msg.length > 0) {
               nodes.push(
-                <div className={"alert alert-success"} key={nodes.length}>
+                <LoadingElement
+                  as="div"
+                  className={"alert alert-success"}
+                  key={nodes.length}
+                >
                   <LoadingValue
                     slot="dashboard/dashboardTarefas:1"
                     width="12ch"
                     known={false}
                     value={success_msg}
                   />
-                  <span
+                  <LoadingElement
+                    as="span"
                     className={"close-alert"}
                     onClick={(event) => {
                       event.currentTarget.parentElement.style.display = "none";
                     }}
                   >
                     {"×"}
-                  </span>
-                </div>,
+                  </LoadingElement>
+                </LoadingElement>,
               );
             }
             if (error_msg && error_msg.length > 0) {
               nodes.push(
-                <div className={"alert alert-error"} key={nodes.length}>
+                <LoadingElement
+                  as="div"
+                  className={"alert alert-error"}
+                  key={nodes.length}
+                >
                   <LoadingValue
                     slot="dashboard/dashboardTarefas:2"
                     width="12ch"
                     known={false}
                     value={error_msg}
                   />
-                  <span
+                  <LoadingElement
+                    as="span"
                     className={"close-alert"}
                     onClick={(event) => {
                       event.currentTarget.parentElement.style.display = "none";
                     }}
                   >
                     {"×"}
-                  </span>
-                </div>,
+                  </LoadingElement>
+                </LoadingElement>,
               );
             }
             nodes.push(
-              <div className={"tarefas-header"} key={nodes.length}>
-                <button
+              <LoadingElement
+                as="div"
+                className={"tarefas-header"}
+                key={nodes.length}
+              >
+                <LoadingElement
+                  as="button"
                   className={"btn-secondary-dash"}
                   onClick={(event) => {
                     handlers.abrirModalNovaTarefa();
                   }}
                   style={styleFrom("padding: 12px 25px;")}
                 >
-                  <i className={"fas fa-plus"}></i>
+                  <LoadingElement
+                    as="i"
+                    className={"fas fa-plus"}
+                  ></LoadingElement>
                   {" NOVA TAREFA\n            "}
-                </button>
-              </div>,
+                </LoadingElement>
+              </LoadingElement>,
             );
             nodes.push(
-              <div className={"tarefas-stats"} key={nodes.length}>
-                <div className={"stat-card"}>
-                  <div className={"stat-icon"}>
-                    <i className={"fas fa-tasks"}></i>
-                  </div>
-                  <div className={"stat-info"}>
-                    <h3>
+              <LoadingElement
+                as="div"
+                className={"tarefas-stats"}
+                key={nodes.length}
+              >
+                <LoadingElement as="div" className={"stat-card"}>
+                  <LoadingElement as="div" className={"stat-icon"}>
+                    <LoadingElement
+                      as="i"
+                      className={"fas fa-tasks"}
+                    ></LoadingElement>
+                  </LoadingElement>
+                  <LoadingElement as="div" className={"stat-info"}>
+                    <LoadingElement as="h3">
                       <LoadingValue
                         slot="dashboard/dashboardTarefas:3"
                         width="3ch"
                         known={false}
                         value={stats.total || 0}
                       />
-                    </h3>
-                    <p>{"Total de Tarefas"}</p>
-                  </div>
-                </div>
-                <div className={"stat-card"}>
-                  <div className={"stat-icon"}>
-                    <i className={"fas fa-clock"}></i>
-                  </div>
-                  <div className={"stat-info"}>
-                    <h3>
+                    </LoadingElement>
+                    <LoadingElement as="p">{"Total de Tarefas"}</LoadingElement>
+                  </LoadingElement>
+                </LoadingElement>
+                <LoadingElement as="div" className={"stat-card"}>
+                  <LoadingElement as="div" className={"stat-icon"}>
+                    <LoadingElement
+                      as="i"
+                      className={"fas fa-clock"}
+                    ></LoadingElement>
+                  </LoadingElement>
+                  <LoadingElement as="div" className={"stat-info"}>
+                    <LoadingElement as="h3">
                       <LoadingValue
                         slot="dashboard/dashboardTarefas:4"
                         width="12ch"
                         known={false}
                         value={stats.ativas || 0}
                       />
-                    </h3>
-                    <p>{"Tarefas Ativas"}</p>
-                  </div>
-                </div>
-                <div className={"stat-card"}>
-                  <div className={"stat-icon"}>
-                    <i className={"fas fa-exclamation-triangle"}></i>
-                  </div>
-                  <div className={"stat-info"}>
-                    <h3>
+                    </LoadingElement>
+                    <LoadingElement as="p">{"Tarefas Ativas"}</LoadingElement>
+                  </LoadingElement>
+                </LoadingElement>
+                <LoadingElement as="div" className={"stat-card"}>
+                  <LoadingElement as="div" className={"stat-icon"}>
+                    <LoadingElement
+                      as="i"
+                      className={"fas fa-exclamation-triangle"}
+                    ></LoadingElement>
+                  </LoadingElement>
+                  <LoadingElement as="div" className={"stat-info"}>
+                    <LoadingElement as="h3">
                       <LoadingValue
                         slot="dashboard/dashboardTarefas:5"
                         width="3ch"
                         known={false}
                         value={stats.atrasadas || 0}
                       />
-                    </h3>
-                    <p>{"Atrasadas"}</p>
-                  </div>
-                </div>
-              </div>,
+                    </LoadingElement>
+                    <LoadingElement as="p">{"Atrasadas"}</LoadingElement>
+                  </LoadingElement>
+                </LoadingElement>
+              </LoadingElement>,
             );
             nodes.push(
-              <form
+              <LoadingElement
+                as="form"
                 method={"GET"}
                 action={"/dashboard/tarefas"}
                 key={nodes.length}
               >
-                <div className={"filtros-tarefas"}>
-                  <div className={"filtro-group"}>
-                    <label>{"TURMA"}</label>
-                    <select
+                <LoadingElement as="div" className={"filtros-tarefas"}>
+                  <LoadingElement as="div" className={"filtro-group"}>
+                    <LoadingElement as="label">{"TURMA"}</LoadingElement>
+                    <LoadingElement
+                      as="select"
                       name={"turma"}
                       className={"filtro-select"}
                       defaultValue={filtros.turma || ""}
                     >
-                      <option value={""}>{"TODAS AS TURMAS"}</option>
-                      <option value={"1º MÉDIO"}>{"1º MÉDIO"}</option>
-                      <option value={"2º MÉDIO"}>{"2º MÉDIO"}</option>
-                      <option value={"3º MÉDIO"}>{"3º MÉDIO"}</option>
-                      <option value={"9º FUNDAMENTAL"}>
+                      <LoadingElement as="option" value={""}>
+                        {"TODAS AS TURMAS"}
+                      </LoadingElement>
+                      <LoadingElement as="option" value={"1º MÉDIO"}>
+                        {"1º MÉDIO"}
+                      </LoadingElement>
+                      <LoadingElement as="option" value={"2º MÉDIO"}>
+                        {"2º MÉDIO"}
+                      </LoadingElement>
+                      <LoadingElement as="option" value={"3º MÉDIO"}>
+                        {"3º MÉDIO"}
+                      </LoadingElement>
+                      <LoadingElement as="option" value={"9º FUNDAMENTAL"}>
                         {"9º FUNDAMENTAL"}
-                      </option>
-                    </select>
-                  </div>
-                  <div className={"filtro-group"}>
-                    <label>{"STATUS"}</label>
-                    <select
+                      </LoadingElement>
+                    </LoadingElement>
+                  </LoadingElement>
+                  <LoadingElement as="div" className={"filtro-group"}>
+                    <LoadingElement as="label">{"STATUS"}</LoadingElement>
+                    <LoadingElement
+                      as="select"
                       name={"status"}
                       className={"filtro-select"}
                       defaultValue={filtros.status || ""}
                     >
-                      <option value={""}>{"TODOS OS STATUS"}</option>
-                      <option value={"ATIVA"}>{"ATIVA"}</option>
-                      <option value={"CONCLUIDA"}>{"CONCLUÍDA"}</option>
-                    </select>
-                  </div>
-                  <div
+                      <LoadingElement as="option" value={""}>
+                        {"TODOS OS STATUS"}
+                      </LoadingElement>
+                      <LoadingElement as="option" value={"ATIVA"}>
+                        {"ATIVA"}
+                      </LoadingElement>
+                      <LoadingElement as="option" value={"CONCLUIDA"}>
+                        {"CONCLUÍDA"}
+                      </LoadingElement>
+                    </LoadingElement>
+                  </LoadingElement>
+                  <LoadingElement
+                    as="div"
                     className={"filtro-group"}
                     style={styleFrom("flex: 0 0 auto;")}
                   >
-                    <button type={"submit"} className={"btn-secondary-dash"}>
-                      <i className={"fas fa-filter"}></i>
+                    <LoadingElement
+                      as="button"
+                      type={"submit"}
+                      className={"btn-secondary-dash"}
+                    >
+                      <LoadingElement
+                        as="i"
+                        className={"fas fa-filter"}
+                      ></LoadingElement>
                       {" FILTRAR\n                    "}
-                    </button>
-                  </div>
-                  <div
+                    </LoadingElement>
+                  </LoadingElement>
+                  <LoadingElement
+                    as="div"
                     className={"filtro-group"}
                     style={styleFrom("flex: 0 0 auto;")}
                   >
-                    <a
+                    <LoadingElement
+                      as="a"
                       href={"/dashboard/tarefas"}
                       className={"btn-secondary-dash"}
                     >
-                      <i className={"fas fa-times"}></i>
+                      <LoadingElement
+                        as="i"
+                        className={"fas fa-times"}
+                      ></LoadingElement>
                       {" LIMPAR\n                    "}
-                    </a>
-                  </div>
-                </div>
-              </form>,
+                    </LoadingElement>
+                  </LoadingElement>
+                </LoadingElement>
+              </LoadingElement>,
             );
             if (tarefas && tarefas.length > 0) {
               nodes.push(
-                <div className={"tarefas-grid"} key={nodes.length}>
+                <LoadingElement
+                  as="div"
+                  className={"tarefas-grid"}
+                  key={nodes.length}
+                >
                   {(() => {
                     const nodes = [];
                     tarefas.forEach((tarefa) => {
@@ -231,7 +296,11 @@ export default function Dashboard_dashboardTarefas({ data, handlers }) {
                         dataEntrega < hoje &&
                         tarefa.status === "ATIVA";
                       nodes.push(
-                        <div className={"tarefa-card"} key={nodes.length}>
+                        <LoadingElement
+                          as="div"
+                          className={"tarefa-card"}
+                          key={nodes.length}
+                        >
                           <LoadingElement
                             as="div"
                             className={"tarefa-prioridade " + prioridadeClass}
@@ -244,34 +313,40 @@ export default function Dashboard_dashboardTarefas({ data, handlers }) {
                               value={prioridadeText}
                             />
                           </LoadingElement>
-                          <div className={"tarefa-header"}>
-                            <h3 className={"tarefa-titulo"}>
+                          <LoadingElement as="div" className={"tarefa-header"}>
+                            <LoadingElement as="h3" className={"tarefa-titulo"}>
                               <LoadingValue
                                 slot="dashboard/dashboardTarefas:7"
                                 width="min(18ch, 100%)"
                                 known={false}
                                 value={tarefa.titulo}
                               />
-                            </h3>
-                            <span className={"tarefa-turma"}>
-                              <i className={"fas fa-users"}></i>
+                            </LoadingElement>
+                            <LoadingElement
+                              as="span"
+                              className={"tarefa-turma"}
+                            >
+                              <LoadingElement
+                                as="i"
+                                className={"fas fa-users"}
+                              ></LoadingElement>
                               <LoadingValue
                                 slot="dashboard/dashboardTarefas:8"
                                 width="12ch"
                                 known={false}
                                 value={tarefa.turma}
                               />
-                            </span>
-                          </div>
-                          <p className={"tarefa-descricao"}>
+                            </LoadingElement>
+                          </LoadingElement>
+                          <LoadingElement as="p" className={"tarefa-descricao"}>
                             <LoadingValue
                               slot="dashboard/dashboardTarefas:9"
                               width="min(32ch, 100%)"
                               known={false}
                               value={tarefa.descricao || "Sem descrição"}
                             />
-                          </p>
-                          <div className={"tarefa-meta"}>
+                          </LoadingElement>
+                          <LoadingElement as="div" className={"tarefa-meta"}>
                             <LoadingElement
                               as="div"
                               className={
@@ -279,7 +354,10 @@ export default function Dashboard_dashboardTarefas({ data, handlers }) {
                               }
                               tone={true}
                             >
-                              <i className={"far fa-calendar-alt"}></i>
+                              <LoadingElement
+                                as="i"
+                                className={"far fa-calendar-alt"}
+                              ></LoadingElement>
                               <LoadingValue
                                 slot="dashboard/dashboardTarefas:10"
                                 width="10ch"
@@ -293,20 +371,31 @@ export default function Dashboard_dashboardTarefas({ data, handlers }) {
                                 }
                               />
                             </LoadingElement>
-                            <div className={"tarefa-data"}>
-                              <i className={"fas fa-user"}></i>
+                            <LoadingElement as="div" className={"tarefa-data"}>
+                              <LoadingElement
+                                as="i"
+                                className={"fas fa-user"}
+                              ></LoadingElement>
                               <LoadingValue
                                 slot="dashboard/dashboardTarefas:11"
                                 width="min(18ch, 100%)"
                                 known={false}
                                 value={tarefa.professor_nome || "Professor"}
                               />
-                            </div>
-                          </div>
-                          <div className={"tarefa-progresso"}>
-                            <div className={"progresso-header"}>
-                              <span>{"Progresso"}</span>
-                              <span>
+                            </LoadingElement>
+                          </LoadingElement>
+                          <LoadingElement
+                            as="div"
+                            className={"tarefa-progresso"}
+                          >
+                            <LoadingElement
+                              as="div"
+                              className={"progresso-header"}
+                            >
+                              <LoadingElement as="span">
+                                {"Progresso"}
+                              </LoadingElement>
+                              <LoadingElement as="span">
                                 <LoadingValue
                                   slot="dashboard/dashboardTarefas:12"
                                   width="3ch"
@@ -320,18 +409,21 @@ export default function Dashboard_dashboardTarefas({ data, handlers }) {
                                   known={false}
                                   value={totalAlunos}
                                 />
-                              </span>
-                            </div>
-                            <div className={"progresso-bar"}>
+                              </LoadingElement>
+                            </LoadingElement>
+                            <LoadingElement
+                              as="div"
+                              className={"progresso-bar"}
+                            >
                               <LoadingElement
                                 as="div"
                                 className={"progresso-fill"}
                                 style={styleFrom("width: " + percentual + "%")}
                                 fill={true}
                               ></LoadingElement>
-                            </div>
-                          </div>
-                          <div className={"tarefa-footer"}>
+                            </LoadingElement>
+                          </LoadingElement>
+                          <LoadingElement as="div" className={"tarefa-footer"}>
                             {(() => {
                               const nodes = [];
                               let statusTarefa = "PENDENTE";
@@ -362,7 +454,8 @@ export default function Dashboard_dashboardTarefas({ data, handlers }) {
                                 statusIcon = "fa-exclamation-triangle";
                               }
                               nodes.push(
-                                <div
+                                <LoadingElement
+                                  as="div"
                                   style={styleFrom(
                                     "display: flex; align-items: center; gap: 8px;",
                                   )}
@@ -376,7 +469,8 @@ export default function Dashboard_dashboardTarefas({ data, handlers }) {
                                     )}
                                     tone={true}
                                   ></LoadingElement>
-                                  <span
+                                  <LoadingElement
+                                    as="span"
                                     style={styleFrom(
                                       "color: " +
                                         statusCor +
@@ -389,11 +483,12 @@ export default function Dashboard_dashboardTarefas({ data, handlers }) {
                                       known={false}
                                       value={statusTarefa}
                                     />
-                                  </span>
-                                </div>,
+                                  </LoadingElement>
+                                </LoadingElement>,
                               );
                               nodes.push(
-                                <span
+                                <LoadingElement
+                                  as="span"
                                   style={styleFrom(
                                     "color: #666; font-size: 0.75rem;",
                                   )}
@@ -412,12 +507,13 @@ export default function Dashboard_dashboardTarefas({ data, handlers }) {
                                     known={false}
                                     value={totalAlunos || 0}
                                   />
-                                </span>,
+                                </LoadingElement>,
                               );
                               return nodes;
                             })()}
-                          </div>
-                          <div
+                          </LoadingElement>
+                          <LoadingElement
+                            as="div"
                             className={"tarefa-acoes"}
                             style={styleFrom(
                               "margin-top: 15px; justify-content: flex-end;",
@@ -426,7 +522,8 @@ export default function Dashboard_dashboardTarefas({ data, handlers }) {
                             {(() => {
                               const nodes = [];
                               nodes.push(
-                                <button
+                                <LoadingElement
+                                  as="button"
                                   className={"btn-tarefa"}
                                   onClick={(event) => {
                                     handlers.verTarefa(tarefa.id);
@@ -434,11 +531,15 @@ export default function Dashboard_dashboardTarefas({ data, handlers }) {
                                   title={"Ver detalhes"}
                                   key={nodes.length}
                                 >
-                                  <i className={"fas fa-eye"}></i>
-                                </button>,
+                                  <LoadingElement
+                                    as="i"
+                                    className={"fas fa-eye"}
+                                  ></LoadingElement>
+                                </LoadingElement>,
                               );
                               nodes.push(
-                                <button
+                                <LoadingElement
+                                  as="button"
                                   className={"btn-tarefa"}
                                   onClick={(event) => {
                                     handlers.editarTarefa(tarefa.id);
@@ -446,14 +547,16 @@ export default function Dashboard_dashboardTarefas({ data, handlers }) {
                                   title={"Editar"}
                                   key={nodes.length}
                                 >
-                                  <i
+                                  <LoadingElement
+                                    as="i"
                                     className={"ph-bold ph-pen"}
                                     aria-hidden={"true"}
-                                  ></i>
-                                </button>,
+                                  ></LoadingElement>
+                                </LoadingElement>,
                               );
                               nodes.push(
-                                <button
+                                <LoadingElement
+                                  as="button"
                                   className={"btn-tarefa excluir"}
                                   onClick={(event) => {
                                     handlers.excluirTarefa(tarefa.id);
@@ -461,15 +564,17 @@ export default function Dashboard_dashboardTarefas({ data, handlers }) {
                                   title={"Excluir"}
                                   key={nodes.length}
                                 >
-                                  <i
+                                  <LoadingElement
+                                    as="i"
                                     className={"ph-bold ph-trash"}
                                     aria-hidden={"true"}
-                                  ></i>
-                                </button>,
+                                  ></LoadingElement>
+                                </LoadingElement>,
                               );
                               if (entregues > 0 && concluidas < entregues) {
                                 nodes.push(
-                                  <button
+                                  <LoadingElement
+                                    as="button"
                                     className={"btn-tarefa"}
                                     onClick={(event) => {
                                       handlers.avaliarTarefa(tarefa.id);
@@ -480,69 +585,108 @@ export default function Dashboard_dashboardTarefas({ data, handlers }) {
                                     )}
                                     key={nodes.length}
                                   >
-                                    <i className={"fas fa-star"}></i>
-                                  </button>,
+                                    <LoadingElement
+                                      as="i"
+                                      className={"fas fa-star"}
+                                    ></LoadingElement>
+                                  </LoadingElement>,
                                 );
                               }
                               return nodes;
                             })()}
-                          </div>
-                        </div>,
+                          </LoadingElement>
+                        </LoadingElement>,
                       );
                     });
                     return nodes;
                   })()}
-                </div>,
+                </LoadingElement>,
               );
             } else {
               nodes.push(
-                <div className={"empty-tarefas"} key={nodes.length}>
-                  <i className={"fas fa-tasks"}></i>
-                  <h3>{"Nenhuma tarefa encontrada"}</h3>
-                  <p>{'Clique em "NOVA TAREFA" para começar.'}</p>
-                </div>,
+                <LoadingElement
+                  as="div"
+                  className={"empty-tarefas"}
+                  key={nodes.length}
+                >
+                  <LoadingElement
+                    as="i"
+                    className={"fas fa-tasks"}
+                  ></LoadingElement>
+                  <LoadingElement as="h3">
+                    {"Nenhuma tarefa encontrada"}
+                  </LoadingElement>
+                  <LoadingElement as="p">
+                    {'Clique em "NOVA TAREFA" para começar.'}
+                  </LoadingElement>
+                </LoadingElement>,
               );
             }
             nodes.push(
-              <footer className={"dash-footer"} key={nodes.length}>
-                <a href={"/dashboard/edit"} className={"btn-secondary-dash"}>
-                  <i className={"fas fa-pencil-alt"}></i>
+              <LoadingElement
+                as="footer"
+                className={"dash-footer"}
+                key={nodes.length}
+              >
+                <LoadingElement
+                  as="a"
+                  href={"/dashboard/edit"}
+                  className={"btn-secondary-dash"}
+                >
+                  <LoadingElement
+                    as="i"
+                    className={"fas fa-pencil-alt"}
+                  ></LoadingElement>
                   {" EDITOR DE NOTAS\n            "}
-                </a>
-                <div className={"footer-credits"}>
-                  <p>{"© 2026 AnalisAI\n            "}</p>
-                </div>
-              </footer>,
+                </LoadingElement>
+                <LoadingElement as="div" className={"footer-credits"}>
+                  <LoadingElement as="p">
+                    {"© 2026 AnalisAI\n            "}
+                  </LoadingElement>
+                </LoadingElement>
+              </LoadingElement>,
             );
             return nodes;
           })()}
         </LoadingElement>
-        <div id={"novaTarefaModal"} className={"modal-overlay"}>
-          <div
+        <LoadingElement
+          as="div"
+          id={"novaTarefaModal"}
+          className={"modal-overlay"}
+        >
+          <LoadingElement
+            as="div"
             className={"modal-content"}
             style={styleFrom("max-width: 500px; padding: 30px;")}
           >
-            <button
+            <LoadingElement
+              as="button"
               className={"close-btn"}
               onClick={(event) => {
                 handlers.fecharModal("novaTarefaModal");
               }}
             >
-              <i className={"ph-bold ph-x"}></i>
-            </button>
-            <h2
+              <LoadingElement
+                as="i"
+                className={"ph-bold ph-x"}
+              ></LoadingElement>
+            </LoadingElement>
+            <LoadingElement
+              as="h2"
               className={"section-title-2"}
               style={styleFrom("font-size: 1.1rem; margin-bottom: 20px;")}
             >
               {"\n            NOVA TAREFA\n        "}
-            </h2>
-            <div
+            </LoadingElement>
+            <LoadingElement
+              as="div"
               className={"edit-tabs"}
               style={styleFrom(
                 "display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 5px; border-bottom: none;",
               )}
             >
-              <button
+              <LoadingElement
+                as="button"
                 type={"button"}
                 className={"tab-btn active"}
                 onClick={(event) => {
@@ -551,8 +695,9 @@ export default function Dashboard_dashboardTarefas({ data, handlers }) {
                 id={"btn-task-geral"}
               >
                 {"GERAL"}
-              </button>
-              <button
+              </LoadingElement>
+              <LoadingElement
+                as="button"
                 type={"button"}
                 className={"tab-btn"}
                 onClick={(event) => {
@@ -561,8 +706,9 @@ export default function Dashboard_dashboardTarefas({ data, handlers }) {
                 id={"btn-task-config"}
               >
                 {"AJUSTES"}
-              </button>
-              <button
+              </LoadingElement>
+              <LoadingElement
+                as="button"
                 type={"button"}
                 className={"tab-btn"}
                 onClick={(event) => {
@@ -571,86 +717,125 @@ export default function Dashboard_dashboardTarefas({ data, handlers }) {
                 id={"btn-task-alunos"}
               >
                 {"ALUNOS"}
-              </button>
-            </div>
-            <form
+              </LoadingElement>
+            </LoadingElement>
+            <LoadingElement
+              as="form"
               action={"/dashboard/tarefas/criar"}
               method={"POST"}
               style={styleFrom(
                 "margin-top: 20px; border-top: 1px solid var(--border-color); padding-top: 15px;",
               )}
             >
-              <input type={"hidden"} name={"_csrf"} value={csrfToken} />
-              <div id={"taskGeralTab"} className={"tab-content active"}>
-                <div className={"filter-options"}>
-                  <label style={styleFrom("margin-top: 0;")}>
+              <LoadingElement
+                as="input"
+                type={"hidden"}
+                name={"_csrf"}
+                value={csrfToken}
+              />
+              <LoadingElement
+                as="div"
+                id={"taskGeralTab"}
+                className={"tab-content active"}
+              >
+                <LoadingElement as="div" className={"filter-options"}>
+                  <LoadingElement
+                    as="label"
+                    style={styleFrom("margin-top: 0;")}
+                  >
                     {"TÍTULO DA ATIVIDADE"}
-                  </label>
-                  <input
+                  </LoadingElement>
+                  <LoadingElement
+                    as="input"
                     type={"text"}
                     name={"titulo"}
                     className={"filter-input"}
                     style={styleFrom("padding: 12px;")}
                     required={true}
                   />
-                  <label style={styleFrom("margin-top: 15px;")}>
+                  <LoadingElement
+                    as="label"
+                    style={styleFrom("margin-top: 15px;")}
+                  >
                     {"DESCRIÇÃO DETALHADA"}
-                  </label>
-                  <textarea
+                  </LoadingElement>
+                  <LoadingElement
+                    as="textarea"
                     name={"descricao"}
                     className={"filter-input"}
                     rows={"5"}
                     style={styleFrom("padding: 12px; resize: none;")}
                     defaultValue={""}
-                  ></textarea>
-                </div>
-              </div>
-              <div
+                  ></LoadingElement>
+                </LoadingElement>
+              </LoadingElement>
+              <LoadingElement
+                as="div"
                 id={"taskConfigTab"}
                 className={"tab-content"}
                 style={styleFrom("display: none;")}
               >
-                <div className={"filter-options"}>
-                  <div
+                <LoadingElement as="div" className={"filter-options"}>
+                  <LoadingElement
+                    as="div"
                     style={styleFrom(
                       "display: grid; grid-template-columns: 1fr 1fr; gap: 10px;",
                     )}
                   >
-                    <div>
-                      <label style={styleFrom("margin-top: 0;")}>
+                    <LoadingElement as="div">
+                      <LoadingElement
+                        as="label"
+                        style={styleFrom("margin-top: 0;")}
+                      >
                         {"TURMA"}
-                      </label>
-                      <select
+                      </LoadingElement>
+                      <LoadingElement
+                        as="select"
                         name={"turma"}
                         id={"turmaSelect"}
                         className={"filter-input"}
                         style={styleFrom("padding: 10px; font-size: 0.8rem;")}
                         required={true}
                       >
-                        <option value={""}>{"SELECIONE"}</option>
-                        <option value={"1º MÉDIO"}>{"1º MÉDIO"}</option>
-                        <option value={"2º MÉDIO"}>{"2º MÉDIO"}</option>
-                        <option value={"3º MÉDIO"}>{"3º MÉDIO"}</option>
-                        <option value={"9º FUNDAMENTAL"}>
+                        <LoadingElement as="option" value={""}>
+                          {"SELECIONE"}
+                        </LoadingElement>
+                        <LoadingElement as="option" value={"1º MÉDIO"}>
+                          {"1º MÉDIO"}
+                        </LoadingElement>
+                        <LoadingElement as="option" value={"2º MÉDIO"}>
+                          {"2º MÉDIO"}
+                        </LoadingElement>
+                        <LoadingElement as="option" value={"3º MÉDIO"}>
+                          {"3º MÉDIO"}
+                        </LoadingElement>
+                        <LoadingElement as="option" value={"9º FUNDAMENTAL"}>
                           {"9º FUNDAMENTAL"}
-                        </option>
-                      </select>
-                    </div>
-                    <div>
-                      <label style={styleFrom("margin-top: 0;")}>
+                        </LoadingElement>
+                      </LoadingElement>
+                    </LoadingElement>
+                    <LoadingElement as="div">
+                      <LoadingElement
+                        as="label"
+                        style={styleFrom("margin-top: 0;")}
+                      >
                         {"DATA LIMITE"}
-                      </label>
-                      <input
+                      </LoadingElement>
+                      <LoadingElement
+                        as="input"
                         type={"date"}
                         name={"data_entrega"}
                         className={"filter-input"}
                         style={styleFrom("padding: 10px; font-size: 0.8rem;")}
                       />
-                    </div>
-                  </div>
-                  <label style={styleFrom("margin-top: 15px;")}>
+                    </LoadingElement>
+                  </LoadingElement>
+                  <LoadingElement
+                    as="label"
+                    style={styleFrom("margin-top: 15px;")}
+                  >
                     {"COMPETÊNCIA ALVO"}
-                  </label>
+                  </LoadingElement>
                   <LoadingElement
                     as="select"
                     name={"competencia_id"}
@@ -661,48 +846,69 @@ export default function Dashboard_dashboardTarefas({ data, handlers }) {
                     {(() => {
                       const nodes = [];
                       nodes.push(
-                        <option value={""} key={nodes.length}>
+                        <LoadingElement
+                          as="option"
+                          value={""}
+                          key={nodes.length}
+                        >
                           {"NENHUMA ESPECÍFICA"}
-                        </option>,
+                        </LoadingElement>,
                       );
                       if (listaCompetencias && listaCompetencias.length > 0) {
                         listaCompetencias.forEach((comp) => {
                           nodes.push(
-                            <option value={comp.id} key={nodes.length}>
+                            <LoadingElement
+                              as="option"
+                              value={comp.id}
+                              key={nodes.length}
+                            >
                               {comp.nome}
-                            </option>,
+                            </LoadingElement>,
                           );
                         });
                       }
                       return nodes;
                     })()}
                   </LoadingElement>
-                  <label style={styleFrom("margin-top: 15px;")}>
+                  <LoadingElement
+                    as="label"
+                    style={styleFrom("margin-top: 15px;")}
+                  >
                     {"NÍVEL DE PRIORIDADE"}
-                  </label>
-                  <select
+                  </LoadingElement>
+                  <LoadingElement
+                    as="select"
                     name={"prioridade"}
                     className={"filter-input"}
                     style={styleFrom("padding: 10px; font-size: 0.8rem;")}
                   >
-                    <option value={"BAIXA"}>{"BAIXA"}</option>
-                    <option value={"MEDIA"}>{"MÉDIA"}</option>
-                    <option value={"ALTA"}>{"ALTA"}</option>
-                  </select>
-                </div>
-              </div>
-              <div
+                    <LoadingElement as="option" value={"BAIXA"}>
+                      {"BAIXA"}
+                    </LoadingElement>
+                    <LoadingElement as="option" value={"MEDIA"}>
+                      {"MÉDIA"}
+                    </LoadingElement>
+                    <LoadingElement as="option" value={"ALTA"}>
+                      {"ALTA"}
+                    </LoadingElement>
+                  </LoadingElement>
+                </LoadingElement>
+              </LoadingElement>
+              <LoadingElement
+                as="div"
                 id={"taskAlunosTab"}
                 className={"tab-content"}
                 style={styleFrom("display: none;")}
               >
-                <div className={"filter-options"}>
-                  <label
+                <LoadingElement as="div" className={"filter-options"}>
+                  <LoadingElement
+                    as="label"
                     style={styleFrom(
                       "display:flex; align-items:center; gap:10px; cursor:pointer; background: var(--bg-secondary); padding: 12px; border-radius: 10px; margin-top: 0;",
                     )}
                   >
-                    <input
+                    <LoadingElement
+                      as="input"
                       type={"checkbox"}
                       id={"selecionarTodosAlunos"}
                       onClick={(event) => {
@@ -712,15 +918,17 @@ export default function Dashboard_dashboardTarefas({ data, handlers }) {
                         "width:16px; height:16px; accent-color: var(--primary-red);",
                       )}
                     />
-                    <span
+                    <LoadingElement
+                      as="span"
                       style={styleFrom(
                         "color:var(--text-white); font-size: 0.75rem; letter-spacing: 0.5px;",
                       )}
                     >
                       {"VINCULAR A TURMA TODA"}
-                    </span>
-                  </label>
-                  <div
+                    </LoadingElement>
+                  </LoadingElement>
+                  <LoadingElement
+                    as="div"
                     className={"alunos-tarefa"}
                     style={styleFrom(
                       "max-height: 200px; overflow-y: auto; margin-top: 15px; background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border-color); padding: 10px;",
@@ -730,18 +938,21 @@ export default function Dashboard_dashboardTarefas({ data, handlers }) {
                       const nodes = [];
                       alunos.forEach((aluno) => {
                         nodes.push(
-                          <div
+                          <LoadingElement
+                            as="div"
                             className={"aluno-tarefa-item"}
                             data-turma={aluno.ano_escolar}
                             style={styleFrom("margin-bottom: 0;")}
                             key={nodes.length}
                           >
-                            <label
+                            <LoadingElement
+                              as="label"
                               style={styleFrom(
                                 "display:flex; align-items:center; gap:10px; cursor:pointer; flex:1; margin-top:2px",
                               )}
                             >
-                              <input
+                              <LoadingElement
+                                as="input"
                                 type={"checkbox"}
                                 name={"alunos"}
                                 defaultValue={aluno.id}
@@ -750,8 +961,12 @@ export default function Dashboard_dashboardTarefas({ data, handlers }) {
                                   "width:15px; height:15px; accent-color: var(--primary-red);",
                                 )}
                               />
-                              <div className={"aluno-tarefa-info"}>
-                                <h4
+                              <LoadingElement
+                                as="div"
+                                className={"aluno-tarefa-info"}
+                              >
+                                <LoadingElement
+                                  as="h4"
                                   style={styleFrom(
                                     "font-size: 0.8rem; color: #fff;",
                                   )}
@@ -762,8 +977,9 @@ export default function Dashboard_dashboardTarefas({ data, handlers }) {
                                     known={true}
                                     value={aluno.nome}
                                   />
-                                </h4>
-                                <p
+                                </LoadingElement>
+                                <LoadingElement
+                                  as="p"
                                   style={styleFrom(
                                     "font-size: 0.65rem; color: var(--text-gray);",
                                   )}
@@ -774,87 +990,128 @@ export default function Dashboard_dashboardTarefas({ data, handlers }) {
                                     known={true}
                                     value={aluno.ano_escolar}
                                   />
-                                </p>
-                              </div>
-                            </label>
-                          </div>,
+                                </LoadingElement>
+                              </LoadingElement>
+                            </LoadingElement>
+                          </LoadingElement>,
                         );
                       });
                       return nodes;
                     })()}
-                  </div>
-                </div>
-              </div>
-              <button
+                  </LoadingElement>
+                </LoadingElement>
+              </LoadingElement>
+              <LoadingElement
+                as="button"
                 type={"submit"}
                 className={"btn-secondary-dash"}
                 style={styleFrom(
                   "margin-top: 25px; width: 100%; height: 50px; justify-content: center; font-size: 0.8rem;",
                 )}
               >
-                <i className={"fas fa-save"}></i>
+                <LoadingElement
+                  as="i"
+                  className={"fas fa-save"}
+                ></LoadingElement>
                 {" PUBLICAR ATIVIDADE\n            "}
-              </button>
-            </form>
-          </div>
-        </div>
-        <div id={"verTarefaModal"} className={"modal-overlay"}>
-          <div className={"modal-content modal-lg"}>
-            <button
+              </LoadingElement>
+            </LoadingElement>
+          </LoadingElement>
+        </LoadingElement>
+        <LoadingElement
+          as="div"
+          id={"verTarefaModal"}
+          className={"modal-overlay"}
+        >
+          <LoadingElement as="div" className={"modal-content modal-lg"}>
+            <LoadingElement
+              as="button"
               className={"close-btn"}
               onClick={(event) => {
                 handlers.fecharModal("verTarefaModal");
               }}
             >
-              <i className={"ph-bold ph-x"}></i>
-            </button>
-            <h2 className={"section-title-2"}>{"DETALHES DA TAREFA"}</h2>
-            <div id={"tarefaDetalhes"} className={"filter-options"}></div>
-          </div>
-        </div>
-        <div id={"avaliarTarefaModal"} className={"modal-overlay"}>
-          <div className={"modal-content modal-lg"}>
-            <button
+              <LoadingElement
+                as="i"
+                className={"ph-bold ph-x"}
+              ></LoadingElement>
+            </LoadingElement>
+            <LoadingElement as="h2" className={"section-title-2"}>
+              {"DETALHES DA TAREFA"}
+            </LoadingElement>
+            <LoadingElement
+              as="div"
+              id={"tarefaDetalhes"}
+              className={"filter-options"}
+            ></LoadingElement>
+          </LoadingElement>
+        </LoadingElement>
+        <LoadingElement
+          as="div"
+          id={"avaliarTarefaModal"}
+          className={"modal-overlay"}
+        >
+          <LoadingElement as="div" className={"modal-content modal-lg"}>
+            <LoadingElement
+              as="button"
               className={"close-btn"}
               onClick={(event) => {
                 handlers.fecharModal("avaliarTarefaModal");
               }}
             >
-              <i className={"ph-bold ph-x"}></i>
-            </button>
-            <h2 className={"section-title-2"}>{"AVALIAR TAREFA"}</h2>
-            <div
+              <LoadingElement
+                as="i"
+                className={"ph-bold ph-x"}
+              ></LoadingElement>
+            </LoadingElement>
+            <LoadingElement as="h2" className={"section-title-2"}>
+              {"AVALIAR TAREFA"}
+            </LoadingElement>
+            <LoadingElement
+              as="div"
               id={"avaliarTarefaConteudo"}
               className={"filter-options"}
-            ></div>
-          </div>
-        </div>
-        <div id={"editarTarefaModal"} className={"modal-overlay"}>
-          <div
+            ></LoadingElement>
+          </LoadingElement>
+        </LoadingElement>
+        <LoadingElement
+          as="div"
+          id={"editarTarefaModal"}
+          className={"modal-overlay"}
+        >
+          <LoadingElement
+            as="div"
             className={"modal-content"}
             style={styleFrom("max-width: 500px; padding: 30px;")}
           >
-            <button
+            <LoadingElement
+              as="button"
               className={"close-btn"}
               onClick={(event) => {
                 handlers.fecharModal("editarTarefaModal");
               }}
             >
-              <i className={"ph-bold ph-x"}></i>
-            </button>
-            <h2
+              <LoadingElement
+                as="i"
+                className={"ph-bold ph-x"}
+              ></LoadingElement>
+            </LoadingElement>
+            <LoadingElement
+              as="h2"
               className={"section-title-2"}
               style={styleFrom("font-size: 1.1rem; margin-bottom: 20px;")}
             >
               {"\n                EDITAR TAREFA\n            "}
-            </h2>
-            <div
+            </LoadingElement>
+            <LoadingElement
+              as="div"
               className={"edit-tabs"}
               style={styleFrom(
                 "display: grid; grid-template-columns: 1fr 1fr; gap: 5px; border-bottom: none;",
               )}
             >
-              <button
+              <LoadingElement
+                as="button"
                 type={"button"}
                 className={"tab-btn active"}
                 onClick={(event) => {
@@ -863,8 +1120,9 @@ export default function Dashboard_dashboardTarefas({ data, handlers }) {
                 id={"btn-edit-task-geral"}
               >
                 {"CONTEÚDO"}
-              </button>
-              <button
+              </LoadingElement>
+              <LoadingElement
+                as="button"
                 type={"button"}
                 className={"tab-btn"}
                 onClick={(event) => {
@@ -873,20 +1131,36 @@ export default function Dashboard_dashboardTarefas({ data, handlers }) {
                 id={"btn-edit-task-config"}
               >
                 {"CONFIGURAÇÕES"}
-              </button>
-            </div>
-            <form
+              </LoadingElement>
+            </LoadingElement>
+            <LoadingElement
+              as="form"
               id={"editarTarefaForm"}
               method={"POST"}
               style={styleFrom(
                 "margin-top: 20px; border-top: 1px solid var(--border-color); padding-top: 15px;",
               )}
             >
-              <input type={"hidden"} name={"_csrf"} value={csrfToken} />
-              <div id={"editTaskGeralTab"} className={"tab-content active"}>
-                <div className={"filter-options"}>
-                  <label style={styleFrom("margin-top: 0;")}>{"TÍTULO"}</label>
-                  <input
+              <LoadingElement
+                as="input"
+                type={"hidden"}
+                name={"_csrf"}
+                value={csrfToken}
+              />
+              <LoadingElement
+                as="div"
+                id={"editTaskGeralTab"}
+                className={"tab-content active"}
+              >
+                <LoadingElement as="div" className={"filter-options"}>
+                  <LoadingElement
+                    as="label"
+                    style={styleFrom("margin-top: 0;")}
+                  >
+                    {"TÍTULO"}
+                  </LoadingElement>
+                  <LoadingElement
+                    as="input"
                     type={"text"}
                     name={"titulo"}
                     id={"editTitulo"}
@@ -894,92 +1168,130 @@ export default function Dashboard_dashboardTarefas({ data, handlers }) {
                     style={styleFrom("padding: 12px;")}
                     required={true}
                   />
-                  <label style={styleFrom("margin-top: 15px;")}>
+                  <LoadingElement
+                    as="label"
+                    style={styleFrom("margin-top: 15px;")}
+                  >
                     {"DESCRIÇÃO"}
-                  </label>
-                  <textarea
+                  </LoadingElement>
+                  <LoadingElement
+                    as="textarea"
                     name={"descricao"}
                     id={"editDescricao"}
                     className={"filter-input"}
                     rows={"6"}
                     style={styleFrom("padding: 12px; resize: none;")}
                     defaultValue={""}
-                  ></textarea>
-                </div>
-              </div>
-              <div
+                  ></LoadingElement>
+                </LoadingElement>
+              </LoadingElement>
+              <LoadingElement
+                as="div"
                 id={"editTaskConfigTab"}
                 className={"tab-content"}
                 style={styleFrom("display: none;")}
               >
-                <div className={"filter-options"}>
-                  <div
+                <LoadingElement as="div" className={"filter-options"}>
+                  <LoadingElement
+                    as="div"
                     style={styleFrom(
                       "display: grid; grid-template-columns: 1fr 1fr; gap: 10px;",
                     )}
                   >
-                    <div>
-                      <label style={styleFrom("margin-top: 0;")}>
+                    <LoadingElement as="div">
+                      <LoadingElement
+                        as="label"
+                        style={styleFrom("margin-top: 0;")}
+                      >
                         {"ENTREGA"}
-                      </label>
-                      <input
+                      </LoadingElement>
+                      <LoadingElement
+                        as="input"
                         type={"date"}
                         name={"data_entrega"}
                         id={"editDataEntrega"}
                         className={"filter-input"}
                         style={styleFrom("padding: 10px; font-size: 0.8rem;")}
                       />
-                    </div>
-                    <div>
-                      <label style={styleFrom("margin-top: 0;")}>
+                    </LoadingElement>
+                    <LoadingElement as="div">
+                      <LoadingElement
+                        as="label"
+                        style={styleFrom("margin-top: 0;")}
+                      >
                         {"PRIORIDADE"}
-                      </label>
-                      <select
+                      </LoadingElement>
+                      <LoadingElement
+                        as="select"
                         name={"prioridade"}
                         id={"editPrioridade"}
                         className={"filter-input"}
                         style={styleFrom("padding: 10px; font-size: 0.8rem;")}
                       >
-                        <option value={"BAIXA"}>{"BAIXA"}</option>
-                        <option value={"MEDIA"}>{"MÉDIA"}</option>
-                        <option value={"ALTA"}>{"ALTA"}</option>
-                      </select>
-                    </div>
-                  </div>
-                  <label style={styleFrom("margin-top: 15px;")}>
+                        <LoadingElement as="option" value={"BAIXA"}>
+                          {"BAIXA"}
+                        </LoadingElement>
+                        <LoadingElement as="option" value={"MEDIA"}>
+                          {"MÉDIA"}
+                        </LoadingElement>
+                        <LoadingElement as="option" value={"ALTA"}>
+                          {"ALTA"}
+                        </LoadingElement>
+                      </LoadingElement>
+                    </LoadingElement>
+                  </LoadingElement>
+                  <LoadingElement
+                    as="label"
+                    style={styleFrom("margin-top: 15px;")}
+                  >
                     {"STATUS DA ATIVIDADE"}
-                  </label>
-                  <select
+                  </LoadingElement>
+                  <LoadingElement
+                    as="select"
                     name={"status"}
                     id={"editStatus"}
                     className={"filter-input"}
                     style={styleFrom("padding: 10px; font-size: 0.8rem;")}
                   >
-                    <option value={"ATIVA"}>{"ATIVA"}</option>
-                    <option value={"CONCLUIDA"}>{"CONCLUÍDA"}</option>
-                  </select>
-                </div>
-              </div>
-              <button
+                    <LoadingElement as="option" value={"ATIVA"}>
+                      {"ATIVA"}
+                    </LoadingElement>
+                    <LoadingElement as="option" value={"CONCLUIDA"}>
+                      {"CONCLUÍDA"}
+                    </LoadingElement>
+                  </LoadingElement>
+                </LoadingElement>
+              </LoadingElement>
+              <LoadingElement
+                as="button"
                 type={"submit"}
                 className={"btn-secondary-dash"}
                 style={styleFrom(
                   "margin-top: 25px; width: 100%; height: 50px; justify-content: center; font-size: 0.8rem;",
                 )}
               >
-                <i className={"fas fa-save"}></i>
+                <LoadingElement
+                  as="i"
+                  className={"fas fa-save"}
+                ></LoadingElement>
                 {" ATUALIZAR TAREFA\n                "}
-              </button>
-            </form>
-          </div>
-        </div>
-        <form
+              </LoadingElement>
+            </LoadingElement>
+          </LoadingElement>
+        </LoadingElement>
+        <LoadingElement
+          as="form"
           id={"excluirTarefaForm"}
           method={"POST"}
           style={styleFrom("display:none")}
         >
-          <input type={"hidden"} name={"_csrf"} value={csrfToken} />
-        </form>
+          <LoadingElement
+            as="input"
+            type={"hidden"}
+            name={"_csrf"}
+            value={csrfToken}
+          />
+        </LoadingElement>
       </React.Fragment>
     </>
   );
@@ -1002,36 +1314,42 @@ export function PageHeader({ data, handlers }) {
     alunos = [],
   } = data;
   return (
-    <header className={"dash-header"}>
-      <div className={"header-left"}>
-        <h1>{"\n                    Gerenciar Tarefas\n                "}</h1>
-      </div>
-      <div className={"header-user"}>
-        <div className={"user-profile-group"}>
-          <div className={"user-details"}>
-            <span className={"user-name"}>
-              <strong>
+    <LoadingElement as="header" className={"dash-header"}>
+      <LoadingElement as="div" className={"header-left"}>
+        <LoadingElement as="h1">
+          {"\n                    Gerenciar Tarefas\n                "}
+        </LoadingElement>
+      </LoadingElement>
+      <LoadingElement as="div" className={"header-user"}>
+        <LoadingElement as="div" className={"user-profile-group"}>
+          <LoadingElement as="div" className={"user-details"}>
+            <LoadingElement as="span" className={"user-name"}>
+              <LoadingElement as="strong">
                 <LoadingValue
                   slot="dashboard/dashboardTarefas:19"
                   width="12ch"
                   known={true}
                   value={user}
                 />
-              </strong>
-            </span>
-            <span className={"user-role"} style={styleFrom("color: #888888;")}>
-              <strong>
+              </LoadingElement>
+            </LoadingElement>
+            <LoadingElement
+              as="span"
+              className={"user-role"}
+              style={styleFrom("color: #888888;")}
+            >
+              <LoadingElement as="strong">
                 <LoadingValue
                   slot="dashboard/dashboardTarefas:20"
                   width="12ch"
                   known={true}
                   value={userCargo}
                 />
-              </strong>
-            </span>
-          </div>
-        </div>
-        <div className={"header-actions"}>
+              </LoadingElement>
+            </LoadingElement>
+          </LoadingElement>
+        </LoadingElement>
+        <LoadingElement as="div" className={"header-actions"}>
           <Partials_notificacoes
             data={{
               ...data,
@@ -1041,8 +1359,8 @@ export function PageHeader({ data, handlers }) {
             }}
             handlers={handlers}
           />
-        </div>
-      </div>
-    </header>
+        </LoadingElement>
+      </LoadingElement>
+    </LoadingElement>
   );
 }

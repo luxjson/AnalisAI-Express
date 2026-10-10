@@ -40,58 +40,76 @@ export default function Dashboard_dashboardCalendario({ data, handlers }) {
             );
             if (success_msg && success_msg.length > 0) {
               nodes.push(
-                <div className={"alert alert-success"} key={nodes.length}>
+                <LoadingElement
+                  as="div"
+                  className={"alert alert-success"}
+                  key={nodes.length}
+                >
                   <LoadingValue
                     slot="dashboard/dashboardCalendario:1"
                     width="12ch"
                     known={false}
                     value={success_msg}
                   />
-                  <span
+                  <LoadingElement
+                    as="span"
                     className={"close-alert"}
                     onClick={(event) => {
                       event.currentTarget.parentElement.style.display = "none";
                     }}
                   >
                     {"×"}
-                  </span>
-                </div>,
+                  </LoadingElement>
+                </LoadingElement>,
               );
             }
             if (error_msg && error_msg.length > 0) {
               nodes.push(
-                <div className={"alert alert-error"} key={nodes.length}>
+                <LoadingElement
+                  as="div"
+                  className={"alert alert-error"}
+                  key={nodes.length}
+                >
                   <LoadingValue
                     slot="dashboard/dashboardCalendario:2"
                     width="12ch"
                     known={false}
                     value={error_msg}
                   />
-                  <span
+                  <LoadingElement
+                    as="span"
                     className={"close-alert"}
                     onClick={(event) => {
                       event.currentTarget.parentElement.style.display = "none";
                     }}
                   >
                     {"×"}
-                  </span>
-                </div>,
+                  </LoadingElement>
+                </LoadingElement>,
               );
             }
             nodes.push(
-              <div className={"calendario-container"} key={nodes.length}>
-                <div className={"calendario-main"}>
-                  <div className={"calendario-header"}>
-                    <div className={"calendario-mes"}>
-                      <button
+              <LoadingElement
+                as="div"
+                className={"calendario-container"}
+                key={nodes.length}
+              >
+                <LoadingElement as="div" className={"calendario-main"}>
+                  <LoadingElement as="div" className={"calendario-header"}>
+                    <LoadingElement as="div" className={"calendario-mes"}>
+                      <LoadingElement
+                        as="button"
                         className={"btn-mes"}
                         onClick={(event) => {
                           handlers.mudarMes(-1);
                         }}
                       >
-                        <i className={"fas fa-chevron-left"}></i>
-                      </button>
-                      <h2 id={"mesAtual"}>
+                        <LoadingElement
+                          as="i"
+                          className={"fas fa-chevron-left"}
+                        ></LoadingElement>
+                      </LoadingElement>
+                      <LoadingElement as="h2" id={"mesAtual"}>
                         <LoadingValue
                           slot="dashboard/dashboardCalendario:3"
                           width="10ch"
@@ -104,85 +122,126 @@ export default function Dashboard_dashboardCalendario({ data, handlers }) {
                             year: "numeric",
                           })}
                         />
-                      </h2>
-                      <button
+                      </LoadingElement>
+                      <LoadingElement
+                        as="button"
                         className={"btn-mes"}
                         onClick={(event) => {
                           handlers.mudarMes(1);
                         }}
                       >
-                        <i className={"fas fa-chevron-right"}></i>
-                      </button>
-                    </div>
-                    <form
+                        <LoadingElement
+                          as="i"
+                          className={"fas fa-chevron-right"}
+                        ></LoadingElement>
+                      </LoadingElement>
+                    </LoadingElement>
+                    <LoadingElement
+                      as="form"
                       method={"GET"}
                       action={"/dashboard/calendario"}
                       id={"filtroForm"}
                     >
-                      <input
+                      <LoadingElement
+                        as="input"
                         type={"hidden"}
                         name={"mes"}
                         id={"mesInput"}
                         value={filtros.mes}
                       />
-                      <input
+                      <LoadingElement
+                        as="input"
                         type={"hidden"}
                         name={"ano"}
                         id={"anoInput"}
                         value={filtros.ano}
                       />
-                      <input
+                      <LoadingElement
+                        as="input"
                         type={"hidden"}
                         name={"turma"}
                         value={filtros.turma}
                       />
-                    </form>
-                  </div>
-                  <div className={"calendario-grid"} id={"calendarioGrid"}>
+                    </LoadingElement>
+                  </LoadingElement>
+                  <LoadingElement
+                    as="div"
+                    className={"calendario-grid"}
+                    id={"calendarioGrid"}
+                  >
                     {(() => {
                       const nodes = [];
                       nodes.push(
-                        <div className={"dia-semana"} key={nodes.length}>
+                        <LoadingElement
+                          as="div"
+                          className={"dia-semana"}
+                          key={nodes.length}
+                        >
                           {"DOM"}
-                        </div>,
+                        </LoadingElement>,
                       );
                       nodes.push(
-                        <div className={"dia-semana"} key={nodes.length}>
+                        <LoadingElement
+                          as="div"
+                          className={"dia-semana"}
+                          key={nodes.length}
+                        >
                           {"SEG"}
-                        </div>,
+                        </LoadingElement>,
                       );
                       nodes.push(
-                        <div className={"dia-semana"} key={nodes.length}>
+                        <LoadingElement
+                          as="div"
+                          className={"dia-semana"}
+                          key={nodes.length}
+                        >
                           {"TER"}
-                        </div>,
+                        </LoadingElement>,
                       );
                       nodes.push(
-                        <div className={"dia-semana"} key={nodes.length}>
+                        <LoadingElement
+                          as="div"
+                          className={"dia-semana"}
+                          key={nodes.length}
+                        >
                           {"QUA"}
-                        </div>,
+                        </LoadingElement>,
                       );
                       nodes.push(
-                        <div className={"dia-semana"} key={nodes.length}>
+                        <LoadingElement
+                          as="div"
+                          className={"dia-semana"}
+                          key={nodes.length}
+                        >
                           {"QUI"}
-                        </div>,
+                        </LoadingElement>,
                       );
                       nodes.push(
-                        <div className={"dia-semana"} key={nodes.length}>
+                        <LoadingElement
+                          as="div"
+                          className={"dia-semana"}
+                          key={nodes.length}
+                        >
                           {"SEX"}
-                        </div>,
+                        </LoadingElement>,
                       );
                       nodes.push(
-                        <div className={"dia-semana"} key={nodes.length}>
+                        <LoadingElement
+                          as="div"
+                          className={"dia-semana"}
+                          key={nodes.length}
+                        >
                           {"SÁB"}
-                        </div>,
+                        </LoadingElement>,
                       );
                       const inicioSemana = data.calendar.startWeek;
                       for (let i = 0; i < inicioSemana; i++) {
                         nodes.push(
-                          <div
+                          <LoadingElement
+                            as="div"
                             className={"dia-cell outro-mes"}
                             key={nodes.length}
-                          ></div>,
+                          ></LoadingElement>,
                         );
                       }
                       for (const cell of data.calendar.days) {
@@ -193,42 +252,48 @@ export default function Dashboard_dashboardCalendario({ data, handlers }) {
                           feriados: feriadosDia,
                         } = cell;
                         nodes.push(
-                          <div
+                          <LoadingElement
+                            as="div"
                             className={"dia-cell"}
                             data-data={dataStr}
                             key={nodes.length}
                           >
-                            <div className={"dia-numero"}>
+                            <LoadingElement as="div" className={"dia-numero"}>
                               <LoadingValue
                                 slot="dashboard/dashboardCalendario:4"
                                 width="12ch"
                                 known={true}
                                 value={dia}
                               />
-                            </div>
-                            <div className={"dia-eventos"}>
+                            </LoadingElement>
+                            <LoadingElement as="div" className={"dia-eventos"}>
                               {(() => {
                                 const nodes = [];
                                 feriadosDia.forEach((f) => {
                                   nodes.push(
-                                    <div
+                                    <LoadingElement
+                                      as="div"
                                       className={"evento-item evento-feriado"}
                                       title={f.nome}
                                       key={nodes.length}
                                     >
-                                      <i className={"fas fa-star"}></i>
+                                      <LoadingElement
+                                        as="i"
+                                        className={"fas fa-star"}
+                                      ></LoadingElement>
                                       <LoadingValue
                                         slot="dashboard/dashboardCalendario:5"
                                         width="min(18ch, 100%)"
                                         known={false}
                                         value={f.nome}
                                       />
-                                    </div>,
+                                    </LoadingElement>,
                                   );
                                 });
                                 eventosDia.forEach((e) => {
                                   nodes.push(
-                                    <div
+                                    <LoadingElement
+                                      as="div"
                                       className={"evento-item"}
                                       style={styleFrom("background: " + e.cor)}
                                       title={e.titulo}
@@ -240,35 +305,41 @@ export default function Dashboard_dashboardCalendario({ data, handlers }) {
                                         known={false}
                                         value={e.titulo}
                                       />
-                                    </div>,
+                                    </LoadingElement>,
                                   );
                                 });
                                 return nodes;
                               })()}
-                            </div>
-                          </div>,
+                            </LoadingElement>
+                          </LoadingElement>,
                         );
                       }
                       return nodes;
                     })()}
-                  </div>
-                </div>
-                <div className={"calendario-sidebar"}>
+                  </LoadingElement>
+                </LoadingElement>
+                <LoadingElement as="div" className={"calendario-sidebar"}>
                   {(() => {
                     const nodes = [];
                     nodes.push(
-                      <h3
+                      <LoadingElement
+                        as="h3"
                         style={styleFrom("color: #fff; margin-bottom: 20px;")}
                         key={nodes.length}
                       >
                         {"FILTROS"}
-                      </h3>,
+                      </LoadingElement>,
                     );
                     nodes.push(
-                      <div className={"filtros-calendario"} key={nodes.length}>
-                        <div className={"filtro-group"}>
-                          <label>{"TURMA"}</label>
-                          <select
+                      <LoadingElement
+                        as="div"
+                        className={"filtros-calendario"}
+                        key={nodes.length}
+                      >
+                        <LoadingElement as="div" className={"filtro-group"}>
+                          <LoadingElement as="label">{"TURMA"}</LoadingElement>
+                          <LoadingElement
+                            as="select"
                             className={"filtro-select"}
                             onChange={(event) => {
                               handlers.filtrarTurma(event.currentTarget.value);
@@ -279,62 +350,87 @@ export default function Dashboard_dashboardCalendario({ data, handlers }) {
                                 : undefined
                             }
                           >
-                            <option value={""}>{"TODAS AS TURMAS"}</option>
-                            <option value={"1º MÉDIO"}>{"1º MÉDIO"}</option>
-                            <option value={"2º MÉDIO"}>{"2º MÉDIO"}</option>
-                            <option value={"3º MÉDIO"}>{"3º MÉDIO"}</option>
-                            <option value={"9º FUNDAMENTAL"}>
+                            <LoadingElement as="option" value={""}>
+                              {"TODAS AS TURMAS"}
+                            </LoadingElement>
+                            <LoadingElement as="option" value={"1º MÉDIO"}>
+                              {"1º MÉDIO"}
+                            </LoadingElement>
+                            <LoadingElement as="option" value={"2º MÉDIO"}>
+                              {"2º MÉDIO"}
+                            </LoadingElement>
+                            <LoadingElement as="option" value={"3º MÉDIO"}>
+                              {"3º MÉDIO"}
+                            </LoadingElement>
+                            <LoadingElement
+                              as="option"
+                              value={"9º FUNDAMENTAL"}
+                            >
                               {"9º FUNDAMENTAL"}
-                            </option>
-                          </select>
-                        </div>
-                      </div>,
+                            </LoadingElement>
+                          </LoadingElement>
+                        </LoadingElement>
+                      </LoadingElement>,
                     );
                     nodes.push(
-                      <h3
+                      <LoadingElement
+                        as="h3"
                         style={styleFrom("color: #fff; margin: 20px 0;")}
                         key={nodes.length}
                       >
                         {"LEGENDA"}
-                      </h3>,
+                      </LoadingElement>,
                     );
                     nodes.push(
-                      <div className={"legenda-item"} key={nodes.length}>
-                        <div
+                      <LoadingElement
+                        as="div"
+                        className={"legenda-item"}
+                        key={nodes.length}
+                      >
+                        <LoadingElement
+                          as="div"
                           className={"legenda-cor"}
                           style={styleFrom("background: #ff0101;")}
-                        ></div>
-                        <span className={"legenda-texto"}>{"Feriados"}</span>
-                      </div>,
+                        ></LoadingElement>
+                        <LoadingElement as="span" className={"legenda-texto"}>
+                          {"Feriados"}
+                        </LoadingElement>
+                      </LoadingElement>,
                     );
                     tipos.forEach((t) => {
                       nodes.push(
-                        <div className={"legenda-item"} key={nodes.length}>
-                          <div
+                        <LoadingElement
+                          as="div"
+                          className={"legenda-item"}
+                          key={nodes.length}
+                        >
+                          <LoadingElement
+                            as="div"
                             className={"legenda-cor"}
                             style={styleFrom("background: " + t.cor + ";")}
-                          ></div>
-                          <span className={"legenda-texto"}>
+                          ></LoadingElement>
+                          <LoadingElement as="span" className={"legenda-texto"}>
                             <LoadingValue
                               slot="dashboard/dashboardCalendario:7"
                               width="12ch"
                               known={false}
                               value={t.tipo}
                             />
-                          </span>
-                          <span className={"legenda-count"}>
+                          </LoadingElement>
+                          <LoadingElement as="span" className={"legenda-count"}>
                             <LoadingValue
                               slot="dashboard/dashboardCalendario:8"
                               width="3ch"
                               known={false}
                               value={t.total}
                             />
-                          </span>
-                        </div>,
+                          </LoadingElement>
+                        </LoadingElement>,
                       );
                     });
                     nodes.push(
-                      <button
+                      <LoadingElement
+                        as="button"
                         className={"btn-secondary-dash"}
                         style={styleFrom(
                           "margin-top: 20px; width: 100%; height: 55px; text-align: center; align-items: center; justify-content: center;",
@@ -344,12 +440,16 @@ export default function Dashboard_dashboardCalendario({ data, handlers }) {
                         }}
                         key={nodes.length}
                       >
-                        <i className={"fas fa-plus"}></i>
+                        <LoadingElement
+                          as="i"
+                          className={"fas fa-plus"}
+                        ></LoadingElement>
                         {" NOVO EVENTO\n                "}
-                      </button>,
+                      </LoadingElement>,
                     );
                     nodes.push(
-                      <button
+                      <LoadingElement
+                        as="button"
                         className={"btn-secondary-dash"}
                         style={styleFrom(
                           "margin-top: 10px; width: 100%; height: 55px; text-align: center; align-items: center; justify-content: center;",
@@ -359,20 +459,28 @@ export default function Dashboard_dashboardCalendario({ data, handlers }) {
                         }}
                         key={nodes.length}
                       >
-                        <i className={"fas fa-star"}></i>
+                        <LoadingElement
+                          as="i"
+                          className={"fas fa-star"}
+                        ></LoadingElement>
                         {" NOVO FERIADO\n                "}
-                      </button>,
+                      </LoadingElement>,
                     );
                     nodes.push(
-                      <h3
+                      <LoadingElement
+                        as="h3"
                         style={styleFrom("color: #fff; margin: 20px 0;")}
                         key={nodes.length}
                       >
                         {"PRÓXIMOS EVENTOS"}
-                      </h3>,
+                      </LoadingElement>,
                     );
                     nodes.push(
-                      <div className={"eventos-lista"} key={nodes.length}>
+                      <LoadingElement
+                        as="div"
+                        className={"eventos-lista"}
+                        key={nodes.length}
+                      >
                         {(() => {
                           const nodes = [];
                           const todosEventos = [
@@ -398,25 +506,31 @@ export default function Dashboard_dashboardCalendario({ data, handlers }) {
                             .slice(0, 10);
                           todosEventos.forEach((e) => {
                             nodes.push(
-                              <div
+                              <LoadingElement
+                                as="div"
                                 className={"evento-lista-item"}
                                 key={nodes.length}
                               >
                                 {(() => {
                                   const nodes = [];
                                   nodes.push(
-                                    <div
+                                    <LoadingElement
+                                      as="div"
                                       className={"evento-lista-cor"}
                                       style={styleFrom("background: " + e.cor)}
                                       key={nodes.length}
-                                    ></div>,
+                                    ></LoadingElement>,
                                   );
                                   nodes.push(
-                                    <div
+                                    <LoadingElement
+                                      as="div"
                                       className={"evento-lista-info"}
                                       key={nodes.length}
                                     >
-                                      <div className={"evento-lista-titulo"}>
+                                      <LoadingElement
+                                        as="div"
+                                        className={"evento-lista-titulo"}
+                                      >
                                         {(() => {
                                           const nodes = [];
                                           nodes.push(
@@ -430,20 +544,24 @@ export default function Dashboard_dashboardCalendario({ data, handlers }) {
                                           );
                                           if (e.tipo === "feriado") {
                                             nodes.push(
-                                              <span
+                                              <LoadingElement
+                                                as="span"
                                                 style={styleFrom(
                                                   "color: #ff0101; font-size: 0.7rem;",
                                                 )}
                                                 key={nodes.length}
                                               >
                                                 {"(FERIADO)"}
-                                              </span>,
+                                              </LoadingElement>,
                                             );
                                           }
                                           return nodes;
                                         })()}
-                                      </div>
-                                      <div className={"evento-lista-data"}>
+                                      </LoadingElement>
+                                      <LoadingElement
+                                        as="div"
+                                        className={"evento-lista-data"}
+                                      >
                                         <LoadingValue
                                           slot="dashboard/dashboardCalendario:10"
                                           width="10ch"
@@ -452,12 +570,13 @@ export default function Dashboard_dashboardCalendario({ data, handlers }) {
                                             e.data_inicio,
                                           ).toLocaleDateString("pt-BR")}
                                         />
-                                      </div>
-                                    </div>,
+                                      </LoadingElement>
+                                    </LoadingElement>,
                                   );
                                   if (userCargo === "Admin") {
                                     nodes.push(
-                                      <button
+                                      <LoadingElement
+                                        as="button"
                                         className={"evento-lista-remover"}
                                         onClick={(event) => {
                                           handlers.removerItem(
@@ -467,53 +586,64 @@ export default function Dashboard_dashboardCalendario({ data, handlers }) {
                                         }}
                                         key={nodes.length}
                                       >
-                                        <i className={"fas fa-times"}></i>
-                                      </button>,
+                                        <LoadingElement
+                                          as="i"
+                                          className={"fas fa-times"}
+                                        ></LoadingElement>
+                                      </LoadingElement>,
                                     );
                                   }
                                   return nodes;
                                 })()}
-                              </div>,
+                              </LoadingElement>,
                             );
                           });
                           return nodes;
                         })()}
-                      </div>,
+                      </LoadingElement>,
                     );
                     return nodes;
                   })()}
-                </div>
-              </div>,
+                </LoadingElement>
+              </LoadingElement>,
             );
             return nodes;
           })()}
         </LoadingElement>
-        <div id={"eventoModal"} className={"modal-overlay"}>
-          <div
+        <LoadingElement as="div" id={"eventoModal"} className={"modal-overlay"}>
+          <LoadingElement
+            as="div"
             className={"modal-content"}
             style={styleFrom("max-width: 450px; padding: 30px;")}
           >
-            <button
+            <LoadingElement
+              as="button"
               className={"close-btn"}
               onClick={(event) => {
                 handlers.fecharModal("eventoModal");
               }}
             >
-              <i className={"ph-bold ph-x"}></i>
-            </button>
-            <h2
+              <LoadingElement
+                as="i"
+                className={"ph-bold ph-x"}
+              ></LoadingElement>
+            </LoadingElement>
+            <LoadingElement
+              as="h2"
               className={"section-title-2"}
               style={styleFrom("font-size: 1.1rem; margin-bottom: 20px;")}
             >
               {"\n            NOVO EVENTO\n        "}
-            </h2>
-            <div
+            </LoadingElement>
+            <LoadingElement
+              as="div"
               className={"edit-tabs"}
               style={styleFrom(
                 "display: grid; grid-template-columns: 1fr 1fr; gap: 5px; border-bottom: none;",
               )}
             >
-              <button
+              <LoadingElement
+                as="button"
                 type={"button"}
                 className={"tab-btn active"}
                 onClick={(event) => {
@@ -522,8 +652,9 @@ export default function Dashboard_dashboardCalendario({ data, handlers }) {
                 id={"btn-event-info"}
               >
                 {"INFORMAÇÕES"}
-              </button>
-              <button
+              </LoadingElement>
+              <LoadingElement
+                as="button"
                 type={"button"}
                 className={"tab-btn"}
                 onClick={(event) => {
@@ -532,167 +663,253 @@ export default function Dashboard_dashboardCalendario({ data, handlers }) {
                 id={"btn-event-data"}
               >
                 {"AGENDAMENTO"}
-              </button>
-            </div>
-            <form
+              </LoadingElement>
+            </LoadingElement>
+            <LoadingElement
+              as="form"
               action={"/dashboard/calendario/evento"}
               method={"POST"}
               style={styleFrom(
                 "margin-top: 20px; border-top: 1px solid var(--border-color); padding-top: 15px;",
               )}
             >
-              <input type={"hidden"} name={"_csrf"} value={csrfToken} />
-              <div id={"eventInfoTab"} className={"tab-content active"}>
-                <div className={"filter-options"}>
-                  <label style={styleFrom("margin-top: 0;")}>{"TÍTULO"}</label>
-                  <input
+              <LoadingElement
+                as="input"
+                type={"hidden"}
+                name={"_csrf"}
+                value={csrfToken}
+              />
+              <LoadingElement
+                as="div"
+                id={"eventInfoTab"}
+                className={"tab-content active"}
+              >
+                <LoadingElement as="div" className={"filter-options"}>
+                  <LoadingElement
+                    as="label"
+                    style={styleFrom("margin-top: 0;")}
+                  >
+                    {"TÍTULO"}
+                  </LoadingElement>
+                  <LoadingElement
+                    as="input"
                     type={"text"}
                     name={"titulo"}
                     className={"filter-input"}
                     style={styleFrom("padding: 12px;")}
                     required={true}
                   />
-                  <label style={styleFrom("margin-top: 15px;")}>
+                  <LoadingElement
+                    as="label"
+                    style={styleFrom("margin-top: 15px;")}
+                  >
                     {"DESCRIÇÃO"}
-                  </label>
-                  <textarea
+                  </LoadingElement>
+                  <LoadingElement
+                    as="textarea"
                     name={"descricao"}
                     className={"filter-input"}
                     rows={"5"}
                     style={styleFrom("padding: 12px; resize: none;")}
                     defaultValue={""}
-                  ></textarea>
-                </div>
-              </div>
-              <div
+                  ></LoadingElement>
+                </LoadingElement>
+              </LoadingElement>
+              <LoadingElement
+                as="div"
                 id={"eventDataTab"}
                 className={"tab-content"}
                 style={styleFrom("display: none;")}
               >
-                <div className={"filter-options"}>
-                  <div
+                <LoadingElement as="div" className={"filter-options"}>
+                  <LoadingElement
+                    as="div"
                     style={styleFrom(
                       "display: grid; grid-template-columns: 2fr 1fr; gap: 10px; margin-top: 0;",
                     )}
                   >
-                    <div>
-                      <label style={styleFrom("margin-top: 0;")}>
+                    <LoadingElement as="div">
+                      <LoadingElement
+                        as="label"
+                        style={styleFrom("margin-top: 0;")}
+                      >
                         {"CATEGORIA"}
-                      </label>
-                      <select
+                      </LoadingElement>
+                      <LoadingElement
+                        as="select"
                         name={"tipo"}
                         className={"filter-input"}
                         style={styleFrom("padding: 10px; font-size: 0.8rem;")}
                         required={true}
                       >
-                        <option value={"evento"}>{"Evento"}</option>
-                        <option value={"prova"}>{"Prova"}</option>
-                        <option value={"tarefa"}>{"Tarefa"}</option>
-                        <option value={"reuniao"}>{"Reunião"}</option>
-                        <option value={"feriado"}>{"Feriado"}</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label style={styleFrom("margin-top: 0;")}>{"COR"}</label>
-                      <input
+                        <LoadingElement as="option" value={"evento"}>
+                          {"Evento"}
+                        </LoadingElement>
+                        <LoadingElement as="option" value={"prova"}>
+                          {"Prova"}
+                        </LoadingElement>
+                        <LoadingElement as="option" value={"tarefa"}>
+                          {"Tarefa"}
+                        </LoadingElement>
+                        <LoadingElement as="option" value={"reuniao"}>
+                          {"Reunião"}
+                        </LoadingElement>
+                        <LoadingElement as="option" value={"feriado"}>
+                          {"Feriado"}
+                        </LoadingElement>
+                      </LoadingElement>
+                    </LoadingElement>
+                    <LoadingElement as="div">
+                      <LoadingElement
+                        as="label"
+                        style={styleFrom("margin-top: 0;")}
+                      >
+                        {"COR"}
+                      </LoadingElement>
+                      <LoadingElement
+                        as="input"
                         type={"color"}
                         name={"cor"}
                         className={"filter-input"}
                         style={styleFrom("padding: 5px; height: 42px;")}
                         defaultValue={"#ff0101"}
                       />
-                    </div>
-                  </div>
-                  <div
+                    </LoadingElement>
+                  </LoadingElement>
+                  <LoadingElement
+                    as="div"
                     style={styleFrom(
                       "display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px;",
                     )}
                   >
-                    <div>
-                      <label style={styleFrom("margin-top: 0;")}>
+                    <LoadingElement as="div">
+                      <LoadingElement
+                        as="label"
+                        style={styleFrom("margin-top: 0;")}
+                      >
                         {"INÍCIO"}
-                      </label>
-                      <input
+                      </LoadingElement>
+                      <LoadingElement
+                        as="input"
                         type={"date"}
                         name={"data_inicio"}
                         className={"filter-input"}
                         style={styleFrom("padding: 10px; font-size: 0.8rem;")}
                         required={true}
                       />
-                    </div>
-                    <div>
-                      <label style={styleFrom("margin-top: 0;")}>
+                    </LoadingElement>
+                    <LoadingElement as="div">
+                      <LoadingElement
+                        as="label"
+                        style={styleFrom("margin-top: 0;")}
+                      >
                         {"TÉRMINO"}
-                      </label>
-                      <input
+                      </LoadingElement>
+                      <LoadingElement
+                        as="input"
                         type={"date"}
                         name={"data_fim"}
                         className={"filter-input"}
                         style={styleFrom("padding: 10px; font-size: 0.8rem;")}
                       />
-                    </div>
-                  </div>
-                  <label style={styleFrom("margin-top: 15px;")}>
+                    </LoadingElement>
+                  </LoadingElement>
+                  <LoadingElement
+                    as="label"
+                    style={styleFrom("margin-top: 15px;")}
+                  >
                     {"TURMA ALVO"}
-                  </label>
-                  <select
+                  </LoadingElement>
+                  <LoadingElement
+                    as="select"
                     name={"turma"}
                     className={"filter-input"}
                     style={styleFrom("padding: 10px; font-size: 0.8rem;")}
                   >
-                    <option value={""}>{"GERAL / TODAS"}</option>
-                    <option value={"1º MÉDIO"}>{"1º MÉDIO"}</option>
-                    <option value={"2º MÉDIO"}>{"2º MÉDIO"}</option>
-                    <option value={"3º MÉDIO"}>{"3º MÉDIO"}</option>
-                    <option value={"9º FUNDAMENTAL"}>{"9º FUNDAMENTAL"}</option>
-                  </select>
-                </div>
-              </div>
-              <button
+                    <LoadingElement as="option" value={""}>
+                      {"GERAL / TODAS"}
+                    </LoadingElement>
+                    <LoadingElement as="option" value={"1º MÉDIO"}>
+                      {"1º MÉDIO"}
+                    </LoadingElement>
+                    <LoadingElement as="option" value={"2º MÉDIO"}>
+                      {"2º MÉDIO"}
+                    </LoadingElement>
+                    <LoadingElement as="option" value={"3º MÉDIO"}>
+                      {"3º MÉDIO"}
+                    </LoadingElement>
+                    <LoadingElement as="option" value={"9º FUNDAMENTAL"}>
+                      {"9º FUNDAMENTAL"}
+                    </LoadingElement>
+                  </LoadingElement>
+                </LoadingElement>
+              </LoadingElement>
+              <LoadingElement
+                as="button"
                 type={"submit"}
                 className={"btn-secondary-dash"}
                 style={styleFrom(
                   "margin-top: 25px; width: 100%; height: 50px; justify-content: center; font-size: 0.8rem;",
                 )}
               >
-                <i className={"fas fa-save"}></i>
+                <LoadingElement
+                  as="i"
+                  className={"fas fa-save"}
+                ></LoadingElement>
                 {" SALVAR EVENTO\n            "}
-              </button>
-            </form>
-          </div>
-        </div>
-        <div id={"feriadoModal"} className={"modal-overlay"}>
-          <div
+              </LoadingElement>
+            </LoadingElement>
+          </LoadingElement>
+        </LoadingElement>
+        <LoadingElement
+          as="div"
+          id={"feriadoModal"}
+          className={"modal-overlay"}
+        >
+          <LoadingElement
+            as="div"
             className={"modal-content"}
             style={styleFrom("max-width: 400px; padding: 30px;")}
           >
-            <button
+            <LoadingElement
+              as="button"
               className={"close-btn"}
               onClick={(event) => {
                 handlers.fecharModal("feriadoModal");
               }}
             >
-              <i className={"ph-bold ph-x"}></i>
-            </button>
-            <h2
+              <LoadingElement
+                as="i"
+                className={"ph-bold ph-x"}
+              ></LoadingElement>
+            </LoadingElement>
+            <LoadingElement
+              as="h2"
               className={"section-title-2"}
               style={styleFrom("font-size: 1.1rem; margin-bottom: 20px;")}
             >
               {"\n            NOVO FERIADO\n        "}
-            </h2>
-            <form
+            </LoadingElement>
+            <LoadingElement
+              as="form"
               action={"/dashboard/calendario/feriado"}
               method={"POST"}
               style={styleFrom(
                 "margin-top: 5px; border-top: 1px solid var(--border-color); padding-top: 20px;",
               )}
             >
-              <input type={"hidden"} name={"_csrf"} value={csrfToken} />
-              <div className={"filter-options"}>
-                <label style={styleFrom("margin-top: 0;")}>
+              <LoadingElement
+                as="input"
+                type={"hidden"}
+                name={"_csrf"}
+                value={csrfToken}
+              />
+              <LoadingElement as="div" className={"filter-options"}>
+                <LoadingElement as="label" style={styleFrom("margin-top: 0;")}>
                   {"IDENTIFICAÇÃO"}
-                </label>
-                <input
+                </LoadingElement>
+                <LoadingElement
+                  as="input"
                   type={"text"}
                   name={"nome"}
                   className={"filter-input"}
@@ -700,20 +917,28 @@ export default function Dashboard_dashboardCalendario({ data, handlers }) {
                   style={styleFrom("padding: 12px;")}
                   required={true}
                 />
-                <label style={styleFrom("margin-top: 15px;")}>{"DATA"}</label>
-                <input
+                <LoadingElement
+                  as="label"
+                  style={styleFrom("margin-top: 15px;")}
+                >
+                  {"DATA"}
+                </LoadingElement>
+                <LoadingElement
+                  as="input"
                   type={"date"}
                   name={"data"}
                   className={"filter-input"}
                   style={styleFrom("padding: 12px;")}
                   required={true}
                 />
-                <label
+                <LoadingElement
+                  as="label"
                   style={styleFrom(
                     "display:flex; align-items:center; gap:10px; cursor:pointer; background: var(--bg-secondary); padding: 12px; border-radius: 12px; margin-top: 20px;",
                   )}
                 >
-                  <input
+                  <LoadingElement
+                    as="input"
                     type={"checkbox"}
                     name={"recorrente"}
                     defaultValue={"true"}
@@ -721,28 +946,33 @@ export default function Dashboard_dashboardCalendario({ data, handlers }) {
                       "width:16px; height:16px; accent-color: var(--primary-red);",
                     )}
                   />
-                  <span
+                  <LoadingElement
+                    as="span"
                     style={styleFrom(
                       "color:var(--text-white); font-size: 0.75rem;",
                     )}
                   >
                     {"REPETIR TODOS OS ANOS"}
-                  </span>
-                </label>
-              </div>
-              <button
+                  </LoadingElement>
+                </LoadingElement>
+              </LoadingElement>
+              <LoadingElement
+                as="button"
                 type={"submit"}
                 className={"btn-secondary-dash"}
                 style={styleFrom(
                   "margin-top: 25px; width: 100%; height: 50px; justify-content: center; font-size: 0.8rem;",
                 )}
               >
-                <i className={"fas fa-calendar-check"}></i>
+                <LoadingElement
+                  as="i"
+                  className={"fas fa-calendar-check"}
+                ></LoadingElement>
                 {" REGISTRAR FERIADO\n            "}
-              </button>
-            </form>
-          </div>
-        </div>
+              </LoadingElement>
+            </LoadingElement>
+          </LoadingElement>
+        </LoadingElement>
         <PageDataScript type="application/json" id="dashboard-calendario-data">
           {String(
             safeJson({
@@ -772,36 +1002,42 @@ export function PageHeader({ data, handlers }) {
     csrfToken = null,
   } = data;
   return (
-    <header className={"dash-header"}>
-      <div className={"header-left"}>
-        <h1>{"\n                    Calendário Escolar\n                "}</h1>
-      </div>
-      <div className={"header-user"}>
-        <div className={"user-profile-group"}>
-          <div className={"user-details"}>
-            <span className={"user-name"}>
-              <strong>
+    <LoadingElement as="header" className={"dash-header"}>
+      <LoadingElement as="div" className={"header-left"}>
+        <LoadingElement as="h1">
+          {"\n                    Calendário Escolar\n                "}
+        </LoadingElement>
+      </LoadingElement>
+      <LoadingElement as="div" className={"header-user"}>
+        <LoadingElement as="div" className={"user-profile-group"}>
+          <LoadingElement as="div" className={"user-details"}>
+            <LoadingElement as="span" className={"user-name"}>
+              <LoadingElement as="strong">
                 <LoadingValue
                   slot="dashboard/dashboardCalendario:11"
                   width="12ch"
                   known={true}
                   value={user}
                 />
-              </strong>
-            </span>
-            <span className={"user-role"} style={styleFrom("color: #888888;")}>
-              <strong>
+              </LoadingElement>
+            </LoadingElement>
+            <LoadingElement
+              as="span"
+              className={"user-role"}
+              style={styleFrom("color: #888888;")}
+            >
+              <LoadingElement as="strong">
                 <LoadingValue
                   slot="dashboard/dashboardCalendario:12"
                   width="12ch"
                   known={true}
                   value={userCargo}
                 />
-              </strong>
-            </span>
-          </div>
-        </div>
-        <div className={"header-actions"}>
+              </LoadingElement>
+            </LoadingElement>
+          </LoadingElement>
+        </LoadingElement>
+        <LoadingElement as="div" className={"header-actions"}>
           <Partials_notificacoes
             data={{
               ...data,
@@ -811,8 +1047,8 @@ export function PageHeader({ data, handlers }) {
             }}
             handlers={handlers}
           />
-        </div>
-      </div>
-    </header>
+        </LoadingElement>
+      </LoadingElement>
+    </LoadingElement>
   );
 }

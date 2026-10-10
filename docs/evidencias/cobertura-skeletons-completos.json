@@ -1,0 +1,252 @@
+[
+  {
+    "view": "error",
+    "loadedMarkupUnchanged": true,
+    "textPlaceholders": 8,
+    "dataPlaceholders": 1,
+    "controlPlaceholders": 1,
+    "iconPlaceholders": 1,
+    "mediaPlaceholders": 0,
+    "unmaskedTexts": []
+  },
+  {
+    "view": "esqueciSenha",
+    "loadedMarkupUnchanged": true,
+    "textPlaceholders": 6,
+    "dataPlaceholders": 0,
+    "controlPlaceholders": 4,
+    "iconPlaceholders": 2,
+    "mediaPlaceholders": 1,
+    "unmaskedTexts": []
+  },
+  {
+    "view": "index",
+    "loadedMarkupUnchanged": true,
+    "textPlaceholders": 30,
+    "dataPlaceholders": 0,
+    "controlPlaceholders": 4,
+    "iconPlaceholders": 6,
+    "mediaPlaceholders": 3,
+    "unmaskedTexts": []
+  },
+  {
+    "view": "login",
+    "loadedMarkupUnchanged": true,
+    "textPlaceholders": 8,
+    "dataPlaceholders": 0,
+    "controlPlaceholders": 11,
+    "iconPlaceholders": 2,
+    "mediaPlaceholders": 1,
+    "unmaskedTexts": []
+  },
+  {
+    "view": "manuais",
+    "loadedMarkupUnchanged": true,
+    "textPlaceholders": 81,
+    "dataPlaceholders": 1,
+    "controlPlaceholders": 29,
+    "iconPlaceholders": 34,
+    "mediaPlaceholders": 2,
+    "unmaskedTexts": []
+  },
+  {
+    "view": "manualDoAluno",
+    "loadedMarkupUnchanged": true,
+    "textPlaceholders": 64,
+    "dataPlaceholders": 1,
+    "controlPlaceholders": 21,
+    "iconPlaceholders": 20,
+    "mediaPlaceholders": 3,
+    "unmaskedTexts": []
+  },
+  {
+    "view": "manualDoProfessor",
+    "loadedMarkupUnchanged": true,
+    "textPlaceholders": 78,
+    "dataPlaceholders": 1,
+    "controlPlaceholders": 30,
+    "iconPlaceholders": 35,
+    "mediaPlaceholders": 3,
+    "unmaskedTexts": []
+  },
+  {
+    "view": "termos",
+    "loadedMarkupUnchanged": true,
+    "textPlaceholders": 14,
+    "dataPlaceholders": 0,
+    "controlPlaceholders": 1,
+    "iconPlaceholders": 1,
+    "mediaPlaceholders": 1,
+    "unmaskedTexts": []
+  },
+  {
+    "view": "aluno/alunoCompetencias",
+    "loadedMarkupUnchanged": true,
+    "textPlaceholders": 72,
+    "dataPlaceholders": 25,
+    "controlPlaceholders": 27,
+    "iconPlaceholders": 32,
+    "mediaPlaceholders": 3,
+    "unmaskedTexts": []
+  },
+  {
+    "view": "aluno/alunoDashboard",
+    "loadedMarkupUnchanged": true,
+    "textPlaceholders": 88,
+    "dataPlaceholders": 25,
+    "controlPlaceholders": 22,
+    "iconPlaceholders": 24,
+    "mediaPlaceholders": 3,
+    "unmaskedTexts": []
+  },
+  {
+    "view": "aluno/alunoEvolucao",
+    "loadedMarkupUnchanged": true,
+    "textPlaceholders": 93,
+    "dataPlaceholders": 37,
+    "controlPlaceholders": 25,
+    "iconPlaceholders": 25,
+    "mediaPlaceholders": 3,
+    "unmaskedTexts": []
+  },
+  {
+    "view": "aluno/alunoIA",
+    "loadedMarkupUnchanged": true,
+    "textPlaceholders": 65,
+    "dataPlaceholders": 0,
+    "controlPlaceholders": 27,
+    "iconPlaceholders": 20,
+    "mediaPlaceholders": 2,
+    "unmaskedTexts": []
+  },
+  {
+    "view": "aluno/alunoPerfil",
+    "loadedMarkupUnchanged": true,
+    "textPlaceholders": 79,
+    "dataPlaceholders": 12,
+    "controlPlaceholders": 26,
+    "iconPlaceholders": 23,
+    "mediaPlaceholders": 3,
+    "unmaskedTexts": []
+  },
+  {
+    "view": "aluno/alunoTarefas",
+    "loadedMarkupUnchanged": true,
+    "textPlaceholders": 77,
+    "dataPlaceholders": 29,
+    "controlPlaceholders": 28,
+    "iconPlaceholders": 33,
+    "mediaPlaceholders": 3,
+    "unmaskedTexts": []
+  },
+  {
+    "view": "dashboard/dashboardCalendario",
+    "loadedMarkupUnchanged": true,
+    "textPlaceholders": 107,
+    "dataPlaceholders": 46,
+    "controlPlaceholders": 53,
+    "iconPlaceholders": 45,
+    "mediaPlaceholders": 2,
+    "unmaskedTexts": []
+  },
+  {
+    "view": "dashboard/dashboardConfig",
+    "loadedMarkupUnchanged": true,
+    "textPlaceholders": 99,
+    "dataPlaceholders": 11,
+    "controlPlaceholders": 37,
+    "iconPlaceholders": 40,
+    "mediaPlaceholders": 2,
+    "unmaskedTexts": []
+  },
+  {
+    "view": "dashboard/dashboardEdit",
+    "loadedMarkupUnchanged": true,
+    "textPlaceholders": 169,
+    "dataPlaceholders": 97,
+    "controlPlaceholders": 84,
+    "iconPlaceholders": 77,
+    "mediaPlaceholders": 2,
+    "unmaskedTexts": []
+  },
+  {
+    "view": "dashboard/dashboardEquipe",
+    "loadedMarkupUnchanged": true,
+    "textPlaceholders": 12,
+    "dataPlaceholders": 0,
+    "controlPlaceholders": 2,
+    "iconPlaceholders": 5,
+    "mediaPlaceholders": 1,
+    "unmaskedTexts": []
+  },
+  {
+    "view": "dashboard/dashboardGraficos",
+    "loadedMarkupUnchanged": true,
+    "textPlaceholders": 86,
+    "dataPlaceholders": 7,
+    "controlPlaceholders": 31,
+    "iconPlaceholders": 36,
+    "mediaPlaceholders": 2,
+    "unmaskedTexts": []
+  },
+  {
+    "view": "dashboard/dashboardIA",
+    "loadedMarkupUnchanged": true,
+    "textPlaceholders": 79,
+    "dataPlaceholders": 0,
+    "controlPlaceholders": 36,
+    "iconPlaceholders": 35,
+    "mediaPlaceholders": 2,
+    "unmaskedTexts": []
+  },
+  {
+    "view": "dashboard/dashboardMain",
+    "loadedMarkupUnchanged": true,
+    "textPlaceholders": 128,
+    "dataPlaceholders": 71,
+    "controlPlaceholders": 35,
+    "iconPlaceholders": 40,
+    "mediaPlaceholders": 2,
+    "unmaskedTexts": []
+  },
+  {
+    "view": "dashboard/dashboardSolicitacoes",
+    "loadedMarkupUnchanged": true,
+    "textPlaceholders": 89,
+    "dataPlaceholders": 11,
+    "controlPlaceholders": 41,
+    "iconPlaceholders": 51,
+    "mediaPlaceholders": 2,
+    "unmaskedTexts": []
+  },
+  {
+    "view": "dashboard/dashboardTarefas",
+    "loadedMarkupUnchanged": true,
+    "textPlaceholders": 119,
+    "dataPlaceholders": 38,
+    "controlPlaceholders": 67,
+    "iconPlaceholders": 68,
+    "mediaPlaceholders": 2,
+    "unmaskedTexts": []
+  },
+  {
+    "view": "dashboard/dashboardUsuarios",
+    "loadedMarkupUnchanged": true,
+    "textPlaceholders": 96,
+    "dataPlaceholders": 27,
+    "controlPlaceholders": 46,
+    "iconPlaceholders": 51,
+    "mediaPlaceholders": 2,
+    "unmaskedTexts": []
+  },
+  {
+    "view": "API/index",
+    "loadedMarkupUnchanged": true,
+    "textPlaceholders": 109,
+    "dataPlaceholders": 1,
+    "controlPlaceholders": 0,
+    "iconPlaceholders": 7,
+    "mediaPlaceholders": 1,
+    "unmaskedTexts": []
+  }
+]

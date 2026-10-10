@@ -14,27 +14,30 @@ export default function Index({ data, handlers }) {
           handlers={handlers}
         />
         <LoadingElement as="div" className={"main-layout"} root={true}>
-          <div className={"home-content-wrapper"}>
+          <LoadingElement as="div" className={"home-content-wrapper"}>
             <PageHeader key="page-header" data={data} handlers={handlers} />
-            <main>
-              <section
+            <LoadingElement as="main">
+              <LoadingElement
+                as="section"
                 id={"inicio"}
                 className={"welcome-banner"}
                 style={styleFrom(
                   "padding: 100px 60px; border-radius: 30px; margin-bottom: 80px; position: relative;",
                 )}
               >
-                <div className={"banner-text"}>
-                  <h1
+                <LoadingElement as="div" className={"banner-text"}>
+                  <LoadingElement
+                    as="h1"
                     style={styleFrom(
                       "font-size: 4rem; line-height: 1; margin-bottom: 20px;",
                     )}
                   >
                     {"\n                            SISTEMA DE "}
-                    <br />
+                    <LoadingElement as="br" />
                     {" ANÁLISE DE AVANÇOS\n                        "}
-                  </h1>
-                  <p
+                  </LoadingElement>
+                  <LoadingElement
+                    as="p"
                     style={styleFrom(
                       "font-size: 1.2rem; max-width: 600px; opacity: 0.9;",
                     )}
@@ -44,27 +47,37 @@ export default function Index({ data, handlers }) {
                       "frequências e alcance objetivos educacionais com a precisão de ",
                       "dados em tempo real.\n                        ",
                     ].join("")}
-                  </p>
-                </div>
-              </section>
-              <section id={"sobre"} style={styleFrom("margin-bottom: 100px;")}>
-                <h2
+                  </LoadingElement>
+                </LoadingElement>
+              </LoadingElement>
+              <LoadingElement
+                as="section"
+                id={"sobre"}
+                style={styleFrom("margin-bottom: 100px;")}
+              >
+                <LoadingElement
+                  as="h2"
                   className={"section-title-2"}
                   style={styleFrom("margin-bottom: 40px;")}
                 >
                   {"PILARES ESTRATÉGICOS"}
-                </h2>
-                <div className={"dash-grid"}>
-                  <div className={"card-elite"}>
-                    <div className={"card-line"}></div>
-                    <h3
+                </LoadingElement>
+                <LoadingElement as="div" className={"dash-grid"}>
+                  <LoadingElement as="div" className={"card-elite"}>
+                    <LoadingElement
+                      as="div"
+                      className={"card-line"}
+                    ></LoadingElement>
+                    <LoadingElement
+                      as="h3"
                       style={styleFrom(
                         "color: #fff; font-size: 1.2rem; margin-bottom: 15px;",
                       )}
                     >
                       {"SENAI CIC"}
-                    </h3>
-                    <p
+                    </LoadingElement>
+                    <LoadingElement
+                      as="p"
                       style={styleFrom(
                         "color: #888; font-size: 0.95rem; line-height: 1.6;",
                       )}
@@ -72,18 +85,23 @@ export default function Index({ data, handlers }) {
                       {
                         "Referência em formação profissional, o SENAI CIC atua como hub tecnológico preparando talentos para a Indústria 4.0."
                       }
-                    </p>
-                  </div>
-                  <div className={"card-elite"}>
-                    <div className={"card-line"}></div>
-                    <h3
+                    </LoadingElement>
+                  </LoadingElement>
+                  <LoadingElement as="div" className={"card-elite"}>
+                    <LoadingElement
+                      as="div"
+                      className={"card-line"}
+                    ></LoadingElement>
+                    <LoadingElement
+                      as="h3"
                       style={styleFrom(
                         "color: #fff; font-size: 1.2rem; margin-bottom: 15px;",
                       )}
                     >
                       {"ANÁLISE DE DADOS"}
-                    </h3>
-                    <p
+                    </LoadingElement>
+                    <LoadingElement
+                      as="p"
                       style={styleFrom(
                         "color: #888; font-size: 0.95rem; line-height: 1.6;",
                       )}
@@ -91,18 +109,23 @@ export default function Index({ data, handlers }) {
                       {
                         "Transformamos avaliações complexas em indicadores visuais claros para identificar a aptidão de cada estudante."
                       }
-                    </p>
-                  </div>
-                  <div className={"card-elite"}>
-                    <div className={"card-line"}></div>
-                    <h3
+                    </LoadingElement>
+                  </LoadingElement>
+                  <LoadingElement as="div" className={"card-elite"}>
+                    <LoadingElement
+                      as="div"
+                      className={"card-line"}
+                    ></LoadingElement>
+                    <LoadingElement
+                      as="h3"
                       style={styleFrom(
                         "color: #fff; font-size: 1.2rem; margin-bottom: 15px;",
                       )}
                     >
                       {"RESULTADOS"}
-                    </h3>
-                    <p
+                    </LoadingElement>
+                    <LoadingElement
+                      as="p"
                       style={styleFrom(
                         "color: #888; font-size: 0.95rem; line-height: 1.6;",
                       )}
@@ -110,24 +133,29 @@ export default function Index({ data, handlers }) {
                       {
                         "Acompanhe a evolução das turmas e garanta o sucesso acadêmico com decisões baseadas em dados organizados."
                       }
-                    </p>
-                  </div>
-                </div>
-              </section>
-              <section
+                    </LoadingElement>
+                  </LoadingElement>
+                </LoadingElement>
+              </LoadingElement>
+              <LoadingElement
+                as="section"
                 id={"faq"}
                 style={styleFrom("margin-bottom: 120px; max-width: 800px;")}
               >
-                <h2
+                <LoadingElement
+                  as="h2"
                   className={"section-title-2"}
                   style={styleFrom("margin-bottom: 40px;")}
                 >
                   {"DÚVIDAS FREQUENTES"}
-                </h2>
-                <div className={"faq-container"}>
-                  <details>
-                    <summary>{"Como o nível do aluno é calculado?"}</summary>
-                    <p
+                </LoadingElement>
+                <LoadingElement as="div" className={"faq-container"}>
+                  <LoadingElement as="details">
+                    <LoadingElement as="summary">
+                      {"Como o nível do aluno é calculado?"}
+                    </LoadingElement>
+                    <LoadingElement
+                      as="p"
                       style={styleFrom(
                         "color: #666; padding-top: 15px; font-size: 0.9rem;",
                       )}
@@ -135,11 +163,14 @@ export default function Index({ data, handlers }) {
                       {
                         "O sistema cruza a nota (mínima 7.0) com a presença (mínima 75%) para definir o status."
                       }
-                    </p>
-                  </details>
-                  <details>
-                    <summary>{"O sistema é exclusivo para o SENAI?"}</summary>
-                    <p
+                    </LoadingElement>
+                  </LoadingElement>
+                  <LoadingElement as="details">
+                    <LoadingElement as="summary">
+                      {"O sistema é exclusivo para o SENAI?"}
+                    </LoadingElement>
+                    <LoadingElement
+                      as="p"
                       style={styleFrom(
                         "color: #666; padding-top: 15px; font-size: 0.9rem;",
                       )}
@@ -147,17 +178,19 @@ export default function Index({ data, handlers }) {
                       {
                         "Sim, é uma ferramenta personalizada para otimização de fluxos internos do SENAI CIC."
                       }
-                    </p>
-                  </details>
-                </div>
-              </section>
-            </main>
-            <footer className={"dash-footer"}>
-              <div className={"footer-credits"}>
-                <p>{"© 2026 AnalisAI\n            "}</p>
-              </div>
-            </footer>
-          </div>
+                    </LoadingElement>
+                  </LoadingElement>
+                </LoadingElement>
+              </LoadingElement>
+            </LoadingElement>
+            <LoadingElement as="footer" className={"dash-footer"}>
+              <LoadingElement as="div" className={"footer-credits"}>
+                <LoadingElement as="p">
+                  {"© 2026 AnalisAI\n            "}
+                </LoadingElement>
+              </LoadingElement>
+            </LoadingElement>
+          </LoadingElement>
         </LoadingElement>
       </React.Fragment>
     </>
@@ -166,22 +199,25 @@ export default function Index({ data, handlers }) {
 export function PageHeader({ data, handlers }) {
   const {} = data;
   return (
-    <header
+    <LoadingElement
+      as="header"
       className={"dash-header"}
       style={styleFrom(
         "border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 40px;",
       )}
     >
-      <div className={"header-left mobile"}>
-        <img
+      <LoadingElement as="div" className={"header-left mobile"}>
+        <LoadingElement
+          as="img"
           src={"/images/logo3-white.png"}
           alt={"AnalisAI"}
           style={styleFrom("height: 35px;")}
         />
-      </div>
-      <div className={"header-user"}>
-        <div className={"header-actions"}>
-          <a
+      </LoadingElement>
+      <LoadingElement as="div" className={"header-user"}>
+        <LoadingElement as="div" className={"header-actions"}>
+          <LoadingElement
+            as="a"
             href={"/login"}
             className={"btn-secondary-dash"}
             style={styleFrom(" color: #fff;")}
@@ -189,9 +225,9 @@ export function PageHeader({ data, handlers }) {
             {
               "\n                            ACESSAR PAINEL\n                        "
             }
-          </a>
-        </div>
-      </div>
-    </header>
+          </LoadingElement>
+        </LoadingElement>
+      </LoadingElement>
+    </LoadingElement>
   );
 }

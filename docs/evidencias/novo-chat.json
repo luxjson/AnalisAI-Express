@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-10",
+  "cause": "O reset tratava o JSX de boas-vindas como HTML de resposta da IA e removia divs, botões e ícone durante a sanitização.",
+  "fix": "Boas-vindas em componentes JSX compartilhados; sugestões com delegação de eventos; desmontagem e limpeza das mensagens e cartões de histórico antes da substituição.",
+  "rolesTested": ["professor", "aluno"],
+  "welcomeResetsComparedPerRole": 5,
+  "suggestionsTestedPerRole": 3,
+  "historySwitchesTestedPerRole": 2,
+  "cssFilesChanged": 0,
+  "siteTests": {
+    "total": 36,
+    "passed": 36,
+    "failed": 0
+  },
+  "siteBuild": "passed",
+  "originalMarkupPagesIdentical": 25,
+  "originalStaticAssetsIdentical": 88,
+  "aiOutputSanitizationPreserved": true,
+  "realAiProviderCall": false,
+  "browserPixelComparison": false
+}

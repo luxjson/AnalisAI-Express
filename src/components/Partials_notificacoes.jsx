@@ -1,53 +1,75 @@
+import { LoadingElement } from "./loading-layout";
 import React from "react";
 import { styleFrom } from "../services/ui";
 export default function Partials_notificacoes({ data, handlers }) {
   const {} = data;
   return (
     <>
-      <div className={"notificacoes-container"}>
-        <a
+      <LoadingElement as="div" className={"notificacoes-container"}>
+        <LoadingElement
+          as="a"
           className={"header-icon"}
           id={"notificacoesBtn"}
           onClick={(event) => {
             handlers.toggleNotificacoes();
           }}
         >
-          <i id={"sinoIcone"} className={"fas fa-bell"}></i>
-          <span
+          <LoadingElement
+            as="i"
+            id={"sinoIcone"}
+            className={"fas fa-bell"}
+          ></LoadingElement>
+          <LoadingElement
+            as="span"
             id={"notificacoesBadge"}
             className={"notificacoes-badge"}
             style={styleFrom("display: none;")}
           >
             {"0"}
-          </span>
-        </a>
-        <div id={"notificacoesPopup"} className={"notificacoes-popup"}>
-          <div className={"notificacoes-header"}>
-            <h3>{"NOTIFICAÇÕES"}</h3>
-            <button
+          </LoadingElement>
+        </LoadingElement>
+        <LoadingElement
+          as="div"
+          id={"notificacoesPopup"}
+          className={"notificacoes-popup"}
+        >
+          <LoadingElement as="div" className={"notificacoes-header"}>
+            <LoadingElement as="h3">{"NOTIFICAÇÕES"}</LoadingElement>
+            <LoadingElement
+              as="button"
               onClick={(event) => {
                 handlers.marcarTodasLidas();
               }}
               className={"notificacoes-limpar"}
               title={"Marcar todas como lidas"}
             >
-              <i className={"fas fa-check-double"}></i>
-            </button>
-          </div>
-          <div id={"notificacoesLista"} className={"notificacoes-lista"}>
-            <div className={"notificacoes-loading"}>
-              <i className={"fas fa-circle-notch fa-spin"}></i>
+              <LoadingElement
+                as="i"
+                className={"fas fa-check-double"}
+              ></LoadingElement>
+            </LoadingElement>
+          </LoadingElement>
+          <LoadingElement
+            as="div"
+            id={"notificacoesLista"}
+            className={"notificacoes-lista"}
+          >
+            <LoadingElement as="div" className={"notificacoes-loading"}>
+              <LoadingElement
+                as="i"
+                className={"fas fa-circle-notch fa-spin"}
+              ></LoadingElement>
               {" Carregando...\r\n            "}
-            </div>
-          </div>
-          <div className={"notificacoes-footer"}>
-            <a href={"#"} id={"notificacoesConfigLink"}>
-              <i className={"fas fa-cog"}></i>
+            </LoadingElement>
+          </LoadingElement>
+          <LoadingElement as="div" className={"notificacoes-footer"}>
+            <LoadingElement as="a" href={"#"} id={"notificacoesConfigLink"}>
+              <LoadingElement as="i" className={"fas fa-cog"}></LoadingElement>
               {" Configurações\r\n            "}
-            </a>
-          </div>
-        </div>
-      </div>
+            </LoadingElement>
+          </LoadingElement>
+        </LoadingElement>
+      </LoadingElement>
     </>
   );
 }

@@ -1,0 +1,69 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> analisai-site@2.0.0 test
+> node --test tests/*.test.mjs
+
+✔ Vercel resolves the only frontend variable before deployment routing (1.87964ms)
+✔ Deployment rejects malformed origins, credentials and plaintext transport (0.39047ms)
+✔ native JSX renders error (130.6361ms)
+✔ native JSX renders esqueciSenha (94.005799ms)
+✔ native JSX renders index (64.093476ms)
+✔ native JSX renders login (52.444247ms)
+✔ native JSX renders manuais (145.964918ms)
+✔ native JSX renders manualDoAluno (43.381445ms)
+✔ native JSX renders manualDoProfessor (58.704308ms)
+✔ native JSX renders termos (18.697195ms)
+✔ native JSX renders aluno/alunoCompetencias (120.101096ms)
+✔ native JSX renders aluno/alunoDashboard (58.961502ms)
+✔ native JSX renders aluno/alunoEvolucao (53.620735ms)
+✔ native JSX renders aluno/alunoIA (35.658324ms)
+✔ native JSX renders aluno/alunoPerfil (35.32867ms)
+✔ native JSX renders aluno/alunoTarefas (64.886342ms)
+✔ native JSX renders dashboard/dashboardCalendario (93.883458ms)
+✔ native JSX renders dashboard/dashboardConfig (53.427842ms)
+✔ native JSX renders dashboard/dashboardEdit (135.811569ms)
+✔ native JSX renders dashboard/dashboardEquipe (12.777813ms)
+✔ native JSX renders dashboard/dashboardGraficos (31.592646ms)
+✔ native JSX renders dashboard/dashboardIA (27.174172ms)
+✔ native JSX renders dashboard/dashboardMain (45.759703ms)
+✔ native JSX renders dashboard/dashboardSolicitacoes (40.582067ms)
+✔ native JSX renders dashboard/dashboardTarefas (82.667699ms)
+✔ native JSX renders dashboard/dashboardUsuarios (41.61001ms)
+✔ native JSX renders API/index (41.887418ms)
+✔ student upload validation belongs to the delivery form and cannot block logout (32.57426ms)
+✔ internal links refuse browser-normalized external destinations (0.581538ms)
+✔ API client refuses malformed and scalar success responses (8.835648ms)
+✔ aborted API response cannot replace the current CSRF token (3.188687ms)
+✔ React escapes stored XSS in student names (45.72055ms)
+✔ DOMPurify removes executable payloads from rich AI text and math (25.65696ms)
+✔ login tabs work with native JSX events (29.525153ms)
+✔ JSON embedded in native JSX cannot terminate a data script (47.823136ms)
+✔ all pages retain the original stylesheet order, including repeated links (37.712782ms)
+✔ the React container contributes no layout box to original flex bodies (40.364608ms)
+✔ local icon styles and fonts match the original Phosphor version (7.767735ms)
+✔ password reset button sends the selected student ID after switching students (100.212383ms)
+✔ new chat preserves welcome styles, icons and working suggestions: Dashboard_dashboardIA (102.08276ms)
+✔ new chat preserves welcome styles, icons and working suggestions: Aluno_alunoIA (68.065085ms)
+✔ navigation preserves modifier clicks, GET filters and browser history (11.358119ms)
+✔ interaction cleanup removes events, timers, handlers, charts and late responses (21.584377ms)
+✔ interaction failures reach the route error UI while stale errors stay silent (11.978085ms)
+✔ session guards preserve student, professor and administrator access rules (2.76056ms)
+✔ all 25 individual skeletons mask static and dynamic content while preserving native containers (1021.669961ms)
+✔ calendar skeleton keeps the selected month grid, controls and event-list layout (31.110157ms)
+✔ loading charts fill the native fixed frames and disappear on the loaded page (32.379736ms)
+✔ SPA keeps the sidebar, aborts stale page loads and reopens pages without duplicate events (402.353813ms)
+✔ both sidebar skeletons mask navigation, branding, known names and mobile controls (48.191708ms)
+✔ all authenticated routes survive repeated SPA visits, role changes and configuration deep links (1781.043055ms)
+ℹ tests 51
+ℹ suites 0
+ℹ pass 51
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6044.822947
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

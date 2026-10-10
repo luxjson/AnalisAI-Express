@@ -14,64 +14,96 @@ export default function Aluno_alunoIA({ data, handlers }) {
           handlers={handlers}
         />
         <LoadingElement as="div" className={"main-layout"} root={true}>
-          <main className={"ai-page-content"}>
-            <section className={"ai-chat"} data-endpoint={"/api/ia/aluno/chat"}>
-              <div className={"ai-chat-header"}>
-                <div className={"ai-chat-actions"}>
-                  <button
+          <LoadingElement as="main" className={"ai-page-content"}>
+            <LoadingElement
+              as="section"
+              className={"ai-chat"}
+              data-endpoint={"/api/ia/aluno/chat"}
+            >
+              <LoadingElement as="div" className={"ai-chat-header"}>
+                <LoadingElement as="div" className={"ai-chat-actions"}>
+                  <LoadingElement
+                    as="button"
                     type={"button"}
                     className={"ai-chat-action"}
                     data-new-chat={""}
                     title={"Novo chat"}
                   >
-                    <i className={"ph-bold ph-plus"}></i>
-                    <span>{"Novo chat"}</span>
-                  </button>
-                  <button
+                    <LoadingElement
+                      as="i"
+                      className={"ph-bold ph-plus"}
+                    ></LoadingElement>
+                    <LoadingElement as="span">{"Novo chat"}</LoadingElement>
+                  </LoadingElement>
+                  <LoadingElement
+                    as="button"
                     type={"button"}
                     className={"ai-chat-action"}
                     data-history={""}
                     title={"Mostrar histórico"}
                   >
-                    <i className={"ph-bold ph-clock-counter-clockwise"}></i>
-                    <span>{"Histórico"}</span>
-                  </button>
-                  <div className={"ai-history"} aria-hidden={"true"}>
-                    <div
+                    <LoadingElement
+                      as="i"
+                      className={"ph-bold ph-clock-counter-clockwise"}
+                    ></LoadingElement>
+                    <LoadingElement as="span">{"Histórico"}</LoadingElement>
+                  </LoadingElement>
+                  <LoadingElement
+                    as="div"
+                    className={"ai-history"}
+                    aria-hidden={"true"}
+                  >
+                    <LoadingElement
+                      as="div"
                       className={"ai-history-backdrop"}
                       data-close-history={""}
-                    ></div>
-                    <aside className={"ai-history-drawer"}>
-                      <div className={"ai-history-heading"}>
-                        <button
+                    ></LoadingElement>
+                    <LoadingElement as="aside" className={"ai-history-drawer"}>
+                      <LoadingElement as="div" className={"ai-history-heading"}>
+                        <LoadingElement
+                          as="button"
                           type={"button"}
                           data-close-history={""}
                           title={"Fechar"}
                         >
-                          <i className={"ph-bold ph-x"}></i>
-                        </button>
-                      </div>
-                      <div className={"ai-history-list"}></div>
-                    </aside>
-                  </div>
-                </div>
-              </div>
-              <div className={"ai-messages"} aria-live={"polite"}>
+                          <LoadingElement
+                            as="i"
+                            className={"ph-bold ph-x"}
+                          ></LoadingElement>
+                        </LoadingElement>
+                      </LoadingElement>
+                      <LoadingElement
+                        as="div"
+                        className={"ai-history-list"}
+                      ></LoadingElement>
+                    </LoadingElement>
+                  </LoadingElement>
+                </LoadingElement>
+              </LoadingElement>
+              <LoadingElement
+                as="div"
+                className={"ai-messages"}
+                aria-live={"polite"}
+              >
                 <StudentChatWelcome />
-              </div>
-              <form className={"ai-form"}>
-                <textarea
+              </LoadingElement>
+              <LoadingElement as="form" className={"ai-form"}>
+                <LoadingElement
+                  as="textarea"
                   maxLength={"4000"}
                   placeholder={"Pergunte ao Agente..."}
                   required={true}
                   defaultValue={""}
-                ></textarea>
-                <button type={"submit"} title={"Enviar"}>
-                  <i className={"ph-bold ph-paper-plane-right"}></i>
-                </button>
-              </form>
-            </section>
-          </main>
+                ></LoadingElement>
+                <LoadingElement as="button" type={"submit"} title={"Enviar"}>
+                  <LoadingElement
+                    as="i"
+                    className={"ph-bold ph-paper-plane-right"}
+                  ></LoadingElement>
+                </LoadingElement>
+              </LoadingElement>
+            </LoadingElement>
+          </LoadingElement>
         </LoadingElement>
       </React.Fragment>
     </>

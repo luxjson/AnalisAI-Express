@@ -1,0 +1,236 @@
+[
+  {
+    "page": "login",
+    "action": "switchTab",
+    "status": "identical",
+    "originalElements": 33,
+    "currentElements": 33,
+    "differenceCount": 0,
+    "differences": []
+  },
+  {
+    "page": "login",
+    "action": "switchTab",
+    "status": "identical",
+    "originalElements": 33,
+    "currentElements": 33,
+    "differenceCount": 0,
+    "differences": []
+  },
+  {
+    "page": "aluno/alunoPerfil",
+    "action": "mudarAba",
+    "status": "identical",
+    "originalElements": 235,
+    "currentElements": 235,
+    "differenceCount": 0,
+    "differences": []
+  },
+  {
+    "page": "dashboard/dashboardCalendario",
+    "action": "abrirModalEvento",
+    "status": "identical",
+    "originalElements": 440,
+    "currentElements": 440,
+    "differenceCount": 0,
+    "differences": []
+  },
+  {
+    "page": "dashboard/dashboardCalendario",
+    "action": "abrirModalFeriado",
+    "status": "identical",
+    "originalElements": 440,
+    "currentElements": 440,
+    "differenceCount": 0,
+    "differences": []
+  },
+  {
+    "page": "dashboard/dashboardCalendario",
+    "action": "showEventTab",
+    "status": "identical",
+    "originalElements": 440,
+    "currentElements": 440,
+    "differenceCount": 0,
+    "differences": []
+  },
+  {
+    "page": "dashboard/dashboardConfig",
+    "action": "mudarAba",
+    "status": "identical",
+    "originalElements": 309,
+    "currentElements": 309,
+    "differenceCount": 0,
+    "differences": []
+  },
+  {
+    "page": "dashboard/dashboardConfig",
+    "action": "mudarAba",
+    "status": "identical",
+    "originalElements": 309,
+    "currentElements": 309,
+    "differenceCount": 0,
+    "differences": []
+  },
+  {
+    "page": "dashboard/dashboardEdit",
+    "action": "openEditModal",
+    "status": "identical",
+    "originalElements": 576,
+    "currentElements": 576,
+    "differenceCount": 0,
+    "differences": []
+  },
+  {
+    "page": "dashboard/dashboardEdit",
+    "action": "carregarCompetencias",
+    "status": "identical",
+    "originalElements": 576,
+    "currentElements": 576,
+    "differenceCount": 0,
+    "differences": []
+  },
+  {
+    "page": "dashboard/dashboardEdit",
+    "action": "abrirModalCredenciais",
+    "status": "identical",
+    "originalElements": 594,
+    "currentElements": 594,
+    "differenceCount": 0,
+    "differences": []
+  },
+  {
+    "page": "dashboard/dashboardEdit",
+    "action": "openErrorModal",
+    "status": "identical",
+    "originalElements": 594,
+    "currentElements": 594,
+    "differenceCount": 0,
+    "differences": []
+  },
+  {
+    "page": "dashboard/dashboardEdit",
+    "action": "openImportModal",
+    "status": "identical",
+    "originalElements": 594,
+    "currentElements": 594,
+    "differenceCount": 0,
+    "differences": []
+  },
+  {
+    "page": "dashboard/dashboardEdit",
+    "action": "openPreviewModal",
+    "status": "identical",
+    "originalElements": 594,
+    "currentElements": 594,
+    "differenceCount": 0,
+    "differences": []
+  },
+  {
+    "page": "dashboard/dashboardEdit",
+    "action": "openExportModal",
+    "status": "identical",
+    "originalElements": 594,
+    "currentElements": 594,
+    "differenceCount": 0,
+    "differences": []
+  },
+  {
+    "page": "dashboard/dashboardEdit",
+    "action": "openFilter",
+    "status": "identical",
+    "originalElements": 594,
+    "currentElements": 594,
+    "differenceCount": 0,
+    "differences": []
+  },
+  {
+    "page": "dashboard/dashboardEdit",
+    "action": "openAddModal",
+    "status": "identical",
+    "originalElements": 594,
+    "currentElements": 594,
+    "differenceCount": 0,
+    "differences": []
+  },
+  {
+    "page": "dashboard/dashboardEdit",
+    "action": "openLoadingModal",
+    "status": "identical",
+    "originalElements": 594,
+    "currentElements": 594,
+    "differenceCount": 0,
+    "differences": []
+  },
+  {
+    "page": "dashboard/dashboardEdit",
+    "action": "updateLoadingBar",
+    "status": "identical",
+    "originalElements": 594,
+    "currentElements": 594,
+    "differenceCount": 0,
+    "differences": []
+  },
+  {
+    "page": "dashboard/dashboardEdit",
+    "action": "showEditTab",
+    "status": "identical",
+    "originalElements": 594,
+    "currentElements": 594,
+    "differenceCount": 0,
+    "differences": []
+  },
+  {
+    "page": "dashboard/dashboardTarefas",
+    "action": "verTarefa",
+    "status": "identical",
+    "originalElements": 504,
+    "currentElements": 504,
+    "differenceCount": 0,
+    "differences": []
+  },
+  {
+    "page": "dashboard/dashboardTarefas",
+    "action": "avaliarTarefa",
+    "status": "identical",
+    "originalElements": 598,
+    "currentElements": 598,
+    "differenceCount": 0,
+    "differences": []
+  },
+  {
+    "page": "dashboard/dashboardTarefas",
+    "action": "editarTarefa",
+    "status": "identical",
+    "originalElements": 598,
+    "currentElements": 598,
+    "differenceCount": 0,
+    "differences": []
+  },
+  {
+    "page": "dashboard/dashboardTarefas",
+    "action": "abrirModalNovaTarefa",
+    "status": "identical",
+    "originalElements": 598,
+    "currentElements": 598,
+    "differenceCount": 0,
+    "differences": []
+  },
+  {
+    "page": "dashboard/dashboardTarefas",
+    "action": "showTaskTab",
+    "status": "identical",
+    "originalElements": 598,
+    "currentElements": 598,
+    "differenceCount": 0,
+    "differences": []
+  },
+  {
+    "page": "dashboard/dashboardTarefas",
+    "action": "mostrarAvaliacao",
+    "status": "identical",
+    "originalElements": 598,
+    "currentElements": 598,
+    "differenceCount": 0,
+    "differences": []
+  }
+]

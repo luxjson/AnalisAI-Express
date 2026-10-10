@@ -21,52 +21,83 @@ export default function Dashboard_dashboardSolicitacoes({ data, handlers }) {
         />
         <LoadingElement as="div" className={"main-layout"} root={true}>
           <PageHeader key="page-header" data={data} handlers={handlers} />
-          <main className={"dash-content"}>
+          <LoadingElement as="main" className={"dash-content"}>
             {(() => {
               const nodes = [];
               if (solicitacoes.length === 0) {
                 nodes.push(
-                  <div className={"empty-state"} key={nodes.length}>
-                    <i
+                  <LoadingElement
+                    as="div"
+                    className={"empty-state"}
+                    key={nodes.length}
+                  >
+                    <LoadingElement
+                      as="i"
                       className={"fas fa-inbox"}
                       style={styleFrom("font-size: 3rem; color: #333;")}
-                    ></i>
-                    <h3 style={styleFrom("color: #666; margin-top: 15px;")}>
+                    ></LoadingElement>
+                    <LoadingElement
+                      as="h3"
+                      style={styleFrom("color: #666; margin-top: 15px;")}
+                    >
                       {"Nenhuma solicitação pendente"}
-                    </h3>
-                  </div>,
+                    </LoadingElement>
+                  </LoadingElement>,
                 );
               } else {
                 nodes.push(
-                  <div className={"solicitacoes-grid"} key={nodes.length}>
+                  <LoadingElement
+                    as="div"
+                    className={"solicitacoes-grid"}
+                    key={nodes.length}
+                  >
                     {(() => {
                       const nodes = [];
                       solicitacoes.forEach((s) => {
                         nodes.push(
-                          <div
+                          <LoadingElement
+                            as="div"
                             className={"solicitacao-card"}
                             key={nodes.length}
                           >
-                            <div className={"solicitacao-nome"}>
-                              <i className={"fas fa-user"}></i>
+                            <LoadingElement
+                              as="div"
+                              className={"solicitacao-nome"}
+                            >
+                              <LoadingElement
+                                as="i"
+                                className={"fas fa-user"}
+                              ></LoadingElement>
                               <LoadingValue
                                 slot="dashboard/dashboardSolicitacoes:1"
                                 width="min(18ch, 100%)"
                                 known={false}
                                 value={s.nome}
                               />
-                            </div>
-                            <div className={"solicitacao-email"}>
-                              <i className={"fas fa-envelope"}></i>
+                            </LoadingElement>
+                            <LoadingElement
+                              as="div"
+                              className={"solicitacao-email"}
+                            >
+                              <LoadingElement
+                                as="i"
+                                className={"fas fa-envelope"}
+                              ></LoadingElement>
                               <LoadingValue
                                 slot="dashboard/dashboardSolicitacoes:2"
                                 width="22ch"
                                 known={false}
                                 value={s.email}
                               />
-                            </div>
-                            <div className={"solicitacao-data"}>
-                              <i className={"far fa-clock"}></i>
+                            </LoadingElement>
+                            <LoadingElement
+                              as="div"
+                              className={"solicitacao-data"}
+                            >
+                              <LoadingElement
+                                as="i"
+                                className={"far fa-clock"}
+                              ></LoadingElement>
                               <LoadingValue
                                 slot="dashboard/dashboardSolicitacoes:3"
                                 width="10ch"
@@ -75,66 +106,100 @@ export default function Dashboard_dashboardSolicitacoes({ data, handlers }) {
                                   s.data_solicitacao,
                                 ).toLocaleString("pt-BR")}
                               />
-                            </div>
-                            <div className={"solicitacao-acoes"}>
-                              <button
+                            </LoadingElement>
+                            <LoadingElement
+                              as="div"
+                              className={"solicitacao-acoes"}
+                            >
+                              <LoadingElement
+                                as="button"
                                 className={"btn-secondary-dash"}
                                 onClick={(event) => {
                                   handlers.abrirModalAprovar(s.id, s.nome);
                                 }}
                               >
-                                <i className={"fas fa-check"}></i>
+                                <LoadingElement
+                                  as="i"
+                                  className={"fas fa-check"}
+                                ></LoadingElement>
                                 {" APROVAR\n                                "}
-                              </button>
-                              <button
+                              </LoadingElement>
+                              <LoadingElement
+                                as="button"
                                 className={"btn-secondary-dash"}
                                 onClick={(event) => {
                                   handlers.abrirModalRejeitar(s.id, s.nome);
                                 }}
                               >
-                                <i className={"fas fa-times"}></i>
+                                <LoadingElement
+                                  as="i"
+                                  className={"fas fa-times"}
+                                ></LoadingElement>
                                 {" REJEITAR\n                                "}
-                              </button>
-                            </div>
-                          </div>,
+                              </LoadingElement>
+                            </LoadingElement>
+                          </LoadingElement>,
                         );
                       });
                       return nodes;
                     })()}
-                  </div>,
+                  </LoadingElement>,
                 );
               }
               return nodes;
             })()}
-          </main>
+          </LoadingElement>
         </LoadingElement>
-        <div id={"modalAprovar"} className={"modal-overlay"}>
-          <div className={"modal-content modal-pequeno"}>
-            <button
+        <LoadingElement
+          as="div"
+          id={"modalAprovar"}
+          className={"modal-overlay"}
+        >
+          <LoadingElement as="div" className={"modal-content modal-pequeno"}>
+            <LoadingElement
+              as="button"
               className={"close-btn"}
               onClick={(event) => {
                 handlers.fecharModal("modalAprovar");
               }}
             >
-              <i className={"ph-bold ph-x"}></i>
-            </button>
-            <h2 className={"section-title-2"}>{"APROVAR SOLICITAÇÃO"}</h2>
-            <form action={""} method={"POST"} id={"formAprovar"}>
-              <input type={"hidden"} name={"_csrf"} value={csrfToken} />
-              <div className={"filter-options"}>
-                <p
+              <LoadingElement
+                as="i"
+                className={"ph-bold ph-x"}
+              ></LoadingElement>
+            </LoadingElement>
+            <LoadingElement as="h2" className={"section-title-2"}>
+              {"APROVAR SOLICITAÇÃO"}
+            </LoadingElement>
+            <LoadingElement
+              as="form"
+              action={""}
+              method={"POST"}
+              id={"formAprovar"}
+            >
+              <LoadingElement
+                as="input"
+                type={"hidden"}
+                name={"_csrf"}
+                value={csrfToken}
+              />
+              <LoadingElement as="div" className={"filter-options"}>
+                <LoadingElement
+                  as="p"
                   style={styleFrom("color: #888; margin-bottom: 15px;")}
                   id={"nomeAprovar"}
-                ></p>
-                <label>{"NOVA SENHA"}</label>
-                <input
+                ></LoadingElement>
+                <LoadingElement as="label">{"NOVA SENHA"}</LoadingElement>
+                <LoadingElement
+                  as="input"
                   type={"password"}
                   name={"nova_senha"}
                   className={"filter-input"}
                   required={true}
                   minLength={"12"}
                 />
-                <button
+                <LoadingElement
+                  as="button"
                   type={"submit"}
                   className={"btn-secondary-dash"}
                   style={styleFrom(
@@ -142,38 +207,63 @@ export default function Dashboard_dashboardSolicitacoes({ data, handlers }) {
                   )}
                 >
                   {"REDEFINIR SENHA"}
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-        <div id={"modalRejeitar"} className={"modal-overlay"}>
-          <div className={"modal-content modal-pequeno"}>
-            <button
+                </LoadingElement>
+              </LoadingElement>
+            </LoadingElement>
+          </LoadingElement>
+        </LoadingElement>
+        <LoadingElement
+          as="div"
+          id={"modalRejeitar"}
+          className={"modal-overlay"}
+        >
+          <LoadingElement as="div" className={"modal-content modal-pequeno"}>
+            <LoadingElement
+              as="button"
               className={"close-btn"}
               onClick={(event) => {
                 handlers.fecharModal("modalRejeitar");
               }}
             >
-              <i className={"ph-bold ph-x"}></i>
-            </button>
-            <h2 className={"section-title-2"}>{"REJEITAR SOLICITAÇÃO"}</h2>
-            <form action={""} method={"POST"} id={"formRejeitar"}>
-              <input type={"hidden"} name={"_csrf"} value={csrfToken} />
-              <div className={"filter-options"}>
-                <p
+              <LoadingElement
+                as="i"
+                className={"ph-bold ph-x"}
+              ></LoadingElement>
+            </LoadingElement>
+            <LoadingElement as="h2" className={"section-title-2"}>
+              {"REJEITAR SOLICITAÇÃO"}
+            </LoadingElement>
+            <LoadingElement
+              as="form"
+              action={""}
+              method={"POST"}
+              id={"formRejeitar"}
+            >
+              <LoadingElement
+                as="input"
+                type={"hidden"}
+                name={"_csrf"}
+                value={csrfToken}
+              />
+              <LoadingElement as="div" className={"filter-options"}>
+                <LoadingElement
+                  as="p"
                   style={styleFrom("color: #888; margin-bottom: 15px;")}
                   id={"nomeRejeitar"}
-                ></p>
-                <label>{"MOTIVO (opcional)"}</label>
-                <textarea
+                ></LoadingElement>
+                <LoadingElement as="label">
+                  {"MOTIVO (opcional)"}
+                </LoadingElement>
+                <LoadingElement
+                  as="textarea"
                   name={"motivo"}
                   className={"filter-input"}
                   rows={"3"}
                   placeholder={"Por que está rejeitando?"}
                   defaultValue={""}
-                ></textarea>
-                <button
+                ></LoadingElement>
+                <LoadingElement
+                  as="button"
                   type={"submit"}
                   className={"btn-secondary-dash"}
                   style={styleFrom(
@@ -181,11 +271,11 @@ export default function Dashboard_dashboardSolicitacoes({ data, handlers }) {
                   )}
                 >
                   {"REJEITAR"}
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
+                </LoadingElement>
+              </LoadingElement>
+            </LoadingElement>
+          </LoadingElement>
+        </LoadingElement>
       </React.Fragment>
     </>
   );
@@ -198,38 +288,42 @@ export function PageHeader({ data, handlers }) {
     csrfToken = null,
   } = data;
   return (
-    <header className={"dash-header"}>
-      <div className={"header-left"}>
-        <h1>
+    <LoadingElement as="header" className={"dash-header"}>
+      <LoadingElement as="div" className={"header-left"}>
+        <LoadingElement as="h1">
           {"\n                    Solicitações de Senha\n                "}
-        </h1>
-      </div>
-      <div className={"header-user"}>
-        <div className={"user-profile-group"}>
-          <div className={"user-details"}>
-            <span className={"user-name"}>
-              <strong>
+        </LoadingElement>
+      </LoadingElement>
+      <LoadingElement as="div" className={"header-user"}>
+        <LoadingElement as="div" className={"user-profile-group"}>
+          <LoadingElement as="div" className={"user-details"}>
+            <LoadingElement as="span" className={"user-name"}>
+              <LoadingElement as="strong">
                 <LoadingValue
                   slot="dashboard/dashboardSolicitacoes:4"
                   width="12ch"
                   known={true}
                   value={user}
                 />
-              </strong>
-            </span>
-            <span className={"user-role"} style={styleFrom("color: #888888;")}>
-              <strong>
+              </LoadingElement>
+            </LoadingElement>
+            <LoadingElement
+              as="span"
+              className={"user-role"}
+              style={styleFrom("color: #888888;")}
+            >
+              <LoadingElement as="strong">
                 <LoadingValue
                   slot="dashboard/dashboardSolicitacoes:5"
                   width="12ch"
                   known={true}
                   value={userCargo}
                 />
-              </strong>
-            </span>
-          </div>
-        </div>
-        <div className={"header-actions"}>
+              </LoadingElement>
+            </LoadingElement>
+          </LoadingElement>
+        </LoadingElement>
+        <LoadingElement as="div" className={"header-actions"}>
           <Partials_notificacoes
             data={{
               ...data,
@@ -239,8 +333,8 @@ export function PageHeader({ data, handlers }) {
             }}
             handlers={handlers}
           />
-        </div>
-      </div>
-    </header>
+        </LoadingElement>
+      </LoadingElement>
+    </LoadingElement>
   );
 }
