@@ -157,6 +157,52 @@ body.dash-body {
   text-align: center;
 }
 
+.login-error-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.login-error-actions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background: #191919;
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.login-error-actions .login-error-retry {
+  padding: 10px 16px;
+}
+
+.login-error-actions .login-error-close {
+  width: 40px;
+  padding: 0;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.login-error-actions button:hover {
+  background: #242424;
+  border-color: var(--primary-red);
+}
+
+.login-error-actions button:focus-visible {
+  outline: 2px solid var(--primary-red);
+  outline-offset: 3px;
+}
+
 .error {
   background: rgba(255, 1, 1, 0.1);
   border: 1px solid var(--primary-red);

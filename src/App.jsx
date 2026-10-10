@@ -263,7 +263,13 @@ export default function App() {
         ))}
       <PersistentSidebarContext.Provider value={!!kind}>
         {current?.status === "ready" && Page ? (
-          <Page data={data} handlers={handlers.current} />
+          <Page
+            data={data}
+            handlers={handlers.current}
+            error={error}
+            onRetry={refresh}
+            onDismissError={() => setError("")}
+          />
         ) : (
           <PageSkeleton
             view={view}
@@ -273,12 +279,11 @@ export default function App() {
           />
         )}
       </PersistentSidebarContext.Provider>
-      {error && (
+      {error && view !== "login" && (
         <div
           role="alert"
           className="alert-box error"
           style={{
-            position: "fixed",
             bottom: 20,
             left: 20,
             right: 20,
