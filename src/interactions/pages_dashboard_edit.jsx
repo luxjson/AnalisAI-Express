@@ -479,7 +479,7 @@ export function initialize({ onReady, handlers }) {
                     className={"btn-secondary-dash"}
                     style={styleFrom("width:100%;justify-content:center;")}
                     onClick={(event) => {
-                      gerarNovaSenhaAluno("id");
+                      gerarNovaSenhaAluno(id);
                     }}
                   >
                     {"\n                                "}
