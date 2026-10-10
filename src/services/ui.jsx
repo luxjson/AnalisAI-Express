@@ -44,11 +44,12 @@ export function mount(container, node) {
   }
   flushSync(() => root.render(<>{node}</>));
 }
-export function unmount(container) {
+export function unmount(container, { defer = false } = {}) {
   const root = roots.get(container);
   if (!root) return;
-  flushSync(() => root.unmount());
   roots.delete(container);
+  if (defer) queueMicrotask(() => root.unmount());
+  else flushSync(() => root.unmount());
 }
 // Only formatted AI text uses an HTML sink. User names, modals, lists and task answers are JSX nodes.
 export function richMarkup(value, alreadyHtml = false) {

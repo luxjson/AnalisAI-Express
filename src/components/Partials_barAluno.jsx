@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { PersistentSidebarContext } from "./layout-context";
 import { styleFrom, safeJson } from "../services/ui";
 export default function Partials_barAluno({ data, handlers }) {
+  const persistent = useContext(PersistentSidebarContext);
+  if (persistent) return null;
   const {
     csrfToken = null,
     aluno = {

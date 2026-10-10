@@ -1,30 +1,37 @@
+import { navigate, refresh } from "../services/navigation";
+import { createInteractionScope } from "../services/lifecycle";
 import React from "react";
 import { Chart } from "chart.js/auto";
-import { apiFetch as fetch } from "../services/api";
-import { styleFrom, escapeHtml, mount, richMarkup } from "../services/ui";
-export function initialize({ onReady, handlers }) {
+import { apiFetch } from "../services/api";
+import { styleFrom, escapeHtml, mount as mountContent, richMarkup } from "../services/ui";
+export function initialize({
+  onReady,
+  handlers,
+  scope
+}) {
+  const lifecycle = scope || createInteractionScope();
+  const fetch = lifecycle.fetch(apiFetch);
+  const mount = lifecycle.mount(mountContent);
   function getPageData(id) {
     const el = document.getElementById(id);
     if (!el) return null;
     try {
       return JSON.parse(el.textContent || "null");
     } catch (error) {
+      if (!lifecycle.active) return;
       console.error("Falha ao ler dados da página.");
       return null;
     }
   }
   function showEventTab(tabName) {
-    document
-      .querySelectorAll("#eventoModal .tab-content")
-      .forEach((content) => {
-        content.style.display = "none";
-        content.classList.remove("active");
-      });
-    document.querySelectorAll("#eventoModal .tab-btn").forEach((btn) => {
+    document.querySelectorAll("#eventoModal .tab-content").forEach(content => {
+      content.style.display = "none";
+      content.classList.remove("active");
+    });
+    document.querySelectorAll("#eventoModal .tab-btn").forEach(btn => {
       btn.classList.remove("active");
     });
-    const targetId =
-      "event" + tabName.charAt(0).toUpperCase() + tabName.slice(1) + "Tab";
+    const targetId = "event" + tabName.charAt(0).toUpperCase() + tabName.slice(1) + "Tab";
     const activeContent = document.getElementById(targetId);
     if (activeContent) {
       activeContent.style.display = "block";
@@ -45,11 +52,11 @@ export function initialize({ onReady, handlers }) {
     }
     document.getElementById("mesInput").value = mesAtual;
     document.getElementById("anoInput").value = anoAtual;
-    document.getElementById("filtroForm").submit();
+    document.getElementById("filtroForm").requestSubmit();
   }
   function filtrarTurma(turma) {
     const form = document.getElementById("filtroForm");
-    form.turma.value = turma;
+    form.elements.namedItem("turma").value = turma;
     form.requestSubmit();
   }
   function abrirModalEvento() {
@@ -67,18 +74,18 @@ export function initialize({ onReady, handlers }) {
       const response = await fetch(`/dashboard/calendario/evento/${id}`, {
         method: "DELETE",
         headers: {
-          "X-CSRF-Token":
-            document.querySelector('meta[name="csrf-token"]')?.content || "",
-        },
+          "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')?.content || ""
+        }
       });
       if (response.ok) {
-        location.reload();
+        refresh();
       }
     } catch (err) {
+      if (!lifecycle.active) return;
       console.error(err);
     }
   }
-  window.addEventListener("click", function (event) {
+  lifecycle.listen(window, "click", function (event) {
     if (event.target.classList.contains("modal-overlay")) {
       event.target.style.display = "none";
     }
@@ -95,16 +102,16 @@ export function initialize({ onReady, handlers }) {
       const response = await fetch(url, {
         method: "DELETE",
         headers: {
-          "X-CSRF-Token":
-            document.querySelector('meta[name="csrf-token"]')?.content || "",
-        },
+          "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')?.content || ""
+        }
       });
-      if (response.ok) location.reload();
+      if (response.ok) refresh();
     } catch (err) {
+      if (!lifecycle.active) return;
       console.error(err);
     }
   }
-  Object.assign(handlers, {
+  lifecycle.bindHandlers(handlers, {
     getPageData,
     showEventTab,
     mudarMes,
@@ -113,6 +120,7 @@ export function initialize({ onReady, handlers }) {
     abrirModalFeriado,
     fecharModal,
     removerEvento,
-    removerItem,
+    removerItem
   });
+  return lifecycle;
 }

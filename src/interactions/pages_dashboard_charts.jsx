@@ -1,14 +1,24 @@
+import { navigate, refresh } from "../services/navigation";
+import { createInteractionScope } from "../services/lifecycle";
 import React from "react";
 import { Chart } from "chart.js/auto";
-import { apiFetch as fetch } from "../services/api";
-import { styleFrom, escapeHtml, mount, richMarkup } from "../services/ui";
-export function initialize({ onReady, handlers }) {
+import { apiFetch } from "../services/api";
+import { styleFrom, escapeHtml, mount as mountContent, richMarkup } from "../services/ui";
+export function initialize({
+  onReady,
+  handlers,
+  scope
+}) {
+  const lifecycle = scope || createInteractionScope();
+  const fetch = lifecycle.fetch(apiFetch);
+  const mount = lifecycle.mount(mountContent);
   function getPageData(id) {
     const el = document.getElementById(id);
     if (!el) return null;
     try {
       return JSON.parse(el.textContent || "null");
     } catch (error) {
+      if (!lifecycle.active) return;
       console.error("Falha ao ler dados da página.");
       return null;
     }
@@ -22,9 +32,9 @@ export function initialize({ onReady, handlers }) {
         maintainAspectRatio: false,
         plugins: {
           legend: {
-            display: false,
-          },
-        },
+            display: false
+          }
+        }
       };
       const barOptions = {
         ...commonOptions,
@@ -33,120 +43,108 @@ export function initialize({ onReady, handlers }) {
             beginAtZero: true,
             max: 10,
             grid: {
-              color: "rgba(255,255,255,0.05)",
+              color: "rgba(255,255,255,0.05)"
             },
             ticks: {
               color: "#888",
-              stepSize: 2,
-            },
+              stepSize: 2
+            }
           },
           x: {
             grid: {
-              display: false,
+              display: false
             },
             ticks: {
-              color: "#888",
-            },
-          },
-        },
+              color: "#888"
+            }
+          }
+        }
       };
-      new Chart(document.getElementById("chartAptos"), {
+      lifecycle.chart(Chart, document.getElementById("chartAptos"), {
         type: "doughnut",
         data: {
-          datasets: [
-            {
-              data: [stats.apto, stats.total - stats.apto],
-              backgroundColor: ["#217346", "#151515"],
-              borderWidth: 0,
-              cutout: "75%",
-              borderRadius: 6,
-            },
-          ],
+          datasets: [{
+            data: [stats.apto, stats.total - stats.apto],
+            backgroundColor: ["#217346", "#151515"],
+            borderWidth: 0,
+            cutout: "75%",
+            borderRadius: 6
+          }]
         },
-        options: commonOptions,
+        options: commonOptions
       });
-      new Chart(document.getElementById("chartInaptos"), {
+      lifecycle.chart(Chart, document.getElementById("chartInaptos"), {
         type: "doughnut",
         data: {
-          datasets: [
-            {
-              data: [stats.inapto, stats.total - stats.inapto],
-              backgroundColor: ["#ff0101", "#151515"],
-              borderWidth: 0,
-              cutout: "75%",
-              borderRadius: 6,
-            },
-          ],
+          datasets: [{
+            data: [stats.inapto, stats.total - stats.inapto],
+            backgroundColor: ["#ff0101", "#151515"],
+            borderWidth: 0,
+            cutout: "75%",
+            borderRadius: 6
+          }]
         },
-        options: commonOptions,
+        options: commonOptions
       });
-      new Chart(document.getElementById("chartDesenvolvimento"), {
+      lifecycle.chart(Chart, document.getElementById("chartDesenvolvimento"), {
         type: "doughnut",
         data: {
-          datasets: [
-            {
-              data: [
-                stats.desenvolvimento,
-                stats.total - stats.desenvolvimento,
-              ],
-              backgroundColor: ["#d4a017", "#151515"],
-              borderWidth: 0,
-              cutout: "75%",
-              borderRadius: 6,
-            },
-          ],
+          datasets: [{
+            data: [stats.desenvolvimento, stats.total - stats.desenvolvimento],
+            backgroundColor: ["#d4a017", "#151515"],
+            borderWidth: 0,
+            cutout: "75%",
+            borderRadius: 6
+          }]
         },
-        options: commonOptions,
+        options: commonOptions
       });
       if (document.getElementById("chartMedio")) {
-        new Chart(document.getElementById("chartMedio"), {
+        lifecycle.chart(Chart, document.getElementById("chartMedio"), {
           type: "bar",
           data: {
             labels: ["MÉDIA GERAL"],
-            datasets: [
-              {
-                data: [stats.mediaMedio],
-                backgroundColor: "rgba(255, 1, 1, 0.3)",
-                borderColor: "#ff0101",
-                borderWidth: 2,
-                borderRadius: 8,
-                barPercentage: 0.4,
-                categoryPercentage: 0.6,
-              },
-            ],
+            datasets: [{
+              data: [stats.mediaMedio],
+              backgroundColor: "rgba(255, 1, 1, 0.3)",
+              borderColor: "#ff0101",
+              borderWidth: 2,
+              borderRadius: 8,
+              barPercentage: 0.4,
+              categoryPercentage: 0.6
+            }]
           },
-          options: barOptions,
+          options: barOptions
         });
       }
       if (document.getElementById("chartFundamental")) {
-        new Chart(document.getElementById("chartFundamental"), {
+        lifecycle.chart(Chart, document.getElementById("chartFundamental"), {
           type: "bar",
           data: {
             labels: ["MÉDIA GERAL"],
-            datasets: [
-              {
-                data: [stats.mediaFundamental],
-                backgroundColor: "rgba(255, 1, 1, 0.3)",
-                borderColor: "#ff0101",
-                borderWidth: 2,
-                borderRadius: 8,
-                barPercentage: 0.4,
-                categoryPercentage: 0.6,
-              },
-            ],
+            datasets: [{
+              data: [stats.mediaFundamental],
+              backgroundColor: "rgba(255, 1, 1, 0.3)",
+              borderColor: "#ff0101",
+              borderWidth: 2,
+              borderRadius: 8,
+              barPercentage: 0.4,
+              categoryPercentage: 0.6
+            }]
           },
-          options: barOptions,
+          options: barOptions
         });
       }
     }
   }
   function atualizarGraficos() {
-    window.location.reload();
+    refresh();
   }
   onReady(criarGraficos);
-  Object.assign(handlers, {
+  lifecycle.bindHandlers(handlers, {
     getPageData,
     criarGraficos,
-    atualizarGraficos,
+    atualizarGraficos
   });
+  return lifecycle;
 }

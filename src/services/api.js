@@ -75,7 +75,7 @@ export async function request(path, options) {
   const response = await apiFetch(path, options);
   const data = await response
     .json()
-    .catch(() => ({ error: "Resposta inválida do servidor." }));
+    .catch((error) => { if (error.name === "AbortError") throw error; return { error: "Resposta inválida do servidor." }; });
   if (!response.ok)
     throw Object.assign(
       new Error(

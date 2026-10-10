@@ -1,14 +1,24 @@
+import { navigate, refresh } from "../services/navigation";
+import { createInteractionScope } from "../services/lifecycle";
 import React from "react";
 import { Chart } from "chart.js/auto";
-import { apiFetch as fetch } from "../services/api";
-import { styleFrom, escapeHtml, mount, richMarkup } from "../services/ui";
-export function initialize({ onReady, handlers }) {
+import { apiFetch } from "../services/api";
+import { styleFrom, escapeHtml, mount as mountContent, richMarkup } from "../services/ui";
+export function initialize({
+  onReady,
+  handlers,
+  scope
+}) {
+  const lifecycle = scope || createInteractionScope();
+  const fetch = lifecycle.fetch(apiFetch);
+  const mount = lifecycle.mount(mountContent);
   function getPageData(id) {
     const el = document.getElementById(id);
     if (!el) return null;
     try {
       return JSON.parse(el.textContent || "null");
     } catch (error) {
+      if (!lifecycle.active) return;
       console.error("Falha ao ler dados da página.");
       return null;
     }
@@ -24,26 +34,24 @@ export function initialize({ onReady, handlers }) {
     var medias = historicoData.map(function (i) {
       return parseFloat(i.media_dia) || 0;
     });
-    myChart = new Chart(ctx, {
+    myChart = lifecycle.chart(Chart, ctx, {
       type: "line",
       data: {
         labels: labels,
-        datasets: [
-          {
-            label: "Sua Média",
-            data: medias,
-            borderColor: "#217346",
-            backgroundColor: "rgba(33, 115, 70, 0.1)",
-            borderWidth: 4,
-            fill: true,
-            tension: 0.4,
-            pointBackgroundColor: historicoData.map((i) => i.gradeColor),
-            pointBorderColor: "#fff",
-            pointBorderWidth: 2,
-            pointRadius: 6,
-            pointHoverRadius: 9,
-          },
-        ],
+        datasets: [{
+          label: "Sua Média",
+          data: medias,
+          borderColor: "#217346",
+          backgroundColor: "rgba(33, 115, 70, 0.1)",
+          borderWidth: 4,
+          fill: true,
+          tension: 0.4,
+          pointBackgroundColor: historicoData.map(i => i.gradeColor),
+          pointBorderColor: "#fff",
+          pointBorderWidth: 2,
+          pointRadius: 6,
+          pointHoverRadius: 9
+        }]
       },
       options: {
         responsive: true,
@@ -53,41 +61,39 @@ export function initialize({ onReady, handlers }) {
             beginAtZero: true,
             max: 10,
             grid: {
-              color: "rgba(255,255,255,0.05)",
+              color: "rgba(255,255,255,0.05)"
             },
             ticks: {
-              color: "#888",
-            },
+              color: "#888"
+            }
           },
           x: {
             grid: {
-              display: false,
+              display: false
             },
             ticks: {
               color: "#888",
               maxRotation: 45,
-              minRotation: 45,
-            },
-          },
+              minRotation: 45
+            }
+          }
         },
         plugins: {
           legend: {
-            display: false,
+            display: false
           },
           tooltip: {
             backgroundColor: "#151515",
             titleColor: "#fff",
             borderColor: "#333",
-            borderWidth: 1,
-          },
-        },
-      },
+            borderWidth: 1
+          }
+        }
+      }
     });
   });
   function mudarPeriodo(periodo, botao) {
-    document
-      .querySelectorAll(".periodo-btn")
-      .forEach((btn) => btn.classList.remove("active"));
+    document.querySelectorAll(".periodo-btn").forEach(btn => btn.classList.remove("active"));
     botao.classList.add("active");
     var hoje = new Date();
     var dadosFiltrados = [];
@@ -106,13 +112,9 @@ export function initialize({ onReady, handlers }) {
     } else {
       dadosFiltrados = historicoData;
     }
-    myChart.data.labels = dadosFiltrados.map((i) => i.data);
-    myChart.data.datasets[0].data = dadosFiltrados.map((i) =>
-      parseFloat(i.media_dia),
-    );
-    myChart.data.datasets[0].pointBackgroundColor = dadosFiltrados.map(
-      (i) => i.gradeColor,
-    );
+    myChart.data.labels = dadosFiltrados.map(i => i.data);
+    myChart.data.datasets[0].data = dadosFiltrados.map(i => parseFloat(i.media_dia));
+    myChart.data.datasets[0].pointBackgroundColor = dadosFiltrados.map(i => i.gradeColor);
     myChart.update();
   }
   function filtrarData(limite) {
@@ -121,9 +123,10 @@ export function initialize({ onReady, handlers }) {
       return new Date(p[2], p[1] - 1, p[0]) >= limite;
     });
   }
-  Object.assign(handlers, {
+  lifecycle.bindHandlers(handlers, {
     getPageData,
     mudarPeriodo,
-    filtrarData,
+    filtrarData
   });
+  return lifecycle;
 }

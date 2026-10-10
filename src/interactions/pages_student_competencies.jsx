@@ -1,14 +1,24 @@
+import { navigate, refresh } from "../services/navigation";
+import { createInteractionScope } from "../services/lifecycle";
 import React from "react";
 import { Chart } from "chart.js/auto";
-import { apiFetch as fetch } from "../services/api";
-import { styleFrom, escapeHtml, mount, richMarkup } from "../services/ui";
-export function initialize({ onReady, handlers }) {
+import { apiFetch } from "../services/api";
+import { styleFrom, escapeHtml, mount as mountContent, richMarkup } from "../services/ui";
+export function initialize({
+  onReady,
+  handlers,
+  scope
+}) {
+  const lifecycle = scope || createInteractionScope();
+  const fetch = lifecycle.fetch(apiFetch);
+  const mount = lifecycle.mount(mountContent);
   function getPageData(id) {
     const el = document.getElementById(id);
     if (!el) return null;
     try {
       return JSON.parse(el.textContent || "null");
     } catch (error) {
+      if (!lifecycle.active) return;
       console.error("Falha ao ler dados da página.");
       return null;
     }
@@ -17,17 +27,15 @@ export function initialize({ onReady, handlers }) {
     const ctx = document.getElementById("competenciasChart")?.getContext("2d");
     if (!ctx) return;
     const data = getPageData("aluno-competencias-data") || [];
-    new Chart(ctx, {
+    lifecycle.chart(Chart, ctx, {
       type: "bar",
       data: {
-        labels: data.map((c) => c.nome),
-        datasets: [
-          {
-            data: data.map((c) => parseFloat(c.nota) || 0),
-            backgroundColor: data.map((c) => c.gradeColor),
-            borderRadius: 5,
-          },
-        ],
+        labels: data.map(c => c.nome),
+        datasets: [{
+          data: data.map(c => parseFloat(c.nota) || 0),
+          backgroundColor: data.map(c => c.gradeColor),
+          borderRadius: 5
+        }]
       },
       options: {
         responsive: true,
@@ -37,27 +45,27 @@ export function initialize({ onReady, handlers }) {
             beginAtZero: true,
             max: 10,
             grid: {
-              color: "rgba(255,255,255,0.05)",
+              color: "rgba(255,255,255,0.05)"
             },
             ticks: {
-              color: "#888",
-            },
+              color: "#888"
+            }
           },
           x: {
             grid: {
-              display: false,
+              display: false
             },
             ticks: {
-              color: "#888",
-            },
-          },
+              color: "#888"
+            }
+          }
         },
         plugins: {
           legend: {
-            display: false,
-          },
-        },
-      },
+            display: false
+          }
+        }
+      }
     });
   });
   function aplicarFiltros() {
@@ -65,7 +73,7 @@ export function initialize({ onReady, handlers }) {
     const cat = document.getElementById("categoriaFilter").value;
     const nivel = document.getElementById("nivelFilter").value;
     const cards = document.querySelectorAll(".stats-card[data-nome]");
-    cards.forEach((card) => {
+    cards.forEach(card => {
       const matchSearch = card.dataset.nome.includes(search);
       const matchCat = !cat || card.dataset.categoria === cat;
       const matchNivel = !nivel || card.dataset.nivel === nivel;
@@ -76,9 +84,7 @@ export function initialize({ onReady, handlers }) {
     document.getElementById("searchInput").value = "";
     document.getElementById("categoriaFilter").value = "";
     document.getElementById("nivelFilter").value = "";
-    document
-      .querySelectorAll(".stats-card[data-nome]")
-      .forEach((c) => (c.style.display = ""));
+    document.querySelectorAll(".stats-card[data-nome]").forEach(c => c.style.display = "");
   }
   function ordenarCompetencias() {
     const ordem = document.getElementById("ordenarSelect").value;
@@ -86,16 +92,16 @@ export function initialize({ onReady, handlers }) {
     const cards = Array.from(grid.querySelectorAll(".stats-card[data-nome]"));
     cards.sort((a, b) => {
       if (ordem === "nota_desc") return b.dataset.nota - a.dataset.nota;
-      if (ordem === "nome_asc")
-        return a.dataset.nome.localeCompare(b.dataset.nome);
+      if (ordem === "nome_asc") return a.dataset.nome.localeCompare(b.dataset.nome);
       return new Date(b.dataset.data) - new Date(a.dataset.data);
     });
-    cards.forEach((c) => grid.appendChild(c));
+    cards.forEach(c => grid.appendChild(c));
   }
-  Object.assign(handlers, {
+  lifecycle.bindHandlers(handlers, {
     getPageData,
     aplicarFiltros,
     limparFiltros,
-    ordenarCompetencias,
+    ordenarCompetencias
   });
+  return lifecycle;
 }

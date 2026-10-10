@@ -2,329 +2,164 @@ import React from "react";
 import Partials_barAluno from "../components/Partials_barAluno.jsx";
 import Partials_notificacoes from "../components/Partials_notificacoes.jsx";
 import { styleFrom, safeJson } from "../services/ui";
-export default function Aluno_alunoEvolucao({ data, handlers }) {
+export default function Aluno_alunoEvolucao({
+  data,
+  handlers
+}) {
   const {
     aluno = {
       nome: "",
-      ano_escolar: "",
+      ano_escolar: ""
     },
     competencias = [],
     categorias = [],
-    historico = [],
+    historico = []
   } = data;
-
-  return (
-    <>
+  return <>
       <React.Fragment>
         {(() => {
-          const nodes = [];
-          nodes.push(
-            <Partials_barAluno
-              data={{
-                ...data,
-              }}
-              handlers={handlers}
-              key={nodes.length}
-            />,
-          );
-          nodes.push(
-            <div className={"main-layout"} key={nodes.length}>
-              <header className={"dash-header"}>
-                <div className={"header-left"}>
-                  <div className={"logo"}>
-                    <img
-                      src={"/images/logo3-green.png"}
-                      alt={"AnalisAI"}
-                      style={styleFrom("height: 40px;")}
-                    />
-                  </div>
-                </div>
-                <div className={"header-user"}>
-                  <div className={"user-profile-group"}>
-                    <div
-                      className={"user-avatar"}
-                      style={styleFrom("background: var(--color-apto);")}
-                    >
-                      {aluno.nome.charAt(0).toUpperCase()}
-                    </div>
-                    <div className={"user-details"}>
-                      <span className={"user-name"}>
-                        <strong>{aluno.nome}</strong>
-                      </span>
-                      <span className={"user-email"}>{aluno.ano_escolar}</span>
-                    </div>
-                  </div>
-                  <div className={"header-actions"}>
-                    <Partials_notificacoes
-                      data={{
-                        ...data,
-                        ...{
-                          notificacaoClasse: "header-icon",
-                        },
-                      }}
-                      handlers={handlers}
-                    />
-                  </div>
-                </div>
-              </header>
+        const nodes = [];
+        nodes.push(<Partials_barAluno data={{
+          ...data
+        }} handlers={handlers} key={nodes.length} />);
+        nodes.push(<div className={"main-layout"} key={nodes.length}>
+              <PageHeader key="page-header" data={data} handlers={handlers} />
               <main className={"dash-content"}>
                 {(() => {
-                  const nodes = [];
-                  if (competencias && competencias.length > 0) {
-                    nodes.push(
-                      <section
-                        className={"welcome-banner"}
-                        style={styleFrom(
-                          "background: linear-gradient(90deg, #1b5e38 0%, #217346 100%); padding-bottom: 60px;",
-                        )}
-                        key={nodes.length}
-                      >
+              const nodes = [];
+              if (competencias && competencias.length > 0) {
+                nodes.push(<section className={"welcome-banner"} style={styleFrom("background: linear-gradient(90deg, #1b5e38 0%, #217346 100%); padding-bottom: 60px;")} key={nodes.length}>
                         <div className={"banner-text"}>
                           <h1>{"Sua Jornada Acadêmica"}</h1>
                           <p>
-                            {
-                              "Acompanhe em tempo real o seu crescimento e a consolidação das suas competências."
-                            }
+                            {"Acompanhe em tempo real o seu crescimento e a consolidação das suas competências."}
                           </p>
                         </div>
-                      </section>,
-                    );
-                    nodes.push(
-                      <section className={"filter-bar"} key={nodes.length}>
+                      </section>);
+                nodes.push(<section className={"filter-bar"} key={nodes.length}>
                         <div className={"periodo-selector"}>
-                          <button
-                            className={"periodo-btn active"}
-                            onClick={(event) => {
-                              handlers.mudarPeriodo("7d", event.currentTarget);
-                            }}
-                          >
+                          <button className={"periodo-btn active"} onClick={event => {
+                      handlers.mudarPeriodo("7d", event.currentTarget);
+                    }}>
                             {"7 Dias"}
                           </button>
-                          <button
-                            className={"periodo-btn"}
-                            onClick={(event) => {
-                              handlers.mudarPeriodo("30d", event.currentTarget);
-                            }}
-                          >
+                          <button className={"periodo-btn"} onClick={event => {
+                      handlers.mudarPeriodo("30d", event.currentTarget);
+                    }}>
                             {"30 Dias"}
                           </button>
-                          <button
-                            className={"periodo-btn"}
-                            onClick={(event) => {
-                              handlers.mudarPeriodo("90d", event.currentTarget);
-                            }}
-                          >
+                          <button className={"periodo-btn"} onClick={event => {
+                      handlers.mudarPeriodo("90d", event.currentTarget);
+                    }}>
                             {"90 Dias"}
                           </button>
-                          <button
-                            className={"periodo-btn"}
-                            onClick={(event) => {
-                              handlers.mudarPeriodo("all", event.currentTarget);
-                            }}
-                          >
+                          <button className={"periodo-btn"} onClick={event => {
+                      handlers.mudarPeriodo("all", event.currentTarget);
+                    }}>
                             {"Todo o Curso"}
                           </button>
                         </div>
-                      </section>,
-                    );
-                    nodes.push(
-                      <section
-                        className={"section-container"}
-                        key={nodes.length}
-                      >
-                        <div
-                          className={"stats-card"}
-                          style={styleFrom("padding: 40px;")}
-                        >
-                          <h2
-                            className={"section-title-2"}
-                            style={styleFrom("margin-bottom: 30px;")}
-                          >
+                      </section>);
+                nodes.push(<section className={"section-container"} key={nodes.length}>
+                        <div className={"stats-card"} style={styleFrom("padding: 40px;")}>
+                          <h2 className={"section-title-2"} style={styleFrom("margin-bottom: 30px;")}>
                             {"Desempenho Temporal"}
                           </h2>
-                          <div
-                            style={styleFrom(
-                              "height: 400px; position: relative;",
-                            )}
-                          >
+                          <div style={styleFrom("height: 400px; position: relative;")}>
                             <canvas id={"evolucaoChart"}></canvas>
                           </div>
                         </div>
-                      </section>,
-                    );
-                    if (categorias && categorias.length > 0) {
-                      nodes.push(
-                        <section
-                          className={"section-container"}
-                          key={nodes.length}
-                        >
+                      </section>);
+                if (categorias && categorias.length > 0) {
+                  nodes.push(<section className={"section-container"} key={nodes.length}>
                           <h2 className={"section-title-2"}>
                             {"Performance por Área de Conhecimento"}
                           </h2>
                           <div className={"dash-grid"}>
                             {(() => {
-                              const nodes = [];
-                              categorias.forEach((cat) => {
-                                let mediaCat = cat.media / 10;
-                                let colorClass = cat.gradeClass;
-                                nodes.push(
-                                  <div
-                                    className={"stats-card"}
-                                    style={styleFrom(
-                                      "border-left: 5px solid var(--color-" +
-                                        colorClass +
-                                        ");",
-                                    )}
-                                    key={nodes.length}
-                                  >
-                                    <div
-                                      style={styleFrom(
-                                        "display: flex; justify-content: space-between; align-items: center;",
-                                      )}
-                                    >
-                                      <h3
-                                        style={styleFrom(
-                                          "margin-bottom: 0; color: var(--text-white);",
-                                        )}
-                                      >
+                        const nodes = [];
+                        categorias.forEach(cat => {
+                          let mediaCat = cat.media / 10;
+                          let colorClass = cat.gradeClass;
+                          nodes.push(<div className={"stats-card"} style={styleFrom("border-left: 5px solid var(--color-" + colorClass + ");")} key={nodes.length}>
+                                    <div style={styleFrom("display: flex; justify-content: space-between; align-items: center;")}>
+                                      <h3 style={styleFrom("margin-bottom: 0; color: var(--text-white);")}>
                                         {cat.categoria}
                                       </h3>
-                                      <span
-                                        className={"media-nota " + colorClass}
-                                      >
+                                      <span className={"media-nota " + colorClass}>
                                         {mediaCat.toFixed(1)}
                                       </span>
                                     </div>
                                     <div className={"progresso-bar-container"}>
-                                      <div
-                                        className={"progresso-bar-fill"}
-                                        style={styleFrom(
-                                          "width: " +
-                                            cat.media +
-                                            "%; background: var(--color-" +
-                                            colorClass +
-                                            ");",
-                                        )}
-                                      ></div>
+                                      <div className={"progresso-bar-fill"} style={styleFrom("width: " + cat.media + "%; background: var(--color-" + colorClass + ");")}></div>
                                     </div>
-                                    <p
-                                      style={styleFrom(
-                                        "font-size: 0.7rem; color: var(--text-muted); margin-top: 10px; text-transform: uppercase;",
-                                      )}
-                                    >
-                                      {
-                                        "\n                                    Aproveitamento: "
-                                      }
+                                    <p style={styleFrom("font-size: 0.7rem; color: var(--text-muted); margin-top: 10px; text-transform: uppercase;")}>
+                                      {"\n                                    Aproveitamento: "}
                                       {cat.media.toFixed(0)}
                                       {"%\n                                "}
                                     </p>
-                                  </div>,
-                                );
-                              });
-                              return nodes;
-                            })()}
+                                  </div>);
+                        });
+                        return nodes;
+                      })()}
                           </div>
-                        </section>,
-                      );
-                    }
-                    nodes.push(
-                      <section
-                        className={"section-container"}
-                        key={nodes.length}
-                      >
+                        </section>);
+                }
+                nodes.push(<section className={"section-container"} key={nodes.length}>
                         <h2 className={"section-title-2"}>
                           {"Histórico de Registros"}
                         </h2>
                         <div className={"ranking-list"}>
                           {(() => {
-                            const nodes = [];
-                            competencias.forEach((comp) => {
-                              let n = parseFloat(comp.nota) || 0;
-                              let c = comp.gradeClass;
-                              nodes.push(
-                                <div
-                                  className={"ranking-item"}
-                                  key={nodes.length}
-                                >
-                                  <div
-                                    className={"ranking-position"}
-                                    style={styleFrom(
-                                      "background: rgba(255,255,255,0.05); color: #666;",
-                                    )}
-                                  >
+                      const nodes = [];
+                      competencias.forEach(comp => {
+                        let n = parseFloat(comp.nota) || 0;
+                        let c = comp.gradeClass;
+                        nodes.push(<div className={"ranking-item"} key={nodes.length}>
+                                  <div className={"ranking-position"} style={styleFrom("background: rgba(255,255,255,0.05); color: #666;")}>
                                     <i className={"far fa-calendar-alt"}></i>
                                   </div>
                                   <div className={"ranking-info"}>
                                     {(() => {
-                                      const nodes = [];
-                                      nodes.push(
-                                        <h4 key={nodes.length}>{comp.nome}</h4>,
-                                      );
-                                      nodes.push(
-                                        <p key={nodes.length}>
+                              const nodes = [];
+                              nodes.push(<h4 key={nodes.length}>{comp.nome}</h4>);
+                              nodes.push(<p key={nodes.length}>
                                           {comp.data_formatada}
                                           {" • "}
                                           {comp.categoria || "Geral"}
-                                        </p>,
-                                      );
-                                      if (comp.observacoes) {
-                                        nodes.push(
-                                          <p
-                                            style={styleFrom(
-                                              "text-transform: none; color: var(--text-gray); margin-top: 5px; font-style: italic;",
-                                            )}
-                                            key={nodes.length}
-                                          >
-                                            {
-                                              '\n                                            "'
-                                            }
+                                        </p>);
+                              if (comp.observacoes) {
+                                nodes.push(<p style={styleFrom("text-transform: none; color: var(--text-gray); margin-top: 5px; font-style: italic;")} key={nodes.length}>
+                                            {'\n                                            "'}
                                             {comp.observacoes}
-                                            {
-                                              '"\n                                        '
-                                            }
-                                          </p>,
-                                        );
-                                      }
-                                      return nodes;
-                                    })()}
+                                            {'"\n                                        '}
+                                          </p>);
+                              }
+                              return nodes;
+                            })()}
                                   </div>
                                   <div className={"ranking-media"}>
                                     <span className={"media-nota " + c}>
                                       {n.toFixed(1)}
                                     </span>
                                   </div>
-                                </div>,
-                              );
-                            });
-                            return nodes;
-                          })()}
+                                </div>);
+                      });
+                      return nodes;
+                    })()}
                         </div>
-                      </section>,
-                    );
-                  } else {
-                    nodes.push(
-                      <div
-                        className={"stats-card"}
-                        style={styleFrom("text-align: center; padding: 100px;")}
-                        key={nodes.length}
-                      >
-                        <i
-                          className={"fas fa-chart-line"}
-                          style={styleFrom(
-                            "font-size: 4rem; color: var(--border-color); margin-bottom: 20px;",
-                          )}
-                        ></i>
+                      </section>);
+              } else {
+                nodes.push(<div className={"stats-card"} style={styleFrom("text-align: center; padding: 100px;")} key={nodes.length}>
+                        <i className={"fas fa-chart-line"} style={styleFrom("font-size: 4rem; color: var(--border-color); margin-bottom: 20px;")}></i>
                         <h3>{"Nenhum dado para exibir"}</h3>
                         <p style={styleFrom("color: var(--text-gray);")}>
-                          {
-                            "Suas avaliações aparecerão aqui assim que forem registradas."
-                          }
+                          {"Suas avaliações aparecerão aqui assim que forem registradas."}
                         </p>
-                      </div>,
-                    );
-                  }
-                  return nodes;
-                })()}
+                      </div>);
+              }
+              return nodes;
+            })()}
               </main>
               <footer className={"dash-footer"}>
                 <div className={"footer-actions"}>
@@ -337,22 +172,56 @@ export default function Aluno_alunoEvolucao({ data, handlers }) {
                   <p>{"© 2026 AnalisAI"}</p>
                 </div>
               </footer>
-            </div>,
-          );
-          if (historico && historico.length > 0) {
-            nodes.push(
-              <script
-                type="application/json"
-                id="aluno-evolucao-data"
-                key={nodes.length}
-              >
+            </div>);
+        if (historico && historico.length > 0) {
+          nodes.push(<script type="application/json" id="aluno-evolucao-data" key={nodes.length}>
                 {String(safeJson(historico))}
-              </script>,
-            );
-          }
-          return nodes;
-        })()}
+              </script>);
+        }
+        return nodes;
+      })()}
       </React.Fragment>
-    </>
-  );
+    </>;
+}
+export function PageHeader({
+  data,
+  handlers
+}) {
+  const {
+    aluno = {
+      nome: "",
+      ano_escolar: ""
+    },
+    competencias = [],
+    categorias = [],
+    historico = []
+  } = data;
+  return <header className={"dash-header"}>
+                <div className={"header-left"}>
+                  <div className={"logo"}>
+                    <img src={"/images/logo3-green.png"} alt={"AnalisAI"} style={styleFrom("height: 40px;")} />
+                  </div>
+                </div>
+                <div className={"header-user"}>
+                  <div className={"user-profile-group"}>
+                    <div className={"user-avatar"} style={styleFrom("background: var(--color-apto);")}>
+                      {aluno.nome.charAt(0).toUpperCase()}
+                    </div>
+                    <div className={"user-details"}>
+                      <span className={"user-name"}>
+                        <strong>{aluno.nome}</strong>
+                      </span>
+                      <span className={"user-email"}>{aluno.ano_escolar}</span>
+                    </div>
+                  </div>
+                  <div className={"header-actions"}>
+                    <Partials_notificacoes data={{
+          ...data,
+          ...{
+            notificacaoClasse: "header-icon"
+          }
+        }} handlers={handlers} />
+                  </div>
+                </div>
+              </header>;
 }

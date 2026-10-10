@@ -3,43 +3,56 @@ import Partials_barProfessor from "../components/Partials_barProfessor.jsx";
 import Partials_barAluno from "../components/Partials_barAluno.jsx";
 import Partials_notificacoes from "../components/Partials_notificacoes.jsx";
 import { styleFrom, safeJson } from "../services/ui";
-export default function ManualDoProfessor({ data, handlers }) {
-  const { userCargo = null, user = "" } = data;
-
-  return (
-    <>
+export default function ManualDoProfessor({
+  data,
+  handlers
+}) {
+  const {
+    userCargo = null,
+    user = ""
+  } = data;
+  return <>
       <React.Fragment>
         {(() => {
-          const nodes = [];
-          if (userCargo === "Professor" || userCargo === "Admin") {
-            nodes.push(
-              <Partials_barProfessor
-                data={{
-                  ...data,
-                }}
-                handlers={handlers}
-                key={nodes.length}
-              />,
-            );
-          } else {
-            nodes.push(
-              <Partials_barAluno
-                data={{
-                  ...data,
-                }}
-                handlers={handlers}
-                key={nodes.length}
-              />,
-            );
-          }
-          nodes.push(
-            <div className={"main-layout"} key={nodes.length}>
-              <header className={"dash-header"}>
+        const nodes = [];
+        if (userCargo === "Professor" || userCargo === "Admin") {
+          nodes.push(<Partials_barProfessor data={{
+            ...data
+          }} handlers={handlers} key={nodes.length} />);
+        } else {
+          nodes.push(<Partials_barAluno data={{
+            ...data
+          }} handlers={handlers} key={nodes.length} />);
+        }
+        nodes.push(<div className={"main-layout"} key={nodes.length}>
+              <PageHeader key="page-header" data={data} handlers={handlers} />
+              <div className={"pdf-header"}>
+                <a href={"/pdf/manual-do-professor.pdf"} download={true} className={"btn-secondary-dash"}>
+                  <i className={"fas fa-download"}></i>
+                  {" BAIXAR PDF\n            "}
+                </a>
+              </div>
+              <div className={"pdf-container"}>
+                <iframe src={"/pdf/manual-do-professor.pdf"}></iframe>
+              </div>
+            </div>);
+        return nodes;
+      })()}
+      </React.Fragment>
+    </>;
+}
+export function PageHeader({
+  data,
+  handlers
+}) {
+  const {
+    userCargo = null,
+    user = ""
+  } = data;
+  return <header className={"dash-header"}>
                 <div className={"header-left"}>
                   <h1>
-                    {
-                      "\n                    Manual do Professor\n                "
-                    }
+                    {"\n                    Manual do Professor\n                "}
                   </h1>
                 </div>
                 <div className={"header-user"}>
@@ -51,36 +64,13 @@ export default function ManualDoProfessor({ data, handlers }) {
                     </div>
                   </div>
                   <div className={"header-actions"}>
-                    <Partials_notificacoes
-                      data={{
-                        ...data,
-                        ...{
-                          notificacaoClasse: "header-icon",
-                        },
-                      }}
-                      handlers={handlers}
-                    />
+                    <Partials_notificacoes data={{
+          ...data,
+          ...{
+            notificacaoClasse: "header-icon"
+          }
+        }} handlers={handlers} />
                   </div>
                 </div>
-              </header>
-              <div className={"pdf-header"}>
-                <a
-                  href={"/pdf/manual-do-professor.pdf"}
-                  download={true}
-                  className={"btn-secondary-dash"}
-                >
-                  <i className={"fas fa-download"}></i>
-                  {" BAIXAR PDF\n            "}
-                </a>
-              </div>
-              <div className={"pdf-container"}>
-                <iframe src={"/pdf/manual-do-professor.pdf"}></iframe>
-              </div>
-            </div>,
-          );
-          return nodes;
-        })()}
-      </React.Fragment>
-    </>
-  );
+              </header>;
 }

@@ -1,14 +1,24 @@
+import { navigate, refresh } from "../services/navigation";
+import { createInteractionScope } from "../services/lifecycle";
 import React from "react";
 import { Chart } from "chart.js/auto";
-import { apiFetch as fetch } from "../services/api";
-import { styleFrom, escapeHtml, mount, richMarkup } from "../services/ui";
-export function initialize({ onReady, handlers }) {
+import { apiFetch } from "../services/api";
+import { styleFrom, escapeHtml, mount as mountContent, richMarkup } from "../services/ui";
+export function initialize({
+  onReady,
+  handlers,
+  scope
+}) {
+  const lifecycle = scope || createInteractionScope();
+  const fetch = lifecycle.fetch(apiFetch);
+  const mount = lifecycle.mount(mountContent);
   function getPageData(id) {
     const el = document.getElementById(id);
     if (!el) return null;
     try {
       return JSON.parse(el.textContent || "null");
     } catch (error) {
+      if (!lifecycle.active) return;
       console.error("Falha ao ler dados da página.");
       return null;
     }
@@ -53,11 +63,11 @@ export function initialize({ onReady, handlers }) {
         fetch(`/dashboard/usuarios/delete/${id}`, {
           method: "POST",
           headers: {
-            "X-CSRF-Token":
-              document.querySelector('meta[name="csrf-token"]')?.content || "",
-          },
-        }).then((response) => {
-          if (response.ok) window.location.reload();
+            "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')?.content || ""
+          }
+        }).then(response => {
+          if (!lifecycle.active) return;
+          if (response.ok) refresh();
         });
       }
     } else {
@@ -67,21 +77,20 @@ export function initialize({ onReady, handlers }) {
   function closePermissionModal() {
     document.getElementById("permissionModal").style.display = "none";
   }
-  document
-    .getElementById("userSearchInput")
-    .addEventListener("keyup", function () {
-      const filter = this.value.toLowerCase();
-      document.querySelectorAll("#userTableBody tr").forEach((row) => {
-        const text = row.textContent.toLowerCase();
-        row.style.display = text.includes(filter) ? "" : "none";
-      });
+  lifecycle.listen(document.getElementById("userSearchInput"), "keyup", function () {
+    const filter = this.value.toLowerCase();
+    document.querySelectorAll("#userTableBody tr").forEach(row => {
+      const text = row.textContent.toLowerCase();
+      row.style.display = text.includes(filter) ? "" : "none";
     });
-  Object.assign(handlers, {
+  });
+  lifecycle.bindHandlers(handlers, {
     getPageData,
     openAddUserModal,
     editUser,
     closeUserModal,
     confirmDeleteUser,
-    closePermissionModal,
+    closePermissionModal
   });
+  return lifecycle;
 }

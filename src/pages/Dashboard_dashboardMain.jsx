@@ -2,57 +2,25 @@ import React from "react";
 import Partials_barProfessor from "../components/Partials_barProfessor.jsx";
 import Partials_notificacoes from "../components/Partials_notificacoes.jsx";
 import { styleFrom, safeJson } from "../services/ui";
-export default function Dashboard_dashboardMain({ data, handlers }) {
+export default function Dashboard_dashboardMain({
+  data,
+  handlers
+}) {
   const {
     user = "",
     userCargo = null,
     alunos = [],
     rankingGeral = [],
     rankingMedio = [],
-    rankingFundamental = [],
+    rankingFundamental = []
   } = data;
-
-  return (
-    <>
+  return <>
       <React.Fragment>
-        <Partials_barProfessor
-          data={{
-            ...data,
-          }}
-          handlers={handlers}
-        />
+        <Partials_barProfessor data={{
+        ...data
+      }} handlers={handlers} />
         <div className={"main-layout"}>
-          <header className={"dash-header"}>
-            <div className={"header-left"}>
-              <h1>{"\n                    Dashboard\n                "}</h1>
-            </div>
-            <div className={"header-user"}>
-              <div className={"user-profile-group"}>
-                <div className={"user-details"}>
-                  <span className={"user-name"}>
-                    <strong>{user}</strong>
-                  </span>
-                  <span
-                    className={"user-role"}
-                    style={styleFrom("color: #888888;")}
-                  >
-                    <strong>{userCargo}</strong>
-                  </span>
-                </div>
-              </div>
-              <div className={"header-actions"}>
-                <Partials_notificacoes
-                  data={{
-                    ...data,
-                    ...{
-                      notificacaoClasse: "header-icon",
-                    },
-                  }}
-                  handlers={handlers}
-                />
-              </div>
-            </div>
-          </header>
+          <PageHeader key="page-header" data={data} handlers={handlers} />
           <main className={"dash-content"}>
             <section className={"welcome-banner"}>
               <div className={"banner-text"}>
@@ -62,9 +30,7 @@ export default function Dashboard_dashboardMain({ data, handlers }) {
                   {"!"}
                 </h1>
                 <p>
-                  {
-                    "Acompanhe o desempenho das turmas e gerencie as competências de forma simples."
-                  }
+                  {"Acompanhe o desempenho das turmas e gerencie as competências de forma simples."}
                 </p>
               </div>
             </section>
@@ -138,57 +104,32 @@ export default function Dashboard_dashboardMain({ data, handlers }) {
                 {" RANKING DE COMPETÊNCIAS"}
               </h2>
               <div className={"ranking-tabs"}>
-                <button
-                  className={"ranking-tab active"}
-                  onClick={(event) => {
-                    handlers.showRanking("geral");
-                  }}
-                >
+                <button className={"ranking-tab active"} onClick={event => {
+                handlers.showRanking("geral");
+              }}>
                   {"GERAL"}
                 </button>
-                <button
-                  className={"ranking-tab"}
-                  onClick={(event) => {
-                    handlers.showRanking("medio");
-                  }}
-                >
+                <button className={"ranking-tab"} onClick={event => {
+                handlers.showRanking("medio");
+              }}>
                   {"ENSINO MÉDIO"}
                 </button>
-                <button
-                  className={"ranking-tab"}
-                  onClick={(event) => {
-                    handlers.showRanking("fundamental");
-                  }}
-                >
+                <button className={"ranking-tab"} onClick={event => {
+                handlers.showRanking("fundamental");
+              }}>
                   {"ENSINO FUNDAMENTAL"}
                 </button>
               </div>
               <div id={"rankingGeral"} className={"ranking-content active"}>
                 {(() => {
-                  const nodes = [];
-                  if (rankingGeral && rankingGeral.length > 0) {
-                    nodes.push(
-                      <div className={"ranking-list"} key={nodes.length}>
+                const nodes = [];
+                if (rankingGeral && rankingGeral.length > 0) {
+                  nodes.push(<div className={"ranking-list"} key={nodes.length}>
                         {(() => {
-                          const nodes = [];
-                          rankingGeral.forEach((comp, index) => {
-                            nodes.push(
-                              <div
-                                className={"ranking-item"}
-                                key={nodes.length}
-                              >
-                                <div
-                                  className={
-                                    "ranking-position " +
-                                    (index === 0
-                                      ? "gold"
-                                      : index === 1
-                                        ? "silver"
-                                        : index === 2
-                                          ? "bronze"
-                                          : "")
-                                  }
-                                >
+                      const nodes = [];
+                      rankingGeral.forEach((comp, index) => {
+                        nodes.push(<div className={"ranking-item"} key={nodes.length}>
+                                <div className={"ranking-position " + (index === 0 ? "gold" : index === 1 ? "silver" : index === 2 ? "bronze" : "")}>
                                   {index + 1}
                                   {"º"}
                                 </div>
@@ -200,56 +141,34 @@ export default function Dashboard_dashboardMain({ data, handlers }) {
                                   </p>
                                 </div>
                                 <div className={"ranking-media"}>
-                                  <span
-                                    className={"media-nota " + comp.gradeClass}
-                                  >
+                                  <span className={"media-nota " + comp.gradeClass}>
                                     {comp.media.toFixed(1)}
                                   </span>
                                 </div>
-                              </div>,
-                            );
-                          });
-                          return nodes;
-                        })()}
-                      </div>,
-                    );
-                  } else {
-                    nodes.push(
-                      <div className={"empty-ranking"} key={nodes.length}>
+                              </div>);
+                      });
+                      return nodes;
+                    })()}
+                      </div>);
+                } else {
+                  nodes.push(<div className={"empty-ranking"} key={nodes.length}>
                         <i className={"fas fa-chart-bar"}></i>
                         <p>{"Nenhuma competência avaliada ainda"}</p>
-                      </div>,
-                    );
-                  }
-                  return nodes;
-                })()}
+                      </div>);
+                }
+                return nodes;
+              })()}
               </div>
               <div id={"rankingMedio"} className={"ranking-content"}>
                 {(() => {
-                  const nodes = [];
-                  if (rankingMedio && rankingMedio.length > 0) {
-                    nodes.push(
-                      <div className={"ranking-list"} key={nodes.length}>
+                const nodes = [];
+                if (rankingMedio && rankingMedio.length > 0) {
+                  nodes.push(<div className={"ranking-list"} key={nodes.length}>
                         {(() => {
-                          const nodes = [];
-                          rankingMedio.forEach((comp, index) => {
-                            nodes.push(
-                              <div
-                                className={"ranking-item"}
-                                key={nodes.length}
-                              >
-                                <div
-                                  className={
-                                    "ranking-position " +
-                                    (index === 0
-                                      ? "gold"
-                                      : index === 1
-                                        ? "silver"
-                                        : index === 2
-                                          ? "bronze"
-                                          : "")
-                                  }
-                                >
+                      const nodes = [];
+                      rankingMedio.forEach((comp, index) => {
+                        nodes.push(<div className={"ranking-item"} key={nodes.length}>
+                                <div className={"ranking-position " + (index === 0 ? "gold" : index === 1 ? "silver" : index === 2 ? "bronze" : "")}>
                                   {index + 1}
                                   {"º"}
                                 </div>
@@ -261,56 +180,34 @@ export default function Dashboard_dashboardMain({ data, handlers }) {
                                   </p>
                                 </div>
                                 <div className={"ranking-media"}>
-                                  <span
-                                    className={"media-nota " + comp.gradeClass}
-                                  >
+                                  <span className={"media-nota " + comp.gradeClass}>
                                     {comp.media.toFixed(1)}
                                   </span>
                                 </div>
-                              </div>,
-                            );
-                          });
-                          return nodes;
-                        })()}
-                      </div>,
-                    );
-                  } else {
-                    nodes.push(
-                      <div className={"empty-ranking"} key={nodes.length}>
+                              </div>);
+                      });
+                      return nodes;
+                    })()}
+                      </div>);
+                } else {
+                  nodes.push(<div className={"empty-ranking"} key={nodes.length}>
                         <i className={"fas fa-chart-bar"}></i>
                         <p>{"Nenhuma competência avaliada no Ensino Médio"}</p>
-                      </div>,
-                    );
-                  }
-                  return nodes;
-                })()}
+                      </div>);
+                }
+                return nodes;
+              })()}
               </div>
               <div id={"rankingFundamental"} className={"ranking-content"}>
                 {(() => {
-                  const nodes = [];
-                  if (rankingFundamental && rankingFundamental.length > 0) {
-                    nodes.push(
-                      <div className={"ranking-list"} key={nodes.length}>
+                const nodes = [];
+                if (rankingFundamental && rankingFundamental.length > 0) {
+                  nodes.push(<div className={"ranking-list"} key={nodes.length}>
                         {(() => {
-                          const nodes = [];
-                          rankingFundamental.forEach((comp, index) => {
-                            nodes.push(
-                              <div
-                                className={"ranking-item"}
-                                key={nodes.length}
-                              >
-                                <div
-                                  className={
-                                    "ranking-position " +
-                                    (index === 0
-                                      ? "gold"
-                                      : index === 1
-                                        ? "silver"
-                                        : index === 2
-                                          ? "bronze"
-                                          : "")
-                                  }
-                                >
+                      const nodes = [];
+                      rankingFundamental.forEach((comp, index) => {
+                        nodes.push(<div className={"ranking-item"} key={nodes.length}>
+                                <div className={"ranking-position " + (index === 0 ? "gold" : index === 1 ? "silver" : index === 2 ? "bronze" : "")}>
                                   {index + 1}
                                   {"º"}
                                 </div>
@@ -322,31 +219,25 @@ export default function Dashboard_dashboardMain({ data, handlers }) {
                                   </p>
                                 </div>
                                 <div className={"ranking-media"}>
-                                  <span
-                                    className={"media-nota " + comp.gradeClass}
-                                  >
+                                  <span className={"media-nota " + comp.gradeClass}>
                                     {comp.media.toFixed(1)}
                                   </span>
                                 </div>
-                              </div>,
-                            );
-                          });
-                          return nodes;
-                        })()}
-                      </div>,
-                    );
-                  } else {
-                    nodes.push(
-                      <div className={"empty-ranking"} key={nodes.length}>
+                              </div>);
+                      });
+                      return nodes;
+                    })()}
+                      </div>);
+                } else {
+                  nodes.push(<div className={"empty-ranking"} key={nodes.length}>
                         <i className={"fas fa-chart-bar"}></i>
                         <p>
                           {"Nenhuma competência avaliada no Ensino Fundamental"}
                         </p>
-                      </div>,
-                    );
-                  }
-                  return nodes;
-                })()}
+                      </div>);
+                }
+                return nodes;
+              })()}
               </div>
             </section>
           </main>
@@ -371,6 +262,43 @@ export default function Dashboard_dashboardMain({ data, handlers }) {
           </footer>
         </div>
       </React.Fragment>
-    </>
-  );
+    </>;
+}
+export function PageHeader({
+  data,
+  handlers
+}) {
+  const {
+    user = "",
+    userCargo = null,
+    alunos = [],
+    rankingGeral = [],
+    rankingMedio = [],
+    rankingFundamental = []
+  } = data;
+  return <header className={"dash-header"}>
+            <div className={"header-left"}>
+              <h1>{"\n                    Dashboard\n                "}</h1>
+            </div>
+            <div className={"header-user"}>
+              <div className={"user-profile-group"}>
+                <div className={"user-details"}>
+                  <span className={"user-name"}>
+                    <strong>{user}</strong>
+                  </span>
+                  <span className={"user-role"} style={styleFrom("color: #888888;")}>
+                    <strong>{userCargo}</strong>
+                  </span>
+                </div>
+              </div>
+              <div className={"header-actions"}>
+                <Partials_notificacoes data={{
+          ...data,
+          ...{
+            notificacaoClasse: "header-icon"
+          }
+        }} handlers={handlers} />
+              </div>
+            </div>
+          </header>;
 }

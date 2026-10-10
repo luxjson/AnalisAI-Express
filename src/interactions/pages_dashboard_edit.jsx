@@ -1,14 +1,24 @@
+import { navigate, refresh } from "../services/navigation";
+import { createInteractionScope } from "../services/lifecycle";
 import React from "react";
 import { Chart } from "chart.js/auto";
-import { apiFetch as fetch } from "../services/api";
-import { styleFrom, escapeHtml, mount, richMarkup } from "../services/ui";
-export function initialize({ onReady, handlers }) {
+import { apiFetch } from "../services/api";
+import { styleFrom, escapeHtml, mount as mountContent, richMarkup } from "../services/ui";
+export function initialize({
+  onReady,
+  handlers,
+  scope
+}) {
+  const lifecycle = scope || createInteractionScope();
+  const fetch = lifecycle.fetch(apiFetch);
+  const mount = lifecycle.mount(mountContent);
   function getPageData(id) {
     const el = document.getElementById(id);
     if (!el) return null;
     try {
       return JSON.parse(el.textContent || "null");
     } catch (error) {
+      if (!lifecycle.active) return;
       console.error("Falha ao ler dados da página.");
       return null;
     }
@@ -23,13 +33,11 @@ export function initialize({ onReady, handlers }) {
   }
   function updateLoadingBar(percent, texto) {
     document.getElementById("loadingBar").style.width = percent + "%";
-    document.getElementById("loadingStatus").innerText =
-      texto || percent + "% concluído";
+    document.getElementById("loadingStatus").innerText = texto || percent + "% concluído";
   }
   function openErrorModal(titulo, mensagem, detalhe) {
     document.getElementById("errorTitulo").innerText = titulo || "ERRO";
-    document.getElementById("errorMensagem").innerText =
-      mensagem || "Ocorreu um erro inesperado";
+    document.getElementById("errorMensagem").innerText = mensagem || "Ocorreu um erro inesperado";
     document.getElementById("errorDetalhe").innerText = detalhe || "";
     document.getElementById("errorModal").style.display = "flex";
   }
@@ -44,29 +52,23 @@ export function initialize({ onReady, handlers }) {
   function closeImportModal() {
     document.getElementById("importModal").style.display = "none";
   }
-  document
-    .getElementById("fileInput")
-    ?.addEventListener("change", function (e) {
-      const file = e.target.files[0];
-      document.getElementById("fileName").innerText = file
-        ? `📄 ${file.name}`
-        : "";
-    });
+  lifecycle.listen(document.getElementById("fileInput"), "change", function (e) {
+    const file = e.target.files[0];
+    document.getElementById("fileName").innerText = file ? `📄 ${file.name}` : "";
+  });
   const dropArea = document.querySelector(".file-drop-area");
   if (dropArea) {
-    ["dragenter", "dragover", "dragleave", "drop"].forEach((eventName) => {
-      dropArea.addEventListener(eventName, preventDefaults, false);
+    ["dragenter", "dragover", "dragleave", "drop"].forEach(eventName => {
+      lifecycle.listen(dropArea, eventName, preventDefaults, false);
     });
     function preventDefaults(e) {
       e.preventDefault();
       e.stopPropagation();
     }
-    dropArea.addEventListener("drop", function (e) {
+    lifecycle.listen(dropArea, "drop", function (e) {
       const file = e.dataTransfer.files[0];
       document.getElementById("fileInput").files = e.dataTransfer.files;
-      document.getElementById("fileName").innerText = file
-        ? `📄 ${file.name}`
-        : "";
+      document.getElementById("fileName").innerText = file ? `📄 ${file.name}` : "";
     });
   }
   function openPreviewModal() {
@@ -75,89 +77,61 @@ export function initialize({ onReady, handlers }) {
   function closePreviewModal() {
     document.getElementById("previewImportModal").style.display = "none";
   }
-  document
-    .getElementById("fileInput")
-    ?.addEventListener("change", function (e) {
-      const file = e.target.files[0];
-      document.getElementById("fileName").innerText = file
-        ? `📄 ${file.name}`
-        : "";
-    });
+  lifecycle.listen(document.getElementById("fileInput"), "change", function (e) {
+    const file = e.target.files[0];
+    document.getElementById("fileName").innerText = file ? `📄 ${file.name}` : "";
+  });
   let alunosParaImportar = [];
   async function importarPlanilha() {
     const file = document.getElementById("fileInput").files[0];
-    if (!file)
-      return openErrorModal("ERRO", "Selecione um arquivo primeiro!", "");
+    if (!file) return openErrorModal("ERRO", "Selecione um arquivo primeiro!", "");
     try {
       const data = new FormData();
       data.append("arquivo", file);
       const response = await fetch("/backend/alunos/importacoes/preview", {
         method: "POST",
-        body: data,
+        body: data
       });
       const result = await response.json();
       if (!response.ok) throw new Error(result.error);
       alunosParaImportar = result.alunos;
       let previewHtml = [];
-      alunosParaImportar.slice(0, 5).forEach((aluno) => {
-        previewHtml.push(
-          <React.Fragment key={previewHtml.length}>
+      alunosParaImportar.slice(0, 5).forEach(aluno => {
+        previewHtml.push(<React.Fragment key={previewHtml.length}>
             <tr>
-              {"\n                    "}
-              <td
-                style={styleFrom(
-                  "padding: 8px; border-bottom: 1px solid #222; color: #fff;",
-                )}
-              >
+              
+              <td style={styleFrom("padding: 8px; border-bottom: 1px solid #222; color: #fff;")}>
                 {aluno.nome}
               </td>
-              {"\n                    "}
-              <td
-                style={styleFrom(
-                  "padding: 8px; border-bottom: 1px solid #222; color: #888;",
-                )}
-              >
+              
+              <td style={styleFrom("padding: 8px; border-bottom: 1px solid #222; color: #888;")}>
                 {aluno.ano_escolar}
               </td>
-              {"\n                    "}
-              <td
-                style={styleFrom(
-                  "padding: 8px; border-bottom: 1px solid #222; color: #888;",
-                )}
-              >
+              
+              <td style={styleFrom("padding: 8px; border-bottom: 1px solid #222; color: #888;")}>
                 {aluno.competencias.length}
               </td>
-              {"\n                "}
+              
             </tr>
-          </React.Fragment>,
-        );
+          </React.Fragment>);
       });
       if (alunosParaImportar.length > 5) {
-        previewHtml.push(
-          <React.Fragment key={previewHtml.length}>
+        previewHtml.push(<React.Fragment key={previewHtml.length}>
             <tr>
-              <td
-                colSpan={"3"}
-                style={styleFrom(
-                  "padding: 8px; text-align: center; color: #888;",
-                )}
-              >
+              <td colSpan={"3"} style={styleFrom("padding: 8px; text-align: center; color: #888;")}>
                 {"... mais "}
                 {alunosParaImportar.length - 5}
                 {" alunos"}
               </td>
             </tr>
-          </React.Fragment>,
-        );
+          </React.Fragment>);
       }
       mount(document.getElementById("previewList"), previewHtml);
-      mount(
-        document.getElementById("previewCount"),
-        `${alunosParaImportar.length} alunos encontrados`,
-      );
+      mount(document.getElementById("previewCount"), `${alunosParaImportar.length} alunos encontrados`);
       closeImportModal();
       openPreviewModal();
     } catch (error) {
+      if (!lifecycle.active) return;
       openErrorModal("ERRO AO PROCESSAR", error.message, "");
     }
   }
@@ -170,23 +144,22 @@ export function initialize({ onReady, handlers }) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "X-CSRF-Token":
-          document.querySelector('meta[name="csrf-token"]')?.content || "",
+        "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')?.content || ""
       },
       body: JSON.stringify({
-        alunos: alunosParaImportar,
-      }),
+        alunos: alunosParaImportar
+      })
     });
     updateLoadingBar(70, "Salvando no banco de dados...");
     const resultado = await response.json();
     if (resultado.sucesso) {
       updateLoadingBar(100, "Importação concluída!");
-      setTimeout(() => {
+      lifecycle.timeout(() => {
         closeLoadingModal();
         if (resultado.credenciais && resultado.credenciais.length > 0) {
           abrirModalCredenciais(resultado.credenciais);
         } else {
-          location.reload();
+          refresh();
         }
       }, 500);
     } else {
@@ -198,121 +171,82 @@ export function initialize({ onReady, handlers }) {
     const modal = document.getElementById("credenciaisModal");
     const lista = document.getElementById("credenciaisLista");
     let html = [];
-    credenciais.forEach((cred) => {
-      html.push(
-        <React.Fragment key={html.length}>
-          {"\n            "}
+    credenciais.forEach(cred => {
+      html.push(<React.Fragment key={html.length}>
+          
           <tr style={styleFrom("border-bottom: 1px solid #222;")}>
-            {"\n                "}
+            
             <td style={styleFrom("padding: 10px; color: #fff;")}>
               {cred.nome}
             </td>
-            {"\n                "}
+            
             <td style={styleFrom("padding: 10px; color: #ccc;")}>
               {cred.email}
             </td>
-            {"\n                "}
+            
             <td style={styleFrom("padding: 10px; color: #ccc;")}>
               {cred.matricula}
             </td>
-            {"\n                "}
-            <td
-              style={styleFrom(
-                "padding: 10px; color: #ff0101; font-weight: bold;",
-              )}
-            >
+            
+            <td style={styleFrom("padding: 10px; color: #ff0101; font-weight: bold;")}>
               {cred.senha}
             </td>
-            {"\n            "}
+            
           </tr>
-          {"\n        "}
-        </React.Fragment>,
-      );
+          
+        </React.Fragment>);
     });
-    html = (
-      <>
+    html = <>
         {"\n        "}
-        <div
-          style={styleFrom(
-            "max-height: 400px; overflow-y: auto; margin: 20px 0;",
-          )}
-        >
+        <div style={styleFrom("max-height: 400px; overflow-y: auto; margin: 20px 0;")}>
           {"\n            "}
-          <table
-            style={styleFrom(
-              "width:100%; border-collapse: collapse; font-size: 0.85rem;",
-            )}
-          >
-            {"\n                "}
+          <table style={styleFrom("width:100%; border-collapse: collapse; font-size: 0.85rem;")}>
+            
             <thead>
-              {"\n                    "}
+              
               <tr style={styleFrom("border-bottom: 2px solid #333;")}>
-                {"\n                        "}
-                <th
-                  style={styleFrom(
-                    "padding: 10px; text-align: left; color: #888;",
-                  )}
-                >
+                
+                <th style={styleFrom("padding: 10px; text-align: left; color: #888;")}>
                   {"Nome"}
                 </th>
-                {"\n                        "}
-                <th
-                  style={styleFrom(
-                    "padding: 10px; text-align: left; color: #888;",
-                  )}
-                >
+                
+                <th style={styleFrom("padding: 10px; text-align: left; color: #888;")}>
                   {"E-mail"}
                 </th>
-                {"\n                        "}
-                <th
-                  style={styleFrom(
-                    "padding: 10px; text-align: left; color: #888;",
-                  )}
-                >
+                
+                <th style={styleFrom("padding: 10px; text-align: left; color: #888;")}>
                   {"Matrícula"}
                 </th>
-                {"\n                        "}
-                <th
-                  style={styleFrom(
-                    "padding: 10px; text-align: left; color: #888;",
-                  )}
-                >
+                
+                <th style={styleFrom("padding: 10px; text-align: left; color: #888;")}>
                   {"Senha"}
                 </th>
-                {"\n                    "}
+                
               </tr>
-              {"\n                "}
+              
             </thead>
-            {"\n                "}
+            
             <tbody>
-              {"\n    "}
+              
               {html}
-              {"\n                "}
+              
             </tbody>
-            {"\n            "}
+            
           </table>
           {"\n        "}
         </div>
         {"\n        "}
         <div style={styleFrom("display: flex; gap: 10px; margin-top: 20px;")}>
           {"\n            "}
-          <button
-            onClick={(event) => {
-              fecharModalCredenciais();
-            }}
-            className={"btn-secondary-dash"}
-            style={styleFrom("flex:1; justify-content:center;")}
-          >
+          <button onClick={event => {
+          fecharModalCredenciais();
+        }} className={"btn-secondary-dash"} style={styleFrom("flex:1; justify-content:center;")}>
             {"Fechar"}
           </button>
           {"\n            "}
-          <button
-            onClick={(event) => {
-              copiarCredenciais();
-            }}
-            className={"btn-secondary-dash"}
-            style={styleFrom("flex:1; justify-content:center;")}
-          >
+          <button onClick={event => {
+          copiarCredenciais();
+        }} className={"btn-secondary-dash"} style={styleFrom("flex:1; justify-content:center;")}>
             {"\n                "}
             <i className={"fas fa-copy"}></i>
             {" Copiar Tudo\n            "}
@@ -320,44 +254,40 @@ export function initialize({ onReady, handlers }) {
           {"\n        "}
         </div>
         {"\n    "}
-      </>
-    );
+      </>;
     mount(lista, html);
     modal.style.display = "flex";
   }
   function fecharModalCredenciais() {
     document.getElementById("credenciaisModal").style.display = "none";
-    location.reload();
+    refresh();
   }
   function copiarCredenciais() {
     const linhas = document.querySelectorAll("#credenciaisLista tbody tr");
     let texto = "";
-    linhas.forEach((tr) => {
+    linhas.forEach(tr => {
       const tds = tr.querySelectorAll("td");
       texto += `${tds[0].textContent} | ${tds[1].textContent} | ${tds[2].textContent} | ${tds[3].textContent}\n`;
     });
     navigator.clipboard.writeText(texto).then(() => {
+      if (!lifecycle.active) return;
       alert("Credenciais copiadas para a área de transferência!");
     });
   }
-  document
-    .getElementById("competenciasSearchInput")
-    .addEventListener("keyup", function () {
-      const searchTerm = this.value.toLowerCase();
-      document.querySelectorAll(".competencia-card").forEach((card) => {
-        const studentName = card.getAttribute("data-aluno-nome") || "";
-        card.style.display = studentName.includes(searchTerm) ? "" : "none";
-      });
+  lifecycle.listen(document.getElementById("competenciasSearchInput"), "keyup", function () {
+    const searchTerm = this.value.toLowerCase();
+    document.querySelectorAll(".competencia-card").forEach(card => {
+      const studentName = card.getAttribute("data-aluno-nome") || "";
+      card.style.display = studentName.includes(searchTerm) ? "" : "none";
     });
-  document
-    .getElementById("chartSearchInput")
-    .addEventListener("keyup", function () {
-      const searchTerm = this.value.toLowerCase();
-      document.querySelectorAll(".chart-card").forEach((card) => {
-        const studentName = card.getAttribute("data-aluno-nome") || "";
-        card.style.display = studentName.includes(searchTerm) ? "" : "none";
-      });
+  });
+  lifecycle.listen(document.getElementById("chartSearchInput"), "keyup", function () {
+    const searchTerm = this.value.toLowerCase();
+    document.querySelectorAll(".chart-card").forEach(card => {
+      const studentName = card.getAttribute("data-aluno-nome") || "";
+      card.style.display = studentName.includes(searchTerm) ? "" : "none";
     });
+  });
   function openExportModal() {
     document.getElementById("exportSuccessModal").style.display = "flex";
   }
@@ -377,85 +307,48 @@ export function initialize({ onReady, handlers }) {
     document.getElementById("addAlunoModal").style.display = "none";
   }
   function openEditModal(id, nome, presenca) {
-    fetch(`/dashboard/aluno-dados/${id}`)
-      .then((response) => {
-        if (!response.ok) throw new Error("Falha ao carregar dados");
-        return response.json();
-      })
-      .then((data) => {
-        document.getElementById("editAlunoId").value = id;
-        document.getElementById("editAlunoIdComp").value = id;
-        document.getElementById("editNomeAluno").innerText = nome.toUpperCase();
-        document.getElementById("editPresencaInput").value = presenca;
-        const loginInfo = document.getElementById("loginInfo");
-        if (loginInfo) {
-          mount(
-            loginInfo,
-            <>
+    fetch(`/dashboard/aluno-dados/${id}`).then(response => {
+      if (!lifecycle.active) return;
+      if (!response.ok) throw new Error("Falha ao carregar dados");
+      return response.json();
+    }).then(data => {
+      if (!lifecycle.active) return;
+      document.getElementById("editAlunoId").value = id;
+      document.getElementById("editAlunoIdComp").value = id;
+      document.getElementById("editNomeAluno").innerText = nome.toUpperCase();
+      document.getElementById("editPresencaInput").value = presenca;
+      const loginInfo = document.getElementById("loginInfo");
+      if (loginInfo) {
+        mount(loginInfo, <>
               {"\n                    "}
-              <div
-                style={styleFrom(
-                  "background: #151515; padding: 15px; border-radius: 12px; border: 1px solid #333; ",
-                )}
-              >
+              <div style={styleFrom("background: #151515; padding: 15px; border-radius: 12px; border: 1px solid #333; ")}>
                 {"\n                        "}
-                <p
-                  style={styleFrom(
-                    "color: #888; font-size: 0.7rem; text-transform: uppercase; margin-bottom: 12px;",
-                  )}
-                >
+                <p style={styleFrom("color: #888; font-size: 0.7rem; text-transform: uppercase; margin-bottom: 12px;")}>
                   {"Credenciais do Aluno"}
                 </p>
                 {"\n                        "}
-                <p
-                  style={styleFrom(
-                    "color: #fff; margin-bottom: 10px; font-size: 0.9rem;",
-                  )}
-                >
+                <p style={styleFrom("color: #fff; margin-bottom: 10px; font-size: 0.9rem;")}>
                   {"\n                            "}
-                  <i
-                    className={"fas fa-envelope"}
-                    style={styleFrom("color: var(--primary-red); width: 20px;")}
-                  ></i>
+                  <i className={"fas fa-envelope"} style={styleFrom("color: var(--primary-red); width: 20px;")}></i>
                   {"\n                            "}
                   <strong>{"E-mail:"}</strong> {data.email || "Não cadastrado"}
                   {"\n                        "}
                 </p>
                 {"\n                        "}
-                <p
-                  style={styleFrom(
-                    "color: #fff; margin-bottom: 12px; font-size: 0.9rem;",
-                  )}
-                >
+                <p style={styleFrom("color: #fff; margin-bottom: 12px; font-size: 0.9rem;")}>
                   {"\n                            "}
-                  <i
-                    className={"fas fa-id-card"}
-                    style={styleFrom("color: var(--primary-red); width: 20px;")}
-                  ></i>
+                  <i className={"fas fa-id-card"} style={styleFrom("color: var(--primary-red); width: 20px;")}></i>
                   {"\n                            "}
                   <strong>{"Matrícula:"}</strong>{" "}
                   {data.matricula || "Não cadastrada"}
                   {"\n                        "}
                 </p>
                 {"\n                        "}
-                <div
-                  style={styleFrom(
-                    "border-top: 1px solid #333; padding-top: 12px;",
-                  )}
-                >
+                <div style={styleFrom("border-top: 1px solid #333; padding-top: 12px;")}>
                   {"\n                            "}
-                  <p
-                    style={styleFrom(
-                      "color: #fff; margin-bottom: 8px; font-size: 0.9rem;",
-                    )}
-                  >
+                  <p style={styleFrom("color: #fff; margin-bottom: 8px; font-size: 0.9rem;")}>
                     {"\n                                "}
-                    <i
-                      className={"fas fa-lock"}
-                      style={styleFrom(
-                        "color: var(--primary-red); width: 20px;",
-                      )}
-                    ></i>
+                    <i className={"fas fa-lock"} style={styleFrom("color: var(--primary-red); width: 20px;")}></i>
                     {"\n                                "}
                     <strong>{"Senha:"}</strong>{" "}
                     <span id={"senhaAlunoValor"}>
@@ -464,24 +357,13 @@ export function initialize({ onReady, handlers }) {
                     {"\n                            "}
                   </p>
                   {"\n                            "}
-                  <small
-                    style={styleFrom(
-                      "display:block;color:#777;line-height:1.4;margin-bottom:10px;",
-                    )}
-                  >
-                    {
-                      "A senha atual é armazenada somente como hash. Gere uma nova senha abaixo para visualizar a nova credencial."
-                    }
+                  <small style={styleFrom("display:block;color:#777;line-height:1.4;margin-bottom:10px;")}>
+                    {"A senha atual é armazenada somente como hash. Gere uma nova senha abaixo para visualizar a nova credencial."}
                   </small>
                   {"\n                            "}
-                  <button
-                    type={"button"}
-                    className={"btn-secondary-dash"}
-                    style={styleFrom("width:100%;justify-content:center;")}
-                    onClick={(event) => {
-                      gerarNovaSenhaAluno(id);
-                    }}
-                  >
+                  <button type={"button"} className={"btn-secondary-dash"} style={styleFrom("width:100%;justify-content:center;")} onClick={event => {
+                gerarNovaSenhaAluno(id);
+              }}>
                     {"\n                                "}
                     <i className={"fas fa-key"}></i>
                     {" GERAR NOVA SENHA\n                            "}
@@ -491,73 +373,72 @@ export function initialize({ onReady, handlers }) {
                 {"\n                    "}
               </div>
               {"\n                "}
-            </>,
-          );
-        }
-        carregarCompetencias(id);
-        showEditTab("info");
-        document.getElementById("editAlunoModal").style.display = "flex";
-      })
-      .catch((error) => {
-        console.error("Erro ao carregar dados:", error);
-        alert("Erro ao carregar dados do aluno.");
-      });
+            </>);
+      }
+      carregarCompetencias(id);
+      showEditTab("info");
+      document.getElementById("editAlunoModal").style.display = "flex";
+    }).catch(error => {
+      if (!lifecycle.active) return;
+      if (!lifecycle.active) return;
+      console.error("Erro ao carregar dados:", error);
+      alert("Erro ao carregar dados do aluno.");
+    });
   }
   function gerarNovaSenhaAluno(id) {
     const token = document.querySelector('input[name="_csrf"]')?.value;
-    if (
-      !confirm(
-        "Gerar uma nova senha? A senha atual deixará de funcionar imediatamente.",
-      )
-    )
-      return;
+    if (!confirm("Gerar uma nova senha? A senha atual deixará de funcionar imediatamente.")) return;
     fetch(`/dashboard/gerar-senha-aluno/${id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        ...(token
-          ? {
-              "X-CSRF-Token": token,
-            }
-          : {}),
+        ...(token ? {
+          "X-CSRF-Token": token
+        } : {})
       },
       body: JSON.stringify({
-        _csrf: token,
-      }),
-    })
-      .then((response) =>
-        response.json().then((data) => ({
-          ok: response.ok,
-          data,
-        })),
-      )
-      .then(({ ok, data }) => {
-        if (!ok) throw new Error(data.error || "Erro ao gerar senha");
-        const el = document.getElementById("senhaAlunoValor");
-        if (el) {
-          el.textContent = data.senha;
-          el.style.color = "#fff";
-          el.style.fontWeight = "700";
-          el.style.letterSpacing = "1px";
-        }
+        _csrf: token
       })
-      .catch((error) => {
-        console.error(error);
-        alert(error.message || "Erro ao gerar nova senha.");
+    }).then(response => {
+      if (!lifecycle.active) return;
+      return response.json().then(data => {
+        if (!lifecycle.active) return;
+        return {
+          ok: response.ok,
+          data
+        };
       });
+    }).then(({
+      ok,
+      data
+    }) => {
+      if (!lifecycle.active) return;
+      if (!ok) throw new Error(data.error || "Erro ao gerar senha");
+      const el = document.getElementById("senhaAlunoValor");
+      if (el) {
+        el.textContent = data.senha;
+        el.style.color = "#fff";
+        el.style.fontWeight = "700";
+        el.style.letterSpacing = "1px";
+      }
+    }).catch(error => {
+      if (!lifecycle.active) return;
+      if (!lifecycle.active) return;
+      console.error(error);
+      alert(error.message || "Erro ao gerar nova senha.");
+    });
   }
   function showEditTab(tabName) {
     const contents = document.querySelectorAll("#editAlunoModal .tab-content");
-    contents.forEach((content) => {
+    contents.forEach(content => {
       content.style.display = "none";
       content.classList.remove("active");
     });
     const buttons = document.querySelectorAll("#editAlunoModal .tab-btn");
-    buttons.forEach((btn) => {
+    buttons.forEach(btn => {
       btn.classList.remove("active");
     });
-    const targetId =
-      "edit" + tabName.charAt(0).toUpperCase() + tabName.slice(1) + "Tab";
+    const targetId = "edit" + tabName.charAt(0).toUpperCase() + tabName.slice(1) + "Tab";
     const activeContent = document.getElementById(targetId);
     if (activeContent) {
       activeContent.style.display = "block";
@@ -572,25 +453,23 @@ export function initialize({ onReady, handlers }) {
     document.getElementById("editAlunoModal").style.display = "none";
   }
   function carregarCompetencias(alunoId) {
-    fetch(`/dashboard/competencias-aluno/${alunoId}`)
-      .then((response) => response.json())
-      .then((data) => {
-        const container = document.getElementById("competenciasListContainer");
-        if (data.length === 0) {
-          mount(
-            container,
-            <>
+    fetch(`/dashboard/competencias-aluno/${alunoId}`).then(response => {
+      if (!lifecycle.active) return;
+      return response.json();
+    }).then(data => {
+      if (!lifecycle.active) return;
+      const container = document.getElementById("competenciasListContainer");
+      if (data.length === 0) {
+        mount(container, <>
               <p style={styleFrom("color: #888; text-align: center;")}>
                 {"Nenhuma competência registrada ainda."}
               </p>
-            </>,
-          );
-        } else {
-          let html = [];
-          data.forEach((comp) => {
-            const notaClass = comp.gradeClass;
-            html.push(
-              <React.Fragment key={html.length}>
+            </>);
+      } else {
+        let html = [];
+        data.forEach(comp => {
+          const notaClass = comp.gradeClass;
+          html.push(<React.Fragment key={html.length}>
                 {"\n                                "}
                 <div className={"competencia-edit-item"}>
                   {"\n                                    "}
@@ -598,40 +477,25 @@ export function initialize({ onReady, handlers }) {
                     {"\n                                        "}
                     <span className={"competencia-edit-nome"}>{comp.nome}</span>
                     {"\n                                        "}
-                    {comp.observacoes ? (
-                      <>
+                    {comp.observacoes ? <>
                         <small style={styleFrom("color:#888")}>
                           {comp.observacoes}
                         </small>
-                      </>
-                    ) : (
-                      ""
-                    )}
+                      </> : ""}
                     {"\n                                    "}
                   </div>
                   {"\n                                    "}
-                  <div
-                    style={styleFrom(
-                      "display: flex; align-items: center; gap: 10px;",
-                    )}
-                  >
+                  <div style={styleFrom("display: flex; align-items: center; gap: 10px;")}>
                     {"\n                                        "}
                     <span className={"competencia-edit-nota " + notaClass}>
                       {parseFloat(comp.nota).toFixed(1)}
                     </span>
                     {"\n                                        "}
-                    <button
-                      type={"button"}
-                      className={"btn-delete-comp"}
-                      onClick={(event) => {
-                        deletarCompetencia(comp.id);
-                      }}
-                    >
+                    <button type={"button"} className={"btn-delete-comp"} onClick={event => {
+                  deletarCompetencia(comp.id);
+                }}>
                       {"\n                                            "}
-                      <i
-                        className={"ph-bold ph-trash"}
-                        aria-hidden={"true"}
-                      ></i>
+                      <i className={"ph-bold ph-trash"} aria-hidden={"true"}></i>
                       {"\n                                        "}
                     </button>
                     {"\n                                    "}
@@ -639,57 +503,50 @@ export function initialize({ onReady, handlers }) {
                   {"\n                                "}
                 </div>
                 {"\n                            "}
-              </React.Fragment>,
-            );
-          });
-          mount(container, html);
-        }
-      })
-      .catch((error) => {
-        console.error("Erro:", error);
-        mount(
-          document.getElementById("competenciasListContainer"),
-          <>
+              </React.Fragment>);
+        });
+        mount(container, html);
+      }
+    }).catch(error => {
+      if (!lifecycle.active) return;
+      if (!lifecycle.active) return;
+      console.error("Erro:", error);
+      mount(document.getElementById("competenciasListContainer"), <>
             <p style={styleFrom("color: #ff0101; text-align: center;")}>
               {"Erro ao carregar competências."}
             </p>
-          </>,
-        );
-      });
+          </>);
+    });
   }
   async function deletarCompetencia(id) {
     if (!confirm("Remover esta competência?")) return;
     const response = await fetch(`/dashboard/deletar-competencia/${id}`, {
       method: "POST",
       headers: {
-        "X-CSRF-Token":
-          document.querySelector('meta[name="csrf-token"]')?.content || "",
-      },
+        "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')?.content || ""
+      }
     });
-    if (response.ok) window.location.reload();
+    if (response.ok) refresh();
   }
   onReady(() => {
     const dataAlunos = getPageData("dashboard-edit-data") || [];
-    dataAlunos.forEach((aluno) => {
+    dataAlunos.forEach(aluno => {
       const canvas = document.getElementById(`chart-${aluno.id}`);
-      if (!canvas || !aluno.competencias || aluno.competencias.length === 0)
-        return;
+      if (!canvas || !aluno.competencias || aluno.competencias.length === 0) return;
       const ctx = canvas.getContext("2d");
-      const labels = aluno.competencias.map((c) => c.nome.substring(0, 10));
-      const valores = aluno.competencias.map((c) => parseFloat(c.nota));
-      new Chart(ctx, {
+      const labels = aluno.competencias.map(c => c.nome.substring(0, 10));
+      const valores = aluno.competencias.map(c => parseFloat(c.nota));
+      lifecycle.chart(Chart, ctx, {
         type: "bar",
         data: {
           labels: labels,
-          datasets: [
-            {
-              label: "Nota",
-              data: valores,
-              backgroundColor: aluno.competencias.map((c) => c.gradeChartColor),
-              borderColor: "#ff0101",
-              borderWidth: 1,
-            },
-          ],
+          datasets: [{
+            label: "Nota",
+            data: valores,
+            backgroundColor: aluno.competencias.map(c => c.gradeChartColor),
+            borderColor: "#ff0101",
+            borderWidth: 1
+          }]
         },
         options: {
           responsive: true,
@@ -699,77 +556,63 @@ export function initialize({ onReady, handlers }) {
               beginAtZero: true,
               max: 10,
               grid: {
-                color: "rgba(255,255,255,0.05)",
+                color: "rgba(255,255,255,0.05)"
               },
               ticks: {
-                color: "#888",
-              },
+                color: "#888"
+              }
             },
             x: {
               grid: {
-                display: false,
+                display: false
               },
               ticks: {
                 color: "#888",
                 maxRotation: 45,
-                minRotation: 45,
-              },
-            },
+                minRotation: 45
+              }
+            }
           },
           plugins: {
             legend: {
-              display: false,
-            },
-          },
-        },
+              display: false
+            }
+          }
+        }
       });
     });
   });
   function applyFilter() {
     const selAno = document.getElementById("filterAno").value;
     const selStatus = document.getElementById("filterStatus").value;
-    document.querySelectorAll("#alunosTableBody tr").forEach((row) => {
+    document.querySelectorAll("#alunosTableBody tr").forEach(row => {
       const ano = row.cells[2].textContent.trim();
       const status = row.cells[6].textContent.trim();
-      row.style.display =
-        (selAno === "" || ano === selAno) &&
-        (selStatus === "" || status === selStatus)
-          ? ""
-          : "none";
+      row.style.display = (selAno === "" || ano === selAno) && (selStatus === "" || status === selStatus) ? "" : "none";
     });
-    document
-      .querySelectorAll(".chart-card, .competencia-card")
-      .forEach((card) => {
-        const nomeAluno =
-          card.querySelector("h3")?.textContent.replace("ALUNO:", "").trim() ||
-          "";
-        let encontrou = false;
-        document.querySelectorAll("#alunosTableBody tr").forEach((row) => {
-          if (row.style.display !== "none") {
-            const nomeTabela = row.cells[1].textContent.trim();
-            if (nomeTabela === nomeAluno) encontrou = true;
-          }
-        });
-        card.style.display = encontrou ? "" : "none";
+    document.querySelectorAll(".chart-card, .competencia-card").forEach(card => {
+      const nomeAluno = card.querySelector("h3")?.textContent.replace("ALUNO:", "").trim() || "";
+      let encontrou = false;
+      document.querySelectorAll("#alunosTableBody tr").forEach(row => {
+        if (row.style.display !== "none") {
+          const nomeTabela = row.cells[1].textContent.trim();
+          if (nomeTabela === nomeAluno) encontrou = true;
+        }
       });
+      card.style.display = encontrou ? "" : "none";
+    });
     closeFilter();
   }
   function clearFilters() {
     document.getElementById("filterAno").value = "";
     document.getElementById("filterStatus").value = "";
-    document
-      .querySelectorAll("#alunosTableBody tr, .chart-card, .competencia-card")
-      .forEach((el) => (el.style.display = ""));
+    document.querySelectorAll("#alunosTableBody tr, .chart-card, .competencia-card").forEach(el => el.style.display = "");
     closeFilter();
   }
-  document.getElementById("searchInput").addEventListener("keyup", function () {
+  lifecycle.listen(document.getElementById("searchInput"), "keyup", function () {
     const filter = this.value.toUpperCase();
-    document.querySelectorAll("#alunosTableBody tr").forEach((row) => {
-      row.style.display = row.cells[1].textContent
-        .toUpperCase()
-        .includes(filter)
-        ? ""
-        : "none";
+    document.querySelectorAll("#alunosTableBody tr").forEach(row => {
+      row.style.display = row.cells[1].textContent.toUpperCase().includes(filter) ? "" : "none";
     });
   });
   async function confirmDelete(id, nome) {
@@ -777,11 +620,10 @@ export function initialize({ onReady, handlers }) {
       const response = await fetch(`/dashboard/delete-aluno/${id}`, {
         method: "POST",
         headers: {
-          "X-CSRF-Token":
-            document.querySelector('meta[name="csrf-token"]')?.content || "",
-        },
+          "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')?.content || ""
+        }
       });
-      if (response.ok) window.location.reload();
+      if (response.ok) refresh();
     }
   }
   async function exportarTabelaParaExcel() {
@@ -793,13 +635,14 @@ export function initialize({ onReady, handlers }) {
       link.href = url;
       link.download = "Relatorio_Completo_AnalisAI.xlsx";
       link.click();
-      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      lifecycle.timeout(() => URL.revokeObjectURL(url), 1000);
       openExportModal();
     } catch (error) {
+      if (!lifecycle.active) return;
       openErrorModal("ERRO", error.message, "");
     }
   }
-  Object.assign(handlers, {
+  lifecycle.bindHandlers(handlers, {
     getPageData,
     openLoadingModal,
     closeLoadingModal,
@@ -830,6 +673,7 @@ export function initialize({ onReady, handlers }) {
     applyFilter,
     clearFilters,
     confirmDelete,
-    exportarTabelaParaExcel,
+    exportarTabelaParaExcel
   });
+  return lifecycle;
 }
