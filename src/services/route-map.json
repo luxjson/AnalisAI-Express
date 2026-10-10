@@ -1,0 +1,392 @@
+[
+  {
+    "original": "/login/professor",
+    "method": "POST",
+    "uri": "/auth/professor"
+  },
+  {
+    "original": "/login/aluno",
+    "method": "POST",
+    "uri": "/auth/aluno"
+  },
+  {
+    "original": "/logout",
+    "method": "POST",
+    "uri": "/auth/logout"
+  },
+  {
+    "original": "/esqueci-senha/solicitar",
+    "method": "POST",
+    "uri": "/auth/solicitacoes-senha"
+  },
+  {
+    "original": "/dashboard",
+    "method": "GET",
+    "uri": "/professores/painel"
+  },
+  {
+    "original": "/dashboard/ia",
+    "method": "GET",
+    "uri": "/professores/ia"
+  },
+  {
+    "original": "/dashboard/edit",
+    "method": "GET",
+    "uri": "/alunos"
+  },
+  {
+    "original": "/dashboard/graficos",
+    "method": "GET",
+    "uri": "/professores/estatisticas"
+  },
+  {
+    "original": "/dashboard/equipe",
+    "method": "GET",
+    "uri": "/equipe"
+  },
+  {
+    "original": "/dashboard/alterar-senha",
+    "method": "PATCH",
+    "uri": "/professores/senha"
+  },
+  {
+    "original": "/dashboard/aluno-dados/:id",
+    "method": "GET",
+    "uri": "/alunos/:id"
+  },
+  {
+    "original": "/dashboard/gerar-senha-aluno/:id",
+    "method": "POST",
+    "uri": "/alunos/:id/redefinicao-senha"
+  },
+  {
+    "original": "/dashboard/competencias-aluno/:id",
+    "method": "GET",
+    "uri": "/alunos/:id/competencias"
+  },
+  {
+    "original": "/dashboard/adicionar-competencia",
+    "method": "POST",
+    "uri": "/avaliacoes"
+  },
+  {
+    "original": "/dashboard/deletar-competencia/:id",
+    "method": "DELETE",
+    "uri": "/avaliacoes/:id"
+  },
+  {
+    "original": "/dashboard/atualizar-presenca",
+    "method": "PATCH",
+    "uri": "/alunos/presenca"
+  },
+  {
+    "original": "/dashboard/add-aluno",
+    "method": "POST",
+    "uri": "/alunos"
+  },
+  {
+    "original": "/dashboard/delete-aluno/:id",
+    "method": "DELETE",
+    "uri": "/alunos/:id"
+  },
+  {
+    "original": "/dashboard/erase-all",
+    "method": "DELETE",
+    "uri": "/admin/dados-pedagogicos"
+  },
+  {
+    "original": "/dashboard/importar-dados",
+    "method": "POST",
+    "uri": "/alunos/importacoes"
+  },
+  {
+    "original": "/dashboard/importar-dados-completos",
+    "method": "POST",
+    "uri": "/alunos/importacoes/completas"
+  },
+  {
+    "original": "/baixar-modelo-importacao",
+    "method": "GET",
+    "uri": "/alunos/importacoes/modelo"
+  },
+  {
+    "original": "/dashboard/tarefas",
+    "method": "GET",
+    "uri": "/tarefas"
+  },
+  {
+    "original": "/dashboard/tarefas/criar",
+    "method": "POST",
+    "uri": "/tarefas"
+  },
+  {
+    "original": "/dashboard/tarefas/avaliar-aluno",
+    "method": "POST",
+    "uri": "/tarefas/avaliacoes"
+  },
+  {
+    "original": "/dashboard/tarefas/devolver-aluno",
+    "method": "POST",
+    "uri": "/tarefas/devolucoes"
+  },
+  {
+    "original": "/dashboard/tarefas/:id",
+    "method": "GET",
+    "uri": "/tarefas/:id"
+  },
+  {
+    "original": "/dashboard/tarefas/editar/:id",
+    "method": "PATCH",
+    "uri": "/tarefas/:id"
+  },
+  {
+    "original": "/dashboard/tarefas/excluir/:id",
+    "method": "DELETE",
+    "uri": "/tarefas/:id"
+  },
+  {
+    "original": "/dashboard/tarefas/atualizar-status-aluno",
+    "method": "PATCH",
+    "uri": "/tarefas/atribuicoes/status"
+  },
+  {
+    "original": "/dashboard/api/tarefas-stats",
+    "method": "GET",
+    "uri": "/tarefas/estatisticas"
+  },
+  {
+    "original": "/dashboard/calendario",
+    "method": "GET",
+    "uri": "/calendario"
+  },
+  {
+    "original": "/dashboard/calendario/evento",
+    "method": "POST",
+    "uri": "/calendario/eventos"
+  },
+  {
+    "original": "/dashboard/calendario/feriado",
+    "method": "POST",
+    "uri": "/calendario/feriados"
+  },
+  {
+    "original": "/dashboard/calendario/evento/:id",
+    "method": "DELETE",
+    "uri": "/calendario/eventos/:id"
+  },
+  {
+    "original": "/dashboard/calendario/feriado/:id",
+    "method": "DELETE",
+    "uri": "/calendario/feriados/:id"
+  },
+  {
+    "original": "/dashboard/api/calendario/mes",
+    "method": "GET",
+    "uri": "/calendario/mes"
+  },
+  {
+    "original": "/aluno",
+    "method": "GET",
+    "uri": "/estudante/painel"
+  },
+  {
+    "original": "/aluno/competencias",
+    "method": "GET",
+    "uri": "/estudante/competencias"
+  },
+  {
+    "original": "/aluno/evolucao",
+    "method": "GET",
+    "uri": "/estudante/evolucao"
+  },
+  {
+    "original": "/aluno/alterar-senha",
+    "method": "PATCH",
+    "uri": "/estudante/senha"
+  },
+  {
+    "original": "/aluno/tarefas",
+    "method": "GET",
+    "uri": "/estudante/tarefas"
+  },
+  {
+    "original": "/aluno/tarefas/enviar/:id",
+    "method": "POST",
+    "uri": "/estudante/atribuicoes/:id/entregas"
+  },
+  {
+    "original": "/aluno/equipe",
+    "method": "GET",
+    "uri": "/equipe"
+  },
+  {
+    "original": "/equipe",
+    "method": "GET",
+    "uri": "/equipe"
+  },
+  {
+    "original": "/aluno/api/dados-grafico",
+    "method": "GET",
+    "uri": "/estudante/grafico"
+  },
+  {
+    "original": "/aluno/api/ranking-comparativo",
+    "method": "GET",
+    "uri": "/estudante/ranking"
+  },
+  {
+    "original": "/aluno/ia",
+    "method": "GET",
+    "uri": "/estudante/ia"
+  },
+  {
+    "original": "/dashboard/usuarios",
+    "method": "GET",
+    "uri": "/admin/usuarios"
+  },
+  {
+    "original": "/dashboard/usuarios/add",
+    "method": "POST",
+    "uri": "/admin/usuarios"
+  },
+  {
+    "original": "/dashboard/usuarios/update",
+    "method": "PATCH",
+    "uri": "/admin/usuarios"
+  },
+  {
+    "original": "/dashboard/usuarios/delete/:id",
+    "method": "DELETE",
+    "uri": "/admin/usuarios/:id"
+  },
+  {
+    "original": "/dashboard/solicitacoes-senha",
+    "method": "GET",
+    "uri": "/admin/solicitacoes-senha"
+  },
+  {
+    "original": "/dashboard/solicitacoes-senha/aprovar/:id",
+    "method": "POST",
+    "uri": "/admin/solicitacoes-senha/:id/aprovacoes"
+  },
+  {
+    "original": "/dashboard/solicitacoes-senha/rejeitar/:id",
+    "method": "POST",
+    "uri": "/admin/solicitacoes-senha/:id/rejeicoes"
+  },
+  {
+    "original": "/dashboard/verify-delete-password",
+    "method": "POST",
+    "uri": "/admin/reauth"
+  },
+  {
+    "original": "/dashboard/checkup/run",
+    "method": "POST",
+    "uri": "/admin/diagnosticos"
+  },
+  {
+    "original": "/dashboard/checkup/repair",
+    "method": "POST",
+    "uri": "/admin/reparos"
+  },
+  {
+    "original": "/dashboard/checkup/backup-status",
+    "method": "GET",
+    "uri": "/admin/backups"
+  },
+  {
+    "original": "/dashboard/checkup/backup-now",
+    "method": "POST",
+    "uri": "/admin/backups"
+  },
+  {
+    "original": "/dashboard/checkup/download/:filename",
+    "method": "GET",
+    "uri": "/admin/backups/:filename"
+  },
+  {
+    "original": "/api/conta",
+    "method": "GET",
+    "uri": "/conta"
+  },
+  {
+    "original": "/api/notificacoes",
+    "method": "GET",
+    "uri": "/notificacoes"
+  },
+  {
+    "original": "/api/notificacoes/marcar-lida/:id",
+    "method": "PATCH",
+    "uri": "/notificacoes/:id"
+  },
+  {
+    "original": "/api/notificacoes/marcar-todas-lidas",
+    "method": "PATCH",
+    "uri": "/notificacoes"
+  },
+  {
+    "original": "/api/configuracoes-notificacoes",
+    "method": "GET",
+    "uri": "/preferencias/notificacoes"
+  },
+  {
+    "original": "/api/tarefas-stats",
+    "method": "GET",
+    "uri": "/tarefas/estatisticas"
+  },
+  {
+    "original": "/api/aluno/dados-grafico",
+    "method": "GET",
+    "uri": "/estudante/grafico"
+  },
+  {
+    "original": "/api/aluno/ranking-comparativo",
+    "method": "GET",
+    "uri": "/estudante/ranking"
+  },
+  {
+    "original": "/api/alunos/busca",
+    "method": "GET",
+    "uri": "/alunos/busca"
+  },
+  {
+    "original": "/api/health",
+    "method": "GET",
+    "uri": "/health"
+  },
+  {
+    "original": "/api/ia/historico",
+    "method": "GET",
+    "uri": "/ia/conversas"
+  },
+  {
+    "original": "/api/csrf-token",
+    "method": "GET",
+    "uri": "/auth/csrf"
+  },
+  {
+    "original": "/api/ia/historico/:id",
+    "method": "PATCH",
+    "uri": "/ia/conversas/:id"
+  },
+  {
+    "original": "/api/ia/aluno/chat",
+    "method": "POST",
+    "uri": "/ia/estudante/mensagens"
+  },
+  {
+    "original": "/api/ia/professor/chat",
+    "method": "POST",
+    "uri": "/ia/professor/mensagens"
+  },
+  {
+    "original": "/api/ia/professor/aluno/:id/analisar",
+    "method": "POST",
+    "uri": "/ia/alunos/:id/analises"
+  },
+  {
+    "original": "/api/ia/professor/alterar-nota",
+    "method": "POST",
+    "uri": "/ia/avaliacoes"
+  }
+]
