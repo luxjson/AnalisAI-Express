@@ -1,21 +1,10 @@
-import { navigate, refresh } from "../services/navigation";
 import { createInteractionScope } from "../services/lifecycle";
-import React from "react";
-import { Chart } from "chart.js/auto";
-import { apiFetch } from "../services/api";
-import { styleFrom, escapeHtml, mount as mountContent, richMarkup } from "../services/ui";
-export function initialize({
-  onReady,
-  handlers,
-  scope
-}) {
+export function initialize({ onReady, handlers, scope }) {
   const lifecycle = scope || createInteractionScope();
-  const fetch = lifecycle.fetch(apiFetch);
-  const mount = lifecycle.mount(mountContent);
   onReady(function () {
     const currentPath = window.location.pathname;
     const links = document.querySelectorAll(".side-link");
-    links.forEach(link => {
+    links.forEach((link) => {
       const linkPath = link.getAttribute("href");
       if (currentPath === linkPath) {
         link.classList.add("active");
@@ -35,23 +24,29 @@ export function initialize({
       menuButton.setAttribute("aria-expanded", String(isOpen));
     });
     lifecycle.listen(backdrop, "click", closeMenu);
-    document.querySelectorAll(".sidebar .side-link").forEach(link => lifecycle.listen(link, "click", closeMenu));
+    document
+      .querySelectorAll(".sidebar .side-link")
+      .forEach((link) => lifecycle.listen(link, "click", closeMenu));
     const settings = document.querySelector("[data-settings-modal]");
     const settingsModal = document.getElementById("settingsModal");
     const closeSettings = () => {
       settingsModal?.classList.remove("is-open");
       settingsModal?.setAttribute("aria-hidden", "true");
     };
-    lifecycle.listen(settings, "click", event => {
+    lifecycle.listen(settings, "click", (event) => {
       event.preventDefault();
       settingsModal?.classList.add("is-open");
       settingsModal?.setAttribute("aria-hidden", "false");
       closeMenu();
     });
-    lifecycle.listen(settingsModal, "click", event => {
-      if (event.target === settingsModal || event.target.closest("[data-close-settings]")) closeSettings();
+    lifecycle.listen(settingsModal, "click", (event) => {
+      if (
+        event.target === settingsModal ||
+        event.target.closest("[data-close-settings]")
+      )
+        closeSettings();
     });
-    lifecycle.listen(document, "keydown", event => {
+    lifecycle.listen(document, "keydown", (event) => {
       if (event.key === "Escape") closeSettings();
     });
   });
@@ -71,7 +66,7 @@ export function initialize({
   });
   lifecycle.bindHandlers(handlers, {
     openModal,
-    closeModal
+    closeModal,
   });
   return lifecycle;
 }

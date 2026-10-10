@@ -1,10 +1,9 @@
+import { LoadingElement } from "../components/loading-layout";
 import React from "react";
 import { ProfessorChatWelcome } from "../components/ChatWelcome.jsx";
 import Partials_barProfessor from "../components/Partials_barProfessor.jsx";
-import { styleFrom, safeJson } from "../services/ui";
 export default function Dashboard_dashboardIA({ data, handlers }) {
   const {} = data;
-
   return (
     <>
       <React.Fragment>
@@ -14,7 +13,7 @@ export default function Dashboard_dashboardIA({ data, handlers }) {
           }}
           handlers={handlers}
         />
-        <div className={"main-layout"}>
+        <LoadingElement as="div" className={"main-layout"} root={true}>
           <main className={"ai-page-content"}>
             <section
               className={"ai-chat"}
@@ -76,7 +75,7 @@ export default function Dashboard_dashboardIA({ data, handlers }) {
               </form>
             </section>
           </main>
-        </div>
+        </LoadingElement>
       </React.Fragment>
     </>
   );

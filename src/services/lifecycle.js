@@ -1,4 +1,4 @@
-import { unmount } from './ui';
+import { unmount } from "./ui";
 export function createInteractionScope() {
   let active = true;
   const cleanup = [],
@@ -8,10 +8,21 @@ export function createInteractionScope() {
     get active() {
       return active;
     },
+    reportError(error) {
+      if (!active || error?.name === "AbortError") return;
+      window.dispatchEvent(
+        new CustomEvent("analisai:interaction-error", {
+          detail: error?.message || "Não foi possível concluir a operação.",
+        }),
+      );
+    },
     listen(target, type, listener, options) {
       if (!active || !target) return;
       const guarded = function (...args) {
-        if (active) return typeof listener === 'function' ? listener.apply(this, args) : listener.handleEvent(...args);
+        if (active)
+          return typeof listener === "function"
+            ? listener.apply(this, args)
+            : listener.handleEvent(...args);
       };
       target.addEventListener(type, guarded, options);
       cleanup.push(() => target.removeEventListener(type, guarded, options));
@@ -40,33 +51,42 @@ export function createInteractionScope() {
     },
     fetch(client) {
       return async (input, options = {}) => {
-        if (!active) throw new DOMException('Navegação cancelada.', 'AbortError');
+        if (!active)
+          throw new DOMException("Navegação cancelada.", "AbortError");
         const controller = new AbortController();
         controllers.add(controller);
         const abort = () => controller.abort();
-        options.signal?.addEventListener('abort', abort, {
-          once: true
+        options.signal?.addEventListener("abort", abort, {
+          once: true,
         });
         if (options.signal?.aborted) controller.abort();
         try {
           const result = await client(input, {
             ...options,
-            signal: controller.signal
+            signal: controller.signal,
           });
-          if (!active) throw new DOMException('Navegação cancelada.', 'AbortError');
-          for (const method of ['json', 'text', 'blob', 'arrayBuffer', 'formData']) {
-            if (typeof result[method] !== 'function') continue;
+          if (!active)
+            throw new DOMException("Navegação cancelada.", "AbortError");
+          for (const method of [
+            "json",
+            "text",
+            "blob",
+            "arrayBuffer",
+            "formData",
+          ]) {
+            if (typeof result[method] !== "function") continue;
             const read = result[method].bind(result);
             result[method] = async (...args) => {
               const body = await read(...args);
-              if (!active) throw new DOMException('Navegação cancelada.', 'AbortError');
+              if (!active)
+                throw new DOMException("Navegação cancelada.", "AbortError");
               return body;
             };
           }
           return result;
         } finally {
           controllers.delete(controller);
-          options.signal?.removeEventListener('abort', abort);
+          options.signal?.removeEventListener("abort", abort);
         }
       };
     },
@@ -83,7 +103,8 @@ export function createInteractionScope() {
         target[key] = value;
         cleanup.push(() => {
           if (target[key] === value) {
-            if (previous === undefined) delete target[key];else target[key] = previous;
+            if (previous === undefined) delete target[key];
+            else target[key] = previous;
           }
         });
       }
@@ -100,11 +121,12 @@ export function createInteractionScope() {
           console.error("Falha ao limpar interação", error);
         }
       }
-      for (const root of roots) unmount(root, {
-        defer: true
-      });
+      for (const root of roots)
+        unmount(root, {
+          defer: true,
+        });
       roots.clear();
-    }
+    },
   };
   return scope;
 }

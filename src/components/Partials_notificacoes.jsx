@@ -1,8 +1,7 @@
 import React from "react";
-import { styleFrom, safeJson } from "../services/ui";
+import { styleFrom } from "../services/ui";
 export default function Partials_notificacoes({ data, handlers }) {
   const {} = data;
-
   return (
     <>
       <div className={"notificacoes-container"}>

@@ -1,10 +1,9 @@
+import { LoadingElement } from "../components/loading-layout";
 import React from "react";
 import { StudentChatWelcome } from "../components/ChatWelcome.jsx";
 import Partials_barAluno from "../components/Partials_barAluno.jsx";
-import { styleFrom, safeJson } from "../services/ui";
 export default function Aluno_alunoIA({ data, handlers }) {
   const {} = data;
-
   return (
     <>
       <React.Fragment>
@@ -14,7 +13,7 @@ export default function Aluno_alunoIA({ data, handlers }) {
           }}
           handlers={handlers}
         />
-        <div className={"main-layout"}>
+        <LoadingElement as="div" className={"main-layout"} root={true}>
           <main className={"ai-page-content"}>
             <section className={"ai-chat"} data-endpoint={"/api/ia/aluno/chat"}>
               <div className={"ai-chat-header"}>
@@ -73,7 +72,7 @@ export default function Aluno_alunoIA({ data, handlers }) {
               </form>
             </section>
           </main>
-        </div>
+        </LoadingElement>
       </React.Fragment>
     </>
   );

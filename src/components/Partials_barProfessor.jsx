@@ -1,6 +1,7 @@
+import { LoadingElement } from "./loading-layout";
 import React, { useContext } from "react";
 import { PersistentSidebarContext } from "./layout-context";
-import { styleFrom, safeJson } from "../services/ui";
+import { styleFrom } from "../services/ui";
 export default function Partials_barProfessor({ data, handlers }) {
   const persistent = useContext(PersistentSidebarContext);
   if (persistent) return null;
@@ -11,7 +12,6 @@ export default function Partials_barProfessor({ data, handlers }) {
     email = null,
     cargo = null,
   } = data;
-
   return (
     <>
       {(() => {
@@ -35,7 +35,12 @@ export default function Partials_barProfessor({ data, handlers }) {
           ></div>,
         );
         nodes.push(
-          <aside key={nodes.length} className={"sidebar"}>
+          <LoadingElement
+            as="aside"
+            key={nodes.length}
+            className={"sidebar"}
+            root={true}
+          >
             <div className={"sidebar-top"}>
               {(() => {
                 const nodes = [];
@@ -682,7 +687,7 @@ export default function Partials_barProfessor({ data, handlers }) {
                 </section>
               </div>
             </div>
-          </aside>,
+          </LoadingElement>,
         );
         if (userCargo === "Admin") {
           nodes.push(
@@ -784,9 +789,12 @@ export default function Partials_barProfessor({ data, handlers }) {
               </div>
               <div className={"modal-new-body"}>
                 <p className={"modal-new-text"}>
-                  {
-                    "\n                Plataforma avançada para gestão de competências e análise de desempenho educacional. \n                Desenvolvida para facilitar a visualização de dados e tomada de decisão pedagógica.\n            "
-                  }
+                  {[
+                    "\n                Plataforma avançada para gestão de competências ",
+                    "e análise de desempenho educacional. \n                ",
+                    "Desenvolvida para facilitar a visualização de dados e tomada de ",
+                    "decisão pedagógica.\n            ",
+                  ].join("")}
                 </p>
                 <div className={"modal-new-divider"}></div>
                 <div className={"modal-new-info-grid"}>

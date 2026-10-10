@@ -1,4 +1,3 @@
-/* Keep React's technical container out of the original body flex/grid layout. */
 #root {
   display: contents;
 }

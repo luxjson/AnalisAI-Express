@@ -1,8 +1,7 @@
 import React from "react";
-import { styleFrom, safeJson } from "../services/ui";
+import { styleFrom } from "../services/ui";
 export default function Partials_header({ data, handlers }) {
   const {} = data;
-
   return (
     <>
       <aside className={"sidebar"}>
@@ -85,9 +84,12 @@ export default function Partials_header({ data, handlers }) {
           </div>
           <div className={"modal-new-body"}>
             <p className={"modal-new-text"}>
-              {
-                "\r\n                Plataforma avançada para gestão de competências e análise de desempenho educacional. \r\n                Desenvolvida para facilitar a visualização de dados e tomada de decisão pedagógica.\r\n            "
-              }
+              {[
+                "\r\n                Plataforma avançada para gestão de ",
+                "competências e análise de desempenho educacional. \r\n             ",
+                "   Desenvolvida para facilitar a visualização de dados e tomada ",
+                "de decisão pedagógica.\r\n            ",
+              ].join("")}
             </p>
             <div className={"modal-new-divider"}></div>
             <div className={"modal-new-info-grid"}>

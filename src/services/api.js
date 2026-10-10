@@ -67,15 +67,27 @@ export async function apiFetch(input, options = {}) {
       .clone()
       .json()
       .catch(() => null);
-    if (data?.csrfToken) setCsrfToken(data.csrfToken);
+    if (!options.signal?.aborted && data?.csrfToken)
+      setCsrfToken(data.csrfToken);
   }
   return response;
 }
 export async function request(path, options) {
   const response = await apiFetch(path, options);
-  const data = await response
-    .json()
-    .catch((error) => { if (error.name === "AbortError") throw error; return { error: "Resposta inválida do servidor." }; });
+  let data;
+  try {
+    data = await response.json();
+    if (data === null || typeof data !== "object")
+      throw new Error("O servidor não retornou um objeto ou lista JSON.");
+  } catch (error) {
+    if (error.name === "AbortError") throw error;
+    throw Object.assign(
+      new Error("Resposta inválida do servidor.", { cause: error }),
+      {
+        status: response.ok ? 502 : response.status,
+      },
+    );
+  }
   if (!response.ok)
     throw Object.assign(
       new Error(

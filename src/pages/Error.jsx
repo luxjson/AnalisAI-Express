@@ -1,12 +1,11 @@
+import { LoadingValue, LoadingElement } from "../components/loading-layout";
 import React from "react";
-import { styleFrom, safeJson } from "../services/ui";
 export default function Error({ data, handlers }) {
   const { mensagem = null, erroDetalhe = null } = data;
-
   return (
     <>
       <React.Fragment>
-        <div className={"page"}>
+        <LoadingElement as="div" className={"page"} root={true}>
           <div className={"content"}>
             {(() => {
               const nodes = [];
@@ -22,7 +21,12 @@ export default function Error({ data, handlers }) {
               if (mensagem) {
                 nodes.push(
                   <p className={"message"} key={nodes.length}>
-                    {mensagem}
+                    <LoadingValue
+                      slot="error:1"
+                      width="12ch"
+                      known={false}
+                      value={mensagem}
+                    />
                   </p>,
                 );
               }
@@ -30,7 +34,14 @@ export default function Error({ data, handlers }) {
                 nodes.push(
                   <div className={"detail-box"} key={nodes.length}>
                     <p className={"label"}>{"DETALHES"}</p>
-                    <p className={"value"}>{erroDetalhe}</p>
+                    <p className={"value"}>
+                      <LoadingValue
+                        slot="error:2"
+                        width="12ch"
+                        known={false}
+                        value={erroDetalhe}
+                      />
+                    </p>
                   </div>,
                 );
               }
@@ -58,7 +69,7 @@ export default function Error({ data, handlers }) {
             <span className={"layer l3"}>{"404"}</span>
           </div>
           <footer className={"credits"}>{"© 2026 AnalisAI"}</footer>
-        </div>
+        </LoadingElement>
       </React.Fragment>
     </>
   );

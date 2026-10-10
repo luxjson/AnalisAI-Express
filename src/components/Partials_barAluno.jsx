@@ -1,6 +1,7 @@
+import { LoadingElement } from "./loading-layout";
 import React, { useContext } from "react";
 import { PersistentSidebarContext } from "./layout-context";
-import { styleFrom, safeJson } from "../services/ui";
+import { styleFrom } from "../services/ui";
 export default function Partials_barAluno({ data, handlers }) {
   const persistent = useContext(PersistentSidebarContext);
   if (persistent) return null;
@@ -13,7 +14,6 @@ export default function Partials_barAluno({ data, handlers }) {
     success_msg = null,
     error_msg = null,
   } = data;
-
   return (
     <>
       <button
@@ -25,7 +25,7 @@ export default function Partials_barAluno({ data, handlers }) {
         <i className={"fas fa-bars"}></i>
       </button>
       <div className={"mobile-menu-backdrop"} data-close-mobile-menu={""}></div>
-      <aside className={"sidebar"}>
+      <LoadingElement as="aside" className={"sidebar"} root={true}>
         <div className={"sidebar-top"}>
           <div className={"logo-container"}>
             <img
@@ -378,7 +378,7 @@ export default function Partials_barAluno({ data, handlers }) {
             </section>
           </div>
         </div>
-      </aside>
+      </LoadingElement>
       <div id={"infoModal"} className={"modal-new-overlay"}>
         <div className={"modal-new-card"}>
           <button
@@ -411,9 +411,12 @@ export default function Partials_barAluno({ data, handlers }) {
           </div>
           <div className={"modal-new-body"}>
             <p className={"modal-new-text"}>
-              {
-                "\n                Área exclusiva para estudantes. Acompanhe seu desempenho, visualize suas competências \n                e monitore sua evolução acadêmica em tempo real através de dados integrados.\n            "
-              }
+              {[
+                "\n                Área exclusiva para estudantes. Acompanhe seu ",
+                "desempenho, visualize suas competências \n                e ",
+                "monitore sua evolução acadêmica em tempo real através de dados ",
+                "integrados.\n            ",
+              ].join("")}
             </p>
             <div className={"modal-new-divider"}></div>
             <div className={"modal-new-info-grid"}>

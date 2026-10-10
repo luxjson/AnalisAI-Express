@@ -1,3 +1,3 @@
-import { createContext } from 'react';
-// Embedded sidebars remain available when rendering a page standalone.
+import { createContext } from "react";
+
 export const PersistentSidebarContext = createContext(false);

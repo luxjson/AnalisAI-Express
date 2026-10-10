@@ -1,15 +1,10 @@
-import { navigate, refresh } from "../services/navigation";
+import { navigate } from "../services/navigation";
 import { createInteractionScope } from "../services/lifecycle";
 import { safeSiteLink } from "../services/ui";
 import React from "react";
-import { Chart } from "chart.js/auto";
 import { apiFetch } from "../services/api";
-import { styleFrom, escapeHtml, mount as mountContent, richMarkup } from "../services/ui";
-export function initialize({
-  onReady,
-  handlers,
-  scope
-}) {
+import { styleFrom, mount as mountContent } from "../services/ui";
+export function initialize({ onReady, handlers, scope }) {
   const lifecycle = scope || createInteractionScope();
   const fetch = lifecycle.fetch(apiFetch);
   const mount = lifecycle.mount(mountContent);
@@ -40,7 +35,7 @@ export function initialize({
       } else await carregarNotificacoes();
     } catch {
       if (!lifecycle.active) return;
-    } /* Background polling retries on the next interval. */
+    }
   }
   async function carregarNotificacoes() {
     try {
@@ -48,7 +43,9 @@ export function initialize({
       if (!response.ok) return;
       const data = await response.json();
       if (!document.getElementById("notificacoesLista")) return;
-      atualizarListaNotificacoes(Array.isArray(data.notificacoes) ? data.notificacoes : []);
+      atualizarListaNotificacoes(
+        Array.isArray(data.notificacoes) ? data.notificacoes : [],
+      );
       atualizarBadge(Number(data.totalNaoLidas) || 0);
     } catch {
       if (!lifecycle.active) return;
@@ -57,35 +54,50 @@ export function initialize({
   function atualizarListaNotificacoes(notificacoes) {
     const lista = document.getElementById("notificacoesLista");
     if (notificacoes.length === 0) {
-      mount(lista, <>
+      mount(
+        lista,
+        <>
           <div className={"notificacoes-vazio"}>
             <i className={"far fa-bell-slash"}></i>
             {" Nenhuma notificação"}
           </div>
-        </>);
+        </>,
+      );
       return;
     }
     let html = [];
-    notificacoes.forEach(notif => {
+    notificacoes.forEach((notif) => {
       const data = new Date(notif.data_criacao).toLocaleString("pt-BR", {
         day: "2-digit",
         month: "2-digit",
         hour: "2-digit",
-        minute: "2-digit"
+        minute: "2-digit",
       });
-      html.push(<React.Fragment key={html.length}>
+      html.push(
+        <React.Fragment key={html.length}>
           {"\n            "}
-          <div className={"notificacao-item " + (notif.lida ? "" : "nao-lida")} data-id={notif.id}>
+          <div
+            className={"notificacao-item " + (notif.lida ? "" : "nao-lida")}
+            data-id={notif.id}
+          >
             {"\n                "}
-            <div className={"notificacao-icone"} style={styleFrom("background: " + notif.cor + "20; color: " + notif.cor + ";")}>
+            <div
+              className={"notificacao-icone"}
+              style={styleFrom(
+                "background: " + notif.cor + "20; color: " + notif.cor + ";",
+              )}
+            >
               {"\n                    "}
               <i className={notif.icone}></i>
               {"\n                "}
             </div>
             {"\n                "}
-            <div className={"notificacao-conteudo"} onClick={event => {
-            abrirNotificacao(notif.link);
-          }}>
+            <div
+              className={"notificacao-conteudo"}
+              onClick={(event) => {
+                abrirNotificacao(notif.link);
+              }}
+            >
               {"\n                    "}
               <div className={"notificacao-titulo"}>{notif.titulo}</div>
               {"\n                    "}
@@ -95,13 +107,18 @@ export function initialize({
               {"\n                "}
             </div>
             {"\n                "}
-            {!notif.lida ? <>
+            {!notif.lida ? (
+              <>
                 {"\n                "}
                 <div className={"notificacao-acoes"}>
                   {"\n                    "}
-                  <button className={"notificacao-marcar"} onClick={event => {
-                marcarComoLida(notif.id);
-              }} title={"Marcar como lida"}>
+                  <button
+                    className={"notificacao-marcar"}
+                    onClick={(event) => {
+                      marcarComoLida(notif.id);
+                    }}
+                    title={"Marcar como lida"}
+                  >
                     {"\n                        "}
                     <i className={"fas fa-check"}></i>
                     {"\n                    "}
@@ -109,11 +126,15 @@ export function initialize({
                   {"\n                "}
                 </div>
                 {"\n                "}
-              </> : ""}
+              </>
+            ) : (
+              ""
+            )}
             {"\n            "}
           </div>
           {"\n        "}
-        </React.Fragment>);
+        </React.Fragment>,
+      );
     });
     mount(lista, html);
   }
@@ -130,33 +151,41 @@ export function initialize({
     fetch(`/api/notificacoes/marcar-lida/${id}`, {
       method: "POST",
       headers: {
-        "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')?.content || ""
-      }
-    }).then(response => {
-      if (!lifecycle.active) return;
-      return response.json();
-    }).then(data => {
-      if (!lifecycle.active) return;
-      if (data.success) {
-        carregarNotificacoes();
-      }
-    });
+        "X-CSRF-Token":
+          document.querySelector('meta[name="csrf-token"]')?.content || "",
+      },
+    })
+      .then((response) => {
+        if (!lifecycle.active) return;
+        return response.json();
+      })
+      .then((data) => {
+        if (!lifecycle.active) return;
+        if (data.success) {
+          carregarNotificacoes();
+        }
+      })
+      .catch((error) => lifecycle.reportError(error));
   }
   function marcarTodasLidas() {
     fetch("/api/notificacoes/marcar-todas-lidas", {
       method: "POST",
       headers: {
-        "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')?.content || ""
-      }
-    }).then(response => {
-      if (!lifecycle.active) return;
-      return response.json();
-    }).then(data => {
-      if (!lifecycle.active) return;
-      if (data.success) {
-        carregarNotificacoes();
-      }
-    });
+        "X-CSRF-Token":
+          document.querySelector('meta[name="csrf-token"]')?.content || "",
+      },
+    })
+      .then((response) => {
+        if (!lifecycle.active) return;
+        return response.json();
+      })
+      .then((data) => {
+        if (!lifecycle.active) return;
+        if (data.success) {
+          carregarNotificacoes();
+        }
+      })
+      .catch((error) => lifecycle.reportError(error));
   }
   function abrirNotificacao(link) {
     if (link) {
@@ -168,14 +197,18 @@ export function initialize({
     const configLink = document.getElementById("notificacoesConfigLink");
     if (configLink) {
       configLink.href = "#";
-      lifecycle.listen(configLink, "click", event => {
+      lifecycle.listen(configLink, "click", (event) => {
         event.preventDefault();
-        document.getElementById("notificacoesPopup")?.classList.remove("mostrar");
-        window.dispatchEvent(new CustomEvent("analisai:open-settings", {
-          detail: {
-            section: "notifications"
-          }
-        }));
+        document
+          .getElementById("notificacoesPopup")
+          ?.classList.remove("mostrar");
+        window.dispatchEvent(
+          new CustomEvent("analisai:open-settings", {
+            detail: {
+              section: "notifications",
+            },
+          }),
+        );
       });
     }
     await carregarConfiguracoes();
@@ -201,7 +234,7 @@ export function initialize({
     atualizarBadge,
     marcarComoLida,
     marcarTodasLidas,
-    abrirNotificacao
+    abrirNotificacao,
   });
   return lifecycle;
 }

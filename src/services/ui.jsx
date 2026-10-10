@@ -51,7 +51,7 @@ export function unmount(container, { defer = false } = {}) {
   if (defer) queueMicrotask(() => root.unmount());
   else flushSync(() => root.unmount());
 }
-// Only formatted AI text uses an HTML sink. User names, modals, lists and task answers are JSX nodes.
+
 export function richMarkup(value, alreadyHtml = false) {
   const raw = alreadyHtml
     ? String(value || "")
@@ -82,12 +82,15 @@ export function richMarkup(value, alreadyHtml = false) {
   });
   return <span dangerouslySetInnerHTML={{ __html: html }} />;
 }
-export function safeSiteLink(value) {
-  return typeof value === "string" &&
-    value.startsWith("/") &&
-    !value.startsWith("//")
-    ? value
-    : "/";
+export function safeSiteLink(value, fallback = "/") {
+  if (
+    typeof value !== "string" ||
+    !value.startsWith("/") ||
+    value.startsWith("//") ||
+    /[\\\u0000-\u001f\u007f]/.test(value)
+  )
+    return fallback;
+  return value;
 }
 
 export function parseCalendarDate(value) {

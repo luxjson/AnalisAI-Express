@@ -1,11 +1,12 @@
+import { LoadingValue, LoadingElement } from "../components/loading-layout";
 import React from "react";
-import { styleFrom, safeJson } from "../services/ui";
+import { styleFrom } from "../services/ui";
 export default function API_index({ data, handlers }) {
   const { baseUrl = null } = data;
   return (
     <>
       <React.Fragment>
-        <div className={"api-container"}>
+        <LoadingElement as="div" className={"api-container"} root={true}>
           <header className={"api-header"}>
             <div className={"logo"}>
               <img
@@ -34,9 +35,11 @@ export default function API_index({ data, handlers }) {
               className={"ph-bold ph-info"}
               style={styleFrom("color:var(--accent);margin-right:8px;")}
             ></i>
-            {
-              "\r\n            API REST da plataforma de gestão pedagógica AnalisAI.\r\n            Todas as rotas mutáveis (POST, PUT, PATCH, DELETE) exigem token CSRF no cabeçalho "
-            }
+            {[
+              "\r\n            API REST da plataforma de gestão pedagógica ",
+              "AnalisAI.\r\n            Todas as rotas mutáveis (POST, PUT, ",
+              "PATCH, DELETE) exigem token CSRF no cabeçalho ",
+            ].join("")}
             <code>{"X-CSRF-Token"}</code>
             {
               ".\r\n            A maioria dos endpoints requer autenticação via sessão.\r\n        "
@@ -46,7 +49,14 @@ export default function API_index({ data, handlers }) {
             <span className={"base-url"}>
               <i className={"ph-bold ph-link"}></i>
               {" Base URL: "}
-              <span id={"baseUrlDisplay"}>{baseUrl}</span>
+              <span id={"baseUrlDisplay"}>
+                <LoadingValue
+                  slot="API/index:1"
+                  width="12ch"
+                  known={true}
+                  value={baseUrl}
+                />
+              </span>
             </span>
           </div>
           <div className={"api-card"}>
@@ -439,9 +449,12 @@ export default function API_index({ data, handlers }) {
                     "background:var(--code-bg);padding:10px 14px;border-radius:8px;margin-top:8px;font-size:0.8rem;color:#ccc;overflow-x:auto;",
                   )}
                 >
-                  {
-                    "\r\nfetch('/backend/ia/professor/mensagens', {\r\n    method: 'POST',\r\n    headers: {\r\n        'Content-Type': 'application/json',\r\n        'X-CSRF-Token': token\r\n    },\r\n    body: JSON.stringify({ message: 'Olá' })\r\n})"
-                  }
+                  {[
+                    "\r\nfetch('/backend/ia/professor/mensagens', {\r\n    method: ",
+                    "'POST',\r\n    headers: {\r\n        'Content-Type': ",
+                    "'application/json',\r\n        'X-CSRF-Token': token\r\n    },\r\n    ",
+                    "body: JSON.stringify({ message: 'Olá' })\r\n})",
+                  ].join("")}
                 </pre>
               </div>
             </div>
@@ -463,7 +476,7 @@ export default function API_index({ data, handlers }) {
               </a>
             </span>
           </footer>
-        </div>
+        </LoadingElement>
       </React.Fragment>
     </>
   );

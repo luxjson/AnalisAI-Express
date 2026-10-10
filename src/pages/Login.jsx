@@ -1,5 +1,6 @@
+import { LoadingValue, LoadingElement } from "../components/loading-layout";
 import React from "react";
-import { styleFrom, safeJson } from "../services/ui";
+import { styleFrom } from "../services/ui";
 export default function Login({ data, handlers }) {
   const {
     error_msg = null,
@@ -7,11 +8,10 @@ export default function Login({ data, handlers }) {
     tipo = "professor",
     csrfToken = null,
   } = data;
-
   return (
     <>
       <React.Fragment>
-        <div className={"login-wrapper"}>
+        <LoadingElement as="div" className={"login-wrapper"} root={true}>
           <div style={styleFrom("margin-bottom: 20px;")}>
             <a
               href={"/"}
@@ -38,7 +38,12 @@ export default function Login({ data, handlers }) {
                 nodes.push(
                   <div className={"alert-box error"} key={nodes.length}>
                     <i className={"fas fa-exclamation-circle"}></i>
-                    {error_msg}
+                    <LoadingValue
+                      slot="login:1"
+                      width="12ch"
+                      known={false}
+                      value={error_msg}
+                    />
                   </div>,
                 );
               }
@@ -46,13 +51,19 @@ export default function Login({ data, handlers }) {
                 nodes.push(
                   <div className={"alert-box success"} key={nodes.length}>
                     <i className={"fas fa-check-circle"}></i>
-                    {success_msg}
+                    <LoadingValue
+                      slot="login:2"
+                      width="12ch"
+                      known={false}
+                      value={success_msg}
+                    />
                   </div>,
                 );
               }
               nodes.push(
                 <div className={"login-tabs"} key={nodes.length}>
-                  <button
+                  <LoadingElement
+                    as="button"
                     className={
                       "login-tab professor " +
                       (tipo === "professor" ? "active" : "")
@@ -60,29 +71,34 @@ export default function Login({ data, handlers }) {
                     onClick={(event) => {
                       handlers.switchTab("professor");
                     }}
+                    tone={true}
                   >
                     {"PROFESSOR"}
-                  </button>
-                  <button
+                  </LoadingElement>
+                  <LoadingElement
+                    as="button"
                     className={
                       "login-tab aluno " + (tipo === "aluno" ? "active" : "")
                     }
                     onClick={(event) => {
                       handlers.switchTab("aluno");
                     }}
+                    tone={true}
                   >
                     {"ALUNO"}
-                  </button>
+                  </LoadingElement>
                 </div>,
               );
               nodes.push(
-                <div
+                <LoadingElement
+                  as="div"
                   className={
                     "login-form professor " +
                     (tipo === "professor" ? "active" : "")
                   }
                   id={"professorForm"}
                   key={nodes.length}
+                  tone={true}
                 >
                   <form
                     action={"/login/professor"}
@@ -121,15 +137,17 @@ export default function Login({ data, handlers }) {
                   <a href={"/esqueci-senha"} className={"link-esqueci"}>
                     {"Esqueci minha senha"}
                   </a>
-                </div>,
+                </LoadingElement>,
               );
               nodes.push(
-                <div
+                <LoadingElement
+                  as="div"
                   className={
                     "login-form aluno " + (tipo === "aluno" ? "active" : "")
                   }
                   id={"alunoForm"}
                   key={nodes.length}
+                  tone={true}
                 >
                   <div className={"info-box-login"}>
                     <i className={"fas fa-info-circle"}></i>
@@ -181,7 +199,7 @@ export default function Login({ data, handlers }) {
                       {"ENTRAR NO SISTEMA"}
                     </button>
                   </form>
-                </div>,
+                </LoadingElement>,
               );
               return nodes;
             })()}
@@ -197,7 +215,7 @@ export default function Login({ data, handlers }) {
               {"\n                TERMOS DE SERVIÇO\n            "}
             </a>
           </footer>
-        </div>
+        </LoadingElement>
       </React.Fragment>
     </>
   );

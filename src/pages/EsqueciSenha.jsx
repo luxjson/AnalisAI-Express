@@ -1,12 +1,12 @@
+import { LoadingValue, LoadingElement } from "../components/loading-layout";
 import React from "react";
-import { styleFrom, safeJson } from "../services/ui";
+import { styleFrom } from "../services/ui";
 export default function EsqueciSenha({ data, handlers }) {
   const { error_msg = null, success_msg = null, csrfToken = null } = data;
-
   return (
     <>
       <React.Fragment>
-        <div className={"login-wrapper"}>
+        <LoadingElement as="div" className={"login-wrapper"} root={true}>
           <div style={styleFrom("margin-bottom: 20px;")}>
             <a
               href={"/login"}
@@ -34,7 +34,12 @@ export default function EsqueciSenha({ data, handlers }) {
                 nodes.push(
                   <div className={"alert-box error"} key={nodes.length}>
                     <i className={"fas fa-exclamation-circle"}></i>
-                    {error_msg}
+                    <LoadingValue
+                      slot="esqueciSenha:1"
+                      width="12ch"
+                      known={false}
+                      value={error_msg}
+                    />
                   </div>,
                 );
               }
@@ -42,7 +47,12 @@ export default function EsqueciSenha({ data, handlers }) {
                 nodes.push(
                   <div className={"alert-box success"} key={nodes.length}>
                     <i className={"fas fa-check-circle"}></i>
-                    {success_msg}
+                    <LoadingValue
+                      slot="esqueciSenha:2"
+                      width="12ch"
+                      known={false}
+                      value={success_msg}
+                    />
                   </div>,
                 );
               }
@@ -112,7 +122,7 @@ export default function EsqueciSenha({ data, handlers }) {
               {"\n                TERMOS DE SERVIÇO\n            "}
             </a>
           </footer>
-        </div>
+        </LoadingElement>
       </React.Fragment>
     </>
   );

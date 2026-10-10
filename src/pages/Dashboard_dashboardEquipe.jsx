@@ -1,12 +1,11 @@
+import { LoadingElement } from "../components/loading-layout";
 import React from "react";
-import { styleFrom, safeJson } from "../services/ui";
 export default function Dashboard_dashboardEquipe({ data, handlers }) {
   const {} = data;
-
   return (
     <>
       <React.Fragment>
-        <div className={"team-wrapper"}>
+        <LoadingElement as="div" className={"team-wrapper"} root={true}>
           <div className={"team-logo"}>
             <img src={"/images/logo3-white.png"} alt={"AnalisAI"} />
             <h3>{"Time de Desenvolvimento"}</h3>
@@ -58,7 +57,7 @@ export default function Dashboard_dashboardEquipe({ data, handlers }) {
               </div>
             </div>
           </div>
-        </div>
+        </LoadingElement>
       </React.Fragment>
     </>
   );

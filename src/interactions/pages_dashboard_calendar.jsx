@@ -1,17 +1,9 @@
-import { navigate, refresh } from "../services/navigation";
+import { refresh } from "../services/navigation";
 import { createInteractionScope } from "../services/lifecycle";
-import React from "react";
-import { Chart } from "chart.js/auto";
 import { apiFetch } from "../services/api";
-import { styleFrom, escapeHtml, mount as mountContent, richMarkup } from "../services/ui";
-export function initialize({
-  onReady,
-  handlers,
-  scope
-}) {
+export function initialize({ onReady, handlers, scope }) {
   const lifecycle = scope || createInteractionScope();
   const fetch = lifecycle.fetch(apiFetch);
-  const mount = lifecycle.mount(mountContent);
   function getPageData(id) {
     const el = document.getElementById(id);
     if (!el) return null;
@@ -24,14 +16,17 @@ export function initialize({
     }
   }
   function showEventTab(tabName) {
-    document.querySelectorAll("#eventoModal .tab-content").forEach(content => {
-      content.style.display = "none";
-      content.classList.remove("active");
-    });
-    document.querySelectorAll("#eventoModal .tab-btn").forEach(btn => {
+    document
+      .querySelectorAll("#eventoModal .tab-content")
+      .forEach((content) => {
+        content.style.display = "none";
+        content.classList.remove("active");
+      });
+    document.querySelectorAll("#eventoModal .tab-btn").forEach((btn) => {
       btn.classList.remove("active");
     });
-    const targetId = "event" + tabName.charAt(0).toUpperCase() + tabName.slice(1) + "Tab";
+    const targetId =
+      "event" + tabName.charAt(0).toUpperCase() + tabName.slice(1) + "Tab";
     const activeContent = document.getElementById(targetId);
     if (activeContent) {
       activeContent.style.display = "block";
@@ -74,8 +69,9 @@ export function initialize({
       const response = await fetch(`/dashboard/calendario/evento/${id}`, {
         method: "DELETE",
         headers: {
-          "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')?.content || ""
-        }
+          "X-CSRF-Token":
+            document.querySelector('meta[name="csrf-token"]')?.content || "",
+        },
       });
       if (response.ok) {
         refresh();
@@ -102,8 +98,9 @@ export function initialize({
       const response = await fetch(url, {
         method: "DELETE",
         headers: {
-          "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')?.content || ""
-        }
+          "X-CSRF-Token":
+            document.querySelector('meta[name="csrf-token"]')?.content || "",
+        },
       });
       if (response.ok) refresh();
     } catch (err) {
@@ -120,7 +117,7 @@ export function initialize({
     abrirModalFeriado,
     fecharModal,
     removerEvento,
-    removerItem
+    removerItem,
   });
   return lifecycle;
 }
