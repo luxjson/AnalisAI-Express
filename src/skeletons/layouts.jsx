@@ -396,6 +396,11 @@ export const ForgotPasswordSkeleton = (props) => (
 export function HomeSkeleton() {
   return (
     <>
+      <div
+        className="mobile-menu-toggle skeleton skeleton-mobile-toggle"
+        aria-hidden="true"
+        inert
+      />
       <SkeletonScreen as="aside" view="sidebar/public" className="sidebar">
         <SkeletonSidebarContent kind="public" />
       </SkeletonScreen>

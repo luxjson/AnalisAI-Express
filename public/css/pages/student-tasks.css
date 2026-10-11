@@ -303,18 +303,6 @@
 
 @media screen and (max-width: 768px) {
   .tarefas-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .tarefa-meta {
-    flex-direction: column;
-    gap: 8px;
-    align-items: flex-start;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .tarefas-grid {
     grid-template-columns: minmax(0, 1fr);
     width: 100%;
   }
@@ -322,13 +310,31 @@
   .tarefa-card {
     min-width: 0;
   }
-
-  .tarefa-meta {
-    flex-wrap: wrap;
+  .competencias-grid,
+  .charts-grid,
+  .tarefas-grid,
+  .solicitacoes-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
   }
-
+  .competencia-card,
+  .tarefa-card,
+  .solicitacao-card {
+    padding: 20px;
+    border-radius: 18px;
+    min-width: 0;
+  }
+  .tarefa-meta {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    font-size: 0.875rem;
+  }
   .btn-entregar {
     width: 100%;
     justify-content: center;
+    min-height: 48px;
+    padding: 12px 16px;
   }
 }

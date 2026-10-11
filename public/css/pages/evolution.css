@@ -361,41 +361,36 @@
     flex-direction: column;
     gap: 15px;
   }
-
-  .periodo-selector {
-    width: 100%;
-    border-radius: 16px;
-    margin-top: 20px;
-  }
-
-  .periodo-btn {
-    flex: 1;
-    text-align: center;
-  }
-
-  .grafico-header {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .timeline-item {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .timeline-data {
-    min-width: auto;
-  }
-}
-
-@media screen and (max-width: 768px) {
   .periodo-selector {
     width: 100%;
     max-width: 100%;
+    display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
+    margin-top: 0;
+    padding: 8px;
+    gap: 8px;
+    border-radius: 16px;
   }
-
   .periodo-btn {
+    text-align: center;
     min-width: 0;
+    min-height: 44px;
+    flex: 1 1 100px;
+    padding: 12px;
+  }
+  .timeline-item {
+    flex-direction: column;
+    padding: 16px;
+    gap: 12px;
+  }
+  .timeline-data {
+    min-width: auto;
+    font-size: 0.875rem;
+  }
+  .grafico-header {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
   }
 }

@@ -85,18 +85,38 @@
 }
 
 @media screen and (max-width: 768px) {
+  .filter-bar {
+    margin: 0 0 24px;
+  }
   .periodo-selector {
     width: 100%;
-    max-width: 100%;
-    flex-wrap: wrap;
-    flex-direction: column;
-    border-radius: 16px;
     margin-top: 20px;
     max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 8px;
+    border-radius: 16px;
   }
-
   .periodo-btn {
     min-width: 0;
     height: 44px;
+    flex: 1 1 100px;
+    min-height: 44px;
+    padding: 10px 12px;
+    letter-spacing: 0;
+  }
+  .banner-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .mini-stat-card {
+    padding: 16px;
+  }
+  .mini-stat-card span {
+    font-size: 0.8125rem;
+    line-height: 1.4;
   }
 }

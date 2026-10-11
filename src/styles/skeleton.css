@@ -232,7 +232,14 @@
     width: 64px !important;
   }
 }
-@media (max-width: 768px) {
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-route .skeleton,
+  .skeleton.skeleton-mobile-toggle {
+    animation: none;
+    background: #292929;
+  }
+}
+@media screen and (max-width: 768px) {
   .skeleton-header {
     flex-direction: row;
     text-align: left;
@@ -269,11 +276,45 @@
   .skeleton-chat-welcome > .skeleton:nth-child(2) {
     height: 28px !important;
   }
-}
-@media (prefers-reduced-motion: reduce) {
-  .skeleton-route .skeleton,
-  .skeleton.skeleton-mobile-toggle {
-    animation: none;
-    background: #292929;
+  .skeleton-route,
+  .skeleton-route *,
+  .skeleton-mobile-toggle {
+    animation: none !important;
+    transition: none !important;
+  }
+  .skeleton-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    text-align: left;
+  }
+  .skeleton-header-title {
+    width: 100%;
+    max-width: 280px;
+  }
+  .skeleton-header .header-user {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .skeleton-route .stats-card {
+    padding: 20px 16px !important;
+  }
+  .skeleton-sidebar-link {
+    min-height: 48px;
+    padding: 8px 12px;
+  }
+  .skeleton-hero-large {
+    padding: 32px 24px;
+    margin-bottom: 32px;
+  }
+  .skeleton-toolbar {
+    gap: 12px;
+  }
+  .skeleton-chat-form {
+    padding: 8px;
+    border-radius: 18px;
+  }
+  .skeleton-chat-welcome {
+    padding: 24px 0;
   }
 }

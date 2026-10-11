@@ -207,99 +207,6 @@ html[data-theme="dark"] {
     width: 170px;
   }
 }
-@media (max-width: 650px) {
-  .team-wrapper {
-    padding: 20px 12px;
-    padding: calc(20px + env(safe-area-inset-top, 0px))
-      calc(12px + env(safe-area-inset-right, 0px))
-      calc(20px + env(safe-area-inset-bottom, 0px))
-      calc(12px + env(safe-area-inset-left, 0px));
-    min-height: 100vh;
-    min-height: 100dvh;
-    justify-content: flex-start;
-    padding-top: 40px;
-    padding-top: calc(40px + env(safe-area-inset-top, 0px));
-  }
-
-  .team-card {
-    padding: 24px 16px;
-    border-radius: 16px;
-  }
-
-  .team-grid {
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
-
-  .team-section-title {
-    font-size: 0.85rem;
-    letter-spacing: 2px;
-    margin-bottom: 14px;
-  }
-
-  .team-section p {
-    font-size: 0.78rem;
-    letter-spacing: 1px;
-    line-height: 1.8;
-  }
-
-  .team-logo img {
-    width: 140px;
-  }
-
-  .team-logo h3 {
-    font-size: 0.7rem;
-  }
-
-  .team-actions {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
-  }
-
-  .btn-team {
-    justify-content: center;
-    padding: 12px 20px;
-    font-size: 0.7rem;
-    width: 100%;
-  }
-
-  .team-divider {
-    padding-top: 20px;
-    margin-top: 0;
-  }
-}
-@media (max-width: 400px) {
-  .team-wrapper {
-    padding: 12px 8px;
-    padding: calc(12px + env(safe-area-inset-top, 0px))
-      calc(8px + env(safe-area-inset-right, 0px))
-      calc(12px + env(safe-area-inset-bottom, 0px))
-      calc(8px + env(safe-area-inset-left, 0px));
-    padding-top: 30px;
-    padding-top: calc(30px + env(safe-area-inset-top, 0px));
-  }
-
-  .team-card {
-    padding: 18px 12px;
-    border-radius: 12px;
-  }
-
-  .team-section p {
-    font-size: 0.7rem;
-    letter-spacing: 0.5px;
-  }
-
-  .team-logo img {
-    width: 110px;
-  }
-
-  .btn-team {
-    padding: 10px 16px;
-    font-size: 0.65rem;
-    letter-spacing: 1.5px;
-  }
-}
 
 @keyframes pageReveal {
   from {
@@ -338,4 +245,75 @@ html[data-theme="dark"] {
 
 .team-wrapper::-webkit-scrollbar-thumb:hover {
   background: var(--text-muted);
+}
+
+@media screen and (max-width: 768px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .team-section-title {
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+  }
+
+  .team-section p {
+    line-height: 1.8;
+    font-size: 0.8125rem;
+    letter-spacing: 0.5px;
+  }
+
+  .team-logo h3 {
+    font-size: 0.8125rem;
+  }
+
+  .team-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .team-divider {
+    padding-top: 20px;
+    margin-top: 0;
+  }
+  .team-wrapper {
+    justify-content: flex-start;
+    padding-top: calc(30px + env(safe-area-inset-top, 0px));
+    animation: none;
+    min-height: 100dvh;
+    padding: calc(32px + env(safe-area-inset-top, 0px))
+      calc(16px + env(safe-area-inset-right, 0px))
+      calc(32px + env(safe-area-inset-bottom, 0px))
+      calc(16px + env(safe-area-inset-left, 0px));
+    gap: 24px;
+  }
+  .team-logo {
+    margin-bottom: 8px;
+  }
+  .team-logo img {
+    width: 160px;
+  }
+  .team-card {
+    width: 100%;
+    padding: 28px 24px;
+    border-radius: 20px;
+  }
+  .team-card h2,
+  .team-card h3 {
+    line-height: 1.3;
+  }
+  .team-footer {
+    padding-top: 24px;
+  }
+  .btn-team {
+    justify-content: center;
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 20px;
+    font-size: 0.875rem;
+    letter-spacing: 0.5px;
+  }
 }

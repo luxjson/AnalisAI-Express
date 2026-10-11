@@ -4,6 +4,15 @@ export default function Partials_header({ data, handlers }) {
   const {} = data;
   return (
     <>
+      <button
+        className="mobile-menu-toggle"
+        type="button"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+      >
+        <i className="fas fa-bars" aria-hidden="true"></i>
+      </button>
+      <div className="mobile-menu-backdrop" data-close-mobile-menu=""></div>
       <aside className={"sidebar"}>
         <div className={"sidebar-top"}>
           <div className={"logo-container"}>

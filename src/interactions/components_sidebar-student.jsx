@@ -1,4 +1,5 @@
 import { createInteractionScope } from "../services/lifecycle";
+import { installMobileMenu } from "../services/mobile-menu";
 export function initialize({ onReady, handlers, scope }) {
   const lifecycle = scope || createInteractionScope();
   onReady(function () {
@@ -12,21 +13,7 @@ export function initialize({ onReady, handlers, scope }) {
         link.classList.remove("active");
       }
     });
-    const menuButton = document.querySelector(".mobile-menu-toggle");
-    const menu = document.querySelector(".sidebar");
-    const backdrop = document.querySelector(".mobile-menu-backdrop");
-    const closeMenu = () => {
-      menu?.classList.remove("is-open");
-      menuButton?.setAttribute("aria-expanded", "false");
-    };
-    lifecycle.listen(menuButton, "click", () => {
-      const isOpen = menu.classList.toggle("is-open");
-      menuButton.setAttribute("aria-expanded", String(isOpen));
-    });
-    lifecycle.listen(backdrop, "click", closeMenu);
-    document
-      .querySelectorAll(".sidebar .side-link")
-      .forEach((link) => lifecycle.listen(link, "click", closeMenu));
+    const closeMenu = installMobileMenu(lifecycle);
     const settings = document.querySelector("[data-settings-modal]");
     const settingsModal = document.getElementById("settingsModal");
     const closeSettings = () => {

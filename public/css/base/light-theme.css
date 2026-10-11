@@ -359,9 +359,8 @@ body.dash-body,
   border-color: var(--ui-text-secondary) !important;
 }
 
-@media (max-width: 700px) {
+@media screen and (max-width: 768px) {
   .settings-modal {
-    padding: 10px !important;
     padding: calc(10px + env(safe-area-inset-top, 0px))
       calc(10px + env(safe-area-inset-right, 0px))
       calc(10px + env(safe-area-inset-bottom, 0px))
@@ -370,7 +369,6 @@ body.dash-body,
 
   .settings-modal-card {
     width: 100% !important;
-    max-height: 94vh !important;
     max-height: 94dvh !important;
     min-height: 0 !important;
     grid-template-columns: 1fr !important;
@@ -384,9 +382,7 @@ body.dash-body,
     width: calc(100vw - 24px) !important;
     padding: 22px !important;
   }
-}
 
-@media (max-width: 768px) {
   html,
   body {
     max-width: 100%;

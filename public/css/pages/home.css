@@ -67,94 +67,9 @@ summary::after {
 }
 
 @media screen and (max-width: 768px) {
-  .main-layout {
-    margin: 0 !important;
-    padding: 20px !important;
-    padding: calc(20px + env(safe-area-inset-top, 0px))
-      calc(20px + env(safe-area-inset-right, 0px))
-      calc(20px + env(safe-area-inset-bottom, 0px))
-      calc(20px + env(safe-area-inset-left, 0px)) !important;
-  }
-
-  .dash-header {
-    flex-direction: column;
-    gap: 20px;
-    text-align: center;
-    padding-bottom: 30px !important;
-  }
-
-  .welcome-banner {
-    padding: 40px 20px !important;
-    margin-bottom: 40px !important;
-    text-align: center;
-  }
-
-  .welcome-banner h1 {
-    font-size: 2.2rem !important;
-  }
-
-  .welcome-banner p {
-    font-size: 1rem !important;
-  }
-
-  .dash-grid {
-    grid-template-columns: 1fr !important;
-    gap: 20px !important;
-  }
-
-  .card-elite {
-    padding: 30px 20px !important;
-  }
-
   #sobre,
   #faq {
     margin-bottom: 60px !important;
-  }
-
-  .dash-footer {
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .sidebar {
-    width: 100%;
-    height: 65px;
-    flex-direction: row;
-    top: auto;
-    bottom: 0;
-    padding: 0 10px;
-    border-right: none;
-    border-top: 1px solid #262626;
-  }
-
-  .sidebar-top,
-  .sidebar-bottom {
-    flex-direction: row;
-    width: auto;
-    gap: 5px;
-  }
-
-  .logo-container,
-  .divider,
-  .link-text,
-  .active-indicator {
-    display: none !important;
-  }
-
-  .side-link {
-    margin-bottom: 0;
-    width: 50px;
-    height: 50px;
-    justify-content: center;
-  }
-
-  .icon-box {
-    width: 42px;
-    height: 42px;
-    font-size: 1.2rem;
   }
 
   .modal-new-card {
@@ -173,30 +88,13 @@ summary::after {
 
   .modal-new-info-grid {
     gap: 20px;
+    flex-wrap: wrap;
   }
 
   .modal-new-text {
     font-size: 13px;
   }
 
-  .main-layout {
-    margin-left: 0 !important;
-    margin-bottom: 65px !important;
-  }
-}
-
-@media screen and (max-width: 380px) {
-  .sidebar {
-    padding: 0 5px;
-  }
-
-  .icon-box {
-    width: 38px;
-    height: 38px;
-  }
-}
-
-@media screen and (max-width: 768px) {
   .home-container,
   .home-content,
   .cards,
@@ -205,12 +103,60 @@ summary::after {
     max-width: 100%;
     min-width: 0;
   }
-
+  .main-layout {
+    margin-left: 0 !important;
+    margin-bottom: 65px !important;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin: 0 !important;
+    min-height: 100dvh;
+    padding: calc(76px + env(safe-area-inset-top, 0px))
+      calc(16px + env(safe-area-inset-right, 0px))
+      calc(32px + env(safe-area-inset-bottom, 0px))
+      calc(16px + env(safe-area-inset-left, 0px)) !important;
+    border-radius: 0 !important;
+    animation: none;
+    overflow: visible;
+  }
+  .dash-header {
+    flex-direction: column;
+    text-align: left;
+    align-items: stretch;
+    gap: 16px;
+    padding-bottom: 20px !important;
+  }
+  .welcome-banner {
+    padding: 32px 24px !important;
+    margin-bottom: 32px !important;
+    text-align: left;
+  }
+  .welcome-banner h1 {
+    font-size: clamp(2rem, 8vw, 2.75rem) !important;
+    line-height: 1.15;
+  }
+  .welcome-banner p {
+    font-size: 1rem !important;
+    line-height: 1.7;
+  }
+  .dash-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 16px !important;
+  }
   .card-elite {
     overflow: hidden;
+    padding: 24px !important;
+    border-radius: 20px;
   }
-
-  .modal-new-info-grid {
-    flex-wrap: wrap;
+  #sobre,
+  #faq {
+    margin-bottom: 40px !important;
+  }
+  .dash-footer {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    margin-top: 24px;
+    padding-bottom: 24px;
   }
 }

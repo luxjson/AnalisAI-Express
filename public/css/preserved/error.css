@@ -289,17 +289,98 @@ footer.credits {
   background: #292929;
 }
 
-@media (max-width: 768px) {
-  .content {
-    padding: 32px 24px 0;
-  }
+@media screen and (max-width: 768px) {
   .code-stack .layer {
     font-size: 34vw;
   }
+
   .code-stack .layer.l1 {
     bottom: 27vw;
   }
+
   .code-stack .layer.l2 {
     bottom: 13.5vw;
+  }
+  .content {
+    padding: 32px 20px 0;
+    max-width: 100%;
+  }
+  .heading {
+    font-size: clamp(1.75rem, 7vw, 2.5rem);
+    line-height: 1.25;
+  }
+  .message {
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+  .footer {
+    padding: 24px 20px;
+    line-height: 1.5;
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .actions a,
+  .actions button {
+    min-height: 48px;
+    padding: 12px 16px;
+  }
+  .modal-overlay,
+  .modal-new-overlay,
+  .settings-modal,
+  .checkup-modal-overlay {
+    padding: calc(12px + env(safe-area-inset-top, 0px))
+      calc(12px + env(safe-area-inset-right, 0px))
+      calc(12px + env(safe-area-inset-bottom, 0px))
+      calc(12px + env(safe-area-inset-left, 0px));
+    box-sizing: border-box;
+  }
+  .modal-content,
+  .modal-lg,
+  .modal-small,
+  .modal-new-card,
+  .modal-pequeno,
+  .settings-modal-card,
+  .checkup-modal-card {
+    width: 100%;
+    max-width: 520px;
+    min-height: 0;
+    max-height: calc(
+      100dvh - 24px - env(safe-area-inset-top, 0px) -
+        env(safe-area-inset-bottom, 0px)
+    );
+    overflow: auto;
+    overscroll-behavior: contain;
+    border-radius: 20px;
+    padding: 28px 20px 24px;
+  }
+  .modal-actions,
+  .claude-modal-actions {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 12px;
+  }
+  .modal-actions > *,
+  .claude-modal-actions > * {
+    flex: 1 1 140px;
+    width: auto;
+    min-width: 0;
+  }
+  .close-btn,
+  .close-modal,
+  .modal-close,
+  .modal-close-btn {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    top: 8px;
+    right: 8px;
   }
 }

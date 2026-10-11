@@ -408,7 +408,7 @@ input[type="checkbox"]:hover {
   }
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .page-header {
     flex-direction: column;
     align-items: stretch;
@@ -417,85 +417,27 @@ input[type="checkbox"]:hover {
   }
 
   .page-title {
-    font-size: 1.2rem;
     text-align: center;
+    font-size: 1rem;
   }
 
   .btn-icon-2 {
-    height: 45px;
-    font-size: 0.75rem;
-    padding: 0 20px;
     width: 100%;
     justify-content: center;
-  }
-
-  .calendario-container {
-    gap: 12px;
+    height: 40px;
+    font-size: 0.8125rem;
+    padding: 0 15px;
   }
 
   .calendario-main,
   .calendario-sidebar {
-    padding: 14px;
-    border-radius: 16px;
-  }
-
-  .calendario-header {
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 18px;
-  }
-
-  .calendario-mes {
-    gap: 10px;
-    width: 100%;
-    justify-content: center;
-  }
-
-  .calendario-mes h2 {
-    font-size: 1.1rem;
-    min-width: auto;
-    width: 120px;
-  }
-
-  .btn-mes {
-    width: 36px;
-    height: 36px;
-    font-size: 0.9rem;
-  }
-
-  .calendario-grid {
-    gap: 3px;
-    font-size: 0.7rem;
-  }
-
-  .dia-semana {
-    padding: 6px 2px;
-    font-size: 0.6rem;
-  }
-
-  .dia-cell {
-    min-height: 48px;
-    padding: 4px;
-    border-radius: 6px;
-  }
-
-  .dia-numero {
-    font-size: 0.7rem;
-    margin-bottom: 2px;
+    border-radius: 12px;
+    padding: 10px;
   }
 
   .dia-eventos {
     gap: 2px;
-  }
-
-  .evento-item {
-    font-size: 0.5rem;
-    padding: 1px 3px;
-    border-radius: 2px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    min-width: 0;
   }
 
   .filtros-calendario {
@@ -504,15 +446,6 @@ input[type="checkbox"]:hover {
 
   .filtro-group {
     margin-bottom: 10px;
-  }
-
-  .filtro-group label {
-    font-size: 0.6rem;
-  }
-
-  .filtro-select {
-    padding: 8px 10px;
-    font-size: 0.8rem;
   }
 
   .legenda-item {
@@ -526,27 +459,11 @@ input[type="checkbox"]:hover {
   }
 
   .legenda-texto {
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
   }
 
   .legenda-count {
-    font-size: 0.7rem;
-  }
-
-  .btn-novo-evento {
-    padding: 10px;
-    font-size: 0.8rem;
-    margin: 14px 0;
-  }
-
-  .eventos-lista {
-    max-height: 200px;
-  }
-
-  .evento-lista-item {
-    padding: 8px;
-    gap: 8px;
-    flex-wrap: wrap;
+    font-size: 0.8125rem;
   }
 
   .evento-lista-cor {
@@ -555,27 +472,23 @@ input[type="checkbox"]:hover {
   }
 
   .evento-lista-titulo {
-    font-size: 0.75rem;
-  }
-
-  .evento-lista-data {
-    font-size: 0.6rem;
+    font-size: 0.8125rem;
   }
 
   .modal-content {
-    padding: 30px 20px;
     max-width: 95%;
-    border-radius: 20px;
+    padding: 20px 15px;
+    border-radius: 16px;
   }
 
   .modal-lg {
-    padding: 25px 18px;
     max-width: 98%;
+    padding: 18px 14px;
   }
 
   .modal-small {
-    padding: 25px 18px;
     max-width: 90%;
+    padding: 18px 14px;
   }
 
   .modal-content::before {
@@ -584,9 +497,9 @@ input[type="checkbox"]:hover {
   }
 
   .close-btn {
-    font-size: 18px;
-    top: 14px;
-    right: 16px;
+    font-size: 16px;
+    top: 10px;
+    right: 12px;
   }
 
   input[type="checkbox"] {
@@ -595,128 +508,7 @@ input[type="checkbox"]:hover {
   }
 
   input[type="checkbox"]:checked::after {
-    font-size: 10px;
-  }
-}
-
-@media (max-width: 480px) {
-  .page-title {
-    font-size: 1rem;
-  }
-
-  .btn-icon-2 {
-    height: 40px;
-    font-size: 0.7rem;
-    padding: 0 15px;
-  }
-
-  .calendario-main,
-  .calendario-sidebar {
-    padding: 10px;
-    border-radius: 12px;
-  }
-
-  .calendario-mes h2 {
-    font-size: 0.95rem;
-    width: 100px;
-  }
-
-  .btn-mes {
-    width: 32px;
-    height: 32px;
-    font-size: 0.8rem;
-  }
-
-  .calendario-grid {
-    gap: 2px;
-    font-size: 0.6rem;
-  }
-
-  .dia-semana {
-    padding: 4px 1px;
-    font-size: 0.5rem;
-  }
-
-  .dia-cell {
-    min-height: 38px;
-    padding: 2px;
-    border-radius: 4px;
-  }
-
-  .dia-numero {
-    font-size: 0.6rem;
-  }
-
-  .evento-item {
-    font-size: 0.4rem;
-    padding: 1px 2px;
-  }
-
-  .filtro-select {
-    padding: 6px 8px;
-    font-size: 0.7rem;
-  }
-
-  .btn-novo-evento {
-    padding: 8px;
-    font-size: 0.7rem;
-    margin: 10px 0;
-  }
-
-  .modal-content {
-    padding: 20px 15px;
-    border-radius: 16px;
-  }
-
-  .modal-lg {
-    padding: 18px 14px;
-  }
-
-  .modal-small {
-    padding: 18px 14px;
-  }
-
-  .close-btn {
-    font-size: 16px;
-    top: 10px;
-    right: 12px;
-  }
-
-  .evento-lista-item {
-    padding: 6px;
-    gap: 6px;
-  }
-
-  .evento-lista-titulo {
-    font-size: 0.7rem;
-  }
-
-  .evento-lista-data {
-    font-size: 0.55rem;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .calendario-container {
-    min-width: 0;
-  }
-
-  .calendario-main {
-    min-width: 0;
-    overflow: hidden;
-  }
-
-  .calendario-grid {
-    width: 100%;
-    min-width: 0;
-  }
-
-  .calendario-mes h2 {
-    flex: 1 1 auto;
-    width: auto;
-    min-width: 0;
-    text-align: center;
-    overflow-wrap: anywhere;
+    font-size: 0.8125rem;
   }
 
   .calendario-sidebar {
@@ -730,10 +522,6 @@ input[type="checkbox"]:hover {
     margin-right: 0 !important;
   }
 
-  .evento-item {
-    max-width: 100%;
-  }
-
   .modal-content,
   .modal-lg,
   .modal-small {
@@ -741,28 +529,176 @@ input[type="checkbox"]:hover {
     max-width: calc(100vw - 20px);
     box-sizing: border-box;
   }
-}
-
-@media screen and (max-width: 480px) {
+  .main-layout {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin: 0 !important;
+    min-height: 100dvh;
+    padding: calc(76px + env(safe-area-inset-top, 0px))
+      calc(16px + env(safe-area-inset-right, 0px))
+      calc(32px + env(safe-area-inset-bottom, 0px))
+      calc(16px + env(safe-area-inset-left, 0px)) !important;
+    border-radius: 0 !important;
+    animation: none;
+    overflow: visible;
+  }
+  .calendario-container {
+    min-width: 0;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
   .calendario-main,
   .calendario-sidebar {
-    padding: 10px;
-  }
-
-  .calendario-grid {
-    gap: 2px;
-  }
-
-  .dia-cell {
-    min-height: 44px;
-    padding: 3px;
-  }
-
-  .dia-eventos {
+    padding: 16px;
+    border-radius: 18px;
     min-width: 0;
   }
-
+  .calendario-main {
+    min-width: 0;
+    overflow: hidden;
+    overflow-x: auto;
+  }
+  .calendario-header {
+    margin-bottom: 18px;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .calendario-mes {
+    width: 100%;
+    gap: 8px;
+    justify-content: space-between;
+  }
+  .calendario-mes h2 {
+    flex: 1 1 auto;
+    overflow-wrap: anywhere;
+    width: auto;
+    min-width: 0;
+    font-size: 1.125rem;
+    text-align: center;
+  }
+  .btn-mes {
+    font-size: 0.8125rem;
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+  }
+  .calendario-grid {
+    font-size: 0.8125rem;
+    width: 100%;
+    min-width: 248px;
+    grid-template-columns: repeat(7, minmax(32px, 1fr));
+    gap: 4px;
+  }
+  .dia-semana {
+    font-size: 0.8125rem;
+    padding: 8px 2px;
+  }
+  .dia-cell {
+    min-width: 32px;
+    min-height: 80px;
+    padding: 6px;
+    border-radius: 10px;
+  }
+  .dia-numero {
+    font-size: 0.9375rem;
+    margin-bottom: 6px;
+  }
   .evento-item {
-    font-size: 0.46rem;
+    border-radius: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    padding: 3px 4px;
+  }
+  .filtro-group label {
+    font-size: 0.875rem;
+  }
+  .filtro-select {
+    font-size: 0.8125rem;
+    min-height: 48px;
+    padding: 12px;
+  }
+  .eventos-lista {
+    max-height: none;
+  }
+  .evento-lista-item {
+    flex-wrap: wrap;
+    padding: 14px;
+    gap: 12px;
+  }
+  .evento-lista-titulo,
+  .legenda-texto {
+    font-size: 0.9375rem;
+  }
+  .evento-lista-data {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+  }
+  .btn-novo-evento {
+    font-size: 0.8125rem;
+    margin: 10px 0;
+    min-height: 48px;
+    padding: 12px;
+  }
+  .modal-overlay,
+  .modal-new-overlay,
+  .settings-modal,
+  .checkup-modal-overlay {
+    padding: calc(12px + env(safe-area-inset-top, 0px))
+      calc(12px + env(safe-area-inset-right, 0px))
+      calc(12px + env(safe-area-inset-bottom, 0px))
+      calc(12px + env(safe-area-inset-left, 0px));
+    box-sizing: border-box;
+  }
+  .modal-content,
+  .modal-lg,
+  .modal-small,
+  .modal-new-card,
+  .modal-pequeno,
+  .settings-modal-card,
+  .checkup-modal-card {
+    width: 100%;
+    max-width: 520px;
+    min-height: 0;
+    max-height: calc(
+      100dvh - 24px - env(safe-area-inset-top, 0px) -
+        env(safe-area-inset-bottom, 0px)
+    );
+    overflow: auto;
+    overscroll-behavior: contain;
+    border-radius: 20px;
+    padding: 28px 20px 24px;
+  }
+  .modal-actions,
+  .claude-modal-actions {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 12px;
+  }
+  .modal-actions > *,
+  .claude-modal-actions > * {
+    flex: 1 1 140px;
+    width: auto;
+    min-width: 0;
+  }
+  .close-btn,
+  .close-modal,
+  .modal-close,
+  .modal-close-btn {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    top: 8px;
+    right: 8px;
   }
 }

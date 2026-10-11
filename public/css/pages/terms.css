@@ -79,28 +79,32 @@ body.dash-body {
 }
 
 @media screen and (max-width: 768px) {
-  body.dash-body {
-    padding: 12px;
-    padding: calc(12px + env(safe-area-inset-top, 0px))
-      calc(12px + env(safe-area-inset-right, 0px))
-      calc(12px + env(safe-area-inset-bottom, 0px))
-      calc(12px + env(safe-area-inset-left, 0px));
-  }
-
   .login-wrapper,
   .login-card {
     width: 100%;
     max-width: 100%;
     min-width: 0;
   }
-
-  .login-card {
-    padding: 28px 16px;
+  body.dash-body {
+    padding: calc(24px + env(safe-area-inset-top, 0px))
+      calc(16px + env(safe-area-inset-right, 0px))
+      calc(24px + env(safe-area-inset-bottom, 0px))
+      calc(16px + env(safe-area-inset-left, 0px));
   }
-
+  .login-card {
+    padding: 28px 24px;
+    border-radius: 24px;
+  }
   .termos-scroller {
     max-width: 100%;
     width: 100%;
     overflow-x: hidden;
+    max-height: 60dvh;
+    font-size: 1rem;
+    line-height: 1.7;
+    padding-right: 12px;
+  }
+  .termos-header {
+    margin-bottom: 24px;
   }
 }

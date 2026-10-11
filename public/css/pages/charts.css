@@ -271,28 +271,16 @@ canvas {
 }
 
 @media screen and (max-width: 768px) {
-  .main-layout {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    border-radius: 0;
-  }
-
   .dash-header {
     flex-direction: column;
-    gap: 15px;
-    margin-bottom: 30px;
     padding-bottom: 15px;
+    margin-bottom: 20px;
+    gap: 10px;
   }
 
   .page-title {
-    font-size: 1.25rem;
     text-align: center;
-  }
-
-  .section-label {
-    text-align: center;
-    font-size: 0.95rem;
-    margin-top: 25px;
+    font-size: 1rem;
   }
 
   .graficos-grid {
@@ -304,43 +292,23 @@ canvas {
   }
 
   .card-grafico {
-    min-height: 250px;
-    padding: 20px 15px;
-    border-radius: 16px;
+    min-height: 200px;
+    padding: 15px 12px;
+    border-radius: 12px;
   }
 
   .card-grafico-large,
   .card-grafico-small {
-    padding: 20px 15px;
-    min-height: 250px;
-    border-radius: 16px;
-  }
-
-  .chart-label {
-    font-size: 0.65rem;
-    margin-top: 12px;
-  }
-
-  .chart-value {
-    font-size: 1.2rem;
-    margin-top: 8px;
-  }
-
-  .chart-value-large {
-    font-size: 1.8rem;
-    margin-top: 8px;
-    margin-left: 0;
-  }
-
-  canvas {
-    max-height: 150px;
+    min-height: 200px;
+    padding: 15px 12px;
+    border-radius: 12px;
   }
 
   .dash-footer {
     flex-direction: column;
-    gap: 15px;
     text-align: center;
-    padding: 30px 0 15px;
+    padding: 20px 0 10px;
+    gap: 10px;
   }
 
   .footer-actions {
@@ -353,8 +321,9 @@ canvas {
   .btn-secondary-dash {
     width: 100%;
     justify-content: center;
-    padding: 12px 20px;
-    font-size: 0.75rem;
+    padding: 10px 15px;
+    font-size: 0.8125rem;
+    border-radius: 8px;
   }
 
   .footer-credits {
@@ -364,61 +333,7 @@ canvas {
   .footer-credits p {
     text-align: center;
   }
-}
 
-@media screen and (max-width: 480px) {
-  .page-title {
-    font-size: 1rem;
-  }
-
-  .dash-header {
-    margin-bottom: 20px;
-    gap: 10px;
-  }
-
-  .section-label {
-    font-size: 0.8rem;
-    margin-top: 20px;
-  }
-
-  .card-grafico {
-    min-height: 200px;
-    padding: 15px 12px;
-    border-radius: 12px;
-  }
-
-  .card-grafico-large,
-  .card-grafico-small {
-    min-height: 200px;
-    padding: 15px 12px;
-    border-radius: 12px;
-  }
-
-  .chart-value {
-    font-size: 1rem;
-  }
-
-  .chart-value-large {
-    font-size: 1.5rem;
-  }
-
-  canvas {
-    max-height: 120px;
-  }
-
-  .btn-secondary-dash {
-    padding: 10px 15px;
-    font-size: 0.65rem;
-    border-radius: 8px;
-  }
-
-  .dash-footer {
-    padding: 20px 0 10px;
-    gap: 10px;
-  }
-}
-
-@media screen and (max-width: 768px) {
   .graficos-grid,
   .row-triple {
     width: 100%;
@@ -432,9 +347,60 @@ canvas {
     min-width: 0;
     overflow: hidden;
   }
-
+  .main-layout {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin: 0 !important;
+    min-height: 100dvh;
+    padding: calc(76px + env(safe-area-inset-top, 0px))
+      calc(16px + env(safe-area-inset-right, 0px))
+      calc(32px + env(safe-area-inset-bottom, 0px))
+      calc(16px + env(safe-area-inset-left, 0px)) !important;
+    border-radius: 0 !important;
+    animation: none;
+    overflow: visible;
+  }
+  .graficos-grid,
+  .row-triple {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+  .card-grafico,
+  .card-grafico-large,
+  .card-grafico-small {
+    width: 100%;
+    min-width: 0;
+    min-height: 300px;
+    padding: 24px 20px;
+    border-radius: 18px;
+  }
   canvas {
     width: 100% !important;
     max-width: 100%;
+    max-height: none;
+  }
+  .chart-label {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin-top: 16px;
+  }
+  .chart-value {
+    font-size: 1.75rem;
+    margin-top: 8px;
+  }
+  .chart-value-large {
+    margin-top: 8px;
+    margin-left: 0;
+    font-size: 2rem;
+    margin: 8px 0 0;
+  }
+  .section-label {
+    font-size: 1.125rem;
+    text-align: left;
+    margin-top: 24px;
   }
 }

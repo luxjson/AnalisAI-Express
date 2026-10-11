@@ -160,4 +160,94 @@
     width: calc(100vw - 20px);
     max-width: calc(100vw - 20px);
   }
+  .competencias-grid,
+  .charts-grid,
+  .tarefas-grid,
+  .solicitacoes-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+  .competencia-card,
+  .tarefa-card,
+  .solicitacao-card {
+    padding: 20px;
+    border-radius: 18px;
+    min-width: 0;
+  }
+  .solicitacao-nome {
+    font-size: 1.125rem;
+    line-height: 1.4;
+  }
+  .solicitacao-email {
+    overflow-wrap: anywhere;
+    font-size: 0.9375rem;
+  }
+  .solicitacao-acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .solicitacao-card .btn-aprovar,
+  .solicitacao-card .btn-rejeitar {
+    flex: 1 1 120px;
+    width: auto;
+    min-height: 48px;
+    padding: 12px;
+  }
+  .modal-overlay,
+  .modal-new-overlay,
+  .settings-modal,
+  .checkup-modal-overlay {
+    padding: calc(12px + env(safe-area-inset-top, 0px))
+      calc(12px + env(safe-area-inset-right, 0px))
+      calc(12px + env(safe-area-inset-bottom, 0px))
+      calc(12px + env(safe-area-inset-left, 0px));
+    box-sizing: border-box;
+  }
+  .modal-content,
+  .modal-lg,
+  .modal-small,
+  .modal-new-card,
+  .modal-pequeno,
+  .settings-modal-card,
+  .checkup-modal-card {
+    width: 100%;
+    max-width: 520px;
+    min-height: 0;
+    max-height: calc(
+      100dvh - 24px - env(safe-area-inset-top, 0px) -
+        env(safe-area-inset-bottom, 0px)
+    );
+    overflow: auto;
+    overscroll-behavior: contain;
+    border-radius: 20px;
+    padding: 28px 20px 24px;
+  }
+  .modal-actions,
+  .claude-modal-actions {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 12px;
+  }
+  .modal-actions > *,
+  .claude-modal-actions > * {
+    flex: 1 1 140px;
+    width: auto;
+    min-width: 0;
+  }
+  .close-btn,
+  .close-modal,
+  .modal-close,
+  .modal-close-btn {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    top: 8px;
+    right: 8px;
+  }
 }

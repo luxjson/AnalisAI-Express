@@ -1,6 +1,8 @@
 import { createInteractionScope } from "../services/lifecycle";
+import { installMobileMenu } from "../services/mobile-menu";
 export function initialize({ onReady, handlers, scope }) {
   const lifecycle = scope || createInteractionScope();
+  onReady(() => installMobileMenu(lifecycle));
   lifecycle.listen(window, "scroll", () => {
     let current = "";
     const sections = document.querySelectorAll("section[id]");

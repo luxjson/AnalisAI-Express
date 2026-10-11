@@ -45,7 +45,22 @@
 }
 
 @media screen and (max-width: 768px) {
+  .pdf-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .pdf-container {
+    height: calc(
+      100dvh - 240px - env(safe-area-inset-top, 0px) -
+        env(safe-area-inset-bottom, 0px)
+    );
+    min-height: 360px;
+    border-radius: 16px;
+    overflow: hidden;
+  }
   .btn-download {
+    min-height: 48px;
     width: 100%;
     justify-content: center;
   }

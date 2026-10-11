@@ -357,27 +357,11 @@ select.filter-input option {
   }
 }
 
-@media (max-width: 768px) {
-  .main-layout {
-    margin-left: 0;
-    padding: 20px;
-    padding: calc(20px + env(safe-area-inset-top, 0px))
-      calc(20px + env(safe-area-inset-right, 0px))
-      calc(20px + env(safe-area-inset-bottom, 0px))
-      calc(20px + env(safe-area-inset-left, 0px));
-  }
-
-  .toolbar {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .action-buttons {
-    justify-content: center;
-  }
-
+@media screen and (max-width: 768px) {
   .search-container {
     max-width: 100%;
+    width: 100%;
+    min-width: 0;
   }
 
   .dash-header {
@@ -385,64 +369,64 @@ select.filter-input option {
     gap: 15px;
   }
 
-  .page-title {
-    font-size: 1rem;
-  }
-
-  .table-container {
-    padding: 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .main-layout {
-    padding: 15px;
-    padding: calc(15px + env(safe-area-inset-top, 0px))
-      calc(15px + env(safe-area-inset-right, 0px))
-      calc(15px + env(safe-area-inset-bottom, 0px))
-      calc(15px + env(safe-area-inset-left, 0px));
-  }
-
-  .btn-icon {
-    width: 45px;
-    height: 45px;
-    font-size: 16px;
-  }
-
   .alunos-table td {
     padding: 15px 10px;
-    font-size: 0.8rem;
+    font-size: 0.8125rem;
   }
-}
-
-@media (max-width: 768px) {
+  .main-layout {
+    margin-left: 0;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin: 0 !important;
+    min-height: 100dvh;
+    padding: calc(76px + env(safe-area-inset-top, 0px))
+      calc(16px + env(safe-area-inset-right, 0px))
+      calc(32px + env(safe-area-inset-bottom, 0px))
+      calc(16px + env(safe-area-inset-left, 0px)) !important;
+    border-radius: 0 !important;
+    animation: none;
+    overflow: visible;
+  }
   .toolbar {
+    flex-direction: column;
+    align-items: stretch;
     width: 100%;
     min-width: 0;
+    gap: 12px;
+    margin-bottom: 20px;
   }
-
   .action-buttons {
+    justify-content: center;
     width: 100%;
-    display: grid;
     grid-template-columns: minmax(44px, 1fr);
-    gap: 9px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
   }
-
   .action-buttons > * {
-    width: 100%;
+    width: auto;
+    flex: 1 1 140px;
   }
-
-  .search-container {
-    width: 100%;
-    min-width: 0;
-  }
-
   .table-container {
     width: 100%;
     overflow-x: auto;
+    padding: 0;
   }
-
   .alunos-table {
-    min-width: 700px;
+    min-width: 640px;
+    font-size: 0.875rem;
+  }
+  .alunos-table th,
+  .alunos-table td {
+    padding: 16px 14px;
+  }
+  .btn-icon {
+    font-size: 16px;
+    width: 44px;
+    height: 44px;
+  }
+  .page-title {
+    font-size: 1.5rem;
   }
 }
