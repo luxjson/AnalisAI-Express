@@ -25,66 +25,43 @@ export default function Dashboard_dashboardGraficos({ data, handlers }) {
             <p className={"section-label"}>{"PANORAMA DE NÍVEIS"}</p>
             <div className={"row-triple"}>
               <div className={"dash-card card-grafico"}>
-                {stats.total > 0 ? (
-                  <>
-                    <div className="chart-ring-box">
-                      <LoadingCanvas id={"chartAptos"} variant="ring" />
-                    </div>
-                    <p className={"chart-label label-verde"}>{"ALUNOS APTOS"}</p>
-                    <p className={"chart-value"}>
-                      <LoadingValue
-                        slot="dashboard/dashboardGraficos:1"
-                        width="3ch"
-                        known={false}
-                        value={stats.apto}
-                      />
-                    </p>
-                  </>
-                ) : (
-                  <div className={"empty-chart"}>{"SEM DADOS PARA EXIBIR"}</div>
-                )}
-              </div>
-
-              <div className={"dash-card card-grafico"}>
-                {stats.total > 0 ? (
-                  <>
-                    <div className="chart-ring-box">
-                      <LoadingCanvas id={"chartInaptos"} variant="ring" />
-                    </div>
-                    <p className={"chart-label label-vermelho"}>{"ALUNOS INAPTOS"}</p>
-                    <p className={"chart-value"}>
-                      <LoadingValue
-                        slot="dashboard/dashboardGraficos:2"
-                        width="3ch"
-                        known={false}
-                        value={stats.inapto}
-                      />
-                    </p>
-                  </>
-                ) : (
-                  <div className={"empty-chart"}>{"SEM DADOS PARA EXIBIR"}</div>
-                )}
-              </div>
-
-              <div className={"dash-card card-grafico"}>
-                {stats.total > 0 ? (
-                  <>
-                    <div className="chart-ring-box">
-                      <LoadingCanvas id={"chartDesenvolvimento"} variant="ring" />
-                    </div>
-                    <p className={"chart-label label-amarelo"}>{"EM DESENVOLVIMENTO"}</p>
-                    <p className={"chart-value"}>
-                      <LoadingValue
-                        slot="dashboard/dashboardGraficos:3"
-                        width="3ch"
-                        known={false}
-                        value={stats.total - stats.apto - stats.inapto}
-                      />
-                    </p>
-                  </>
-                ) : (
-                  <div className={"empty-chart"}>{"SEM DADOS PARA EXIBIR"}</div>
-                )}
+                {(() => {
+                  const nodes = [];
+                  if (stats.total > 0) {
+                    nodes.push(
+                      <LoadingCanvas
+                        id={"chartAptos"}
+                        key={nodes.length}
+                        variant="ring"
+                      ></LoadingCanvas>,
+                    );
+                    nodes.push(
+                      <p
+                        className={"chart-label label-verde"}
+                        key={nodes.length}
+                      >
+                        {"ALUNOS APTOS"}
+                      </p>,
+                    );
+                    nodes.push(
+                      <p className={"chart-value"} key={nodes.length}>
+                        <LoadingValue
+                          slot="dashboard/dashboardGraficos:1"
+                          width="3ch"
+                          known={false}
+                          value={stats.apto}
+                        />
+                      </p>,
+                    );
+                  } else {
+                    nodes.push(
+                      <div className={"empty-chart"} key={nodes.length}>
+                        {"SEM DADOS PARA EXIBIR"}
+                      </div>,
+                    );
+                  }
+                  return nodes;
+                })()}
               </div>
               <div className={"dash-card card-grafico"}>
                 {(() => {
