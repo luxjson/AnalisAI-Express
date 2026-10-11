@@ -85,6 +85,13 @@ html[data-theme="light"] .card-grafico-small {
   width: 100%;
 }
 
+.row-triple {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: 16px;
+}
+
 .dash-card {
   background: var(--card-bg);
   border: 2px solid var(--border-color);
@@ -424,13 +431,6 @@ canvas {
   .row-triple {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
-}
-
-.row-triple {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  align-items: start;
-  gap: 16px;
 }
 
 .dash-card.card-grafico {
