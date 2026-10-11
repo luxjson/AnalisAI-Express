@@ -350,6 +350,10 @@ select.filter-input option {
   .main-layout {
     margin-left: 85px;
     padding: 30px;
+    padding: calc(30px + env(safe-area-inset-top, 0px))
+      calc(30px + env(safe-area-inset-right, 0px))
+      calc(30px + env(safe-area-inset-bottom, 0px))
+      calc(30px + env(safe-area-inset-left, 0px));
   }
 }
 
@@ -357,6 +361,10 @@ select.filter-input option {
   .main-layout {
     margin-left: 0;
     padding: 20px;
+    padding: calc(20px + env(safe-area-inset-top, 0px))
+      calc(20px + env(safe-area-inset-right, 0px))
+      calc(20px + env(safe-area-inset-bottom, 0px))
+      calc(20px + env(safe-area-inset-left, 0px));
   }
 
   .toolbar {
@@ -389,6 +397,10 @@ select.filter-input option {
 @media (max-width: 480px) {
   .main-layout {
     padding: 15px;
+    padding: calc(15px + env(safe-area-inset-top, 0px))
+      calc(15px + env(safe-area-inset-right, 0px))
+      calc(15px + env(safe-area-inset-bottom, 0px))
+      calc(15px + env(safe-area-inset-left, 0px));
   }
 
   .btn-icon {

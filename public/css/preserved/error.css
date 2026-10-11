@@ -42,10 +42,15 @@ body::before {
 
 .page {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   position: relative;
   overflow: hidden;
+  padding: calc(0px + env(safe-area-inset-top, 0px))
+    calc(0px + env(safe-area-inset-right, 0px))
+    calc(0px + env(safe-area-inset-bottom, 0px))
+    calc(0px + env(safe-area-inset-left, 0px));
 }
 
 .content {

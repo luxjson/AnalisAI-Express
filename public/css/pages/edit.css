@@ -587,6 +587,7 @@ html[data-theme="light"] .analysis-card {
   max-width: 550px;
   width: 90%;
   max-height: 90vh;
+  max-height: 90dvh;
   overflow-y: auto;
   position: relative;
   animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1757,6 +1758,10 @@ select.filter-input option {
 @media screen and (max-width: 1024px) {
   .main-layout {
     padding: 25px 30px;
+    padding: calc(25px + env(safe-area-inset-top, 0px))
+      calc(30px + env(safe-area-inset-right, 0px))
+      calc(25px + env(safe-area-inset-bottom, 0px))
+      calc(30px + env(safe-area-inset-left, 0px));
   }
 
   .charts-grid {

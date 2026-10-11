@@ -45,7 +45,9 @@ body.dash-body,
   width: min(960px, calc(100vw - 48px)) !important;
   height: 660px !important;
   max-height: 90vh !important;
+  max-height: 90dvh !important;
   min-height: min(660px, 90vh) !important;
+  min-height: min(660px, 90dvh) !important;
   grid-template-columns: 190px minmax(0, 1fr) !important;
   border: 1px solid var(--ui-border) !important;
   border-radius: 13px !important;
@@ -172,6 +174,7 @@ body.dash-body,
   width: min(560px, calc(100vw - 32px)) !important;
   max-width: 560px !important;
   max-height: min(760px, calc(100vh - 48px)) !important;
+  max-height: min(760px, calc(100dvh - 48px)) !important;
   overflow-y: auto !important;
   background: var(--ui-surface) !important;
   color: var(--ui-text) !important;
@@ -359,11 +362,16 @@ body.dash-body,
 @media (max-width: 700px) {
   .settings-modal {
     padding: 10px !important;
+    padding: calc(10px + env(safe-area-inset-top, 0px))
+      calc(10px + env(safe-area-inset-right, 0px))
+      calc(10px + env(safe-area-inset-bottom, 0px))
+      calc(10px + env(safe-area-inset-left, 0px)) !important;
   }
 
   .settings-modal-card {
     width: 100% !important;
     max-height: 94vh !important;
+    max-height: 94dvh !important;
     min-height: 0 !important;
     grid-template-columns: 1fr !important;
   }

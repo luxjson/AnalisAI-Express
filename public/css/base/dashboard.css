@@ -287,6 +287,7 @@ body.dash-body {
   font-family: var(--font-family);
   color: var(--text-white);
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   overflow-x: hidden;
 }
@@ -333,6 +334,10 @@ body.dash-body {
   flex: 1;
   margin-left: var(--sidebar-width);
   padding: 40px 60px;
+  padding: calc(40px + env(safe-area-inset-top, 0px))
+    calc(60px + env(safe-area-inset-right, 0px))
+    calc(40px + env(safe-area-inset-bottom, 0px))
+    calc(60px + env(safe-area-inset-left, 0px));
   margin-top: 20px;
   border: 1px solid #2e3134;
   margin-right: 20px;
@@ -342,6 +347,7 @@ body.dash-body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  min-height: 100dvh;
   animation: pageReveal 0.65s cubic-bezier(0.22, 0.8, 0.2, 1);
 }
 
@@ -741,6 +747,10 @@ body.dash-body {
 @media screen and (max-width: 1440px) {
   .main-layout {
     padding: 30px 50px;
+    padding: calc(30px + env(safe-area-inset-top, 0px))
+      calc(50px + env(safe-area-inset-right, 0px))
+      calc(30px + env(safe-area-inset-bottom, 0px))
+      calc(50px + env(safe-area-inset-left, 0px));
   }
 
   .welcome-banner {
@@ -1078,6 +1088,10 @@ body.dash-body {
   background: var(--modal-overlay-bg, rgba(0, 0, 0, 0.75));
   backdrop-filter: blur(8px);
   padding: 20px;
+  padding: calc(20px + env(safe-area-inset-top, 0px))
+    calc(20px + env(safe-area-inset-right, 0px))
+    calc(20px + env(safe-area-inset-bottom, 0px))
+    calc(20px + env(safe-area-inset-left, 0px));
   animation: fadeInModal 0.2s ease;
 }
 
@@ -1085,6 +1099,7 @@ body.dash-body {
   position: relative;
   width: min(640px, 100%);
   max-height: min(85vh, 740px);
+  max-height: min(85dvh, 740px);
   background: var(--card-bg, #151515);
   border: 1px solid var(--border-color, #2e3134);
   border-radius: 20px;
@@ -1263,6 +1278,10 @@ body.dash-body {
 @media screen and (max-width: 1440px) {
   .main-layout {
     padding: 30px 50px;
+    padding: calc(30px + env(safe-area-inset-top, 0px))
+      calc(50px + env(safe-area-inset-right, 0px))
+      calc(30px + env(safe-area-inset-bottom, 0px))
+      calc(50px + env(safe-area-inset-left, 0px));
   }
 
   .welcome-banner {
@@ -1278,6 +1297,10 @@ body.dash-body {
   .main-layout {
     margin-left: 85px;
     padding: 25px 40px;
+    padding: calc(25px + env(safe-area-inset-top, 0px))
+      calc(40px + env(safe-area-inset-right, 0px))
+      calc(25px + env(safe-area-inset-bottom, 0px))
+      calc(40px + env(safe-area-inset-left, 0px));
   }
 
   .welcome-banner h1 {
@@ -1304,7 +1327,12 @@ body.dash-body {
   .main-layout {
     width: 100%;
     min-height: 100vh;
+    min-height: 100dvh;
     padding: 70px 14px 28px;
+    padding: calc(70px + env(safe-area-inset-top, 0px))
+      calc(14px + env(safe-area-inset-right, 0px))
+      calc(28px + env(safe-area-inset-bottom, 0px))
+      calc(14px + env(safe-area-inset-left, 0px));
     margin: 0 !important;
     border-radius: 0;
     border-left: 0;
@@ -1456,7 +1484,10 @@ body.dash-body {
 @media screen and (max-width: 480px) {
   .main-layout {
     padding-inline: 11px;
+    padding-inline: calc(11px + env(safe-area-inset-left, 0px))
+      calc(11px + env(safe-area-inset-right, 0px));
     padding-top: 60px;
+    padding-top: calc(60px + env(safe-area-inset-top, 0px));
   }
 
   .header-left .header-info-btn {
@@ -1569,6 +1600,10 @@ body.dash-body {
     min-width: 0;
     margin: 0 !important;
     padding: 72px 14px 28px !important;
+    padding: calc(72px + env(safe-area-inset-top, 0px))
+      calc(14px + env(safe-area-inset-right, 0px))
+      calc(28px + env(safe-area-inset-bottom, 0px))
+      calc(14px + env(safe-area-inset-left, 0px)) !important;
     border-radius: 0 !important;
     border-left: 0 !important;
     border-right: 0 !important;
@@ -1824,6 +1859,10 @@ body.dash-body {
 @media screen and (max-width: 480px) {
   .main-layout {
     padding: 66px 11px 24px !important;
+    padding: calc(66px + env(safe-area-inset-top, 0px))
+      calc(11px + env(safe-area-inset-right, 0px))
+      calc(24px + env(safe-area-inset-bottom, 0px))
+      calc(11px + env(safe-area-inset-left, 0px)) !important;
   }
 
   .header-user {

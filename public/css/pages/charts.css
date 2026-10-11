@@ -226,6 +226,10 @@ canvas {
 @media screen and (max-width: 1200px) {
   .main-layout {
     padding: 30px;
+    padding: calc(30px + env(safe-area-inset-top, 0px))
+      calc(30px + env(safe-area-inset-right, 0px))
+      calc(30px + env(safe-area-inset-bottom, 0px))
+      calc(30px + env(safe-area-inset-left, 0px));
   }
 
   .row-triple {
@@ -241,6 +245,10 @@ canvas {
 @media screen and (max-width: 992px) {
   .main-layout {
     padding: 25px 30px;
+    padding: calc(25px + env(safe-area-inset-top, 0px))
+      calc(30px + env(safe-area-inset-right, 0px))
+      calc(25px + env(safe-area-inset-bottom, 0px))
+      calc(30px + env(safe-area-inset-left, 0px));
     margin-left: 0 !important;
     margin-right: 0 !important;
     border-radius: 0;

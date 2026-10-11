@@ -32,7 +32,9 @@
 .notificacoes-popup {
   position: absolute;
   top: 50px;
+  top: calc(50px + env(safe-area-inset-top, 0px));
   right: 0;
+  right: calc(0px + env(safe-area-inset-right, 0px));
   width: 340px;
   max-height: 420px;
   background: #151515;
@@ -262,8 +264,11 @@
   .notificacoes-popup {
     position: fixed;
     top: 58px;
+    top: calc(58px + env(safe-area-inset-top, 0px));
     right: 10px;
+    right: calc(10px + env(safe-area-inset-right, 0px));
     left: 10px;
+    left: calc(10px + env(safe-area-inset-left, 0px));
     width: auto;
     max-width: none;
     max-height: min(70dvh, 460px);
