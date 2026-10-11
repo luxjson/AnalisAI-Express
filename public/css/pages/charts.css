@@ -366,7 +366,7 @@ canvas {
   .graficos-grid,
   .row-triple {
     display: grid;
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: repeat(1, minmax(0, 1fr));
     gap: 16px;
   }
   .card-grafico,
