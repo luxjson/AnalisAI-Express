@@ -150,11 +150,12 @@ export default function Dashboard_dashboardGraficos({ data, handlers }) {
                 const nodes = [];
                 if (stats.mediaMedio !== undefined && stats.total > 0) {
                   nodes.push(
-                    <LoadingCanvas
-                      id={"chartMedio"}
-                      key={nodes.length}
-                      variant="plot"
-                    ></LoadingCanvas>,
+                    <div className="report-chart-frame" key={nodes.length}>
+                      <LoadingCanvas
+                        id="chartMedio"
+                        variant="plot"
+                      />
+                    </div>,
                   );
                   nodes.push(
                     <p className={"chart-value-large"} key={nodes.length}>
@@ -184,11 +185,12 @@ export default function Dashboard_dashboardGraficos({ data, handlers }) {
                 const nodes = [];
                 if (stats.mediaFundamental !== undefined && stats.total > 0) {
                   nodes.push(
-                    <LoadingCanvas
-                      id={"chartFundamental"}
-                      key={nodes.length}
-                      variant="plot"
-                    ></LoadingCanvas>,
+                    <div className="report-chart-frame" key={nodes.length}>
+                      <LoadingCanvas
+                        id="chartFundamental"
+                        variant="plot"
+                      />
+                    </div>,
                   );
                   nodes.push(
                     <p className={"chart-value-large"} key={nodes.length}>
