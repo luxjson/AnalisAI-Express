@@ -80,16 +80,11 @@ html[data-theme="light"] .card-grafico-small {
 }
 
 .row-triple {
-  display: flex;
-  gap: 30px;
-  width: 100%;
-}
-
-.row-triple {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: start;
   gap: 16px;
+  width: 100%;
 }
 
 .dash-card {
@@ -104,7 +99,6 @@ html[data-theme="light"] .card-grafico-small {
 }
 
 .card-grafico {
-  flex: 1;
   padding: 35px 25px;
   display: flex;
   flex-direction: column;
@@ -230,6 +224,71 @@ canvas {
   margin-left: 10px;
 }
 
+.dash-card.card-grafico {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  height: 260px;
+  min-height: 0;
+  max-height: 260px;
+  overflow: hidden;
+  contain: layout size;
+  padding: 24px 20px;
+}
+
+.chart-ring-box {
+  position: relative;
+  flex: 0 0 150px;
+  width: 150px;
+  height: 150px;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.chart-ring-box > canvas,
+.chart-ring-box > * {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100%;
+  max-height: 100% !important;
+}
+
+.dash-card.card-grafico .chart-label,
+.dash-card.card-grafico .chart-value {
+  margin: 0;
+  flex: 0 0 auto;
+  line-height: 1.2;
+}
+
+.dash-card.card-grafico .empty-chart {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  min-height: 0;
+}
+
+.report-chart-frame {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  height: 200px;
+  flex: 0 0 auto;
+}
+
+.report-chart-frame > canvas {
+  display: block;
+  max-height: none !important;
+}
+
 @media screen and (max-width: 1200px) {
   .main-layout {
     padding: 30px;
@@ -241,11 +300,6 @@ canvas {
 
   .row-triple {
     gap: 20px;
-  }
-
-  .card-grafico {
-    min-height: 350px;
-    padding: 25px 20px;
   }
 }
 
@@ -262,12 +316,11 @@ canvas {
   }
 
   .row-triple {
-    flex-direction: column;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
     gap: 20px;
   }
 
   .card-grafico {
-    min-height: 300px;
     width: 100%;
   }
 
@@ -295,20 +348,26 @@ canvas {
   }
 
   .row-triple {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
     gap: 15px;
+    width: 100%;
+    min-width: 0;
   }
 
-  .card-grafico {
-    min-height: 200px;
-    padding: 15px 12px;
-    border-radius: 12px;
-  }
-
+  .card-grafico,
   .card-grafico-large,
   .card-grafico-small {
-    min-height: 200px;
-    padding: 15px 12px;
-    border-radius: 12px;
+    width: 100%;
+    min-width: 0;
+    min-height: 300px;
+    padding: 24px 20px;
+    border-radius: 18px;
+    overflow: hidden;
+  }
+
+  .dash-card.card-grafico {
+    height: 240px;
+    max-height: 240px;
   }
 
   .dash-footer {
@@ -341,26 +400,11 @@ canvas {
     text-align: center;
   }
 
-  .graficos-grid,
-  .row-triple {
-    width: 100%;
-    min-width: 0;
-  }
-
-  .card-grafico,
-  .card-grafico-large,
-  .card-grafico-small {
-    width: 100%;
-    min-width: 0;
-    overflow: hidden;
-  }
   .main-layout {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+    margin: 0 !important;
     width: 100%;
     max-width: 100%;
     min-width: 0;
-    margin: 0 !important;
     min-height: 100dvh;
     padding: calc(76px + env(safe-area-inset-top, 0px))
       calc(16px + env(safe-area-inset-right, 0px))
@@ -370,116 +414,48 @@ canvas {
     animation: none;
     overflow: visible;
   }
+
   .graficos-grid,
   .row-triple {
     display: grid;
     grid-template-columns: repeat(1, minmax(0, 1fr));
     gap: 16px;
   }
-  .card-grafico,
-  .card-grafico-large,
-  .card-grafico-small {
-    width: 100%;
-    min-width: 0;
-    min-height: 300px;
-    padding: 24px 20px;
-    border-radius: 18px;
-  }
-  canvas {
-    width: 100% !important;
-    max-width: 100%;
-    max-height: none;
-  }
+
   .chart-label {
     font-size: 0.875rem;
     line-height: 1.5;
     margin-top: 16px;
   }
+
   .chart-value {
     font-size: 1.75rem;
     margin-top: 8px;
   }
+
   .chart-value-large {
-    margin-top: 8px;
-    margin-left: 0;
-    font-size: 2rem;
     margin: 8px 0 0;
+    font-size: 2rem;
   }
+
   .section-label {
     font-size: 1.125rem;
     text-align: left;
     margin-top: 24px;
   }
-}
-.report-chart-frame {
-  position: relative;
-  width: 100%;
-  min-width: 0;
-  height: 200px;
-  flex: 0 0 auto;
-}
 
-.report-chart-frame > canvas {
-  display: block;
-  max-height: none !important;
-}
-
-@media screen and (max-width: 768px) {
   .report-chart-frame {
     height: 240px;
   }
-  .row-triple {
-    grid-template-columns: repeat(1, minmax(0, 1fr));
+
+  canvas {
+    width: 100% !important;
+    max-width: 100%;
+    max-height: none;
   }
-}
 
-.dash-card.card-grafico {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 8px;
-  height: 260px;
-  min-height: 0;
-  max-height: 260px;
-  overflow: hidden;
-  contain: layout size;
-}
-
-.chart-ring-box {
-  position: relative;
-  flex: 0 0 150px;
-  width: 150px;
-  height: 150px;
-  min-width: 0;
-  min-height: 0;
-  overflow: hidden;
-}
-
-.chart-ring-box > canvas,
-.chart-ring-box > * {
-  position: absolute;
-  inset: 0;
-  display: block;
-  width: 100% !important;
-  height: 100% !important;
-  max-width: 100%;
-  max-height: 100%;
-}
-
-.dash-card.card-grafico .chart-label,
-.dash-card.card-grafico .chart-value {
-  margin: 0;
-  flex: 0 0 auto;
-  line-height: 1.2;
-}
-
-.dash-card.card-grafico .empty-chart {
-  flex: 1 1 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: 100%;
-  min-height: 0;
+  .chart-ring-box > canvas,
+  .chart-ring-box > * {
+    max-height: 100% !important;
+  }
 }
