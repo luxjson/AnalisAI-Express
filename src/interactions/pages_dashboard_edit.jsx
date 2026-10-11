@@ -507,7 +507,9 @@ export function initialize({ onReady, handlers, scope }) {
         if (!lifecycle.active) return;
         if (!lifecycle.active) return;
         console.error("Erro ao carregar dados:", error);
-        alert("Erro ao carregar dados do aluno.");
+        lifecycle.reportError(
+          new Error("Erro ao carregar dados do aluno."),
+        );
       });
   }
   function gerarNovaSenhaAluno(id) {
@@ -557,7 +559,9 @@ export function initialize({ onReady, handlers, scope }) {
         if (!lifecycle.active) return;
         if (!lifecycle.active) return;
         console.error(error);
-        alert(error.message || "Erro ao gerar nova senha.");
+        lifecycle.reportError(
+  new Error(error.message || "Erro ao gerar nova senha."),
+);
       });
   }
   function showEditTab(tabName) {

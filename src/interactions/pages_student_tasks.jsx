@@ -57,7 +57,9 @@ export function initialize({ onReady, handlers, scope }) {
         ];
         if (!extensoesPermitidas.includes(extensao)) {
           e.preventDefault();
-          alert("Tipo de arquivo não permitido! Selecione um arquivo válido.");
+          lifecycle.reportError(
+            new Error("Tipo de arquivo não permitido! Selecione um arquivo válido."),
+          );
           return false;
         }
       }

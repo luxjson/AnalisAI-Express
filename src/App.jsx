@@ -3,6 +3,7 @@ import manifest from "./pages/manifest.json";
 import { applyPageStyles, preloadPageStyles } from "./services/page-styles";
 import { initializeInteractions, installForms } from "./services/interactions";
 import { createInteractionScope } from "./services/lifecycle";
+import ErrorNotice from "./components/ErrorNotice";
 import {
   baseData,
   loadPageData,
@@ -267,7 +268,6 @@ export default function App() {
             data={data}
             handlers={handlers.current}
             error={error}
-            onRetry={refresh}
             onDismissError={() => setError("")}
           />
         ) : (
@@ -279,30 +279,13 @@ export default function App() {
           />
         )}
       </PersistentSidebarContext.Provider>
-      {error && view !== "login" && (
-        <div
-          role="alert"
-          className="alert-box error"
-          style={{
-            bottom: 20,
-            left: 20,
-            right: 20,
-            zIndex: 100000,
-          }}
-        >
-          <span>{error}</span>
-          <button type="button" onClick={refresh}>
-            Tentar novamente
-          </button>
-          <button
-            type="button"
-            aria-label="Fechar"
-            onClick={() => setError("")}
-          >
-            ×
-          </button>
-        </div>
-      )}
+        {error &&
+          !(view === "login" && current?.status === "ready" && Page) && (
+            <ErrorNotice
+              message={error}
+              onClose={() => setError("")}
+            />
+          )}
     </>
   );
 }

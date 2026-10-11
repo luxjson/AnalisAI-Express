@@ -1,11 +1,11 @@
 import { LoadingValue, LoadingElement } from "../components/loading-layout";
 import React from "react";
 import { styleFrom } from "../services/ui";
+import ErrorNotice from "../components/ErrorNotice";
 export default function Login({
   data,
   handlers,
   error,
-  onRetry,
   onDismissError,
 }) {
   const {
@@ -40,47 +40,14 @@ export default function Login({
                   />
                 </div>,
               );
-              if (error) {
-  nodes.push(
-    <div
-      key="login-request-error"
-      role="alert"
-      className="alert-box error"
-    >
-      <span>{error}</span>
-
-      <div className="login-error-actions">
-        <button
-          type="button"
-          className="login-error-retry"
-          onClick={onRetry}
-        >
-          Tentar novamente
-        </button>
-
-        <button
-          type="button"
-          className="login-error-close"
-          aria-label="Fechar"
-          onClick={onDismissError}
-        >
-          ×
-        </button>
-      </div>
-    </div>,
-  );
-}
-              if (error_msg && error_msg.length > 0) {
+              if (error || error_msg) {
                 nodes.push(
-                  <div className={"alert-box error"} key={nodes.length}>
-                    <i className={"fas fa-exclamation-circle"}></i>
-                    <LoadingValue
-                      slot="login:1"
-                      width="12ch"
-                      known={false}
-                      value={error_msg}
-                    />
-                  </div>,
+                  <ErrorNotice
+                    key="login-error"
+                    inline
+                    message={error || error_msg}
+                    onClose={error ? onDismissError : undefined}
+                  />,
                 );
               }
               if (success_msg && success_msg.length > 0) {

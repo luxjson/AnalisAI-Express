@@ -573,12 +573,16 @@ export function initialize({ onReady, handlers, scope }) {
             ),
           ]);
         } else {
-          alert(data.error || "Não foi possível completar o reparo.");
+          lifecycle.reportError(
+            new Error(data.error || "Não foi possível completar o reparo."),
+          );
         }
       } catch (err) {
         if (!lifecycle.active) return;
         console.error("Erro ao executar reparo:", err);
-        alert("Erro de conexão ao reparar o banco de dados.");
+        lifecycle.reportError(
+          new Error("Erro de conexão ao reparar o banco de dados."),
+        );
       } finally {
         if (!lifecycle.active) return;
         if (fixAllBtn) {
@@ -675,12 +679,16 @@ export function initialize({ onReady, handlers, scope }) {
             );
           }
         } else {
-          alert(data.error || "Falha ao realizar backup.");
+          lifecycle.reportError(
+            new Error(data.error || "Falha ao realizar backup."),
+          );
         }
       } catch (err) {
         if (!lifecycle.active) return;
         console.error("Erro no backup manual:", err);
-        alert("Erro ao disparar backup manual.");
+        lifecycle.reportError(
+          new Error("Erro ao disparar backup manual."),
+        );
       } finally {
         if (!lifecycle.active) return;
         if (btn) {

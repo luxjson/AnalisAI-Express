@@ -4,6 +4,7 @@ import App from "./App";
 import "./styles/react-root.css";
 import "./styles/skeleton.css";
 import "./services/icons";
+import "./styles/feedback.css";
 document.documentElement.dataset.theme = "dark";
 try {
   localStorage.removeItem("analisai-theme-v2");

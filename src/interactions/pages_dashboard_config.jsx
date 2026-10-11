@@ -75,7 +75,9 @@ export function initialize({ onReady, handlers, scope }) {
       })
       .catch((error) => {
         if (!lifecycle.active) return;
-        return alert("Erro ao salvar configurações");
+        return lifecycle.reportError(
+          new Error("Erro ao salvar configurações"),
+        );
       });
   }
   lifecycle.bindHandlers(handlers, {

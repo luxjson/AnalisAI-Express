@@ -773,7 +773,9 @@ export function initialize({ onReady, handlers, scope }) {
     const nota = document.getElementById(`nota-${alunoId}`).value;
     const feedback = document.getElementById(`feedback-${alunoId}`).value;
     if (!nota || nota < 0 || nota > 10) {
-      alert("Por favor, insira uma nota válida entre 0 e 10");
+      lifecycle.reportError(
+        new Error("Por favor, insira uma nota válida entre 0 e 10"),
+      );
       return;
     }
     fetch("/dashboard/tarefas/avaliar-aluno", {
@@ -805,7 +807,9 @@ export function initialize({ onReady, handlers, scope }) {
           }
           refresh();
         } else {
-          alert("Erro ao salvar avaliação");
+          lifecycle.reportError(
+            new Error("Erro ao salvar avaliação"),
+          );
         }
       })
       .catch((error) => lifecycle.reportError(error));
@@ -836,7 +840,9 @@ export function initialize({ onReady, handlers, scope }) {
             alert("Tarefa devolvida para correção!");
             refresh();
           } else {
-            alert("Erro ao devolver tarefa");
+            lifecycle.reportError(
+              new Error("Erro ao devolver tarefa"),
+            );
           }
         })
         .catch((error) => lifecycle.reportError(error));

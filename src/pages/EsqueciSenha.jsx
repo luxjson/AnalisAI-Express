@@ -30,17 +30,13 @@ export default function EsqueciSenha({ data, handlers }) {
                   {"Recuperar Senha"}
                 </h2>,
               );
-              if (error_msg && error_msg.length > 0) {
+              if (error_msg) {
                 nodes.push(
-                  <div className={"alert-box error"} key={nodes.length}>
-                    <i className={"fas fa-exclamation-circle"}></i>
-                    <LoadingValue
-                      slot="esqueciSenha:1"
-                      width="12ch"
-                      known={false}
-                      value={error_msg}
-                    />
-                  </div>,
+                  <ErrorNotice
+                    key="password-reset-error"
+                    inline
+                    message={error_msg}
+                  />,
                 );
               }
               if (success_msg && success_msg.length > 0) {
