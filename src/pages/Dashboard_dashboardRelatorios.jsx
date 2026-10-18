@@ -78,16 +78,17 @@ export default function Dashboard_dashboardRelatorios({ data, handlers }) {
     setNotice("");
     setBusyId(id);
     try {
+      const currentRequest = requests.find((item) => String(item.id) === String(id));
       const result = await request("/dashboard/relatorios-pedagogicos/" + encodeURIComponent(id), {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          status: statuses[id] || "CONCLUIDA",
-          resposta: responses[id] || "",
+          status: statuses[id] || (currentRequest?.status === "CONCLUIDA" ? "CONCLUIDA" : "EM_ANDAMENTO"),
+          resposta: responses[id] ?? currentRequest?.resposta ?? "",
         }),
       });
       setNotice("Solicitação atualizada.");
-      setRequests((previous) => previous.map((item) => item.id === id ? { ...item, ...result.solicitacao, resposta: responses[id] || item.resposta } : item));
+      setRequests((previous) => previous.map((item) => item.id === id ? { ...item, ...result.solicitacao, resposta: responses[id] ?? item.resposta } : item));
       await reload();
     } catch (err) {
       setError(err.message || "Não foi possível atualizar essa solicitação.");
@@ -134,7 +135,7 @@ export default function Dashboard_dashboardRelatorios({ data, handlers }) {
                     </label>
                     <label className="info-display-item">
                       <span>Aluno específico (opcional)</span>
-                      <select className="form-control" value={studentId} onChange={(event) => { const value = event.target.value; setStudentId(value); const student = students.find((item) => String(item.id) === value); if (student) setTurma(student.ano_escolar); }} >
+                      <select className="form-control" value={studentId} onChange={(event) => { const value = event.target.value; setStudentId(value); const student = students.find((item) => String(item.id) === value); if (student) { setTurma(student.ano_escolar); setTeacherId(""); } }} >
                         <option value="">Relatório geral da turma</option>
                         {filteredStudents.map((student) => <option key={student.id} value={student.id}>{student.nome} — {student.ano_escolar}</option>)}
                       </select>
