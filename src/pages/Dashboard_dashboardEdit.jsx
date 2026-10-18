@@ -535,7 +535,7 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                             nodes.push(
                               <tr
                                 data-aluno-id={aluno.id}
-                                data-presenca={aluno.presenca}
+                                data-presenca={aluno.presenca == null ? "" : aluno.presenca}
                                 key={nodes.length}
                               >
                                 <td>
@@ -619,9 +619,9 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                                     slot="dashboard/dashboardEdit:9"
                                     width="3ch"
                                     known={false}
-                                    value={aluno.presenca}
+                                    value={aluno.presenca == null ? "—" : aluno.presenca}
                                   />
-                                  {"%"}
+                                  {aluno.presenca == null ? "" : "%"}
                                 </td>
                                 <LoadingElement
                                   as="td"
