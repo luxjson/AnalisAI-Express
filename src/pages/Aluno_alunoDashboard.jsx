@@ -131,6 +131,35 @@ export default function Aluno_alunoDashboard({ data, handlers }) {
                       </div>
                     </section>,
                   );
+                  const attendance = data.frequenciaResumo || null;
+                  nodes.push(
+                    <section className={"section-container"} key={nodes.length}>
+                      <h2 className={"section-title-2"}>
+                        {"FREQUÊNCIA NO ANO "}{attendance?.ano || ""}
+                      </h2>
+                      <p style={styleFrom("color:var(--text-gray); margin-bottom:18px;")}>
+                        {"O percentual é calculado pelos períodos de aula registrados, não pelos dias do calendário."}
+                      </p>
+                      <div className={"dash-grid"}>
+                        {[
+                          { label: "PERÍODOS REGISTRADOS", value: attendance?.total_aulas ?? 0 },
+                          { label: "PRESENÇAS", value: attendance?.presencas ?? 0, tone: "apto" },
+                          { label: "FALTAS", value: attendance?.faltas ?? 0, tone: "inapto" },
+                          { label: "FALTAS JUSTIFICADAS", value: attendance?.justificadas ?? 0, tone: "desenvolvimento" },
+                        ].map((item) => (
+                          <div className={"stats-card " + (item.tone || "")} key={item.label}>
+                            <h3>{item.label}</h3>
+                            <p className={"stats-number"}>{item.value}</p>
+                          </div>
+                        ))}
+                      </div>
+                      <p style={styleFrom("color:var(--text-gray); font-size:.85rem; margin-top:14px;")}>
+                        {attendance?.total_aulas
+                          ? `O calendário de ${attendance.ano} tem ${attendance.diasNoAno} dias; foram registrados ${attendance.dias_registrados} dias com aula.`
+                          : `O calendário de ${attendance?.ano || "referência"} tem ${attendance?.diasNoAno || "365 ou 366"} dias. Ainda não há registros de aula para calcular sua frequência anual.`}
+                      </p>
+                    </section>,
+                  );
                   nodes.push(
                     <section className={"section-container"} key={nodes.length}>
                       <h2 className={"section-title-2"}>
