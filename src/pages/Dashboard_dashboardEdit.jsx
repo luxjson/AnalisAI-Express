@@ -116,6 +116,14 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                     <i className={"fas fa-file-export"}></i>
                     {" EXPORTAR TABELA\n                "}
                   </button>
+                  <a
+                    className={"btn-secondary-dash"}
+                    href={"/dashboard/frequencia"}
+                    title={"Registrar frequência por aula"}
+                  >
+                    <i className={"fas fa-calendar-check"} aria-hidden={"true"}></i>
+                    {" FREQUÊNCIA"}
+                  </a>
                 </div>
                 <div className={"search-container"}>
                   <i className={"fas fa-search"}></i>
