@@ -47,6 +47,7 @@ export function sessionRedirect(path, who) {
     who?.cargo === "Coordenador" &&
     [
       "/dashboard/edit",
+      "/dashboard/frequencia",
       "/dashboard/tarefas",
       "/dashboard/calendario",
       "/dashboard/ia",
