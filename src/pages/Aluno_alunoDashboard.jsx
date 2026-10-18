@@ -91,7 +91,8 @@ export default function Aluno_alunoDashboard({ data, handlers }) {
                               </p>
                             </div>,
                           );
-                          let mediaGeralNum = parseFloat(mediaGeral) || 0;
+                          const mediaGeralValue = mediaGeral == null || mediaGeral === "" ? null : Number(mediaGeral);
+                          const mediaGeralNum = Number.isFinite(mediaGeralValue) ? mediaGeralValue : null;
                           let mediaClass = data.mediaGeralClass;
                           nodes.push(
                             <LoadingElement
@@ -106,7 +107,7 @@ export default function Aluno_alunoDashboard({ data, handlers }) {
                                   slot="aluno/alunoDashboard:3"
                                   width="3ch"
                                   known={false}
-                                  value={mediaGeralNum.toFixed(1)}
+                                  value={mediaGeralNum == null ? "—" : mediaGeralNum.toFixed(1)}
                                 />
                               </p>
                             </LoadingElement>,
