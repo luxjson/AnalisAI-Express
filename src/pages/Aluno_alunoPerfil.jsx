@@ -80,9 +80,9 @@ export default function Aluno_alunoPerfil({ data, handlers }) {
                         slot="aluno/alunoPerfil:5"
                         width="3ch"
                         known={false}
-                        value={aluno.presenca}
+                        value={aluno.presenca == null ? "—" : aluno.presenca}
                       />
-                      {"%"}
+                      {aluno.presenca == null ? "" : "%"}
                     </strong>
                   </div>
                 </div>
