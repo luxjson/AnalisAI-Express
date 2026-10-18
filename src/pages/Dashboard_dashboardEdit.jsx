@@ -1262,6 +1262,7 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                         action={"/dashboard/atualizar-presenca"}
                         method={"POST"}
                         className={"filter-options"}
+                        onSubmit={(event) => event.preventDefault()}
                       >
                         <input
                           type={"hidden"}
@@ -1274,27 +1275,29 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                           id={"editAlunoId"}
                         />
                         <label style={styleFrom("margin-top: 0;")}>
-                          {"FREQUÊNCIA ATUAL (%)"}
+                          {"FREQUÊNCIA DO ANO LETIVO (%)"}
                         </label>
                         <input
                           type={"number"}
-                          name={"presenca"}
                           id={"editPresencaInput"}
                           min={"0"}
                           max={"100"}
                           className={"filter-input"}
                           style={styleFrom("padding: 10px;")}
-                          required={true}
+                          readOnly={true}
+                          aria-readonly={"true"}
                         />
-                        <button
-                          type={"submit"}
+                        <p style={styleFrom("color: var(--text-gray); margin: 12px 0; font-size: .85rem;")}>
+                          {"O percentual é calculado automaticamente a partir das presenças, faltas e justificativas registradas por data e período. Para corrigir um lançamento, abra o portal de frequência."}
+                        </p>
+                        <a
+                          href={"/dashboard/frequencia"}
                           className={"btn-secondary-dash"}
-                          style={styleFrom(
-                            "margin-top: 20px; height: 45px; justify-content: center; font-size: 0.75rem;",
-                          )}
+                          style={styleFrom("margin-top: 8px; height: 45px; justify-content: center; font-size: 0.75rem;")}
                         >
-                          {"ATUALIZAR STATUS"}
-                        </button>
+                          <i className={"fas fa-calendar-check"} aria-hidden={"true"}></i>
+                          {" ABRIR FREQUÊNCIA"}
+                        </a>
                       </form>
                     </div>
                   </div>
