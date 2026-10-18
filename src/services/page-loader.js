@@ -43,13 +43,23 @@ export function sessionRedirect(path, who) {
     path !== "/dashboard/configuracao-inicial"
   )
     return "/dashboard/configuracao-inicial";
+  if (
+    who?.cargo === "Coordenador" &&
+    [
+      "/dashboard/edit",
+      "/dashboard/tarefas",
+      "/dashboard/calendario",
+      "/dashboard/ia",
+    ].includes(path)
+  )
+    return "/dashboard/relatorios-pedagogicos";
   if (path === "/login" && who)
     return who.kind === "aluno" ? "/aluno" : "/dashboard";
   if (
     ["/dashboard/usuarios", "/dashboard/solicitacoes-senha"].includes(path) &&
     who?.cargo !== "Admin"
   )
-    throw new Error("Acesso administrativo necessário.");
+    return "/dashboard/relatorios-pedagogicos";
   return null;
 }
 export async function loadSession(signal) {
