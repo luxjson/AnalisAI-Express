@@ -102,20 +102,6 @@ export default function Partials_barProfessor({ data, handlers }) {
                 );
                 nodes.push(
                   <a
-                    href={"/dashboard/graficos"}
-                    data-sidebar-id={"reports"}
-                    className={"side-link"}
-                    key={nodes.length}
-                  >
-                    <div className={"icon-box"}>
-                      <i className={"fas fa-chart-bar"}></i>
-                    </div>
-                    <span className={"link-text"}>{"Relatórios"}</span>
-                    <div className={"active-indicator"}></div>
-                  </a>,
-                );
-                nodes.push(
-                  <a
                     href={"/dashboard/calendario"}
                     data-sidebar-id={"calendar"}
                     className={"side-link"}
@@ -146,6 +132,20 @@ export default function Partials_barProfessor({ data, handlers }) {
                   </a>,
                 );
                 }
+                nodes.push(
+                  <a
+                    href={"/dashboard/graficos"}
+                    data-sidebar-id={"reports"}
+                    className={"side-link"}
+                    key={nodes.length}
+                  >
+                    <div className={"icon-box"}>
+                      <i className={"fas fa-chart-bar"}></i>
+                    </div>
+                    <span className={"link-text"}>{"Relatórios"}</span>
+                    <div className={"active-indicator"}></div>
+                  </a>,
+                );
                 nodes.push(
                   <a
                     href={"/dashboard/relatorios-pedagogicos"}
