@@ -280,7 +280,8 @@ export default function Dashboard_dashboardCalendario({ data, handlers }) {
                             }
                           >
                             {userCargo !== "Professor" && (
-<option value={""}>{"TODAS AS TURMAS"}</option>
+                              <option value={""}>{"TODAS AS TURMAS"}</option>
+                            )}
                             <option value={"1º MÉDIO"}>{"1º MÉDIO"}</option>
                             <option value={"2º MÉDIO"}>{"2º MÉDIO"}</option>
                             <option value={"3º MÉDIO"}>{"3º MÉDIO"}</option>
@@ -349,23 +350,23 @@ export default function Dashboard_dashboardCalendario({ data, handlers }) {
                         {" NOVO EVENTO\n                "}
                       </button>,
                     );
-                    nodes.push(
-                      {userCargo === "Admin" && (
-<button
-                        className={"btn-secondary-dash"}
-                        style={styleFrom(
-                          "margin-top: 10px; width: 100%; height: 55px; text-align: center; align-items: center; justify-content: center;",
-                        )}
-                        onClick={(event) => {
-                          handlers.abrirModalFeriado();
-                        }}
-                        key={nodes.length}
-                      >
-                        <i className={"fas fa-star"}></i>
-                        {" NOVO FERIADO\n                "}
-                      </button>
-)},
-                    );
+                    if (userCargo === "Admin") {
+                      nodes.push(
+                        <button
+                          className={"btn-secondary-dash"}
+                          style={styleFrom(
+                            "margin-top: 10px; width: 100%; height: 55px; text-align: center; align-items: center; justify-content: center;",
+                          )}
+                          onClick={(event) => {
+                            handlers.abrirModalFeriado();
+                          }}
+                          key={nodes.length}
+                        >
+                          <i className={"fas fa-star"}></i>
+                          {" NOVO FERIADO\n                "}
+                        </button>,
+                      );
+                    }
                     nodes.push(
                       <h3
                         style={styleFrom("color: #fff; margin: 20px 0;")}
@@ -460,8 +461,7 @@ export default function Dashboard_dashboardCalendario({ data, handlers }) {
                                   );
                                   if (userCargo === "Admin") {
                                     nodes.push(
-                                      {userCargo === "Admin" && (
-<button
+                                      <button
                                         className={"evento-lista-remover"}
                                         onClick={(event) => {
                                           handlers.removerItem(
@@ -472,8 +472,7 @@ export default function Dashboard_dashboardCalendario({ data, handlers }) {
                                         key={nodes.length}
                                       >
                                         <i className={"fas fa-times"}></i>
-                                      </button>
-)},
+                                      </button>,
                                     );
                                   }
                                   return nodes;
@@ -645,8 +644,9 @@ export default function Dashboard_dashboardCalendario({ data, handlers }) {
                     className={"filter-input"}
                     style={styleFrom("padding: 10px; font-size: 0.8rem;")}
                    required={userCargo === "Professor"}>
-                    <option value={""}>{"GERAL / TODAS"}</option>
-)}
+                    {userCargo !== "Professor" && (
+                      <option value={""}>{"GERAL / TODAS"}</option>
+                    )}
                     <option value={"1º MÉDIO"}>{"1º MÉDIO"}</option>
                     <option value={"2º MÉDIO"}>{"2º MÉDIO"}</option>
                     <option value={"3º MÉDIO"}>{"3º MÉDIO"}</option>
