@@ -5,6 +5,7 @@ import {
   PageDataScript,
 } from "../components/loading-layout";
 import React from "react";
+import { download } from "../services/api";
 import Partials_barAluno from "../components/Partials_barAluno.jsx";
 import Partials_notificacoes from "../components/Partials_notificacoes.jsx";
 import { styleFrom, safeJson } from "../services/ui";
@@ -343,6 +344,28 @@ export default function Aluno_alunoDashboard({ data, handlers }) {
                     <i className={"fas fa-book-open"}></i>
                     {" MANUAL DO ALUNO\n                "}
                   </a>
+                  <button
+                    type={"button"}
+                    className={"btn-secondary-dash"}
+                    onClick={async () => {
+                      const studentId = aluno.id || data.userId;
+                      if (!studentId) {
+                        window.dispatchEvent(new CustomEvent("analisai:interaction-error", { detail: "Não foi possível identificar sua conta." }));
+                        return;
+                      }
+                      try {
+                        await download(
+                          "/dashboard/aluno-relatorio/" + encodeURIComponent(studentId) + "/pdf?ano=" + new Date().getFullYear(),
+                          "meu-relatorio-pedagogico.pdf",
+                        );
+                      } catch (error) {
+                        window.dispatchEvent(new CustomEvent("analisai:interaction-error", { detail: error.message || "Não foi possível baixar o relatório." }));
+                      }
+                    }}
+                  >
+                    <i className={"fas fa-file-pdf"} aria-hidden={"true"}></i>
+                    {" MEU RELATÓRIO PDF"}
+                  </button>
                 </div>
                 <div className={"footer-credits"}>
                   <p>{"© 2026 AnalisAI"}</p>
