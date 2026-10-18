@@ -1536,7 +1536,7 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
     </>
   );
 }
-export function PageHeader({ data, handlers }) {
+export function PageHeader({ data, handlers, title = "Editor de Notas" }) {
   const {
     user = "",
     userCargo = null,
@@ -1549,7 +1549,7 @@ export function PageHeader({ data, handlers }) {
   return (
     <header className={"dash-header"}>
       <div className={"header-left"}>
-        <h1>{"\n                    Editor de Notas\n                "}</h1>
+        <h1>{title}</h1>
       </div>
       <div className={"header-user"}>
         <div className={"user-profile-group"}>
