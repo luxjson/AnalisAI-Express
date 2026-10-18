@@ -149,7 +149,18 @@ export default function Dashboard_frequencia({ data, handlers }) {
               </label>
               <label className="info-display-item">
                 <span>Data da aula</span>
-                <input className="form-control" type="date" value={date} onChange={(event) => setDate(event.target.value)} required />
+                <input
+                  className="form-control"
+                  type="date"
+                  value={date}
+                  onChange={(event) => {
+                    const nextDate = event.target.value;
+                    setDate(nextDate);
+                    if (/^\\d{4}-\\d{2}-\\d{2}$/.test(nextDate))
+                      setYear(Number(nextDate.slice(0, 4)));
+                  }}
+                  required
+                />
               </label>
               <label className="info-display-item">
                 <span>Início</span>
@@ -161,8 +172,25 @@ export default function Dashboard_frequencia({ data, handlers }) {
               </label>
               <label className="info-display-item">
                 <span>Ano letivo</span>
-                <select className="form-control" value={year} onChange={(event) => setYear(Number(event.target.value))}>
-                  {[year - 1, year, year + 1].filter((item) => item >= 2000 && item <= 2100).map((item) => <option key={item} value={item}>{item}</option>)}
+                <select
+                  className="form-control"
+                  value={year}
+                  onChange={(event) => {
+                    const nextYear = Number(event.target.value);
+                    setYear(nextYear);
+                    const [, month, day] = date.split("-").map(Number);
+                    const maxDay = new Date(Date.UTC(nextYear, month, 0)).getUTCDate();
+                    setDate(
+                      nextYear + "-" +
+                      String(month).padStart(2, "0") + "-" +
+                      String(Math.min(day || 1, maxDay)).padStart(2, "0"),
+                    );
+                  }}
+                >
+                  {[...new Set([year - 1, year, year + 1, Number(date.slice(0, 4))])]
+                    .filter((item) => item >= 2000 && item <= 2100)
+                    .sort((a, b) => a - b)
+                    .map((item) => <option key={item} value={item}>{item}</option>)}
                 </select>
               </label>
               <button className="btn-secondary-dash" type="submit" disabled={loading}>
