@@ -105,6 +105,7 @@ export async function loadPageData(href, session, signal) {
         ...data,
         email: account.email,
         cargo: account.role,
+        foto_perfil: account.foto_perfil || null,
         ultimoAcesso: account.lastAccess,
         stats: {
           tarefas: account.tasks,
