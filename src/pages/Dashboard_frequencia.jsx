@@ -132,7 +132,7 @@ export default function Dashboard_frequencia({ data, handlers }) {
     <>
       <Partials_barProfessor data={data} handlers={handlers} />
       <div className="main-layout">
-        <PageHeader data={{ ...data, userCargo: data.userCargo, user: data.user }} handlers={handlers} />
+        <PageHeader data={{ ...data, userCargo: data.userCargo, user: data.user }} handlers={handlers} title={"Frequência dos alunos"} />
         <main className="dash-content">
           <section className="section-container">
             <p className="section-label">EDITOR DE NOTAS / FREQUÊNCIA</p>
