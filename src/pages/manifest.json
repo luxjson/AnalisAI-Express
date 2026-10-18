@@ -6,9 +6,7 @@
       "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap",
       "/css/preserved/error.css"
     ],
-    "scripts": [
-      "/js/shared/phosphor-icons.js"
-    ],
+    "scripts": ["/js/shared/phosphor-icons.js"],
     "bodyClass": "",
     "title": "Página não encontrada",
     "includes": [],
@@ -26,10 +24,7 @@
       "/css/pages/forgot-password.css",
       "/css/base/light-theme.css"
     ],
-    "scripts": [
-      "/js/shared/theme-init.js",
-      "/js/shared/phosphor-icons.js"
-    ],
+    "scripts": ["/js/shared/theme-init.js", "/js/shared/phosphor-icons.js"],
     "bodyClass": "dash-body",
     "title": "Recuperar Senha",
     "includes": [],
@@ -49,15 +44,10 @@
       "/css/pages/home.css",
       "/css/base/light-theme.css"
     ],
-    "scripts": [
-      "/js/shared/theme-init.js",
-      "/js/shared/phosphor-icons.js"
-    ],
+    "scripts": ["/js/shared/theme-init.js", "/js/shared/phosphor-icons.js"],
     "bodyClass": "dash-body",
     "title": "AnalisAI | Inteligência em Análise Educacional",
-    "includes": [
-      "partials/header"
-    ],
+    "includes": ["partials/header"],
     "styleOrder": [
       "/css/base/dashboard.css",
       "/css/components/sidebar.css",
@@ -98,10 +88,7 @@
       "/css/pages/manuals.css",
       "/css/base/light-theme.css"
     ],
-    "scripts": [
-      "/js/shared/theme-init.js",
-      "/js/shared/phosphor-icons.js"
-    ],
+    "scripts": ["/js/shared/theme-init.js", "/js/shared/phosphor-icons.js"],
     "bodyClass": "dash-body",
     "title": "Manual",
     "includes": [
@@ -127,16 +114,10 @@
       "/css/pages/student-manual.css",
       "/css/base/light-theme.css"
     ],
-    "scripts": [
-      "/js/shared/theme-init.js",
-      "/js/shared/phosphor-icons.js"
-    ],
+    "scripts": ["/js/shared/theme-init.js", "/js/shared/phosphor-icons.js"],
     "bodyClass": "dash-body",
     "title": "Manual",
-    "includes": [
-      "partials/barAluno",
-      "partials/notificacoes"
-    ],
+    "includes": ["partials/barAluno", "partials/notificacoes"],
     "styleOrder": [
       "https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css",
       "/css/components/sidebar.css",
@@ -157,10 +138,7 @@
       "/css/pages/teacher-manual.css",
       "/css/base/light-theme.css"
     ],
-    "scripts": [
-      "/js/shared/theme-init.js",
-      "/js/shared/phosphor-icons.js"
-    ],
+    "scripts": ["/js/shared/theme-init.js", "/js/shared/phosphor-icons.js"],
     "bodyClass": "dash-body",
     "title": "Manual",
     "includes": [
@@ -185,10 +163,7 @@
       "/css/pages/terms.css",
       "/css/base/light-theme.css"
     ],
-    "scripts": [
-      "/js/shared/theme-init.js",
-      "/js/shared/phosphor-icons.js"
-    ],
+    "scripts": ["/js/shared/theme-init.js", "/js/shared/phosphor-icons.js"],
     "bodyClass": "dash-body",
     "title": "Termos de Serviço",
     "includes": [],
@@ -215,10 +190,7 @@
     ],
     "bodyClass": "dash-body",
     "title": "Competências",
-    "includes": [
-      "partials/barAluno",
-      "partials/notificacoes"
-    ],
+    "includes": ["partials/barAluno", "partials/notificacoes"],
     "styleOrder": [
       "https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css",
       "/css/components/sidebar.css",
@@ -245,10 +217,7 @@
     ],
     "bodyClass": "dash-body",
     "title": "Portal do Aluno",
-    "includes": [
-      "partials/barAluno",
-      "partials/notificacoes"
-    ],
+    "includes": ["partials/barAluno", "partials/notificacoes"],
     "styleOrder": [
       "https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css",
       "/css/components/sidebar.css",
@@ -276,10 +245,7 @@
     ],
     "bodyClass": "dash-body",
     "title": "Evolução",
-    "includes": [
-      "partials/barAluno",
-      "partials/notificacoes"
-    ],
+    "includes": ["partials/barAluno", "partials/notificacoes"],
     "styleOrder": [
       "https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css",
       "/css/components/sidebar.css",
@@ -307,9 +273,7 @@
     ],
     "bodyClass": "dash-body ai-page-body ai-student-page",
     "title": "Agente",
-    "includes": [
-      "partials/barAluno"
-    ],
+    "includes": ["partials/barAluno"],
     "styleOrder": [
       "https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css",
       "/css/components/sidebar.css",
@@ -329,16 +293,10 @@
       "/css/pages/edit.css",
       "/css/pages/student-profile.css"
     ],
-    "scripts": [
-      "/js/shared/phosphor-icons.js",
-      "/js/pages/student/profile.js"
-    ],
+    "scripts": ["/js/shared/phosphor-icons.js", "/js/pages/student/profile.js"],
     "bodyClass": "dash-body config-page config-page-student",
     "title": "Perfil",
-    "includes": [
-      "partials/barAluno",
-      "partials/notificacoes"
-    ],
+    "includes": ["partials/barAluno", "partials/notificacoes"],
     "styleOrder": [
       "https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css",
       "/css/components/sidebar.css",
@@ -366,10 +324,7 @@
     ],
     "bodyClass": "dash-body",
     "title": "Tarefas",
-    "includes": [
-      "partials/barAluno",
-      "partials/notificacoes"
-    ],
+    "includes": ["partials/barAluno", "partials/notificacoes"],
     "styleOrder": [
       "https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css",
       "/css/components/sidebar.css",
@@ -398,10 +353,7 @@
     ],
     "bodyClass": "dash-body",
     "title": "Calendário Escolar",
-    "includes": [
-      "partials/barProfessor",
-      "partials/notificacoes"
-    ],
+    "includes": ["partials/barProfessor", "partials/notificacoes"],
     "styleOrder": [
       "https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css",
       "/css/pages/calendar.css",
@@ -426,10 +378,7 @@
     ],
     "bodyClass": "dash-body config-page config-page-professor",
     "title": "Configurações",
-    "includes": [
-      "partials/barProfessor",
-      "partials/notificacoes"
-    ],
+    "includes": ["partials/barProfessor", "partials/notificacoes"],
     "styleOrder": [
       "https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css",
       "/css/components/sidebar.css",
@@ -459,10 +408,7 @@
     ],
     "bodyClass": "dash-body",
     "title": "Editor de Notas",
-    "includes": [
-      "partials/barProfessor",
-      "partials/notificacoes"
-    ],
+    "includes": ["partials/barProfessor", "partials/notificacoes"],
     "styleOrder": [
       "https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css",
       "/css/components/sidebar.css",
@@ -480,10 +426,7 @@
       "/css/pages/team.css",
       "/css/base/light-theme.css"
     ],
-    "scripts": [
-      "/js/shared/theme-init.js",
-      "/js/shared/phosphor-icons.js"
-    ],
+    "scripts": ["/js/shared/theme-init.js", "/js/shared/phosphor-icons.js"],
     "bodyClass": "dash-body",
     "title": "Equipe — AnalisAI",
     "includes": [],
@@ -511,10 +454,7 @@
     ],
     "bodyClass": "dash-body",
     "title": "Gráficos de Evolução",
-    "includes": [
-      "partials/barProfessor",
-      "partials/notificacoes"
-    ],
+    "includes": ["partials/barProfessor", "partials/notificacoes"],
     "styleOrder": [
       "https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css",
       "/css/components/sidebar.css",
@@ -540,9 +480,7 @@
     ],
     "bodyClass": "dash-body ai-page-body ai-teacher-page",
     "title": "Agente",
-    "includes": [
-      "partials/barProfessor"
-    ],
+    "includes": ["partials/barProfessor"],
     "styleOrder": [
       "https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css",
       "/css/components/sidebar.css",
@@ -566,10 +504,7 @@
     ],
     "bodyClass": "dash-body",
     "title": "Dashboard",
-    "includes": [
-      "partials/barProfessor",
-      "partials/notificacoes"
-    ],
+    "includes": ["partials/barProfessor", "partials/notificacoes"],
     "styleOrder": [
       "https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css",
       "/css/components/sidebar.css",
@@ -595,10 +530,7 @@
     ],
     "bodyClass": "dash-body",
     "title": "Solicitações de Senha",
-    "includes": [
-      "partials/barProfessor",
-      "partials/notificacoes"
-    ],
+    "includes": ["partials/barProfessor", "partials/notificacoes"],
     "styleOrder": [
       "https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css",
       "/css/components/sidebar.css",
@@ -626,10 +558,7 @@
     ],
     "bodyClass": "dash-body",
     "title": "Gerenciar Tarefas",
-    "includes": [
-      "partials/barProfessor",
-      "partials/notificacoes"
-    ],
+    "includes": ["partials/barProfessor", "partials/notificacoes"],
     "styleOrder": [
       "https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css",
       "/css/components/sidebar.css",
@@ -657,10 +586,7 @@
     ],
     "bodyClass": "dash-body",
     "title": "Gestão de Usuários",
-    "includes": [
-      "partials/barProfessor",
-      "partials/notificacoes"
-    ],
+    "includes": ["partials/barProfessor", "partials/notificacoes"],
     "styleOrder": [
       "https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css",
       "/css/components/sidebar.css",
@@ -699,21 +625,15 @@
   "partials/header": {
     "component": "Partials_header",
     "styles": [],
-    "scripts": [
-      "/js/shared/common.js"
-    ],
+    "scripts": ["/js/shared/common.js"],
     "bodyClass": "",
     "title": "",
     "includes": []
   },
   "partials/notificacoes": {
     "component": "Partials_notificacoes",
-    "styles": [
-      "/css/components/notifications.css"
-    ],
-    "scripts": [
-      "/js/components/notifications.js"
-    ],
+    "styles": ["/css/components/notifications.css"],
+    "scripts": ["/js/components/notifications.js"],
     "bodyClass": "",
     "title": "",
     "includes": []
@@ -726,9 +646,7 @@
       "https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap",
       "/css/preserved/API_index.css"
     ],
-    "scripts": [
-      "API_index-inline"
-    ],
+    "scripts": ["API_index-inline"],
     "bodyClass": "",
     "title": "API",
     "includes": [],
@@ -740,27 +658,27 @@
     ]
   },
   "privacidade": {
-    "component": "Privacidade",
-    "styles": [
-      "https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css",
-      "/css/base/dashboard.css",
-      "/css/pages/terms.css",
-      "/css/base/light-theme.css"
-    ],
-    "scripts": [
-      "/js/shared/theme-init.js",
-      "/js/shared/phosphor-icons.js"
-    ],
-    "bodyClass": "dash-body",
-    "title": "Política de Privacidade",
-    "includes": [],
-    "styleOrder": [
-      "https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css",
-      "/css/base/dashboard.css",
-      "/css/pages/terms.css",
-      "/css/base/light-theme.css"
-    ]
-  },
+      "component": "Privacidade",
+      "styles": [
+        "https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css",
+        "/css/base/dashboard.css",
+        "/css/pages/terms.css",
+        "/css/base/light-theme.css"
+      ],
+      "scripts": [
+        "/js/shared/theme-init.js",
+        "/js/shared/phosphor-icons.js"
+      ],
+      "bodyClass": "dash-body",
+      "title": "Política de Privacidade",
+      "includes": [],
+      "styleOrder": [
+        "https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css",
+        "/css/base/dashboard.css",
+        "/css/pages/terms.css",
+        "/css/base/light-theme.css"
+      ]
+    },
   "dashboard/pedagogicalProfile": {
     "component": "Dashboard_pedagogicalProfile",
     "styles": [
@@ -841,4 +759,5 @@
       "/css/components/notifications.css"
     ]
   }
+
 }
