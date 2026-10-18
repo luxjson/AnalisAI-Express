@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { request } from "../services/api";
-import { navigate } from "../services/navigation";
+import { request, download } from "../services/api";
 import { styleFrom } from "../services/ui";
 import Partials_barProfessor from "../components/Partials_barProfessor.jsx";
 import Partials_notificacoes from "../components/Partials_notificacoes.jsx";
@@ -120,9 +119,13 @@ export default function Dashboard_frequencia({ data, handlers }) {
     }
   };
 
-  const downloadReport = (studentId) => {
-    navigate("/dashboard/aluno-relatorio/" + encodeURIComponent(studentId) + "/pdf?ano=" + year);
-    setTimeout(() => window.dispatchEvent(new CustomEvent("analisai:download-report")), 0);
+  const downloadReport = async (studentId) => {
+    setError("");
+    try {
+      await download("/dashboard/aluno-relatorio/" + encodeURIComponent(studentId) + "/pdf?ano=" + year, "relatorio-aluno-" + studentId + "-" + year + ".pdf");
+    } catch (err) {
+      setError(err.message || "Não foi possível baixar o relatório.");
+    }
   };
 
   return (
@@ -204,7 +207,7 @@ export default function Dashboard_frequencia({ data, handlers }) {
                       <td>
                         <input className="form-control" maxLength={1000} aria-label={"Justificativa de " + student.nome} placeholder="Motivo (se justificada)" value={justifications[student.id] || ""} onChange={(event) => setJustifications((previous) => ({ ...previous, [student.id]: event.target.value }))} disabled={status[student.id] !== "JUSTIFICADA"} />
                       </td>
-                      <td><a className="btn-secondary-dash" href={"/dashboard/aluno-relatorio/" + encodeURIComponent(student.id) + "/pdf?ano=" + year} data-download-report={student.id}><i className="fas fa-file-pdf" aria-hidden="true"></i> PDF</a></td>
+                      <td><button type="button" className="btn-secondary-dash" onClick={() => downloadReport(student.id)}><i className="fas fa-file-pdf" aria-hidden="true"></i> PDF</button></td>
                     </tr>
                   ))}
                   {!students.length && <tr><td colSpan={7}>{loading ? "Carregando alunos..." : "Nenhum aluno encontrado para esta turma."}</td></tr>}
