@@ -54,3 +54,47 @@ test("backup banner does not claim automatic backup is enabled unconditionally",
   assert.ok(interaction.includes("Backup JSON (mesmo banco)"));
   assert.ok(interaction.includes("fallback JSON fica no mesmo banco"));
 });
+
+
+test("first-time teacher setup collects account details and assigned classes", async () => {
+  const setup = await read("../src/pages/Dashboard_pedagogicalProfile.jsx");
+  const loader = await read("../src/services/page-loader.js");
+  const manifestEntry = manifest["dashboard/pedagogicalProfile"];
+  const routeMap = JSON.parse(await read("../src/services/route-map.json"));
+  assert.ok(manifestEntry);
+  await read("../src/skeletons/Dashboard_pedagogicalProfile.jsx");
+  assert.ok(navigation.includes('"/dashboard/configuracao-inicial": "dashboard/pedagogicalProfile"'));
+  assert.ok(loader.includes("onboardingConcluido === false"));
+  assert.ok(setup.includes('type="file"'));
+  assert.ok(setup.includes("foto_perfil"));
+  assert.ok(setup.includes("turmas"));
+  assert.ok(routeMap.some((route) => route.original === "/dashboard/configuracao-inicial/salvar" && route.method === "PATCH"));
+});
+
+test("teacher tour runs once and frequency is only reachable through the grade editor", async () => {
+  const dashboard = await read("../src/pages/Dashboard_dashboardMain.jsx");
+  const editor = await read("../src/pages/Dashboard_dashboardEdit.jsx");
+  const attendance = await read("../src/pages/Dashboard_frequencia.jsx");
+  const sidebar = await read("../src/components/Partials_barProfessor.jsx");
+  const map = JSON.parse(await read("../src/services/route-map.json"));
+  assert.ok(dashboard.includes("analisai:tour:v1:"));
+  assert.ok(dashboard.includes("PULAR TOUR"));
+  assert.ok(editor.includes('href={"/dashboard/frequencia"}'));
+  assert.ok(attendance.includes('value="PRESENTE"'));
+  assert.ok(attendance.includes('value="FALTA"'));
+  assert.ok(attendance.includes('value="JUSTIFICADA"'));
+  assert.ok(attendance.includes('className="alunos-table"'));
+  assert.ok(!sidebar.includes('href={"/dashboard/frequencia"}'));
+  assert.ok(map.some((route) => route.original === "/dashboard/frequencia/salvar" && route.method === "POST"));
+});
+
+test("report workflows include coordinator requests, teacher responses and individual PDF downloads", async () => {
+  const reports = await read("../src/pages/Dashboard_dashboardRelatorios.jsx");
+  const student = await read("../src/pages/Aluno_alunoDashboard.jsx");
+  const routes = await read("../src/services/route-map.json");
+  assert.ok(reports.includes("Solicitar relatório a um professor"));
+  assert.ok(reports.includes("EM_ANDAMENTO"));
+  assert.ok(reports.includes("PDF DO ALUNO"));
+  assert.ok(student.includes("MEU RELATÓRIO PDF"));
+  assert.ok(routes.includes("/dashboard/aluno-relatorio/:id/pdf"));
+});
