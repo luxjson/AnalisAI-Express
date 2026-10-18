@@ -12,6 +12,17 @@ export default function Dashboard_dashboardMain({ data, handlers }) {
     rankingMedio = [],
     rankingFundamental = [],
   } = data;
+  const summarize = (rows) => ({
+    total: rows.length,
+    apto: rows.filter((row) => row.nivel === "APTO").length,
+    inapto: rows.filter((row) => row.nivel === "INAPTO").length,
+    desenvolvimento: rows.filter((row) => row.nivel === "EM DESENVOLVIMENTO").length,
+    semAvaliacoes: rows.filter((row) => row.nivel === "SEM AVALIAÇÕES").length,
+  });
+  const schoolSummary = data.schoolSummary || {
+    "MÉDIO": summarize(alunos.filter((row) => String(row.ano_escolar || "").includes("MÉDIO"))),
+    "FUNDAMENTAL": summarize(alunos.filter((row) => String(row.ano_escolar || "").includes("FUNDAMENTAL"))),
+  };
   return (
     <>
       <React.Fragment>
@@ -56,7 +67,7 @@ export default function Dashboard_dashboardMain({ data, handlers }) {
                       slot="dashboard/dashboardMain:2"
                       width="3ch"
                       known={false}
-                      value={data.schoolSummary?.["MÉDIO"]?.total || 0}
+                      value={schoolSummary?.["MÉDIO"]?.total || 0}
                     />
                   </p>
                 </div>
@@ -67,7 +78,7 @@ export default function Dashboard_dashboardMain({ data, handlers }) {
                       slot="dashboard/dashboardMain:3"
                       width="3ch"
                       known={false}
-                      value={data.schoolSummary?.["MÉDIO"]?.apto || 0}
+                      value={schoolSummary?.["MÉDIO"]?.apto || 0}
                     />
                   </p>
                 </div>
@@ -78,7 +89,7 @@ export default function Dashboard_dashboardMain({ data, handlers }) {
                       slot="dashboard/dashboardMain:4"
                       width="3ch"
                       known={false}
-                      value={data.schoolSummary?.["MÉDIO"]?.inapto || 0}
+                      value={schoolSummary?.["MÉDIO"]?.inapto || 0}
                     />
                   </p>
                 </div>
@@ -90,12 +101,15 @@ export default function Dashboard_dashboardMain({ data, handlers }) {
                       width="3ch"
                       known={false}
                       value={
-                        data.schoolSummary?.["MÉDIO"]?.desenvolvimento || 0
+                        schoolSummary?.["MÉDIO"]?.desenvolvimento || 0
                       }
                     />
                   </p>
                 </div>
               </div>
+              <p style={styleFrom("color: var(--text-gray); margin-top: 12px;")}>
+                {"Alunos sem avaliações registradas: "}{schoolSummary?.["MÉDIO"]?.semAvaliacoes || 0}
+              </p>
             </section>
             <section className={"section-container"}>
               <h2 className={"section-title-2"}>
@@ -110,7 +124,7 @@ export default function Dashboard_dashboardMain({ data, handlers }) {
                       slot="dashboard/dashboardMain:6"
                       width="3ch"
                       known={false}
-                      value={data.schoolSummary?.["FUNDAMENTAL"]?.total || 0}
+                      value={schoolSummary?.["FUNDAMENTAL"]?.total || 0}
                     />
                   </p>
                 </div>
@@ -121,7 +135,7 @@ export default function Dashboard_dashboardMain({ data, handlers }) {
                       slot="dashboard/dashboardMain:7"
                       width="3ch"
                       known={false}
-                      value={data.schoolSummary?.["FUNDAMENTAL"]?.apto || 0}
+                      value={schoolSummary?.["FUNDAMENTAL"]?.apto || 0}
                     />
                   </p>
                 </div>
@@ -132,7 +146,7 @@ export default function Dashboard_dashboardMain({ data, handlers }) {
                       slot="dashboard/dashboardMain:8"
                       width="3ch"
                       known={false}
-                      value={data.schoolSummary?.["FUNDAMENTAL"]?.inapto || 0}
+                      value={schoolSummary?.["FUNDAMENTAL"]?.inapto || 0}
                     />
                   </p>
                 </div>
@@ -144,13 +158,16 @@ export default function Dashboard_dashboardMain({ data, handlers }) {
                       width="3ch"
                       known={false}
                       value={
-                        data.schoolSummary?.["FUNDAMENTAL"]?.desenvolvimento ||
+                        schoolSummary?.["FUNDAMENTAL"]?.desenvolvimento ||
                         0
                       }
                     />
                   </p>
                 </div>
               </div>
+              <p style={styleFrom("color: var(--text-gray); margin-top: 12px;")}>
+                {"Alunos sem avaliações registradas: "}{schoolSummary?.["FUNDAMENTAL"]?.semAvaliacoes || 0}
+              </p>
             </section>
             <section className={"section-container ranking-section"}>
               <h2 className={"section-title-2"}>
@@ -451,18 +468,22 @@ export default function Dashboard_dashboardMain({ data, handlers }) {
           <FirstLoginTour userId={data.userId} userCargo={userCargo} />
           <footer className={"dash-footer"}>
             <div className={"footer-actions"}>
-              <a href={"/dashboard/edit"} className={"btn-secondary-dash"}>
-                <i className={"fas fa-pencil-alt"}></i>
-                {" GERENCIAR"}
-              </a>
+              {userCargo !== "Coordenador" && (
+                <a href={"/dashboard/edit"} className={"btn-secondary-dash"}>
+                  <i className={"fas fa-pencil-alt"}></i>
+                  {" GERENCIAR"}
+                </a>
+              )}
               <a href={"/dashboard/graficos"} className={"btn-secondary-dash"}>
                 <i className={"fas fa-chart-pie"}></i>
                 {" ESTATÍSTICAS"}
               </a>
-              <a href={"/manuais/professor"} className={"btn-secondary-dash"}>
-                <i className={"fas fa-book-open"}></i>
-                {" MANUAL DO PROFESSOR"}
-              </a>
+              {userCargo !== "Coordenador" && (
+                <a href={"/manuais/professor"} className={"btn-secondary-dash"}>
+                  <i className={"fas fa-book-open"}></i>
+                  {" MANUAL DO PROFESSOR"}
+                </a>
+              )}
             </div>
             <div className={"footer-credits"}>
               <p>{"© 2026 AnalisAI\n            "}</p>
