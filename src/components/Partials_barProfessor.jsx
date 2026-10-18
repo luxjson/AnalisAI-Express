@@ -595,7 +595,10 @@ export default function Partials_barProfessor({ data, handlers }) {
                                 </div>
                                 <div className={"backup-text"}>
                                   <span className={"backup-title"}>
-                                    {"Rotina de Backup Ativa (a cada 7 dias)"}
+                                    {"Status do backup"}
+                                  </span>
+                                  <span id={"backupBannerStatus"}>
+                                    {"Verificando configuração da rotina..."}
                                   </span>
                                   <span id={"backupBannerDetails"}>
                                     {"Carregando informações do backup..."}
