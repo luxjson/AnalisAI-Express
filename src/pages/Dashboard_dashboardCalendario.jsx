@@ -279,7 +279,9 @@ export default function Dashboard_dashboardCalendario({ data, handlers }) {
                                 : undefined
                             }
                           >
-                            <option value={""}>{"TODAS AS TURMAS"}</option>
+                            {userCargo !== "Professor" && (
+                              <option value={""}>{"TODAS AS TURMAS"}</option>
+                            )}
                             <option value={"1º MÉDIO"}>{"1º MÉDIO"}</option>
                             <option value={"2º MÉDIO"}>{"2º MÉDIO"}</option>
                             <option value={"3º MÉDIO"}>{"3º MÉDIO"}</option>
@@ -348,21 +350,23 @@ export default function Dashboard_dashboardCalendario({ data, handlers }) {
                         {" NOVO EVENTO\n                "}
                       </button>,
                     );
-                    nodes.push(
-                      <button
-                        className={"btn-secondary-dash"}
-                        style={styleFrom(
-                          "margin-top: 10px; width: 100%; height: 55px; text-align: center; align-items: center; justify-content: center;",
-                        )}
-                        onClick={(event) => {
-                          handlers.abrirModalFeriado();
-                        }}
-                        key={nodes.length}
-                      >
-                        <i className={"fas fa-star"}></i>
-                        {" NOVO FERIADO\n                "}
-                      </button>,
-                    );
+                    if (userCargo === "Admin") {
+                      nodes.push(
+                        <button
+                          className={"btn-secondary-dash"}
+                          style={styleFrom(
+                            "margin-top: 10px; width: 100%; height: 55px; text-align: center; align-items: center; justify-content: center;",
+                          )}
+                          onClick={(event) => {
+                            handlers.abrirModalFeriado();
+                          }}
+                          key={nodes.length}
+                        >
+                          <i className={"fas fa-star"}></i>
+                          {" NOVO FERIADO\n                "}
+                        </button>,
+                      );
+                    }
                     nodes.push(
                       <h3
                         style={styleFrom("color: #fff; margin: 20px 0;")}
@@ -639,8 +643,10 @@ export default function Dashboard_dashboardCalendario({ data, handlers }) {
                     name={"turma"}
                     className={"filter-input"}
                     style={styleFrom("padding: 10px; font-size: 0.8rem;")}
-                  >
-                    <option value={""}>{"GERAL / TODAS"}</option>
+                   required={userCargo === "Professor"}>
+                    {userCargo !== "Professor" && (
+                      <option value={""}>{"GERAL / TODAS"}</option>
+                    )}
                     <option value={"1º MÉDIO"}>{"1º MÉDIO"}</option>
                     <option value={"2º MÉDIO"}>{"2º MÉDIO"}</option>
                     <option value={"3º MÉDIO"}>{"3º MÉDIO"}</option>
@@ -666,7 +672,8 @@ export default function Dashboard_dashboardCalendario({ data, handlers }) {
             className={"modal-content"}
             style={styleFrom("max-width: 400px; padding: 30px;")}
           >
-            <button
+            {userCargo === "Admin" && (
+<button
               className={"close-btn"}
               onClick={(event) => {
                 handlers.fecharModal("feriadoModal");
@@ -674,6 +681,7 @@ export default function Dashboard_dashboardCalendario({ data, handlers }) {
             >
               <i className={"ph-bold ph-x"}></i>
             </button>
+)}
             <h2
               className={"section-title-2"}
               style={styleFrom("font-size: 1.1rem; margin-bottom: 20px;")}
@@ -730,7 +738,8 @@ export default function Dashboard_dashboardCalendario({ data, handlers }) {
                   </span>
                 </label>
               </div>
-              <button
+              {userCargo === "Admin" && (
+<button
                 type={"submit"}
                 className={"btn-secondary-dash"}
                 style={styleFrom(
@@ -740,6 +749,7 @@ export default function Dashboard_dashboardCalendario({ data, handlers }) {
                 <i className={"fas fa-calendar-check"}></i>
                 {" REGISTRAR FERIADO\n            "}
               </button>
+)}
             </form>
           </div>
         </div>

@@ -5,6 +5,7 @@ import {
   PageDataScript,
 } from "../components/loading-layout";
 import React from "react";
+import { download } from "../services/api";
 import Partials_barAluno from "../components/Partials_barAluno.jsx";
 import Partials_notificacoes from "../components/Partials_notificacoes.jsx";
 import { styleFrom, safeJson } from "../services/ui";
@@ -90,7 +91,8 @@ export default function Aluno_alunoDashboard({ data, handlers }) {
                               </p>
                             </div>,
                           );
-                          let mediaGeralNum = parseFloat(mediaGeral) || 0;
+                          const mediaGeralValue = mediaGeral == null || mediaGeral === "" ? null : Number(mediaGeral);
+                          const mediaGeralNum = Number.isFinite(mediaGeralValue) ? mediaGeralValue : null;
                           let mediaClass = data.mediaGeralClass;
                           nodes.push(
                             <LoadingElement
@@ -105,7 +107,7 @@ export default function Aluno_alunoDashboard({ data, handlers }) {
                                   slot="aluno/alunoDashboard:3"
                                   width="3ch"
                                   known={false}
-                                  value={mediaGeralNum.toFixed(1)}
+                                  value={mediaGeralNum == null ? "—" : mediaGeralNum.toFixed(1)}
                                 />
                               </p>
                             </LoadingElement>,
@@ -118,15 +120,44 @@ export default function Aluno_alunoDashboard({ data, handlers }) {
                                   slot="aluno/alunoDashboard:4"
                                   width="3ch"
                                   known={false}
-                                  value={aluno.presenca}
+                                  value={aluno.presenca == null ? "—" : aluno.presenca}
                                 />
-                                {"%"}
+                                {aluno.presenca == null ? "" : "%"}
                               </p>
                             </div>,
                           );
                           return nodes;
                         })()}
                       </div>
+                    </section>,
+                  );
+                  const attendance = data.frequenciaResumo || null;
+                  nodes.push(
+                    <section className={"section-container"} key={nodes.length}>
+                      <h2 className={"section-title-2"}>
+                        {"FREQUÊNCIA NO ANO "}{attendance?.ano || ""}
+                      </h2>
+                      <p style={styleFrom("color:var(--text-gray); margin-bottom:18px;")}>
+                        {"O percentual é calculado pelos períodos de aula registrados, não pelos dias do calendário."}
+                      </p>
+                      <div className={"dash-grid"}>
+                        {[
+                          { label: "PERÍODOS REGISTRADOS", value: attendance?.total_aulas ?? 0 },
+                          { label: "PRESENÇAS", value: attendance?.presencas ?? 0, tone: "apto" },
+                          { label: "FALTAS", value: attendance?.faltas ?? 0, tone: "inapto" },
+                          { label: "FALTAS JUSTIFICADAS", value: attendance?.justificadas ?? 0, tone: "desenvolvimento" },
+                        ].map((item) => (
+                          <div className={"stats-card " + (item.tone || "")} key={item.label}>
+                            <h3>{item.label}</h3>
+                            <p className={"stats-number"}>{item.value}</p>
+                          </div>
+                        ))}
+                      </div>
+                      <p style={styleFrom("color:var(--text-gray); font-size:.85rem; margin-top:14px;")}>
+                        {attendance?.total_aulas
+                          ? `O calendário de ${attendance.ano} tem ${attendance.diasNoAno} dias; foram registrados ${attendance.dias_registrados} dias com aula.`
+                          : `O calendário de ${attendance?.ano || "referência"} tem ${attendance?.diasNoAno || "365 ou 366"} dias. Ainda não há registros de aula para calcular sua frequência anual.`}
+                      </p>
                     </section>,
                   );
                   nodes.push(
@@ -343,6 +374,28 @@ export default function Aluno_alunoDashboard({ data, handlers }) {
                     <i className={"fas fa-book-open"}></i>
                     {" MANUAL DO ALUNO\n                "}
                   </a>
+                  <button
+                    type={"button"}
+                    className={"btn-secondary-dash"}
+                    onClick={async () => {
+                      const studentId = aluno.id || data.userId;
+                      if (!studentId) {
+                        window.dispatchEvent(new CustomEvent("analisai:interaction-error", { detail: "Não foi possível identificar sua conta." }));
+                        return;
+                      }
+                      try {
+                        await download(
+                          "/dashboard/aluno-relatorio/" + encodeURIComponent(studentId) + "/pdf?ano=" + new Date().getFullYear(),
+                          "meu-relatorio-pedagogico.pdf",
+                        );
+                      } catch (error) {
+                        window.dispatchEvent(new CustomEvent("analisai:interaction-error", { detail: error.message || "Não foi possível baixar o relatório." }));
+                      }
+                    }}
+                  >
+                    <i className={"fas fa-file-pdf"} aria-hidden={"true"}></i>
+                    {" MEU RELATÓRIO PDF"}
+                  </button>
                 </div>
                 <div className={"footer-credits"}>
                   <p>{"© 2026 AnalisAI"}</p>

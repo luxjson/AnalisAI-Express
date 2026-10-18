@@ -107,6 +107,7 @@ export default function Dashboard_dashboardUsuarios({ data, handlers }) {
                         <th>{"NOME"}</th>
                         <th>{"E-MAIL"}</th>
                         <th>{"CARGO"}</th>
+                        <th>{"TURMAS"}</th>
                         <th>{"STATUS"}</th>
                         <th>{"AÇÕES"}</th>
                       </tr>
@@ -151,6 +152,11 @@ export default function Dashboard_dashboardUsuarios({ data, handlers }) {
                                   />
                                 </td>
                                 <td>
+                                  {user.cargo === "Professor"
+                                    ? (user.turmas?.length ? user.turmas.join(", ") : "Nenhuma atribuída")
+                                    : "—"}
+                                </td>
+                                <td>
                                   <LoadingElement
                                     as="span"
                                     className={
@@ -180,6 +186,7 @@ export default function Dashboard_dashboardUsuarios({ data, handlers }) {
                                         data-email={user.email.toLowerCase()}
                                         data-cargo={user.cargo}
                                         data-status={user.status}
+                                        data-turmas={JSON.stringify(user.turmas || [])}
                                         onClick={(event) => {
                                           handlers.editUser(
                                             event.currentTarget.dataset.id,
@@ -187,6 +194,7 @@ export default function Dashboard_dashboardUsuarios({ data, handlers }) {
                                             event.currentTarget.dataset.email,
                                             event.currentTarget.dataset.cargo,
                                             event.currentTarget.dataset.status,
+                                            event.currentTarget.dataset.turmas,
                                           );
                                         }}
                                         title={"Editar"}
@@ -231,7 +239,7 @@ export default function Dashboard_dashboardUsuarios({ data, handlers }) {
                           nodes.push(
                             <tr key={nodes.length}>
                               <td
-                                colSpan={"6"}
+                                colSpan={"7"}
                                 style={styleFrom(
                                   "padding: 50px; text-align: center;",
                                 )}
@@ -283,6 +291,7 @@ export default function Dashboard_dashboardUsuarios({ data, handlers }) {
             >
               <input type={"hidden"} name={"_csrf"} value={csrfToken} />
               <input type={"hidden"} name={"id"} id={"userId"} />
+              <input type={"hidden"} name={"turmas_editadas"} id={"teacherClassesEdited"} value={""} />
               <label>{"NOME COMPLETO:"}</label>
               <input
                 type={"text"}
@@ -323,6 +332,23 @@ export default function Dashboard_dashboardUsuarios({ data, handlers }) {
                 <option value={"Coordenador"}>{"Coordenador"}</option>
                 <option value={"Admin"}>{"Admin"}</option>
               </select>
+              <div id={"teacherClassesField"} style={styleFrom("display: none; margin-top: 18px;")}>
+                <label style={styleFrom("display: block;")}>TURMAS SOB RESPONSABILIDADE</label>
+                {[
+                  ["9º FUNDAMENTAL", "9º FUNDAMENTAL"],
+                  ["1º MÉDIO", "1º MÉDIO"],
+                  ["2º MÉDIO", "2º MÉDIO"],
+                  ["3º MÉDIO", "3º MÉDIO"],
+                ].map(([value, label]) => (
+                  <label key={value} style={styleFrom("display:flex; align-items:center; gap:10px; margin-top:10px;")}>
+                    <input type={"checkbox"} name={"turmas"} value={value} />
+                    <span>{label}</span>
+                  </label>
+                ))}
+                <p style={styleFrom("color:var(--text-gray); font-size:.82rem; margin-top:10px;")}>
+                  Apenas o administrador pode alterar essas atribuições após a configuração inicial.
+                </p>
+              </div>
               <div id={"statusField"} style={styleFrom("display: none;")}>
                 <label style={styleFrom("margin-top: 15px; display: block;")}>
                   {"STATUS:"}

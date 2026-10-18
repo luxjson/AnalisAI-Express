@@ -36,13 +36,31 @@ export function sessionRedirect(path, who) {
   if (path.startsWith("/dashboard") && who?.kind !== "professor")
     return "/aluno";
   if (path.startsWith("/aluno") && who?.kind !== "aluno") return "/dashboard";
+  if (
+    who?.kind === "professor" &&
+    who?.cargo === "Professor" &&
+    who?.onboardingConcluido === false &&
+    path !== "/dashboard/configuracao-inicial"
+  )
+    return "/dashboard/configuracao-inicial";
+  if (
+    who?.cargo === "Coordenador" &&
+    [
+      "/dashboard/edit",
+      "/dashboard/frequencia",
+      "/dashboard/tarefas",
+      "/dashboard/calendario",
+      "/dashboard/ia",
+    ].includes(path)
+  )
+    return "/dashboard/relatorios-pedagogicos";
   if (path === "/login" && who)
     return who.kind === "aluno" ? "/aluno" : "/dashboard";
   if (
     ["/dashboard/usuarios", "/dashboard/solicitacoes-senha"].includes(path) &&
     who?.cargo !== "Admin"
   )
-    throw new Error("Acesso administrativo necessário.");
+    return "/dashboard/relatorios-pedagogicos";
   return null;
 }
 export async function loadSession(signal) {
@@ -88,6 +106,7 @@ export async function loadPageData(href, session, signal) {
         ...data,
         email: account.email,
         cargo: account.role,
+        foto_perfil: account.foto_perfil || null,
         ultimoAcesso: account.lastAccess,
         stats: {
           tarefas: account.tasks,

@@ -71,6 +71,7 @@ export default function Partials_barProfessor({ data, handlers }) {
                     <div className={"active-indicator"}></div>
                   </a>,
                 );
+                if (userCargo !== "Coordenador") {
                 nodes.push(
                   <a
                     href={"/dashboard/edit"}
@@ -96,20 +97,6 @@ export default function Partials_barProfessor({ data, handlers }) {
                       <i className={"fas fa-tasks"}></i>
                     </div>
                     <span className={"link-text"}>{"Tarefas"}</span>
-                    <div className={"active-indicator"}></div>
-                  </a>,
-                );
-                nodes.push(
-                  <a
-                    href={"/dashboard/graficos"}
-                    data-sidebar-id={"reports"}
-                    className={"side-link"}
-                    key={nodes.length}
-                  >
-                    <div className={"icon-box"}>
-                      <i className={"fas fa-chart-bar"}></i>
-                    </div>
-                    <span className={"link-text"}>{"Relatórios"}</span>
                     <div className={"active-indicator"}></div>
                   </a>,
                 );
@@ -141,6 +128,35 @@ export default function Partials_barProfessor({ data, handlers }) {
                       ></i>
                     </div>
                     <span className={"link-text"}>{"Agente"}</span>
+                    <div className={"active-indicator"}></div>
+                  </a>,
+                );
+                }
+                nodes.push(
+                  <a
+                    href={"/dashboard/graficos"}
+                    data-sidebar-id={"reports"}
+                    className={"side-link"}
+                    key={nodes.length}
+                  >
+                    <div className={"icon-box"}>
+                      <i className={"fas fa-chart-bar"}></i>
+                    </div>
+                    <span className={"link-text"}>{"Relatórios"}</span>
+                    <div className={"active-indicator"}></div>
+                  </a>,
+                );
+                nodes.push(
+                  <a
+                    href={"/dashboard/relatorios-pedagogicos"}
+                    data-sidebar-id={"pedagogical-reports"}
+                    className={"side-link"}
+                    key={nodes.length}
+                  >
+                    <div className={"icon-box"}>
+                      <i className={"fas fa-file-pdf"} aria-hidden={"true"}></i>
+                    </div>
+                    <span className={"link-text"}>{"Relatórios pedagógicos"}</span>
                     <div className={"active-indicator"}></div>
                   </a>,
                 );

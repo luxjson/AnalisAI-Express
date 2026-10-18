@@ -1,5 +1,5 @@
 import { LoadingValue, LoadingElement } from "../components/loading-layout";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Partials_barProfessor from "../components/Partials_barProfessor.jsx";
 import Partials_notificacoes from "../components/Partials_notificacoes.jsx";
 import { styleFrom } from "../services/ui";
@@ -12,6 +12,17 @@ export default function Dashboard_dashboardMain({ data, handlers }) {
     rankingMedio = [],
     rankingFundamental = [],
   } = data;
+  const summarize = (rows) => ({
+    total: rows.length,
+    apto: rows.filter((row) => row.nivel === "APTO").length,
+    inapto: rows.filter((row) => row.nivel === "INAPTO").length,
+    desenvolvimento: rows.filter((row) => row.nivel === "EM DESENVOLVIMENTO").length,
+    semAvaliacoes: rows.filter((row) => row.nivel === "SEM AVALIAÇÕES").length,
+  });
+  const schoolSummary = data.schoolSummary || {
+    "MÉDIO": summarize(alunos.filter((row) => String(row.ano_escolar || "").includes("MÉDIO"))),
+    "FUNDAMENTAL": summarize(alunos.filter((row) => String(row.ano_escolar || "").includes("FUNDAMENTAL"))),
+  };
   return (
     <>
       <React.Fragment>
@@ -56,7 +67,7 @@ export default function Dashboard_dashboardMain({ data, handlers }) {
                       slot="dashboard/dashboardMain:2"
                       width="3ch"
                       known={false}
-                      value={data.schoolSummary?.["MÉDIO"]?.total || 0}
+                      value={schoolSummary?.["MÉDIO"]?.total || 0}
                     />
                   </p>
                 </div>
@@ -67,7 +78,7 @@ export default function Dashboard_dashboardMain({ data, handlers }) {
                       slot="dashboard/dashboardMain:3"
                       width="3ch"
                       known={false}
-                      value={data.schoolSummary?.["MÉDIO"]?.apto || 0}
+                      value={schoolSummary?.["MÉDIO"]?.apto || 0}
                     />
                   </p>
                 </div>
@@ -78,7 +89,7 @@ export default function Dashboard_dashboardMain({ data, handlers }) {
                       slot="dashboard/dashboardMain:4"
                       width="3ch"
                       known={false}
-                      value={data.schoolSummary?.["MÉDIO"]?.inapto || 0}
+                      value={schoolSummary?.["MÉDIO"]?.inapto || 0}
                     />
                   </p>
                 </div>
@@ -90,12 +101,15 @@ export default function Dashboard_dashboardMain({ data, handlers }) {
                       width="3ch"
                       known={false}
                       value={
-                        data.schoolSummary?.["MÉDIO"]?.desenvolvimento || 0
+                        schoolSummary?.["MÉDIO"]?.desenvolvimento || 0
                       }
                     />
                   </p>
                 </div>
               </div>
+              <p style={styleFrom("color: var(--text-gray); margin-top: 12px;")}>
+                {"Alunos sem avaliações registradas: "}{schoolSummary?.["MÉDIO"]?.semAvaliacoes || 0}
+              </p>
             </section>
             <section className={"section-container"}>
               <h2 className={"section-title-2"}>
@@ -110,7 +124,7 @@ export default function Dashboard_dashboardMain({ data, handlers }) {
                       slot="dashboard/dashboardMain:6"
                       width="3ch"
                       known={false}
-                      value={data.schoolSummary?.["FUNDAMENTAL"]?.total || 0}
+                      value={schoolSummary?.["FUNDAMENTAL"]?.total || 0}
                     />
                   </p>
                 </div>
@@ -121,7 +135,7 @@ export default function Dashboard_dashboardMain({ data, handlers }) {
                       slot="dashboard/dashboardMain:7"
                       width="3ch"
                       known={false}
-                      value={data.schoolSummary?.["FUNDAMENTAL"]?.apto || 0}
+                      value={schoolSummary?.["FUNDAMENTAL"]?.apto || 0}
                     />
                   </p>
                 </div>
@@ -132,7 +146,7 @@ export default function Dashboard_dashboardMain({ data, handlers }) {
                       slot="dashboard/dashboardMain:8"
                       width="3ch"
                       known={false}
-                      value={data.schoolSummary?.["FUNDAMENTAL"]?.inapto || 0}
+                      value={schoolSummary?.["FUNDAMENTAL"]?.inapto || 0}
                     />
                   </p>
                 </div>
@@ -144,13 +158,16 @@ export default function Dashboard_dashboardMain({ data, handlers }) {
                       width="3ch"
                       known={false}
                       value={
-                        data.schoolSummary?.["FUNDAMENTAL"]?.desenvolvimento ||
+                        schoolSummary?.["FUNDAMENTAL"]?.desenvolvimento ||
                         0
                       }
                     />
                   </p>
                 </div>
               </div>
+              <p style={styleFrom("color: var(--text-gray); margin-top: 12px;")}>
+                {"Alunos sem avaliações registradas: "}{schoolSummary?.["FUNDAMENTAL"]?.semAvaliacoes || 0}
+              </p>
             </section>
             <section className={"section-container ranking-section"}>
               <h2 className={"section-title-2"}>
@@ -448,20 +465,25 @@ export default function Dashboard_dashboardMain({ data, handlers }) {
               </div>
             </section>
           </main>
+          <FirstLoginTour userId={data.userId} userCargo={userCargo} />
           <footer className={"dash-footer"}>
             <div className={"footer-actions"}>
-              <a href={"/dashboard/edit"} className={"btn-secondary-dash"}>
-                <i className={"fas fa-pencil-alt"}></i>
-                {" GERENCIAR"}
-              </a>
+              {userCargo !== "Coordenador" && (
+                <a href={"/dashboard/edit"} className={"btn-secondary-dash"}>
+                  <i className={"fas fa-pencil-alt"}></i>
+                  {" GERENCIAR"}
+                </a>
+              )}
               <a href={"/dashboard/graficos"} className={"btn-secondary-dash"}>
                 <i className={"fas fa-chart-pie"}></i>
                 {" ESTATÍSTICAS"}
               </a>
-              <a href={"/manuais/professor"} className={"btn-secondary-dash"}>
-                <i className={"fas fa-book-open"}></i>
-                {" MANUAL DO PROFESSOR"}
-              </a>
+              {userCargo !== "Coordenador" && (
+                <a href={"/manuais/professor"} className={"btn-secondary-dash"}>
+                  <i className={"fas fa-book-open"}></i>
+                  {" MANUAL DO PROFESSOR"}
+                </a>
+              )}
             </div>
             <div className={"footer-credits"}>
               <p>{"© 2026 AnalisAI\n            "}</p>
@@ -472,6 +494,71 @@ export default function Dashboard_dashboardMain({ data, handlers }) {
     </>
   );
 }
+function FirstLoginTour({ userId, userCargo }) {
+  const [step, setStep] = useState(-1);
+  const key = userId ? `analisai:tour:v1:${userId}` : "";
+  const steps = [
+    {
+      title: "Visão geral da plataforma",
+      description: "O painel reúne os indicadores das turmas e a distribuição dos níveis de desempenho. Use esses dados para perceber rapidamente onde vale aprofundar a análise.",
+    },
+    {
+      title: "Notas e competências",
+      description: "No Editor, registre avaliações vinculadas às competências e habilidades. As informações alimentam os gráficos e ajudam a acompanhar a evolução ao longo do ano.",
+    },
+    {
+      title: "Frequência por aula",
+      description: "Acesse Frequência dentro do Editor para marcar presença, falta ou falta justificada por data e horário. O percentual é calculado a partir dos períodos registrados.",
+    },
+    {
+      title: "Tarefas e relatórios",
+      description: "Use as tarefas para acompanhar entregas. Os relatórios ajudam a identificar lacunas e planejar ações de recuperação e reforço pedagógico.",
+    },
+  ];
+  useEffect(() => {
+    if (!key || userCargo !== "Professor") return;
+    try {
+      if (window.localStorage.getItem(key) !== "concluido") setStep(0);
+    } catch {
+      setStep(0);
+    }
+  }, [key, userCargo]);
+  const finish = () => {
+    try {
+      if (key) window.localStorage.setItem(key, "concluido");
+    } catch {}
+    setStep(-1);
+  };
+  if (step < 0 || !steps[step]) return null;
+  const current = steps[step];
+  return (
+    <div
+      className={"modal-overlay is-open"}
+      role={"dialog"}
+      aria-modal={"true"}
+      aria-labelledby={"first-login-tour-title"}
+      style={styleFrom("display:flex; position:fixed; inset:0; z-index:10000; align-items:center; justify-content:center; padding:20px; background:rgba(0,0,0,.76);")}
+    >
+      <section className={"modal-content"} style={styleFrom("display:block; width:min(560px, 100%); max-height:90vh; overflow:auto;")}>
+        <p className={"section-label"}>{`PASSO ${step + 1} DE ${steps.length}`}</p>
+        <h2 id={"first-login-tour-title"} className={"section-title-2"}>{current.title}</h2>
+        <p style={styleFrom("color:var(--text-gray); line-height:1.65; margin:16px 0 28px;")}>{current.description}</p>
+        <div style={styleFrom("display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;")}>
+          <button type={"button"} className={"btn-secondary-dash"} onClick={finish}>PULAR TOUR</button>
+          <button
+            type={"button"}
+            className={"btn-secondary-dash"}
+            onClick={() => (step + 1 === steps.length ? finish() : setStep(step + 1))}
+          >
+            {step + 1 === steps.length ? "CONCLUIR" : "PRÓXIMO"}
+            <i className={"fas fa-arrow-right"} aria-hidden={"true"}></i>
+          </button>
+        </div>
+      </section>
+    </div>
+  );
+}
+
 export function PageHeader({ data, handlers }) {
   const {
     user = "",

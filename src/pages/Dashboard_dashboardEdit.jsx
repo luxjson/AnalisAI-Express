@@ -116,6 +116,14 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                     <i className={"fas fa-file-export"}></i>
                     {" EXPORTAR TABELA\n                "}
                   </button>
+                  <a
+                    className={"btn-secondary-dash"}
+                    href={"/dashboard/frequencia"}
+                    title={"Registrar frequência por aula"}
+                  >
+                    <i className={"fas fa-calendar-check"} aria-hidden={"true"}></i>
+                    {" FREQUÊNCIA"}
+                  </a>
                 </div>
                 <div className={"search-container"}>
                   <i className={"fas fa-search"}></i>
@@ -527,7 +535,7 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                             nodes.push(
                               <tr
                                 data-aluno-id={aluno.id}
-                                data-presenca={aluno.presenca}
+                                data-presenca={aluno.presenca == null ? "" : aluno.presenca}
                                 key={nodes.length}
                               >
                                 <td>
@@ -611,9 +619,9 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                                     slot="dashboard/dashboardEdit:9"
                                     width="3ch"
                                     known={false}
-                                    value={aluno.presenca}
+                                    value={aluno.presenca == null ? "—" : aluno.presenca}
                                   />
-                                  {"%"}
+                                  {aluno.presenca == null ? "" : "%"}
                                 </td>
                                 <LoadingElement
                                   as="td"
@@ -1254,6 +1262,7 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                         action={"/dashboard/atualizar-presenca"}
                         method={"POST"}
                         className={"filter-options"}
+                        onSubmit={(event) => event.preventDefault()}
                       >
                         <input
                           type={"hidden"}
@@ -1266,27 +1275,29 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
                           id={"editAlunoId"}
                         />
                         <label style={styleFrom("margin-top: 0;")}>
-                          {"FREQUÊNCIA ATUAL (%)"}
+                          {"FREQUÊNCIA DO ANO LETIVO (%)"}
                         </label>
                         <input
                           type={"number"}
-                          name={"presenca"}
                           id={"editPresencaInput"}
                           min={"0"}
                           max={"100"}
                           className={"filter-input"}
                           style={styleFrom("padding: 10px;")}
-                          required={true}
+                          readOnly={true}
+                          aria-readonly={"true"}
                         />
-                        <button
-                          type={"submit"}
+                        <p style={styleFrom("color: var(--text-gray); margin: 12px 0; font-size: .85rem;")}>
+                          {"O percentual é calculado automaticamente a partir das presenças, faltas e justificativas registradas por data e período. Para corrigir um lançamento, abra o portal de frequência."}
+                        </p>
+                        <a
+                          href={"/dashboard/frequencia"}
                           className={"btn-secondary-dash"}
-                          style={styleFrom(
-                            "margin-top: 20px; height: 45px; justify-content: center; font-size: 0.75rem;",
-                          )}
+                          style={styleFrom("margin-top: 8px; height: 45px; justify-content: center; font-size: 0.75rem;")}
                         >
-                          {"ATUALIZAR STATUS"}
-                        </button>
+                          <i className={"fas fa-calendar-check"} aria-hidden={"true"}></i>
+                          {" ABRIR FREQUÊNCIA"}
+                        </a>
                       </form>
                     </div>
                   </div>
@@ -1525,7 +1536,7 @@ export default function Dashboard_dashboardEdit({ data, handlers }) {
     </>
   );
 }
-export function PageHeader({ data, handlers }) {
+export function PageHeader({ data, handlers, title = "Editor de Notas" }) {
   const {
     user = "",
     userCargo = null,
@@ -1538,7 +1549,7 @@ export function PageHeader({ data, handlers }) {
   return (
     <header className={"dash-header"}>
       <div className={"header-left"}>
-        <h1>{"\n                    Editor de Notas\n                "}</h1>
+        <h1>{title}</h1>
       </div>
       <div className={"header-user"}>
         <div className={"user-profile-group"}>

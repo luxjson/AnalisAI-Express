@@ -678,5 +678,86 @@
         "/css/pages/terms.css",
         "/css/base/light-theme.css"
       ]
-    }
+    },
+  "dashboard/pedagogicalProfile": {
+    "component": "Dashboard_pedagogicalProfile",
+    "styles": [
+      "https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css",
+      "/css/base/dashboard.css",
+      "/css/pages/dashboard-config.css",
+      "/css/base/light-theme.css"
+    ],
+    "scripts": [
+      "/js/shared/theme-init.js",
+      "/js/shared/phosphor-icons.js"
+    ],
+    "bodyClass": "dash-body config-page config-page-professor",
+    "title": "Configuração inicial",
+    "includes": [],
+    "styleOrder": [
+      "https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css",
+      "/css/base/dashboard.css",
+      "/css/pages/dashboard-config.css",
+      "/css/base/light-theme.css"
+    ]
+  },
+  "dashboard/frequencia": {
+    "component": "Dashboard_frequencia",
+    "styles": [
+      "https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css",
+      "/css/components/sidebar.css",
+      "/css/base/dashboard.css",
+      "/css/pages/edit.css",
+      "/css/base/light-theme.css"
+    ],
+    "scripts": [
+      "/js/shared/theme-init.js",
+      "/js/shared/phosphor-icons.js"
+    ],
+    "bodyClass": "dash-body",
+    "title": "Frequência dos alunos",
+    "includes": [
+      "partials/barProfessor",
+      "partials/notificacoes"
+    ],
+    "styleOrder": [
+      "https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css",
+      "/css/components/sidebar.css",
+      "/css/base/dashboard.css",
+      "/css/pages/edit.css",
+      "/css/base/light-theme.css",
+      "/css/components/notifications.css"
+    ]
+  },
+  "dashboard/dashboardRelatorios": {
+    "component": "Dashboard_dashboardRelatorios",
+    "styles": [
+      "https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css",
+      "/css/components/sidebar.css",
+      "/css/base/dashboard.css",
+      "/css/pages/edit.css",
+      "/css/pages/charts.css",
+      "/css/base/light-theme.css"
+    ],
+    "scripts": [
+      "/js/shared/theme-init.js",
+      "/js/shared/phosphor-icons.js"
+    ],
+    "bodyClass": "dash-body",
+    "title": "Relatórios pedagógicos",
+    "includes": [
+      "partials/barProfessor",
+      "partials/notificacoes"
+    ],
+    "styleOrder": [
+      "https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css",
+      "/css/components/sidebar.css",
+      "/css/base/dashboard.css",
+      "/css/pages/edit.css",
+      "/css/pages/charts.css",
+      "/css/base/light-theme.css",
+      "/css/components/notifications.css"
+    ]
+  }
+
 }

@@ -12,6 +12,7 @@ export default function Dashboard_dashboardConfig({ data, handlers }) {
     ultimoAcesso = null,
     abaAtiva = "dados",
     email = null,
+    foto_perfil = null,
     config = {},
     success_msg = null,
     error_msg = null,
@@ -31,13 +32,21 @@ export default function Dashboard_dashboardConfig({ data, handlers }) {
           <main className={"dash-content"}>
             <div className={"perfil-grid"}>
               <aside className={"perfil-sidebar-card"}>
-                <div className={"avatar-circle"}>
-                  <LoadingValue
-                    slot="dashboard/dashboardConfig:1"
-                    width="12ch"
-                    known={true}
-                    value={user.charAt(0).toUpperCase()}
-                  />
+                <div className={"avatar-circle"} style={foto_perfil ? styleFrom("overflow:hidden; padding:0;") : undefined}>
+                  {foto_perfil ? (
+                    <img
+                      src={foto_perfil}
+                      alt={"Foto de perfil"}
+                      style={styleFrom("width:100%; height:100%; object-fit:cover; border-radius:inherit;")}
+                    />
+                  ) : (
+                    <LoadingValue
+                      slot="dashboard/dashboardConfig:1"
+                      width="12ch"
+                      known={true}
+                      value={user.charAt(0).toUpperCase()}
+                    />
+                  )}
                 </div>
                 <div className={"perfil-info-base"}>
                   <h2>
@@ -202,6 +211,12 @@ export default function Dashboard_dashboardConfig({ data, handlers }) {
                         />
                       </div>
                     </div>
+                  </div>
+                  <div style={styleFrom("margin-top:20px;")}>
+                    <a href={"/dashboard/configuracao-inicial"} className={"btn-secondary-dash"}>
+                      <i className={"fas fa-user-edit"} aria-hidden={"true"}></i>
+                      {" EDITAR PERFIL, FOTO E TURMAS"}
+                    </a>
                   </div>
                 </LoadingElement>
                 <LoadingElement
