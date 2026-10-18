@@ -36,6 +36,13 @@ export function sessionRedirect(path, who) {
   if (path.startsWith("/dashboard") && who?.kind !== "professor")
     return "/aluno";
   if (path.startsWith("/aluno") && who?.kind !== "aluno") return "/dashboard";
+  if (
+    who?.kind === "professor" &&
+    who?.cargo === "Professor" &&
+    who?.onboardingConcluido === false &&
+    path !== "/dashboard/configuracao-inicial"
+  )
+    return "/dashboard/configuracao-inicial";
   if (path === "/login" && who)
     return who.kind === "aluno" ? "/aluno" : "/dashboard";
   if (
