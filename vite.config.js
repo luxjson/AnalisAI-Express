@@ -16,11 +16,21 @@ export default defineConfig(({ mode }) => {
     },
     build: {
       sourcemap: false,
-      rollupOptions: {
+      rolldownOptions: {
         output: {
-          manualChunks: {
-            vendor: ["react", "react-dom"],
-            charts: ["chart.js"],
+          codeSplitting: {
+            groups: [
+              {
+                name: "vendor",
+                test: /node_modules[\\/](react|react-dom)[\\/]/,
+                priority: 10,
+              },
+              {
+                name: "charts",
+                test: /node_modules[\\/]chart\\.js[\\/]/,
+                priority: 10,
+              },
+            ],
           },
         },
       },
