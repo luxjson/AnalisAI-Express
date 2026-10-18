@@ -4,6 +4,7 @@ export const routes = {
   "/login": "login",
   "/esqueci-senha": "esqueciSenha",
   "/termos": "termos",
+  "/privacidade": "privacidade",
   "/manuais": "manuais",
   "/manuais/aluno": "manualDoAluno",
   "/manuais/professor": "manualDoProfessor",
@@ -32,6 +33,7 @@ export const publicRoutes = new Set([
   "/login",
   "/esqueci-senha",
   "/termos",
+  "/privacidade",
   "/equipe",
   "/api",
 ]);

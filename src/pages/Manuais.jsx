@@ -10,7 +10,7 @@ export default function Manuais({ data, handlers }) {
       <React.Fragment>
         {(() => {
           const nodes = [];
-          if (userCargo === "Professor" || userCargo === "Admin") {
+          if (["Professor", "Coordenador", "Admin"].includes(userCargo)) {
             nodes.push(
               <Partials_barProfessor
                 data={{

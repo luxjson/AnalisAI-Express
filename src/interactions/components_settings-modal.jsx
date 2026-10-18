@@ -360,9 +360,20 @@ export function initialize({ onReady, handlers, scope }) {
         healthyTablesEl.textContent = String(data.healthyTables || 0);
       if (issuesEl) issuesEl.textContent = String(data.totalIssues || 0);
       const backupDetailsEl = document.getElementById("backupBannerDetails");
-      if (backupDetailsEl && data.backupStatus) {
+      const backupStatusEl = document.getElementById("backupBannerStatus");
+      if (data.backupStatus) {
         const bs = data.backupStatus;
-        if (bs.lastBackup) {
+        if (backupStatusEl) {
+          backupStatusEl.textContent =
+            bs.enabled === false
+              ? "Backups automáticos desativados."
+              : bs.enabled === true && bs.externalSnapshotConfigured === true
+                ? "Agendamento ativo; a configuração de snapshot Neon está presente."
+                : bs.enabled === true
+                  ? "Agendamento ativo; o fallback JSON fica no mesmo banco e não é uma cópia externa."
+                  : "A API não informou se os backups automáticos estão habilitados.";
+        }
+        if (backupDetailsEl && bs.lastBackup) {
           const dateStr = new Date(bs.lastBackup).toLocaleString("pt-BR", {
             timeZone: "America/Sao_Paulo",
           });
@@ -390,7 +401,7 @@ export function initialize({ onReady, handlers, scope }) {
                 ></i>
               </>
             );
-            tipoLabel = "Backup JSON";
+            tipoLabel = "Backup JSON (mesmo banco)";
           }
           mount(
             backupDetailsEl,
@@ -415,9 +426,15 @@ export function initialize({ onReady, handlers, scope }) {
               {"\n                "}
             </>,
           );
-        } else {
+        } else if (backupDetailsEl) {
           backupDetailsEl.textContent =
-            "Rotina configurada para cada 7 dias. Nenhum backup executado ainda.";
+            bs.enabled === false
+              ? "Nenhum backup encontrado. A rotina automática está desativada."
+              : bs.enabled === true && bs.externalSnapshotConfigured === true
+                ? "Rotina habilitada, mas ainda não há backup registrado."
+                : bs.enabled === true
+                  ? "Rotina habilitada, mas sem snapshot externo configurado; nenhum backup foi registrado."
+                  : "Nenhum backup registrado. Consulte a configuração do servidor.";
         }
       }
       const listEl = document.getElementById("checkupTablesList");
@@ -481,7 +498,7 @@ export function initialize({ onReady, handlers, scope }) {
               type={"button"}
               className={"btn-table-fix"}
               onClick={(event) => {
-                handlers.executeSystemRepair("t.table");
+                handlers.executeSystemRepair(t.table);
               }}
               title={"Corrigir anomalias nesta tabela"}
             >

@@ -217,6 +217,15 @@ export default function Login({
             >
               {"\n                TERMOS DE SERVIÇO\n            "}
             </a>
+            <a
+              href={"/privacidade"}
+              className={"btn-secondary-dash"}
+              style={styleFrom(
+                "font-size: 0.7rem; border: none; background: transparent; margin-left: 8px;",
+              )}
+            >
+              {"POLÍTICA DE PRIVACIDADE"}
+            </a>
           </footer>
         </LoadingElement>
       </React.Fragment>

@@ -1,0 +1,35 @@
+name: Web CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Regression tests, integrity, build, and dependency audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Run regression tests
+        run: npm test
+      - name: Verify imports, manifest, page modules, navigation, and API map
+        run: npm run check:integrity
+      - name: Build production bundle
+        run: npm run build
+      - name: Audit dependency vulnerabilities
+        run: npm audit --audit-level=high

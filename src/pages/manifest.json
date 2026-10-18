@@ -656,5 +656,27 @@
       "https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap",
       "/css/preserved/API_index.css"
     ]
-  }
+  },
+  "privacidade": {
+      "component": "Privacidade",
+      "styles": [
+        "https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css",
+        "/css/base/dashboard.css",
+        "/css/pages/terms.css",
+        "/css/base/light-theme.css"
+      ],
+      "scripts": [
+        "/js/shared/theme-init.js",
+        "/js/shared/phosphor-icons.js"
+      ],
+      "bodyClass": "dash-body",
+      "title": "Política de Privacidade",
+      "includes": [],
+      "styleOrder": [
+        "https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css",
+        "/css/base/dashboard.css",
+        "/css/pages/terms.css",
+        "/css/base/light-theme.css"
+      ]
+    }
 }
