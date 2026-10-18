@@ -226,12 +226,14 @@ export default function Dashboard_dashboardRelatorios({ data, handlers }) {
                 </div>
               </section>
             )}
-            <footer className="dash-footer">
-              <div className="footer-actions">
-                <a href="/dashboard/edit" className="btn-secondary-dash"><i className="fas fa-arrow-left" aria-hidden="true"></i> EDITOR DE NOTAS</a>
-                <a href="/dashboard/frequencia" className="btn-secondary-dash"><i className="fas fa-calendar-check" aria-hidden="true"></i> FREQUÊNCIA</a>
-              </div>
-            </footer>
+            {cargo !== "Coordenador" && (
+              <footer className="dash-footer">
+                <div className="footer-actions">
+                  <a href="/dashboard/edit" className="btn-secondary-dash"><i className="fas fa-arrow-left" aria-hidden="true"></i> EDITOR DE NOTAS</a>
+                  <a href="/dashboard/frequencia" className="btn-secondary-dash"><i className="fas fa-calendar-check" aria-hidden="true"></i> FREQUÊNCIA</a>
+                </div>
+              </footer>
+            )}
           </section>
         </main>
       </div>
