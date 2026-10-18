@@ -109,7 +109,7 @@ export default function Dashboard_dashboardRelatorios({ data, handlers }) {
     <>
       <Partials_barProfessor data={data} handlers={handlers} />
       <div className="main-layout">
-        <PageHeader data={data} handlers={handlers} />
+        <PageHeader data={data} handlers={handlers} title={"Relatórios pedagógicos"} />
         <main className="dash-content">
           <section className="section-container">
             <p className="section-label">ACOMPANHAMENTO PEDAGÓGICO</p>
