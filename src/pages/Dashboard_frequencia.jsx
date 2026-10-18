@@ -156,7 +156,7 @@ export default function Dashboard_frequencia({ data, handlers }) {
                   onChange={(event) => {
                     const nextDate = event.target.value;
                     setDate(nextDate);
-                    if (/^\\d{4}-\\d{2}-\\d{2}$/.test(nextDate))
+                    if (/^\d{4}-\d{2}-\d{2}$/.test(nextDate))
                       setYear(Number(nextDate.slice(0, 4)));
                   }}
                   required
