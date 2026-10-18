@@ -180,7 +180,7 @@ export default function Dashboard_dashboardRelatorios({ data, handlers }) {
                             {item.resposta && <p style={styleFrom("color:var(--text-gray); margin-top:8px;")}>Resposta: {item.resposta}</p>}
                             {!coordinator && (
                               <div style={styleFrom("display:grid; gap:8px; min-width:200px;")}>
-                                <select className="form-control" value={statuses[requestId] || item.status || "PENDENTE"} onChange={(event) => setStatuses((previous) => ({ ...previous, [requestId]: event.target.value }))}>
+                                <select className="form-control" value={statuses[requestId] || (item.status === "CONCLUIDA" ? "CONCLUIDA" : "EM_ANDAMENTO")} onChange={(event) => setStatuses((previous) => ({ ...previous, [requestId]: event.target.value }))}>
                                   <option value="EM_ANDAMENTO">Em andamento</option>
                                   <option value="CONCLUIDA">Concluída</option>
                                 </select>
