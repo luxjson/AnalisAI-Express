@@ -388,5 +388,45 @@
     "original": "/api/ia/professor/alterar-nota",
     "method": "POST",
     "uri": "/ia/avaliacoes"
+  },
+  {
+    "original": "/dashboard/configuracao-inicial",
+    "method": "GET",
+    "uri": "/perfil-pedagogico"
+  },
+  {
+    "original": "/dashboard/configuracao-inicial/salvar",
+    "method": "PATCH",
+    "uri": "/perfil-pedagogico"
+  },
+  {
+    "original": "/dashboard/frequencia",
+    "method": "GET",
+    "uri": "/frequencia"
+  },
+  {
+    "original": "/dashboard/frequencia/salvar",
+    "method": "POST",
+    "uri": "/frequencia"
+  },
+  {
+    "original": "/dashboard/relatorios-pedagogicos",
+    "method": "GET",
+    "uri": "/relatorios/solicitacoes"
+  },
+  {
+    "original": "/dashboard/relatorios-pedagogicos/solicitar",
+    "method": "POST",
+    "uri": "/relatorios/solicitacoes"
+  },
+  {
+    "original": "/dashboard/relatorios-pedagogicos/:id",
+    "method": "PATCH",
+    "uri": "/relatorios/solicitacoes/:id"
+  },
+  {
+    "original": "/dashboard/aluno-relatorio/:id/pdf",
+    "method": "GET",
+    "uri": "/alunos/:id/relatorio.pdf"
   }
 ]
