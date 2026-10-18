@@ -119,9 +119,9 @@ export default function Aluno_alunoDashboard({ data, handlers }) {
                                   slot="aluno/alunoDashboard:4"
                                   width="3ch"
                                   known={false}
-                                  value={aluno.presenca}
+                                  value={aluno.presenca == null ? "—" : aluno.presenca}
                                 />
-                                {"%"}
+                                {aluno.presenca == null ? "" : "%"}
                               </p>
                             </div>,
                           );
